@@ -15,7 +15,8 @@ import javax.annotation.Resource
 @Scope("prototype")
 class Test:ActionSupport(){
     var count:Int=0
-    val msg="count of clerk:"
+    val msg
+        get()="there are $count clerks"
     @Resource(name="clerkDBAcc")
     lateinit var clerkDBAcc:IClerkDBAccessor
     override  fun execute():String{
