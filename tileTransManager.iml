@@ -36,8 +36,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="javax" level="project" />
-    <orderEntry type="library" name="ssh" level="project" />
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.0.5-bin" level="project" />
+    <orderEntry type="library" name="struts2" level="project" />
+    <orderEntry type="library" name="spring" level="project" />
+    <orderEntry type="library" name="springXjar" level="project" />
+    <orderEntry type="library" name="required" level="project" />
+    <orderEntry type="library" name="c3p0" level="project" />
   </component>
 </module>

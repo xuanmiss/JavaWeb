@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <context:component-scan base-package="controller">
+    <context:component-scan base-package="controller,service,dao">
         <context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
     </context:component-scan>
 
@@ -26,12 +26,15 @@
           p:dataSource-ref="dataSource">
         <property name="annotatedClasses">
             <list>
-
+                <value>entity.Clerk</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
-                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
+                <prop key="hibernate.connection.username">root</prop>
+                <prop key="hibernate.connection.password">123456</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/tiletrans</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>

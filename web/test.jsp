@@ -12,6 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-    <h1><s:property value="msg"/></h1>
+    <h1><s:property value="msg"/><s:property value="count"/> </h1>
 </body>
 </html>

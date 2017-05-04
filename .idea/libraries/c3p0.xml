@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="c3p0">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/c3p0" />
+      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/ehcache" />
+      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/infinispan" />
+      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/proxool" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/c3p0" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/ehcache" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/infinispan" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/proxool" recursive="false" />
+  </library>
+</component>
