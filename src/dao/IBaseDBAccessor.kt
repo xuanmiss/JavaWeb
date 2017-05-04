@@ -6,7 +6,9 @@ import org.hibernate.SessionFactory
 /**
  * Created by ymcvalu on 2017/5/4.
  */
-
+/**
+ * 公共接口，所有dao的接口都应该继承该接口
+ */
 interface IBaseDBAccessor<T>{
     var sessionFac:SessionFactory?
     fun getSession():Session

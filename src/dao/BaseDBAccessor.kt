@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
  */
 
 /**
- * 所以dao的基类
+ * 所有dao都应继承该类
  */
 open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
     //自动注入session工厂
