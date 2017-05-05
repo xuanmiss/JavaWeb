@@ -13,17 +13,14 @@ import javax.annotation.Resource
  */
 @Controller("test")
 @Scope("prototype")
-class Test:ActionSupport(){
-    var count:Int=0
-    val msg
+open class Test:ActionSupport(){
+     open var count:Int=0
+     val msg
         get()="there are $count clerks"
-    @Resource(name="clerkDBAcc")
-    lateinit var clerkDBAcc:IClerkDBAccessor
-    override  fun execute():String{
-        var session=clerkDBAcc.getSession()
-        session.transaction.begin()
+     @Resource(name="clerkDBAcc")
+     lateinit var clerkDBAcc:IClerkDBAccessor
+     override  fun execute():String{
         count=clerkDBAcc.getCount(Clerk::class.java)
-        session.transaction.commit()
         return Action.SUCCESS
     }
 }
