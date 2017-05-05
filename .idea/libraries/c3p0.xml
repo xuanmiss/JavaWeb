@@ -1,16 +1,11 @@
 <component name="libraryTable">
   <library name="c3p0">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/c3p0" />
-      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/ehcache" />
-      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/infinispan" />
-      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/proxool" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/optional/c3p0/mchange-commons-java-0.2.3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/optional/c3p0/c3p0-0.9.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/optional/c3p0/hibernate-c3p0-4.3.11.Final.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/c3p0" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/ehcache" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/infinispan" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/hibernate/optional/proxool" recursive="false" />
   </library>
 </component>

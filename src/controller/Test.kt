@@ -20,10 +20,6 @@ class Test:ActionSupport(){
     @Resource(name="clerkDBAcc")
     lateinit var clerkDBAcc:IClerkDBAccessor
     override  fun execute():String{
-        var session=clerkDBAcc.getSession()
-        session.transaction.begin()
-        count=clerkDBAcc.getCount(Clerk::class.java)
-        session.transaction.commit()
         return Action.SUCCESS
     }
 }
