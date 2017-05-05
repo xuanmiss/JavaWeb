@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
 @Lazy
 public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAccessor {
     /**
-     * 实现新方法...
+     * 在这里实现新方法...
      */
 }
