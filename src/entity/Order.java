@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Integer id;
 
     @ManyToOne(targetEntity = Client.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver",referencedColumnName = "id")

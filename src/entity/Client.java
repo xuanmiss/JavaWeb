@@ -10,7 +10,7 @@ import java.util.Set;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Integer id;
 
     private String name;//姓名
     private String phone;//手机号
@@ -32,11 +32,11 @@ public class Client {
     private Clerk clerk;  //签约业务员
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

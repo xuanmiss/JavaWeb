@@ -10,16 +10,16 @@ import javax.persistence.*;
 public class Clerk_Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Integer id;
     private int clerk; //clerk外键
     private int client; //client外键
     private int contract; //外键合同
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

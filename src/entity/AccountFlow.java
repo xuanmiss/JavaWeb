@@ -13,18 +13,18 @@ import javax.persistence.Id;
 public class AccountFlow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private double amount;
     private int clerk;
     private String description;
     private int type;
     private int order_no;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -13,7 +13,7 @@ import java.util.Set;
 public class Clerk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Integer id;
     private String identity;
     private String name;
     private String phone;
@@ -34,11 +34,11 @@ public class Clerk {
             inverseJoinColumns = @JoinColumn(name="client",referencedColumnName = "id"))
     private Set<Client> clients;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
