@@ -1,5 +1,8 @@
 package entity;
 
+import org.hibernate.annotations.*;
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
