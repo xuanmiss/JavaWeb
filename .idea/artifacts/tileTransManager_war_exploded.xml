@@ -9,12 +9,6 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="KotlinJavaRuntime" />
-          <element id="library" level="project" name="mysql-connector-java-5.0.5-bin" />
-          <element id="library" level="project" name="struts2" />
-          <element id="library" level="project" name="spring" />
-          <element id="library" level="project" name="springXjar" />
-          <element id="library" level="project" name="required" />
-          <element id="library" level="project" name="c3p0" />
         </element>
       </element>
     </root>
