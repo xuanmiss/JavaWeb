@@ -15,13 +15,13 @@ package controller;
 @Scope("prototype")
 public class Test extends ActionSupport {
     private int count;
-    private String ENTITY="clerk";
+    private String ENTITY="client";
     @Resource(name="clerkDBAcc")
     private IClerkDBAccessor clerkAcc;
 
     @Override
     public String execute(){
-        count=clerkAcc.getCount(Clerk.class);
+        count=clerkAcc.getObj( Clerk.class,1).getClients().size();
         return SUCCESS;
     }
 
@@ -35,6 +35,6 @@ public class Test extends ActionSupport {
     }
 
     public String getMsg(){
-        return "there are "+count+" "+ENTITY;
+        return "you hava "+count+" "+ENTITY;
     }
 }

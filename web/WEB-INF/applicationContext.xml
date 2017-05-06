@@ -27,6 +27,9 @@
         <property name="annotatedClasses">
             <list>
                 <value>entity.Clerk</value>
+                <value>entity.Client</value>
+                <value>entity.Clerk_Client</value>
+                <value>entity.SalaryStandard</value>
             </list>
         </property>
         <property name="hibernateProperties">
