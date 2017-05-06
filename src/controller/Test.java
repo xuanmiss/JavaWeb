@@ -2,12 +2,11 @@ package controller;
 
  import com.opensymphony.xwork2.ActionSupport;
  import dao.IClerkDBAccessor;
- import dao.IClerk_ClientDBAccessor;
  import entity.Clerk;
+ import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.context.annotation.Scope;
  import org.springframework.stereotype.Controller;
 
- import javax.annotation.Resource;
 
 /**
  * Created by ymcvalu on 2017/5/6.
@@ -15,29 +14,22 @@ package controller;
 @Controller("test")
 @Scope("prototype")
 public class Test extends ActionSupport {
-    private int count;
+    private int count=0;
     private String ENTITY="client";
-    @Resource(name="clerkDBAcc")
-    private IClerkDBAccessor clerkAcc;
-    @Resource(name = "c_cDBAcc")
-    private IClerk_ClientDBAccessor cc;
+
+    @Autowired
+    private IClerkDBAccessor clerkDBAccessor;
+
     @Override
     public String execute(){
-        System.out.println(cc.getContractKey(1,1));
-        Clerk clerk=clerkAcc.getObj( Clerk.class,1);
-        clerk.getClients().clear();
+        Clerk clerk=clerkDBAccessor.getObj(Clerk.class,1);
+        count=clerk.getClients().size();
         return SUCCESS;
     }
-
 
     public int getCount() {
         return count;
     }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
     public String getMsg(){
         return "you hava "+count+" "+ENTITY;
     }
