@@ -24,9 +24,8 @@ public class Clerk {
     private String salary_card;
     private int status;
     private String duties;
-    @OneToOne(targetEntity = SalaryStandard.class,fetch = FetchType.LAZY)
-    @JoinColumn(name="salary",referencedColumnName = "id")
-
+    @ManyToOne(targetEntity = SalaryStandard.class,fetch = FetchType.LAZY)
+    @JoinColumn(name="salary",referencedColumnName = "id",unique = true)
     private SalaryStandard salaryStandard;
 
     @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY)

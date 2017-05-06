@@ -30,6 +30,8 @@
                 <value>entity.Client</value>
                 <value>entity.Clerk_Client</value>
                 <value>entity.SalaryStandard</value>
+                <value>entity.Order</value>
+                <value>entity.Contract</value>
             </list>
         </property>
         <property name="hibernateProperties">
