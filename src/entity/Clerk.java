@@ -1,5 +1,10 @@
 package entity;
 
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -27,11 +32,11 @@ public class Clerk {
     @ManyToOne(targetEntity = SalaryStandard.class,fetch = FetchType.LAZY)
     @JoinColumn(name="salary",referencedColumnName = "id",unique = true)
     private SalaryStandard salaryStandard;
-
     @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY)
     @JoinTable(name = "clerk_client",
             joinColumns = @JoinColumn(name = "clerk",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="client",referencedColumnName = "id"))
+
     private Set<Client> clients;
 
     public Integer getId() {
