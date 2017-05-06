@@ -1,9 +1,7 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 /**
  * Created by ymcvalu on 2017/5/6.
@@ -13,4 +11,8 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
+    @ManyToOne(targetEntity = Client.class,fetch = FetchType.LAZY)
+    @JoinColumn(name = "receiver",referencedColumnName = "id")
+    private Client receiver;
 }
