@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 /**
  * 账户流水实现类
  */
-@Repository("accoutflowDBAcc")
+@Repository("accoutFlowDBAcc")
 @Lazy
 public class AccountFlowDBAccessor extends BaseDBAccessor<AccountFlow> implements IAccountFlowDBAccessor{
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 /**
  * 客户白条实现类
  */
-@Repository("clerkDBAcc")
+@Repository("arrearDBAcc")
 @Lazy
 public class ArrearDBAccessor extends BaseDBAccessor<Arrear> implements IArrearDBAccessor {
     /**
