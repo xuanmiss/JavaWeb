@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="struts2">
+  <library name="mysql-connector-java-5.0.5-bin">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../ssh/ssh/mysql-connector-java-5.0.5-bin.jar!/" />
       <root url="file://$PROJECT_DIR$/../ssh/ssh/struts2" />
@@ -12,10 +12,7 @@
       <root url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/proxool" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="file://$PROJECT_DIR$" />
-      <root url="file://$PROJECT_DIR$/src" />
-    </SOURCES>
+    <SOURCES />
     <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/c3p0" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/ehcache" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/infinispan" recursive="false" />

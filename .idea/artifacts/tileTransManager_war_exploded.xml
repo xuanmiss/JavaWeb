@@ -5,11 +5,10 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="tileTransManager" />
-          <element id="library" level="application" name="javax" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="KotlinJavaRuntime" />
-          <element id="library" level="project" name="struts2" />
+          <element id="library" level="project" name="ssh" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="tileTransManager/web/Web" />

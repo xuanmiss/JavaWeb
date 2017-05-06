@@ -1,10 +1,8 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by ymcvalu on 2017/5/4.
@@ -15,24 +13,32 @@ import java.util.Date;
 public class Clerk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String identity;
-    String name;
-    String phone;
-    String address;
-    Date birthday;
-    Date entry_time;
-    String weichat;
-    String salary_card;
-    int status;
-    String duties;
+    Integer id;
+    private String identity;
+    private String name;
+    private String phone;
+    private String address;
+    private Date birthday;
+    private Date entry_time;
+    private String weichat;
+    private String salary_card;
+    private int status;
+    private String duties;
+    @ManyToOne(targetEntity = SalaryStandard.class,fetch = FetchType.LAZY)
+    @JoinColumn(name="salary",referencedColumnName = "id",unique = true)
+    private SalaryStandard salaryStandard;
 
+    @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY)
+    @JoinTable(name = "clerk_client",
+            joinColumns = @JoinColumn(name = "clerk",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="client",referencedColumnName = "id"))
+    private Set<Client> clients;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -114,5 +120,21 @@ public class Clerk {
 
     public void setDuties(String duties) {
         this.duties = duties;
+    }
+
+    public SalaryStandard getSalaryStandard() {
+        return salaryStandard;
+    }
+
+    public void setSalaryStandard(SalaryStandard salaryStandard) {
+        this.salaryStandard = salaryStandard;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
     }
 }

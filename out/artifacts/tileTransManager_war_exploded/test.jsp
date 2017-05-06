@@ -13,5 +13,6 @@
 </head>
 <body>
     <h1><s:property value="msg"/></h1>
+    <s:debug/>
 </body>
 </html>
