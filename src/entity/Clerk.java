@@ -27,10 +27,7 @@ public class Clerk {
     @ManyToOne(targetEntity = SalaryStandard.class,fetch = FetchType.EAGER)
     @JoinColumn(name="salary",referencedColumnName = "id",unique = true)
     private SalaryStandard salaryStandard;
-    @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY)
-    @JoinTable(name = "clerk_client",
-            joinColumns = @JoinColumn(name = "clerk",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="client",referencedColumnName = "id"))
+    @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY,mappedBy = "clerk")
      private Set<Client> clients;
 
 
