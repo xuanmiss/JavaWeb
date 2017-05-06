@@ -17,7 +17,7 @@
           p:driverClass="com.mysql.jdbc.Driver"
           p:jdbcUrl="jdbc:mysql://localhost:3306/tiletrans"
           p:user="root"
-          p:password="123456"
+          p:password="weiyideni,21"
           p:maxPoolSize="30"
           p:minPoolSize="2"
           p:initialPoolSize="2"
@@ -32,7 +32,7 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.connection.username">root</prop>
-                <prop key="hibernate.connection.password">123456</prop>
+                <prop key="hibernate.connection.password">weiyideni,21</prop>
                 <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/tiletrans</prop>
                 <prop key="hibernate.current_session_context_class">thread</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>

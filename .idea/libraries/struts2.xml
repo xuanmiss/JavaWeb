@@ -1,10 +1,28 @@
 <component name="libraryTable">
   <library name="struts2">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../java/Libraries/ssh/struts2" />
+      <root url="jar://$PROJECT_DIR$/../ssh/ssh/mysql-connector-java-5.0.5-bin.jar!/" />
+      <root url="file://$PROJECT_DIR$/../ssh/ssh/struts2" />
+      <root url="file://$PROJECT_DIR$/../ssh/ssh/springXjar" />
+      <root url="file://$PROJECT_DIR$/../ssh/ssh/spring" />
+      <root url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/required" />
+      <root url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/c3p0" />
+      <root url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/ehcache" />
+      <root url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/infinispan" />
+      <root url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/proxool" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/../../java/Libraries/ssh/struts2" recursive="false" />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/c3p0" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/ehcache" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/infinispan" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/optional/proxool" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/hibernate/required" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/spring" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/springXjar" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../ssh/ssh/struts2" recursive="false" />
   </library>
 </component>
