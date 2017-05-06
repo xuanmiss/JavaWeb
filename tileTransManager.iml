@@ -14,8 +14,8 @@
         <configuration>
           <fileset id="s2fileset" name="My Fileset " removed="false">
             <file>file://$MODULE_DIR$/src/struts.xml</file>
-            <file>jar://$MODULE_DIR$/../../java/Libraries/ssh/struts2/struts2-core-2.3.24.1.jar!/struts-default.xml</file>
-            <file>jar://$MODULE_DIR$/../../java/Libraries/ssh/springXjar/struts2-spring-plugin-2.3.24.1.jar!/struts-plugin.xml</file>
+            <file>jar://F:/java/Libraries/ssh/struts2/struts2-core-2.3.24.1.jar!/struts-default.xml</file>
+            <file>jar://F:/java/Libraries/ssh/springXjar/struts2-spring-plugin-2.3.24.1.jar!/struts-plugin.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -37,11 +37,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.0.5-bin" level="project" />
-    <orderEntry type="library" name="struts2" level="project" />
+    <orderEntry type="library" name="hibernate" level="project" />
     <orderEntry type="library" name="spring" level="project" />
     <orderEntry type="library" name="springXjar" level="project" />
-    <orderEntry type="library" name="required" level="project" />
-    <orderEntry type="library" name="c3p0" level="project" />
+    <orderEntry type="library" name="struts2" level="project" />
+    <orderEntry type="library" name="javax" level="project" />
   </component>
 </module>
