@@ -23,7 +23,7 @@ public class Test extends ActionSupport {
     private IClerk_ClientDBAccessor cc;
     @Override
     public String execute(){
-        System.out.println(cc.getContractKey(2,2)); 
+        System.out.println(cc.getContractKey(1,1));
         Clerk clerk=clerkAcc.getObj( Clerk.class,1);
         clerk.getClients().clear();
         return SUCCESS;
