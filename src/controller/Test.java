@@ -2,6 +2,7 @@ package controller;
 
  import com.opensymphony.xwork2.ActionSupport;
  import dao.IClerkDBAccessor;
+ import dao.IClerk_ClientDBAccessor;
  import entity.Clerk;
  import org.springframework.context.annotation.Scope;
  import org.springframework.stereotype.Controller;
@@ -18,10 +19,13 @@ public class Test extends ActionSupport {
     private String ENTITY="client";
     @Resource(name="clerkDBAcc")
     private IClerkDBAccessor clerkAcc;
-
+    @Resource(name = "c_cDBAcc")
+    private IClerk_ClientDBAccessor cc;
     @Override
     public String execute(){
-        count=clerkAcc.getObj( Clerk.class,1).getClients().size();
+        System.out.println(cc.getContractKey(2,2)); 
+        Clerk clerk=clerkAcc.getObj( Clerk.class,1);
+        clerk.getClients().clear();
         return SUCCESS;
     }
 
