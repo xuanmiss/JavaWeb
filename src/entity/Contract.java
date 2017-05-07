@@ -27,6 +27,6 @@ public class Contract {
 
     @Override
     public int hashCode() {
-        return super.hashCode()+31*id;
+        return 17*31+id;
     }
 }
