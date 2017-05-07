@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by ymcvalu on 2017/5/6.
@@ -12,18 +9,56 @@ import javax.persistence.Id;
 public class SalaryStandard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
 
+    @Column(name = "basic", precision = 10, scale = 2, nullable = false)
+    private Double basicSalary;
 
+    @Column(name = "comm")
+    private Integer commission;
+
+    @Column(columnDefinition = "NOT NULL DEFAULT '基础工资+业绩*提成%'")
+    private String description;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Double getBasicSalary() {
+        return basicSalary;
+    }
+
+    public void setBasicSalary(Double basicSalary) {
+        this.basicSalary = basicSalary;
+    }
+
+    public Integer getCommission() {
+        return commission;
+    }
+
+    public void setCommission(Integer commission) {
+        this.commission = commission;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
-    public boolean equals(Object a){
-        if(a==null)
+    public boolean equals(Object o) {
+        if(o == null)
             return false;
-        if(a instanceof SalaryStandard)
-            return id==((SalaryStandard)a).id;
-        else
-            return false;
+        if(o instanceof SalaryStandard)
+            return id == ((SalaryStandard)o).id;
+        return false;
     }
 
     @Override
