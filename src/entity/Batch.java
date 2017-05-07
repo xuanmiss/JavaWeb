@@ -13,4 +13,35 @@ public class Batch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
+    private int bitch_no; //  bitch_no外键
+    private int date; //date外键
+    private int model; //外键品牌型号
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public int getBitch_no() {
+        return bitch_no;
+    }
+
+    public void setBitch_no(int bitch_no) {
+        this.bitch_no = bitch_no;
+    }
+
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
+    }
+
+    public int getModel() { return model; }
+
 }
