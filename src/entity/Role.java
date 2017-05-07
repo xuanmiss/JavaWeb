@@ -65,4 +65,18 @@ public class Role {
     public void setClerk(Clerk clerk) {
         this.clerk = clerk;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == null)
+            return false;
+        if(o instanceof Role)
+            return id == ((Role)o).id;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }

@@ -51,4 +51,18 @@ public class SalaryStandard {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == null)
+            return false;
+        if(o instanceof SalaryStandard)
+            return id == ((SalaryStandard)o).id;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }

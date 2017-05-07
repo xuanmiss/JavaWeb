@@ -54,4 +54,18 @@ public class Shipment {
     public void setClerk(Clerk clerk) {
         this.clerk = clerk;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == null)
+            return false;
+        if(o instanceof Shipment)
+            return id == ((Shipment)o).id;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }
