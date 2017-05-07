@@ -9,10 +9,12 @@ import javax.persistence.*;
 public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
 
-    private int count; //count 外键
-    private int batch; //外键批号
+    private int count;  //库存数量
+    @OneToOne(targetEntity = Batch.class)
+    @JoinColumn(name = "batch",nullable = false)
+    private Batch batch; //外键批号
 
     public Integer getId() {
         return id;
@@ -30,7 +32,13 @@ public class Stock {
         this.count = count;
     }
 
-    public int getBat() { return batch; }
+    public Batch getBatch() {
+        return batch;
+    }
+
+    public void setBatch(Batch batch) {
+        this.batch = batch;
+    }
 
     @Override
     public boolean equals(Object a){

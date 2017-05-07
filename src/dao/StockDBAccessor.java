@@ -11,6 +11,4 @@ import org.springframework.stereotype.Repository;
 @Lazy
 public class StockDBAccessor extends BaseDBAccessor<Stock> implements IStockDBAccessor{
 
-
-
 }

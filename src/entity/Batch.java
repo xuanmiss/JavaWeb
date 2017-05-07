@@ -1,9 +1,7 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by ymcvalu on 2017/5/6.
@@ -12,21 +10,43 @@ import javax.persistence.Id;
 public class Batch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
 
-    private int bitch_no; //  bitch_no外键
-    private int date; //date外键
-    private int model; //外键品牌型号
+    private int bitch_no; //  批号
+    private Date date; //生产日期
+    @ManyToOne(targetEntity = Model.class)
+    @JoinColumn(name = "model",nullable = false)
+    private Model model; //外键品牌型号
+    @OneToOne(targetEntity = Stock.class)
+    private Stock stock; //对应库存
 
-    public Integer getId() {
-        return id;
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    public Date getDate() {
+
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getBitch_no() {
+
         return bitch_no;
     }
 
@@ -34,15 +54,14 @@ public class Batch {
         this.bitch_no = bitch_no;
     }
 
-    public int getDate() {
-        return date;
+    public Integer getId() {
+
+        return id;
     }
 
-    public void setDate(int date) {
-        this.date = date;
+    public void setId(Integer id) {
+        this.id = id;
     }
-
-    public int getModel() { return model; }
 
     @Override
     public boolean equals(Object a){
