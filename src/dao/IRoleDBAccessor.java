@@ -1,5 +1,6 @@
 package dao;
 
+import entity.Clerk;
 import entity.Role;
 
 /**
@@ -27,6 +28,14 @@ public interface IRoleDBAccessor extends IBaseDBAccessor<Role> {
      * @return List<Role>
      */
     Role findByClerk(Object object);
+
+    /**
+     * 登陆校验
+     * @param username 账户
+     * @param password 密码
+     * @return 如果验证成功则返回对应的业务员信息，否则返回null
+     */
+    Role loggingCheck(String username, String password);
 
 
 }

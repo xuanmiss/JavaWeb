@@ -4,8 +4,7 @@ import com.opensymphony.xwork2.ActionContext
 import com.opensymphony.xwork2.ActionInvocation
 import com.opensymphony.xwork2.ActionSupport
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor
-import com.opensymphony.xwork2.interceptor.Interceptor
-import org.omg.PortableInterceptor.SUCCESSFUL
+
 import org.springframework.stereotype.Controller
 
 /**

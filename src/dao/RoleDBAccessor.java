@@ -1,6 +1,9 @@
 package dao;
 
+import entity.Clerk;
 import entity.Role;
+import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +16,7 @@ import java.util.List;
  * ...
  */
 
+@Repository("roleDBAcc")
 public class RoleDBAccessor extends BaseDBAccessor<Role> implements IRoleDBAccessor {
     /**
      * 声明新方法
@@ -23,11 +27,21 @@ public class RoleDBAccessor extends BaseDBAccessor<Role> implements IRoleDBAcces
      * 根据用户名查找Role
      * @return Role
      */
-    public Role findByUserName(Object object){return null;};
+    public Role findByUserName(Object object){return null;}
 
     /**
      * 根据业务员ID查找Role
      * @return List<Shipment>
      */
-    public Role findByClerk(Object object){return null;};
+    public Role findByClerk(Object object){return null;}
+
+
+    @Override
+    public Role loggingCheck(String username, String password) {
+        Session session=getSession();
+        return (Role)session.createQuery("from entity.Role as r where r.username = ?1 and r.password = ?2")
+                .setString("1",username)
+                .setString("2",password)
+                .uniqueResult();
+    }
 }

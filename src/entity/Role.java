@@ -18,7 +18,7 @@ public class Role {
 
     private Integer authority;
 
-    @OneToOne(targetEntity = Clerk.class, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Clerk.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "clerk")
     private Clerk clerk;
 
