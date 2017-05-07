@@ -1,6 +1,9 @@
 package entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by ymcvalu on 2017/5/6.
@@ -11,47 +14,19 @@ public class Shipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @OneToOne(targetEntity = Order.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_form", referencedColumnName = "id")
-    private Order order_form;
 
-    @OneToOne(targetEntity = Batch.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "batch", referencedColumnName = "id")
-    private Batch batch;
-
-    @OneToOne(targetEntity = Clerk.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "clerk", referencedColumnName = "id")
-    private Clerk clerk;
-
-    public Integer getId() {
-        return id;
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Shipment)
+            return id==((Shipment)a).id;
+        else
+            return false;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Order getOrder_form() {
-        return order_form;
-    }
-
-    public void setOrder_form(Order order_form) {
-        this.order_form = order_form;
-    }
-
-    public Batch getBatch() {
-        return batch;
-    }
-
-    public void setBatch(Batch batch) {
-        this.batch = batch;
-    }
-
-    public Clerk getClerk() {
-        return clerk;
-    }
-
-    public void setClerk(Clerk clerk) {
-        this.clerk = clerk;
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
     }
 }

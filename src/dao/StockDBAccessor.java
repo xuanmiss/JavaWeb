@@ -12,4 +12,5 @@ import org.springframework.stereotype.Repository;
 public class StockDBAccessor extends BaseDBAccessor<Stock> implements IStockDBAccessor{
 
 
+
 }

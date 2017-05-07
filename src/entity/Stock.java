@@ -31,4 +31,19 @@ public class Stock {
     }
 
     public int getBat() { return batch; }
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Stock)
+            return id==((Stock)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }

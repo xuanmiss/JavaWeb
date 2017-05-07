@@ -44,4 +44,19 @@ public class Batch {
 
     public int getModel() { return model; }
 
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Batch)
+            return id==((Batch)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
+
 }

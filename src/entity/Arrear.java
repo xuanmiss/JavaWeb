@@ -68,4 +68,18 @@ public class Arrear {
     public void setTerm(Date term) {
         this.term = term;
     }
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Arrear)
+            return id==((Arrear)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }
