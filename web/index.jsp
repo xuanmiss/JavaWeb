@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-    <a href="/text.action">test</a>
+    <a href="/test.action">test</a>
 
 </body>
 </html>

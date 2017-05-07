@@ -32,6 +32,7 @@
                 <value>entity.SalaryStandard</value>
                 <value>entity.Order</value>
                 <value>entity.Contract</value>
+                <value>entity.Model</value>
             </list>
         </property>
         <property name="hibernateProperties">
