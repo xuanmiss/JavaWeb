@@ -14,16 +14,14 @@ public class Purchase_Order {
     @Column(name="id")
     private int id;
 
-    @OneToOne(targetEntity = Order.class,fetch = FetchType.LAZY)
-    @JoinColumn(name="order_no")
-    private Order order;
+    private String order;
 
-    @OneToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
     @JoinColumn(name="model")
     private Model model;
 
     @Column(name="quantity")
-    private String quantity;
+    private int quantity;
     @Column(name="amount")
     private Double amount;
     @Column(name="date")
@@ -33,7 +31,7 @@ public class Purchase_Order {
     @JoinColumn(name = "clerk")
     private Clerk clerk;
 
-    private String type;
+    private int type;
 
     @Override
     public boolean equals(Object o) {
@@ -46,30 +44,9 @@ public class Purchase_Order {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + order.hashCode();
-        result = 31 * result + model.hashCode();
-        result = 31 * result + quantity.hashCode();
-        result = 31 * result + amount.hashCode();
-        result = 31 * result + date.hashCode();
-        result = 31 * result + clerk.hashCode();
-        result = 31 * result + type.hashCode();
-        return result;
+        return super.hashCode()+31*id;
     }
-
-    @Override
-    public String toString() {
-        return "Purchase_Order{" +
-                "id=" + id +
-                ", order=" + order +
-                ", model=" + model +
-                ", quantity='" + quantity + '\'' +
-                ", amount=" + amount +
-                ", date=" + date +
-                ", clerk=" + clerk +
-                ", type='" + type + '\'' +
-                '}';
-    }
+    
 
     public int getId() {
         return id;
@@ -79,13 +56,7 @@ public class Purchase_Order {
         this.id = id;
     }
 
-    public Order getOrder() {
-        return order;
-    }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 
     public Model getModel() {
         return model;
@@ -95,13 +66,7 @@ public class Purchase_Order {
         this.model = model;
     }
 
-    public String getQuantity() {
-        return quantity;
-    }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
 
     public Double getAmount() {
         return amount;
@@ -127,11 +92,27 @@ public class Purchase_Order {
         this.clerk = clerk;
     }
 
-    public String getType() {
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 }

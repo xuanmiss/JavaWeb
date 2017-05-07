@@ -29,7 +29,7 @@ public class Purchase {
 
     @OneToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_form")
-    private Order order_form;
+    private Purchase_Order order;
 
     public Batch getBatch() {
         return batch;
@@ -47,27 +47,19 @@ public class Purchase {
         this.clerk = clerk;
     }
 
-    public Order getOrder_form() {
-        return order_form;
+    public Purchase_Order getOrder() {
+        return order;
     }
 
-    public void setOrder_form(Order order_form) {
-        this.order_form = order_form;
+    public void setOrder(Purchase_Order order) {
+        this.order = order;
     }
 
     public int getId() {return id;}
 
     public void setId(int id) {this.id = id;}
 
-    @Override
-    public String toString() {
-        return "Purchase{" +
-                "id=" + id +
-                ", batch=" + batch +
-                ", clerk=" + clerk +
-                ", order_form=" + order_form +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -83,10 +75,6 @@ public class Purchase {
 
     @Override
     public int hashCode() {
-        int result = getId();
-        result = 31 * result + getBatch().hashCode();
-        result = 31 * result + getClerk().hashCode();
-        result = 31 * result + getOrder_form().hashCode();
-        return result;
+        return super.hashCode()+31*id;
     }
 }
