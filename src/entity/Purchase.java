@@ -28,7 +28,7 @@ public class Purchase {
     private Clerk clerk;
 
     @OneToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_form", referencedColumnName = "order_no")
+    @JoinColumn(name = "order_form")
     private Order order_form;
 
     public Batch getBatch() {

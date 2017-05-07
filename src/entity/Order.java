@@ -2,11 +2,6 @@ package entity;
 
 import javax.persistence.*;
 import java.util.Date;
-
-
-/**
- * Created by ymcvalu on 2017/5/6.
- */
 @Entity
 @Table(name = "order_form")
 public class Order {
@@ -31,7 +26,7 @@ public class Order {
     }
 
     @ManyToOne(targetEntity = Client.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "receiver", referencedColumnName = "name")
+    @JoinColumn(name = "receiver")
     private Client receiver;
 
     @ManyToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
