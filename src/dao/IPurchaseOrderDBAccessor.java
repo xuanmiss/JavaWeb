@@ -13,6 +13,7 @@ public interface IPurchaseOrderDBAccessor  extends IBaseDBAccessor<Purchase_Orde
      */
     List<Purchase_Order> findByOrderNo(Object object);
     /**
+     *
      *根据业务员查看预购表
      */
     List<Purchase_Order> findByClerk(Object object);
