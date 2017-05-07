@@ -1,20 +1,24 @@
+
 package dao;
 
+import entity.Account;
 import entity.Clerk;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by ymcvalu on 2017/5/4.
+ * Created by miss on 2017/5/6.
  */
 
 /**
- * 员工表访问实现类
+ * 公司账户实现类
  */
-@Repository("clerkDBAcc")
+@Repository("accountDBAcc")
 @Lazy
-public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAccessor {
+public class AccountDBAccessor extends BaseDBAccessor<Account> implements IAccountDBAccessor{
+
     /**
      * 在这里实现新方法...
      */
 }
+

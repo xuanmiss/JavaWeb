@@ -3,6 +3,7 @@ package dao
 import org.hibernate.Session
 import org.hibernate.SessionFactory
 import org.springframework.beans.factory.annotation.Autowired
+import javax.annotation.Resource
 
 /**
  * Created by ymcvalu on 2017/5/4.
