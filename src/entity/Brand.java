@@ -76,7 +76,7 @@ public class Brand {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
+    @Override
     public boolean equals(Object a){
         if(a==null)
             return false;
@@ -84,6 +84,10 @@ public class Brand {
             return id==((Brand)a).id;
         else
             return false;
+    }
+    @Override
+    public int hashCode(){
+        return 31*17+id;
     }
 
 }

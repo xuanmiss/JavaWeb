@@ -11,7 +11,7 @@ public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-<<<<<<< HEAD
+
     private Date date;
     private Date deadline;
     private String description;
@@ -70,11 +70,11 @@ public class Contract {
         this.client = client;
     }
 
-=======
+
 
 
     @Override
->>>>>>> new
+
     public boolean equals(Object a){
         if(a==null)
             return false;
@@ -84,11 +84,9 @@ public class Contract {
             return false;
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public int hashCode() {
         return 17*31+id;
     }
->>>>>>> new
+
 }

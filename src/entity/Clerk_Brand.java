@@ -11,7 +11,7 @@ public class Clerk_Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-<<<<<<< HEAD
+
     private Date date;
     private Integer status;
     @OneToOne(targetEntity = Clerk.class)
@@ -60,10 +60,10 @@ public class Clerk_Brand {
         this.brand = brand;
     }
 
-=======
+
 
     @Override
->>>>>>> new
+
     public boolean equals(Object a){
         if(a==null)
             return false;
@@ -73,11 +73,11 @@ public class Clerk_Brand {
             return false;
     }
 
-<<<<<<< HEAD
-=======
+
+
     @Override
     public int hashCode() {
         return 17*31+id;
     }
->>>>>>> new
+
 }
