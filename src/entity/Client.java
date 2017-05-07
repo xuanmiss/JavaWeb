@@ -26,9 +26,8 @@ public class Client {
     @ManyToOne(targetEntity = Clerk.class,fetch = FetchType.LAZY)
     @JoinTable(
             name = "clerk_client",
-            joinColumns = @JoinColumn(name = "client",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="clerk",referencedColumnName = "id")
-    )
+            joinColumns = @JoinColumn(name = "client",referencedColumnName = "id",unique = true),
+            inverseJoinColumns = @JoinColumn(name="clerk",referencedColumnName = "id"))
     private Clerk clerk;  //签约业务员
 
 
