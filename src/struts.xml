@@ -8,10 +8,10 @@
     <constant name="struts.devMode" value="true"/>
     <package name="/" namespace="/" extends="struts-default">
         <action name="test" class="test">
-            <result>/test.jsp</result>
+            <result><param name="location">/test.jsp</param></result>
         </action>
         <action name="*">
-            <result>/index.jsp</result>
+            <result><param name="location">/index.jsp</param></result>
         </action>
     </package>
 </struts>
