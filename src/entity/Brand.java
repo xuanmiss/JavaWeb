@@ -1,10 +1,8 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2017/5/7/007.
@@ -20,6 +18,9 @@ public class Brand {
     private String supplier;
     private String logo;
     private Integer status;
+
+    @OneToMany(targetEntity = Model.class,mappedBy = "brand",fetch = FetchType.LAZY)
+    private Set<Model> models;
 
     public Integer getId() {
         return id;
@@ -47,6 +48,14 @@ public class Brand {
 
     public Date getDate() {
         return date;
+    }
+
+    public Set<Model> getModels() {
+        return models;
+    }
+
+    public void setModels(Set<Model> models) {
+        this.models = models;
     }
 
     public void setDate(Date date) {

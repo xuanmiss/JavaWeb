@@ -15,10 +15,10 @@ public class Contract {
     private Date date;
     private Date deadline;
     private String description;
-    @OneToOne(targetEntity = Clerk.class)
+    @OneToOne(targetEntity = Clerk.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "personA", referencedColumnName = "id", unique = true)
     private Clerk clerk;
-    @OneToOne(targetEntity = Client.class)
+    @OneToOne(targetEntity = Client.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "personB", referencedColumnName = "id", unique = true)
     private Client client;
 
