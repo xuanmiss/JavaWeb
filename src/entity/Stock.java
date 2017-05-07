@@ -11,7 +11,7 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    private int count; //count外键
+    private int count; //count 外键
     private int batch; //外键批号
 
     public Integer getId() {

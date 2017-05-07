@@ -14,7 +14,7 @@ public class Batch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    private int bitch_no; //bitch_no外键
+    private int bitch_no; //  bitch_no外键
     private int date; //date外键
     private int model; //外键品牌型号
 

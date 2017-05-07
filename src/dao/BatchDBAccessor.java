@@ -10,5 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository("batchDBAcc")
 @Lazy
 public class BatchDBAccessor extends BaseDBAccessor<Batch> implements IBatchDBAccessor{
+    /**
+
+     */
 
 }
