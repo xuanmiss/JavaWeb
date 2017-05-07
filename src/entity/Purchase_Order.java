@@ -14,7 +14,7 @@ public class Purchase_Order {
     @Column(name="id")
     private int id;
 
-    private String order;
+    private String order_no;
 
     @ManyToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
     @JoinColumn(name="model")
@@ -46,7 +46,7 @@ public class Purchase_Order {
     public int hashCode() {
         return super.hashCode()+31*id;
     }
-    
+
 
     public int getId() {
         return id;
@@ -92,12 +92,12 @@ public class Purchase_Order {
         this.clerk = clerk;
     }
 
-    public String getOrder() {
-        return order;
+    public String getOrder_no() {
+        return order_no;
     }
 
-    public void setOrder(String order) {
-        this.order = order;
+    public void setOrder_no(String order_no) {
+        this.order_no = order_no;
     }
 
     public int getQuantity() {
