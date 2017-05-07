@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface IPurchaseDBAccessor  extends IBaseDBAccessor<Purchase>{
     /**
+     *
      *查找相应购入表
      */
     List<Purchase> findByBatch(Object object);

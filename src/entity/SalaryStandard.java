@@ -11,13 +11,13 @@ public class SalaryStandard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "basic", precision = 10, scale = 2, nullable = false)
+    @Column(name = "basic")
     private Double basicSalary;
 
     @Column(name = "comm")
     private Integer commission;
 
-    @Column(columnDefinition = "NOT NULL DEFAULT '基础工资+业绩*提成%'")
+
     private String description;
 
     public Integer getId() {

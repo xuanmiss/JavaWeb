@@ -10,20 +10,16 @@ import javax.persistence.*;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Integer id;
 
-    @Column(name = "username", unique = true, nullable = false)
     private String userName;
 
-    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, columnDefinition = "INT DEFAULT 1")
     private Integer authority;
 
     @OneToOne(targetEntity = Clerk.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "clerk", nullable = false)
+    @JoinColumn(name = "clerk")
     private Clerk clerk;
 
     public Integer getId() {
