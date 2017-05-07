@@ -16,8 +16,6 @@ package controller;
 @Controller("test")
 @Scope("prototype")
 public class Test extends ActionSupport {
-    private int count=0;
-    private String ENTITY="client";
 
     @Autowired
     private IClientDBAccessor clientDBAccessor;
@@ -27,17 +25,11 @@ public class Test extends ActionSupport {
 
     @Override
     public String execute(){
-        Clerk clerk=clerkDBAccessor.getObj(Clerk.class,1);
-        count=clerk.getClients().size();
-        Client client=clientDBAccessor.getObj(Client.class,1);
-        System.out.println(client.getClerk( ));
         return SUCCESS;
     }
 
-    public int getCount() {
-        return count;
-    }
+
     public String getMsg(){
-        return "you hava "+count+" "+ENTITY;
+        return "a test page";
     }
 }

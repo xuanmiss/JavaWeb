@@ -6,12 +6,25 @@
 
 <struts>
     <constant name="struts.devMode" value="true"/>
+    <package name="my-default" extends="struts-default" abstract="true">
+        <interceptors>
+            <interceptor name="anthorityCheck" class="authorityCheck"/>
+            <interceptor-stack name="my-stack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="anthorityCheck"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="my-stack"/>
+    </package>
     <package name="/" namespace="/" extends="struts-default">
-        <action name="test" class="test">
-            <result><param name="location">/test.jsp</param></result>
-        </action>
         <action name="*">
             <result><param name="location">/index.jsp</param></result>
+        </action>
+    </package>
+    <package name="test" namespace="/test" extends="my-default">
+        <action name="test" class="test">
+            <result>/test.jsp</result>
+            <result name="login">/index.jsp</result>
         </action>
     </package>
 </struts>
