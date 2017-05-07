@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by LCQ on 2017/5/7.
  */
-public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAccessor<Order> {
+public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAccessor {
     @Override
     public List<Order> findAll() {
         return null;
