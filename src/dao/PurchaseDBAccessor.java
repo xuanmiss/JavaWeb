@@ -13,6 +13,7 @@ public class PurchaseDBAccessor extends BaseDBAccessor<Purchase> implements IPur
         return null;
     }
 
+
     @Override
     public List<Purchase> findByClerk(Object object) {
         return null;

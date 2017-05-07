@@ -18,6 +18,7 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
         return null;
     }
 
+
     @Override
     public List<Order> findByName(Object object) {
         return null;

@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface IOrderDBAccessor extends IBaseDBAccessor<Order>{
     /**
+     *
      *查询所有订单
      */
     List<Order> findAll();

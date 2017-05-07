@@ -24,6 +24,7 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order>
         return null;
     }
 
+
     @Override
     public List<Purchase_Order> findByModel(Object object) {
         return null;
