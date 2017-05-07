@@ -17,6 +17,8 @@ public class Clerk_Brand {
     @OneToOne(targetEntity = Clerk.class)
     @JoinColumn(name = "clerk", referencedColumnName = "id", unique = true)
     private Clerk clerk;
+
+    @OneToOne(targetEntity = Brand.class)
     @JoinColumn(name = "brand", referencedColumnName = "id", unique = true)
     private Brand brand;
 

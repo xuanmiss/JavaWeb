@@ -15,7 +15,7 @@ public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    private Model model;         //型号编码
+    private String model;         //型号编码
     private String format;       //规格 如600*1200
     private String color;        //颜色
     private String image;        //图片，以路径形式保存
@@ -45,11 +45,11 @@ public class Model {
         this.id = id;
     }
 
-    public Model getModel() {
+    public String getModel() {
         return model;
     }
 
-    public void setModel(Model model) {
+    public void setModel(String model) {
         this.model = model;
     }
 
