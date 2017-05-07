@@ -26,9 +26,8 @@ public class Client {
     @ManyToOne(targetEntity = Clerk.class,fetch = FetchType.LAZY)
     @JoinTable(
             name = "clerk_client",
-            joinColumns = @JoinColumn(name = "client",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="clerk",referencedColumnName = "id")
-    )
+            joinColumns = @JoinColumn(name = "client",referencedColumnName = "id",unique = true),
+            inverseJoinColumns = @JoinColumn(name="clerk",referencedColumnName = "id"))
     private Clerk clerk;  //签约业务员
 
 
@@ -110,5 +109,21 @@ public class Client {
 
     public void setClerk(Clerk clerk) {
         this.clerk = clerk;
+    }
+
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Client)
+            return id==((Client)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return 17*31+id;
     }
 }

@@ -45,4 +45,19 @@ public class Account {
     public void setFixed(double fixed) {
         this.fixed = fixed;
     }
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Account)
+            return id==((Account)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return 17*31+id;
+    }
 }

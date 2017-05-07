@@ -67,4 +67,19 @@ public class AccountFlow {
     public void setOrder_no(int order_no) {
         this.order_no = order_no;
     }
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof AccountFlow)
+            return id==((AccountFlow)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return 17*31+id;
+    }
 }

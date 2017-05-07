@@ -1,10 +1,5 @@
 package entity;
 
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.LazyCollection;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -14,7 +9,7 @@ import java.util.Set;
  */
 
 
-@Entity
+@Entity(name="clerk")
 public class Clerk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,15 +24,24 @@ public class Clerk {
     private String salary_card;
     private int status;
     private String duties;
-    @ManyToOne(targetEntity = SalaryStandard.class,fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = SalaryStandard.class,fetch = FetchType.EAGER)
     @JoinColumn(name="salary",referencedColumnName = "id",unique = true)
     private SalaryStandard salaryStandard;
-    @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY)
-    @JoinTable(name = "clerk_client",
-            joinColumns = @JoinColumn(name = "clerk",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="client",referencedColumnName = "id"))
+    @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY,mappedBy = "clerk")
+     private Set<Client> clients;
 
-    private Set<Client> clients;
+
+    @OneToMany (targetEntity = Clerk_Client.class,fetch = FetchType.LAZY)
+    @JoinColumn(name = "clerk",referencedColumnName = "id")
+
+    private Set<Clerk_Client> cc;
+    public void setCC(Set<Clerk_Client> cc){
+        this.cc=cc;
+    }
+    public Set<Clerk_Client> getCC(){
+        return cc;
+    }
+
 
     public Integer getId() {
         return id;
@@ -141,5 +145,20 @@ public class Clerk {
 
     public void setClients(Set<Client> clients) {
         this.clients = clients;
+    }
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Clerk)
+            return id==((Clerk)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return 17*31+id;
     }
 }
