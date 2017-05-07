@@ -16,7 +16,7 @@ public class Order {
     @Column(name = "id")
     private int id;
     @Column(name = "order_no")
-    private int order_no;
+    private String order_no;
     @Column(name = "price")
     private double price;
     @Column(name="date")
@@ -34,7 +34,7 @@ public class Order {
     @JoinColumn(name = "receiver", referencedColumnName = "name")
     private Client receiver;
 
-    @OneToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
     @JoinColumn(name="model")
     private Model model;
 
@@ -50,11 +50,11 @@ public class Order {
         this.id = id;
     }
 
-    public int getOrder_no() {
+    public String getOrder_no() {
         return order_no;
     }
 
-    public void setOrder_no(int order_no) {
+    public void setOrder_no(String order_no) {
         this.order_no = order_no;
     }
 
@@ -97,11 +97,12 @@ public class Order {
     public void setModel(Model model) {
         this.model = model;
     }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", order_no=" + order_no +
+                ", order_no='" + order_no + '\'' +
                 ", price=" + price +
                 ", date=" + date +
                 ", quantity='" + quantity + '\'' +
@@ -119,8 +120,8 @@ public class Order {
         Order order = (Order) o;
 
         if (getId() != order.getId()) return false;
-        if (getOrder_no() != order.getOrder_no()) return false;
         if (Double.compare(order.getPrice(), getPrice()) != 0) return false;
+        if (!getOrder_no().equals(order.getOrder_no())) return false;
         if (!getDate().equals(order.getDate())) return false;
         if (!getQuantity().equals(order.getQuantity())) return false;
         if (!getStatus().equals(order.getStatus())) return false;
@@ -133,7 +134,7 @@ public class Order {
         int result;
         long temp;
         result = getId();
-        result = 31 * result + getOrder_no();
+        result = 31 * result + getOrder_no().hashCode();
         temp = Double.doubleToLongBits(getPrice());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + getDate().hashCode();
