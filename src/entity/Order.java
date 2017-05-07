@@ -115,17 +115,9 @@ public class Order {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Order)) return false;
-
         Order order = (Order) o;
-
         if (getId() != order.getId()) return false;
-        if (getOrder_no() != order.getOrder_no()) return false;
-        if (Double.compare(order.getPrice(), getPrice()) != 0) return false;
-        if (!getDate().equals(order.getDate())) return false;
-        if (!getQuantity().equals(order.getQuantity())) return false;
-        if (!getStatus().equals(order.getStatus())) return false;
-        if (!getReceiver().equals(order.getReceiver())) return false;
-        return getModel().equals(order.getModel());
+        return true;
     }
 
     @Override

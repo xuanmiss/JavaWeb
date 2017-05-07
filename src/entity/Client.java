@@ -110,4 +110,20 @@ public class Client {
     public void setClerk(Clerk clerk) {
         this.clerk = clerk;
     }
+
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Client)
+            return id==((Client)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }

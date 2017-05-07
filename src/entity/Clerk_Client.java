@@ -46,4 +46,20 @@ public class Clerk_Client {
     public void setContract(int contract) {
         this.contract = contract;
     }
+
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Clerk_Client)
+            return id==((Clerk_Client)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }

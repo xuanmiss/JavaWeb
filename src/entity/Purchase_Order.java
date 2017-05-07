@@ -39,17 +39,9 @@ public class Purchase_Order {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Purchase_Order)) return false;
-
         Purchase_Order that = (Purchase_Order) o;
-
         if (id != that.id) return false;
-        if (!order.equals(that.order)) return false;
-        if (!model.equals(that.model)) return false;
-        if (!quantity.equals(that.quantity)) return false;
-        if (!amount.equals(that.amount)) return false;
-        if (!date.equals(that.date)) return false;
-        if (!clerk.equals(that.clerk)) return false;
-        return type.equals(that.type);
+        return true;
     }
 
     @Override

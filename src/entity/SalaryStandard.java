@@ -13,4 +13,21 @@ public class SalaryStandard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
+
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof SalaryStandard)
+            return id==((SalaryStandard)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }

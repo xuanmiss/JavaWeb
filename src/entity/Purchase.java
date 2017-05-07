@@ -77,9 +77,8 @@ public class Purchase {
         Purchase purchase = (Purchase) o;
 
         if (getId() != purchase.getId()) return false;
-        if (!getBatch().equals(purchase.getBatch())) return false;
-        if (!getClerk().equals(purchase.getClerk())) return false;
-        return getOrder_form().equals(purchase.getOrder_form());
+
+        return true;
     }
 
     @Override

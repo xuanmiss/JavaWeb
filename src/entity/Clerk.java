@@ -146,4 +146,19 @@ public class Clerk {
     public void setClients(Set<Client> clients) {
         this.clients = clients;
     }
+
+    @Override
+    public boolean equals(Object a){
+        if(a==null)
+            return false;
+        if(a instanceof Clerk)
+            return id==((Clerk)a).id;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode()+31*id;
+    }
 }
