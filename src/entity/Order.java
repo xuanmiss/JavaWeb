@@ -13,48 +13,46 @@ public class Order {
     //    消息类的标识属性
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
-    @Column(name = "order_no")
-    private int order_no;
-    @Column(name = "price")
-    private double price;
-    @Column(name="date")
-    private Date date;
-    @Column(name="quantity")
-    private String quantity;
-    @Column(name="status")
-    private String status;
 
-    //    默认构造方法
-    public Order() {
-    }
+    private Integer id;
+
+    private String order_no;
+
+    private double price;
+
+    private Date date;
+
+    private int quantity;
+
+    private int status;
+
+
 
     @ManyToOne(targetEntity = Client.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "receiver", referencedColumnName = "name")
+    @JoinColumn(name = "receiver", referencedColumnName = "id")
     private Client receiver;
 
     @OneToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
-    @JoinColumn(name="model")
+    @JoinColumn(name="model",referencedColumnName = "id")
     private Model model;
 
     public Client getReceiver() {return receiver;}
 
     public void setReceiver(Client receiver) {this.receiver = receiver;}
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getOrder_no() {
+    public String getOrder_no() {
         return order_no;
     }
 
-    public void setOrder_no(int order_no) {
+    public void setOrder_no(String order_no) {
         this.order_no = order_no;
     }
 
@@ -74,19 +72,19 @@ public class Order {
         this.date = date;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -97,19 +95,7 @@ public class Order {
     public void setModel(Model model) {
         this.model = model;
     }
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", order_no=" + order_no +
-                ", price=" + price +
-                ", date=" + date +
-                ", quantity='" + quantity + '\'' +
-                ", status='" + status + '\'' +
-                ", receiver=" + receiver +
-                ", model=" + model +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -122,17 +108,6 @@ public class Order {
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = getId();
-        result = 31 * result + getOrder_no();
-        temp = Double.doubleToLongBits(getPrice());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + getDate().hashCode();
-        result = 31 * result + getQuantity().hashCode();
-        result = 31 * result + getStatus().hashCode();
-        result = 31 * result + getReceiver().hashCode();
-        result = 31 * result + getModel().hashCode();
-        return result;
+       return super.hashCode()+31*id;
     }
 }
