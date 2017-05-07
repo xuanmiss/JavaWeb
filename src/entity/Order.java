@@ -29,11 +29,11 @@ public class Order {
 
 
     @ManyToOne(targetEntity = Client.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "receiver", referencedColumnName = "id")
+    @JoinColumn(name = "receiver", referencedColumnName = "id",unique = true)
     private Client receiver;
 
     @OneToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
-    @JoinColumn(name="model",referencedColumnName = "id")
+    @JoinColumn(name="model",referencedColumnName = "id",unique = true)
     private Model model;
 
     public Client getReceiver() {return receiver;}
