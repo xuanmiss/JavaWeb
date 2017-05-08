@@ -19,6 +19,7 @@ public class Client {
     private int reposal;//信用值
     private int status;//状态
     private String card;//银行账户
+    private char sex;
 
     @OneToMany(targetEntity = Order.class,fetch = FetchType.LAZY,mappedBy = "receiver")
     private Set<Order> orders;  //订单
@@ -111,6 +112,13 @@ public class Client {
         this.clerk = clerk;
     }
 
+    public char getSex() {
+        return sex;
+    }
+
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
 
     @Override
     public boolean equals(Object a){
@@ -124,6 +132,10 @@ public class Client {
 
     @Override
     public int hashCode() {
-        return 17*31+id;
+        int result=17;
+        result=result*31+id;
+        result=result*31+id*id;
+        result=result*31+id*id*id;
+        return result;
     }
 }

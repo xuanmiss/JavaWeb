@@ -86,7 +86,11 @@ public class Contract {
 
     @Override
     public int hashCode() {
-        return 17*31+id;
+        int result=17;
+        result=result*31+id;
+        result=result*31+id*id;
+        result=result*31+id*id*id;
+        return result;
     }
 
 }

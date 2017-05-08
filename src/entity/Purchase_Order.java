@@ -33,19 +33,7 @@ public class Purchase_Order {
 
     private int type;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Purchase_Order)) return false;
-        Purchase_Order that = (Purchase_Order) o;
-        if (id != that.id) return false;
-        return true;
-    }
 
-    @Override
-    public int hashCode() {
-        return 17*31+id;
-    }
 
 
     public int getId() {
@@ -114,5 +102,24 @@ public class Purchase_Order {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Purchase_Order)) return false;
+        Purchase_Order that = (Purchase_Order) o;
+        if (id != that.id) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result=17;
+        result=result*31+id;
+        result=result*31+id*id;
+        result=result*31+id*id*id;
+        return result;
     }
 }

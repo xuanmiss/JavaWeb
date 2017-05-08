@@ -95,8 +95,12 @@ public class Brand {
             return false;
     }
     @Override
-    public int hashCode(){
-        return 31*17+id;
+    public int hashCode() {
+        int result=17;
+        result=result*31+id;
+        result=result*31+id*id;
+        result=result*31+id*id*id;
+        return result;
     }
 
 }

@@ -24,6 +24,7 @@ public class Clerk {
     private String salary_card;
     private int status;
     private String duties;
+    private char Sex;
     @ManyToOne(targetEntity = SalaryStandard.class,fetch = FetchType.EAGER)
     @JoinColumn(name="salary",referencedColumnName = "id",unique = true)
     private SalaryStandard salaryStandard;
@@ -147,6 +148,22 @@ public class Clerk {
         this.clients = clients;
     }
 
+    public char getSex() {
+        return Sex;
+    }
+
+    public void setSex(char sex) {
+        Sex = sex;
+    }
+
+    public Set<Clerk_Client> getCc() {
+        return cc;
+    }
+
+    public void setCc(Set<Clerk_Client> cc) {
+        this.cc = cc;
+    }
+
     @Override
     public boolean equals(Object a){
         if(a==null)
@@ -159,6 +176,10 @@ public class Clerk {
 
     @Override
     public int hashCode() {
-        return 17*31+id;
+        int result=17;
+        result=result*31+id;
+        result=result*31+id*id;
+        result=result*31+id*id*id;
+        return result;
     }
 }
