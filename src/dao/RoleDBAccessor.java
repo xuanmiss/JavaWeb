@@ -27,7 +27,7 @@ public class RoleDBAccessor extends BaseDBAccessor<Role> implements IRoleDBAcces
      * 根据用户名查找Role
      * @return Role
      */
-    public Role findByUserName(Object object){return null;}
+    public List<Role> findByUserName(Object object){return null;}
 
     /**
      * 根据业务员ID查找Role
@@ -43,5 +43,6 @@ public class RoleDBAccessor extends BaseDBAccessor<Role> implements IRoleDBAcces
                 .setString("1",username)
                 .setString("2",password)
                 .uniqueResult();
+
     }
 }

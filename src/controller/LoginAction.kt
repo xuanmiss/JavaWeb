@@ -6,22 +6,26 @@ import com.opensymphony.xwork2.ActionSupport
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Controller
-import service.ILoggingHandler
+import service.ILoginHandler
 
 /**
  * Created by ymcvalu on 2017/5/7.
  */
-@Controller("logging")
+@Controller("login")
 @Scope("prototype")
-class LoggingAction :ActionSupport(){
+class LoginAction :ActionSupport(){
     var username:String?=null
     var password:String?=null
+    var msg:String?=null
     @Autowired
-    lateinit var loggingHandler:ILoggingHandler
+    lateinit var loginHandler: ILoginHandler
     override fun execute():String{
-        val role=loggingHandler.handler(username,password)
-        if(role==null)
+        val role= loginHandler.handler(username,password)
+        if(role==null){
+            msg="账户或密码错误，请检查输入"
             return Action.LOGIN
+        }
+
         val session=ActionContext.getContext().session
         //保存用户名
         session["username"]=username
