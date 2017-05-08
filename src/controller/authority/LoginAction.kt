@@ -1,4 +1,4 @@
-package controller
+package controller.authority
 
 import com.opensymphony.xwork2.Action
 import com.opensymphony.xwork2.ActionContext
@@ -6,14 +6,14 @@ import com.opensymphony.xwork2.ActionSupport
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Controller
-import service.ILoginHandler
+import service.login.ILoginHandler
 
 /**
  * Created by ymcvalu on 2017/5/7.
  */
 @Controller("login")
 @Scope("prototype")
-class LoginAction :ActionSupport(){
+class LoginAction : ActionSupport(){
     var username:String?=null
     var password:String?=null
     var msg:String?=null
@@ -26,7 +26,7 @@ class LoginAction :ActionSupport(){
             return Action.LOGIN
         }
 
-        val session=ActionContext.getContext().session
+        val session= ActionContext.getContext().session
         //保存用户名
         session["username"]=username
         //保存用户权限
