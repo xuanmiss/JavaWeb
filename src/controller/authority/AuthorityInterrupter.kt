@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller
 /**
  * Created by ymcvalu on 2017/5/7.
  */
-
+/**
+ * 检测是否已经登陆
+ */
 @Controller("loginCheck")
 open class AuthorityInterrupter: AbstractInterceptor(){
     override fun intercept(actionInvocation: ActionInvocation): String {
