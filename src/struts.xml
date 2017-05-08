@@ -11,7 +11,7 @@
     <package name="my-default" extends="struts-default" abstract="true">
         <interceptors>
             <!--登陆权限验证拦截器-->
-            <interceptor name="anthorityCheck" class="authorityCheck"/>
+            <interceptor name="anthorityCheck" class="loginCheck"/>
             <interceptor-stack name="my-stack">
                 <interceptor-ref name="defaultStack"/>
                 <interceptor-ref name="anthorityCheck"/>
