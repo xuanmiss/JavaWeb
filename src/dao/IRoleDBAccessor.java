@@ -18,14 +18,14 @@ public interface IRoleDBAccessor extends IBaseDBAccessor<Role> {
      */
 
     /**
-     * 根据用户名查找Role
+     * 根据用户名模糊查找Role
      * @return List<Role>
      */
-    Role findByUserName(Object object);
+    List<Role> findByUserName(Object object);
 
     /**
-     * 根据业务员ID查找Role
-     * @return List<Role>
+     * 根据业务员ID精确查找Role
+     * @return Role
      */
     Role findByClerk(Object object);
 
