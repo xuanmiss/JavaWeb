@@ -9,7 +9,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>瓷砖销售管理系统</title>
 </head>
 <body>
     <s:form action="login.action" namespace="/" theme="simple">
