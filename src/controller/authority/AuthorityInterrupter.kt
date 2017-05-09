@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller
  */
 /**
  * 检测是否已经登陆
+ * 拦截器是单例,使用Spring默认声明周期
  */
 @Controller("loginCheck")
 open class AuthorityInterrupter: AbstractInterceptor(){
