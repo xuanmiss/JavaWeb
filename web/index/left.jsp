@@ -73,37 +73,65 @@
 
 				<ul id="main-nav">
 					<!-- Accordion Menu -->
-					<li><a href="#" class="nav-top-item current"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
-							基金产品管理
+                    <!-- Add the class "no-submenu" to menu items with no sub menu -->
+                    <!---Add the class "current" to open the submenu when page show-->
+					<li><a href="#" class="nav-top-item current">
+                        瓷砖品牌管理
 					</a>
 						<ul>
-							<li><a href="/test/test.action" target="dmMain">基金产品查询</a></li>
-							<li><a href="/test/test.action" target="dmMain">新增基金产品</a></li>
-						</ul></li>
-					<li><a href="#" class="nav-top-item"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
-							客户信息管理
-					</a>
-						<ul>
-							<li><a href="/test/test.action" target="dmMain">新客户开户</a></li>
-							<li><a href="/test/test.action" target="dmMain">客户信息列表</a></li>
-						</ul></li>
+							<li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
+							<li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+						</ul>
+					</li>
 
-					<li><a href="#" class="nav-top-item"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
-							资金帐户管理
-					</a>
-						<ul>
-							<li><a href="" target="dmMain">新增资金帐户</a></li>
-							<li><a href="" target="dmMain">资金帐户查询</a></li>
-							<li><a href="" target="dmMain">追加帐户资金</a></li>
-							<li><a href="" target="dmMain">取出帐户资金</a></li>
-						</ul></li>
-					<li><a href="#" class="nav-top-item">基金产品交易</a>
-						<ul>
-							<li><a href="" target="dmMain">购买基金</a></li>
-							<li><a href="" target="dmMain">赎回基金</a></li>
-							<li><a href="" target="dmMain">基金交易记录</a></li>
-							<li><a href="" target="dmMain">持仓情况</a></li>
-						</ul></li>
+                    <li><a href="#" class="nav-top-item">
+                        订单管理
+                    </a>
+
+                        <ul>
+                            <li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
+                            <li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#" class="nav-top-item">
+                        库存管理
+                    </a>
+
+                        <ul>
+                            <li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
+                            <li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#" class="nav-top-item">
+                        财务管理
+                    </a>
+                        <ul>
+                            <li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
+                            <li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#" class="nav-top-item">
+                        客户信息管理
+                    </a>
+                        <ul>
+                            <li><a href="/test/test.action" target="dmMain">新增客户</a></li>
+                            <li><a href="/test/test.action" target="dmMain">客户信息列表</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#" class="nav-top-item">
+                        人力资源管理
+                    </a>
+
+                        <ul>
+                            <li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
+                            <li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+                        </ul>
+                    </li>
+
 				</ul>
 				<!-- End #main-nav -->
 			</div>
