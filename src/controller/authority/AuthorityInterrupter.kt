@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller
  */
 @Controller("loginCheck")
 open class AuthorityInterrupter: AbstractInterceptor(){
+
     override fun intercept(actionInvocation: ActionInvocation): String {
              val session= ActionContext.getContext().session
              //如果session没有用户名则未登录，返回登陆页面，否则放行

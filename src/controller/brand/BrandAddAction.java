@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.brand.IHandleBrandSvc;
+import util.DiskUtil;
 import util.StringUtil;
-
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.Date;
 
 /**
@@ -28,55 +26,54 @@ public class BrandAddAction extends ActionSupport{
     private String msg=null;
 
 
-
     @Autowired
-
     private IHandleBrandSvc brandSvc;
     @Override
     public String execute()throws Exception{
-        if(!isValidate()) {
-            msg="请输入完整信息!";
+        if(!isValidate())
             return LOGIN;
-        }
-        if(!logoContentType.toLowerCase().startsWith("image")){
-            msg="文件格式不正确!";
-            return LOGIN;
-        }
-        if(brandSvc.isExist(brand.getName())){
-            msg="该品牌已存在!";
-            return LOGIN;
-        }
+        brand.setDescription(StringUtil.ignoreSpace(brand.getDescription()));
         brand.setDate(new Date());
         brand.setStatus(0);
-        String fileName=savePath+"\\"+brand.getName()+".png";
-        brand.setLogo(fileName);
-        FileOutputStream fos=new FileOutputStream(getSavePath()+"\\"+brand.getName()+".png");
-        FileInputStream fis=new FileInputStream(logo);
-        try{
-            byte[]buffer=new byte[1024];
-            int len=0;
-            while((len=fis.read(buffer))>0)
-                fos.write(buffer,0,len);
-        }catch (Exception e){
-            throw e;
-        }finally {
-            fis.close();
-            fos.close();
-        }
+        String fileName="\\"+brand.getName()+".png";
+        brand.setLogo(savePath+fileName);
+        DiskUtil.write(getSavePath()+fileName,logo);
         brandSvc.saveBrand(brand);
         msg="success";
         return SUCCESS;
     }
 
     private boolean isValidate(){
-        if(StringUtil.isEmptyString(brand.getName()))
+        brand.setName(StringUtil.ignoreSpace(brand.getName()));
+        if(StringUtil.isEmptyString(brand.getName())){
+            msg="请输入品牌名!";
             return false;
-        if(StringUtil.isEmptyString(brand.getSupplier()))
+        }
+
+        brand.setSupplier(StringUtil.ignoreSpace(brand.getSupplier()));
+        if(StringUtil.isEmptyString(brand.getSupplier())){
+            msg="请输入供应商!";
             return false;
-        if(logo==null)
+        }
+        brand.setDescription(StringUtil.ignoreSpace(brand.getDescription()));
+        if(StringUtil.isEmptyString(brand.getDescription())){
+            msg="请输入品牌介绍!";
+        }
+        if(logo==null){
+            msg="请上传品牌logo";
             return false;
-        else
-            return true;
+        }
+
+        if(!logoContentType.toLowerCase().startsWith("image")){
+            msg="文件格式不正确!";
+            return false;
+        }
+        if(brandSvc.isExist(brand.getName())){
+            msg="该品牌已存在!";
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -119,7 +116,6 @@ public class BrandAddAction extends ActionSupport{
     public void setSavePath(String savePath) {
         this.savePath = savePath;
     }
-
     public String getMsg() {
         return msg;
     }
