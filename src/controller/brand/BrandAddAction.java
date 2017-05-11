@@ -31,32 +31,38 @@ public class BrandAddAction extends ActionSupport{
     public String execute()throws Exception{
         brand.setDate(new Date());
         brand.setStatus(0);
-        String fileName="\\"+brand.getName()+".png";
         //保存相对路径
-        brand.setLogo(savePath+fileName);
+        brand.setLogo(savePath+"\\"+brand.getName()+".png");
+
         //保存图片，使用绝对路径
-        DiskUtil.write(getSavePath()+fileName,logo);
+        DiskUtil.write(DiskUtil.getRealPath(brand.getLogo()),logo);
         //保存品牌信息
         brandSvc.saveBrand(brand);
+
         return SUCCESS;
     }
 
     @Override
     public void validate(){
+
         //忽略开始空字符
         brand.setName(StringUtil.ignoreSpace(brand.getName()));
         //判空
         if(StringUtil.isEmptyString(brand.getName()))
             addFieldError("name","品牌名不能为空!");
+
         //品牌名不能重复
         else  if(brandSvc.isExist(brand.getName()))
             addFieldError("name","该品牌已存在!");
+
         brand.setSupplier(StringUtil.ignoreSpace(brand.getSupplier()));
         if(StringUtil.isEmptyString(brand.getSupplier()))
             addFieldError("supplier","供应商不能为空!");
+
         brand.setDescription(StringUtil.ignoreSpace(brand.getDescription()));
         if(StringUtil.isEmptyString(brand.getDescription()))
             addFieldError("description","品牌描述不能为空!");
+
         if(logo==null)
             addFieldError("logo","请上传品牌logo!");
         else if(!logoContentType.toLowerCase().startsWith("image"))
@@ -96,7 +102,7 @@ public class BrandAddAction extends ActionSupport{
     }
 
     public String getSavePath() {
-        return ServletActionContext.getServletContext().getRealPath(savePath);
+        return savePath;
     }
 
     public void setSavePath(String savePath) {
