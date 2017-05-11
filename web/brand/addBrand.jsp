@@ -14,24 +14,21 @@
     </style>
 </head>
 <body>
-
     <s:form action="brandAdd.action" method="POST"  namespace="/brand" theme="simple" enctype="multipart/form-data">
-        <div>
-            <s:fielderror fieldName="name" style="color:red"/>
-            <s:fielderror fieldName="supplier" style="color:red"/>
-            <s:fielderror fieldName="description" style="color:red"/>
-            <s:fielderror fieldName="logo" style="color:red"/>
-        </div>
+        <s:fielderror fieldName="name" style="color:red"/>
         <s:label value="品牌名:"/>
         <s:textfield name="brand.name" />
         <br />
+        <s:fielderror fieldName="supplier" style="color:red"/>
         <s:label value="供应商:"/>
         <s:textfield name="brand.supplier"/>
         <br />
+        <s:fielderror fieldName="description" style="color:red"/>
         <s:label value="品牌描述:"/>
         <br />
         <s:textarea name="brand.description" class="textarea"/>
         <br />
+        <s:fielderror fieldName="logo" style="color:red"/>
         <s:label value="logo:"/>
         <s:file name="logo" />
         <br/>

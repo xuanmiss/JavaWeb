@@ -1,5 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page  pageEncoding="utf-8"%>
+<%--获取jsp:include指定的参数--%>
+<%String url=(String)request.getParameter("url");%>
 <script>
 function gotoPage(pagenum){
   document.pageForm.pageNo.value = pagenum;
@@ -9,7 +11,7 @@ function gotoPage(pagenum){
 </script>
 
 <!--使用分页功能，必须在action内提供pageBean-->
-<form action="/fund/select.action" method="post" name="pageForm">
+<form action="<%=url%>" method="post" name="pageForm">
     第<s:property value="pageBean.curPage"/>页
     共<s:property value="pageBean.maxPage"/>页
     <BR />
