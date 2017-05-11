@@ -10,7 +10,10 @@
         <action name="brandAdd" class="addBrand">
             <param name="savePath">resources\logo</param>
             <result>/test.jsp</result>
-            <result name="login">/brand/addBrand.jsp</result>
+            <result name="input">/brand/addBrand.jsp</result>
+        </action>
+        <action name="selectBrand" class="selectBrand">
+            <result>/brand/listBrand.jsp</result>
         </action>
 
         <action name="*">

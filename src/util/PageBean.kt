@@ -12,29 +12,37 @@ package util
  * date：填充分页数据
  */
 class PageBean<T>{
-
-    var curPage:Int=0
+    //默认初始为第一页
+    var curPage:Int=1
         set(pageNo){
+            //校正页数，首页为第一页
             if(pageNo<1)
+                //field：属性域
                 field=1
             else
                 field=pageNo
         }
 
     var maxPage:Int=0
-        private set(value){field=value}
+        private set(value){
+            field=value
+            //校正当前页
+            if(curPage>field)
+                curPage=field
+        }
 
     var maxRowCount=0
         set(count){
-            maxPage=count/rowsPerPage
+            //计算总页数
+            var pages=count/rowsPerPage
             if(count%rowsPerPage>0)
-                maxPage++
-            if(curPage>maxPage)
-                curPage=maxPage
+                pages++
+            //设置总页数
+            maxPage=pages
             field=count
         }
 
-    val rowsPerPage=10
+    val rowsPerPage=12
 
-    lateinit var data:List<T>
+    var data:List<T>?=null
 }

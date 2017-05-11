@@ -9,19 +9,20 @@ import java.io.IOException;
  * Created by ymcvalu on 2017/5/10.
  */
 public class DiskUtil {
-    public static void write(String desUrl, File source)throws IOException{
-        FileOutputStream fos=new FileOutputStream(desUrl);
-        FileInputStream fis=new FileInputStream(source);
-        try{
+    public static void write(String desUrl,String srcUrl)throws IOException{
+        write(new File(desUrl),new File(srcUrl));
+    }
+
+    public static void write(String desUrl, File src)throws IOException{
+       write(new File(desUrl),src);
+    }
+    public static void write(File des,File src)throws IOException{
+        try(FileOutputStream fos=new FileOutputStream(des);
+            FileInputStream fis=new FileInputStream(src)){
             byte[]buffer=new byte[1024];
             int len=0;
             while((len=fis.read(buffer))>0)
                 fos.write(buffer,0,len);
-        }catch (Exception e){
-            throw e;
-        }finally {
-            fis.close();
-            fos.close();
         }
     }
 }

@@ -14,11 +14,15 @@
     </style>
 </head>
 <body>
-    <s:if test="msg!=null">
-        <h3 style="color:red"><s:property value="msg"/></h3>
-    </s:if>
+
     <s:form action="brandAdd.action" method="POST"  namespace="/brand" theme="simple" enctype="multipart/form-data">
-      <s:label value="品牌名:"/>
+        <div>
+            <s:fielderror fieldName="name" style="color:red"/>
+            <s:fielderror fieldName="supplier" style="color:red"/>
+            <s:fielderror fieldName="description" style="color:red"/>
+            <s:fielderror fieldName="logo" style="color:red"/>
+        </div>
+        <s:label value="品牌名:"/>
         <s:textfield name="brand.name" />
         <br />
         <s:label value="供应商:"/>

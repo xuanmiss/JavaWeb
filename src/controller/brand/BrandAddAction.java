@@ -23,59 +23,45 @@ public class BrandAddAction extends ActionSupport{
     private String logoFileName;
     private Brand brand;
     private String savePath;
-    private String msg=null;
 
 
     @Autowired
     private IHandleBrandSvc brandSvc;
     @Override
     public String execute()throws Exception{
-        if(!isValidate())
-            return LOGIN;
-        brand.setDescription(StringUtil.ignoreSpace(brand.getDescription()));
         brand.setDate(new Date());
         brand.setStatus(0);
         String fileName="\\"+brand.getName()+".png";
+        //保存相对路径
         brand.setLogo(savePath+fileName);
+        //保存图片，使用绝对路径
         DiskUtil.write(getSavePath()+fileName,logo);
+        //保存品牌信息
         brandSvc.saveBrand(brand);
-        msg="success";
         return SUCCESS;
     }
 
-    private boolean isValidate(){
+    @Override
+    public void validate(){
+        //忽略开始空字符
         brand.setName(StringUtil.ignoreSpace(brand.getName()));
-        if(StringUtil.isEmptyString(brand.getName())){
-            msg="请输入品牌名!";
-            return false;
-        }
-
+        //判空
+        if(StringUtil.isEmptyString(brand.getName()))
+            addFieldError("name","品牌名不能为空!");
+        //品牌名不能重复
+        else  if(brandSvc.isExist(brand.getName()))
+            addFieldError("name","该品牌已存在!");
         brand.setSupplier(StringUtil.ignoreSpace(brand.getSupplier()));
-        if(StringUtil.isEmptyString(brand.getSupplier())){
-            msg="请输入供应商!";
-            return false;
-        }
+        if(StringUtil.isEmptyString(brand.getSupplier()))
+            addFieldError("supplier","供应商不能为空!");
         brand.setDescription(StringUtil.ignoreSpace(brand.getDescription()));
-        if(StringUtil.isEmptyString(brand.getDescription())){
-            msg="请输入品牌介绍!";
-        }
-        if(logo==null){
-            msg="请上传品牌logo";
-            return false;
-        }
-
-        if(!logoContentType.toLowerCase().startsWith("image")){
-            msg="文件格式不正确!";
-            return false;
-        }
-        if(brandSvc.isExist(brand.getName())){
-            msg="该品牌已存在!";
-            return false;
-        }
-
-        return true;
+        if(StringUtil.isEmptyString(brand.getDescription()))
+            addFieldError("description","品牌描述不能为空!");
+        if(logo==null)
+            addFieldError("logo","请上传品牌logo!");
+        else if(!logoContentType.toLowerCase().startsWith("image"))
+            addFieldError("logo","不合法的文件格式!");
     }
-
 
     public File getLogo() {
         return logo;
@@ -116,9 +102,7 @@ public class BrandAddAction extends ActionSupport{
     public void setSavePath(String savePath) {
         this.savePath = savePath;
     }
-    public String getMsg() {
-        return msg;
-    }
+
     public IHandleBrandSvc getBrandSvc() {
         return brandSvc;
     }
