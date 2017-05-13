@@ -26,6 +26,7 @@
 
     <include file="controller/authority/authority.xml"/>
     <include file="controller/brand/brand.xml" />
+    <include file="controller/clerk/clerk.xml" />
 
 
     <!--测试包-->
