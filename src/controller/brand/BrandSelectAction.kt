@@ -13,7 +13,7 @@ import util.PageBean
 @Controller("selectBrand")
 open class BrandSelectAction:ActionSupport(){
     @Autowired
-    open lateinit var brandSvc: IBrandHandleSvc
+    private lateinit var brandSvc: IBrandHandleSvc
     open var pageBean:PageBean<Brand>?=null
     open var pageNo:Int=1
     override fun execute(): String {

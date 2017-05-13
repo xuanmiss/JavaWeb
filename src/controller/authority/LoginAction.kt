@@ -18,7 +18,7 @@ open class LoginAction : ActionSupport(){
     open var password:String?=null
     open var msg:String?=null
     @Autowired
-    open lateinit var loginHandler: ILoginHandler
+    private lateinit var loginHandler: ILoginHandler
     override fun execute():String{
         val role= loginHandler.handler(username,password)
         if(role==null){

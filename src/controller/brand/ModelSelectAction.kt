@@ -17,9 +17,9 @@ open class ModelSelectAction:ActionSupport(){
     open var id=0
     open lateinit var pageBean:PageBean<Model>
     @Autowired
-    open lateinit var modelSvc:IModelHandleSvc
+    private lateinit var modelSvc:IModelHandleSvc
     @Autowired
-    open lateinit var brandSvc:IBrandHandleSvc
+    private lateinit var brandSvc:IBrandHandleSvc
     open lateinit var brand:String
     open  var pageNo=1
 

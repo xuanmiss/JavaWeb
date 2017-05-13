@@ -22,7 +22,7 @@ open class ModelAddAction: ActionSupport(){
     open lateinit var savePath:String
     open lateinit var brand:Brand
     @Autowired
-    open lateinit var brandSvc: BrandHandleSvc
+    private lateinit var brandSvc: BrandHandleSvc
     open fun request():String{
         brand=brandSvc.findById(brand.id)
         return SUCCESS
