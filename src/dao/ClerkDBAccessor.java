@@ -4,6 +4,8 @@ import entity.Clerk;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by ymcvalu on 2017/5/4.
  */
@@ -14,7 +16,9 @@ import org.springframework.stereotype.Repository;
 @Repository("clerkDBAcc")
 @Lazy
 public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAccessor {
-    /**
-     * 在这里实现新方法...
-     */
+
+    @Override
+    public void deleteById(int id){
+        getSession().createQuery("delete entity.Clerk as c where c.id=?1").setParameter("1", id);
+    }
 }

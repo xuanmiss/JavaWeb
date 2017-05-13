@@ -11,8 +11,11 @@ import entity.Clerk;
  * 员工表访问接口
  */
 public interface IClerkDBAccessor extends IBaseDBAccessor<Clerk> {
+
     /**
-     * 声明新方法
-     * ...
+     * 删除业务员对象
+     * @param id 业务员ID
      */
+    void deleteById(int id);
+
 }

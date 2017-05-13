@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="clerk" namespace="/clerk" extends="my-default">
+        <action name="clerkAdd" class="addClerk">
+            <!--<param name="savePath">resources\logo</param>-->
+            <result>/test.jsp</result>
+            <result name="input">/clerk/addClerk.jsp</result>
+        </action>
+        <action name="selectClerk" class="selectClerk">
+            <result>/clerk/listClerk.jsp</result>
+        </action>
+
+        <action name="*">
+            <result>/clerk/{1}.jsp</result>
+        </action>
+    </package>
+</struts>
