@@ -12,7 +12,7 @@
             <result>/test.jsp</result>
             <result name="input">/clerk/addClerk.jsp</result>
         </action>
-        <action name="selectClerk" class="selectClerk">
+        <action name="clerkSelect" class="selectClerk">
             <result>/clerk/listClerk.jsp</result>
         </action>
 

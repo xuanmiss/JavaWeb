@@ -21,4 +21,11 @@ public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAc
     public void deleteById(int id){
         getSession().createQuery("delete entity.Clerk as c where c.id=?1").setParameter("1", id);
     }
+
+    @Override
+    public boolean isExist(String value, String property){
+        return (long)getSession().createQuery("select count(*) from entity.Clerk as c where c." + property + "= ?1")
+                .setString("1", value)
+                .uniqueResult()>0;
+    }
 }
