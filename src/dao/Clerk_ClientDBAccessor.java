@@ -18,6 +18,7 @@ public class Clerk_ClientDBAccessor extends BaseDBAccessor<Clerk_Client> impleme
                 .setInteger("1",clerk)
                 .setInteger("2",client)
                 .uniqueResult();
+
         if(cc!=null)
             return cc.getContract();
         else

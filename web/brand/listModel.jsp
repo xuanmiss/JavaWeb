@@ -17,12 +17,14 @@
 </head>
 <body>
 <h1 align="center"><s:property value="brand"/> </h1>
+
 <table align="center">
     <tr>
         <th>样图</th>
         <th>型号</th>
-        <th>规格<sub>(cm)</sub></th>
+        <th>规格<sub>(mm)</sub></th>
         <th>花色</th>
+        <th>单价</th>
         <th>上市时间</th>
         <th>状态</th>
         <th>操作</th>
@@ -40,6 +42,7 @@
         </tr>
     </s:iterator>
 </table>
+
 <jsp:include page="/common/page.jsp">
     <jsp:param name="url" value="/brand/selectBrand.action"/>
 </jsp:include>
