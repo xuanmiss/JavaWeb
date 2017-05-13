@@ -7,7 +7,6 @@ import org.apache.struts2.components.File
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import service.brand.BrandHandleSvc
-import util.StringUtil
 
 /**
  * Created by ymcvalu on 2017/5/11.
@@ -24,22 +23,23 @@ open class ModelAddAction: ActionSupport(){
     @Autowired
     private lateinit var brandSvc: BrandHandleSvc
     open fun request():String{
-        brand=brandSvc.findById(brand.id)
-        return SUCCESS
+        //brand=brandSvc.findById(brand.id)
+        return "request"
     }
     open fun handle():String{
 
 
-        return SUCCESS
+        return "handle"
     }
 
 
 
     override fun validate():Unit{
+        /**
         model.model=model.model.trim()
         if(StringUtil.isEmptyString(model.model))
             addFieldError("model","请输入瓷砖型号!")
-
+**/
 
     }
 

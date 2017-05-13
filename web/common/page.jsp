@@ -11,7 +11,7 @@ function gotoPage(pagenum){
 </script>
 
 <!--使用分页功能，必须在action内提供pageBean-->
-<form action="<%=url%>" method="post" name="pageForm">
+<form action="<%=url%>" method="post" name="pageForm" style="position: fixed;bottom:0px;">
     第<s:property value="pageBean.curPage"/>页
     共<s:property value="pageBean.maxPage"/>页
     <BR />

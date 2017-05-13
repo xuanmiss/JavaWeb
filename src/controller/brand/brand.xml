@@ -16,8 +16,8 @@
             <result>/brand/listBrand.jsp</result>
         </action>
         <action name="*Add" class="addModel" method="{1}">
-            <result></result>
-            <result name=" "></result>
+            <result name="request">/brand/addModel.jsp</result>
+            <result name="handle"></result>
         </action>
         <action name="selectModel" class="selectModel">
             <result>/brand/listModel.jsp</result>

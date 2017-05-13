@@ -42,7 +42,7 @@
         </tr>
     </s:iterator>
 </table>
-<img src="resources/images/add.jpg" width="75" height="75" style="left: 900px; bottom: 100px;"/>
+<a href="/brand/requestAdd.action"><img src="resources/images/add.jpg" width="100" height="100" style="position: fixed;z-index:100;right:50px;bottom:50px;"/></a>
 
 <jsp:include page="/common/page.jsp">
     <jsp:param name="url" value="/brand/selectBrand.action"/>
