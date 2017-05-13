@@ -13,12 +13,12 @@ import service.login.ILoginHandler
  */
 @Controller("login")
 @Scope("prototype")
-class LoginAction : ActionSupport(){
-    var username:String?=null
-    var password:String?=null
-    var msg:String?=null
+open class LoginAction : ActionSupport(){
+    open var username:String?=null
+    open var password:String?=null
+    open var msg:String?=null
     @Autowired
-    lateinit var loginHandler: ILoginHandler
+    open lateinit var loginHandler: ILoginHandler
     override fun execute():String{
         val role= loginHandler.handler(username,password)
         if(role==null){

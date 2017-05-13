@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller
  */
 @Controller("logout")
 @Scope("prototype")
-class LogoutAction:ActionSupport(){
+open class LogoutAction:ActionSupport(){
     override fun execute(): String {
         val session=ActionContext.getContext().session;
         session.remove("username")

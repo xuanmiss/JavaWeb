@@ -14,20 +14,20 @@ import util.StringUtil
  */
 
 @Controller("addModel")
-class ModelAddAction: ActionSupport(){
-    lateinit var model: Model
-    lateinit var image:File
-    lateinit var imageContentType:String
-    lateinit var imageFileName:String
-    lateinit var savePath:String
-    lateinit var brand:Brand
+open class ModelAddAction: ActionSupport(){
+    open lateinit var model: Model
+    open lateinit var image:File
+    open lateinit var imageContentType:String
+    open lateinit var imageFileName:String
+    open lateinit var savePath:String
+    open lateinit var brand:Brand
     @Autowired
-    lateinit var brandSvc: BrandHandleSvc
-    fun request():String{
+    open lateinit var brandSvc: BrandHandleSvc
+    open fun request():String{
         brand=brandSvc.findById(brand.id)
         return SUCCESS
     }
-    fun handle():String{
+    open fun handle():String{
 
 
         return SUCCESS

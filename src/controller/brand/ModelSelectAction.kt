@@ -12,16 +12,16 @@ import util.PageBean
  * Created by ymcvalu on 2017/5/13.
  */
 @Controller("selectModel")
-class ModelSelectAction:ActionSupport(){
+open class ModelSelectAction:ActionSupport(){
 
-    var id=0
-    lateinit var pageBean:PageBean<Model>
+    open var id=0
+    open lateinit var pageBean:PageBean<Model>
     @Autowired
-    lateinit var modelSvc:IModelHandleSvc
+    open lateinit var modelSvc:IModelHandleSvc
     @Autowired
-    lateinit var brandSvc:IBrandHandleSvc
-    lateinit var brand:String
-    var pageNo=1
+    open lateinit var brandSvc:IBrandHandleSvc
+    open lateinit var brand:String
+    open  var pageNo=1
 
     override fun execute(): String {
         pageBean=modelSvc.getListByPage(id,pageNo)
