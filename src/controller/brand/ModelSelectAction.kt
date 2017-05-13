@@ -14,7 +14,7 @@ import util.PageBean
 @Controller("selectModel")
 open class ModelSelectAction:ActionSupport(){
 
-    open var id=0
+    open var brandId=0
     open lateinit var pageBean:PageBean<Model>
     @Autowired
     private lateinit var modelSvc:IModelHandleSvc
@@ -24,8 +24,8 @@ open class ModelSelectAction:ActionSupport(){
     open  var pageNo=1
 
     override fun execute(): String {
-        pageBean=modelSvc.getListByPage(id,pageNo)
-        brand=brandSvc.getBrandName(id)
+        pageBean=modelSvc.getListByPage(brandId,pageNo)
+        brand=brandSvc.getBrandName(brandId)
         return SUCCESS
     }
 

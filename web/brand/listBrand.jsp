@@ -31,7 +31,7 @@
             <td><img src="<s:property value="logo"/>" width="75" height="75"></td>
             <td><s:property value="#it.name"/></td>
             <td><s:date name="date" format="yyyy-MM-dd"/></td>
-            <td><a href="">管理</a> <a href="/brand/selectModel.action?id=<s:property value="#it.id"/>">查看</a></td>
+            <td><a href="">管理</a> <a href="/brand/selectModel.action?brandId=<s:property value="#it.id"/>">查看</a></td>
         </tr>
     </s:iterator>
 </table>
