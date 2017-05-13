@@ -46,7 +46,7 @@ public class BrandAddAction extends ActionSupport{
     public void validate(){
 
         //忽略开始空字符
-        brand.setName(StringUtil.ignoreSpace(brand.getName()));
+        brand.setName(brand.getName().trim());
         //判空
         if(StringUtil.isEmptyString(brand.getName()))
             addFieldError("name","品牌名不能为空!");
@@ -55,11 +55,11 @@ public class BrandAddAction extends ActionSupport{
         else  if(brandSvc.isExist(brand.getName()))
             addFieldError("name","该品牌已存在!");
 
-        brand.setSupplier(StringUtil.ignoreSpace(brand.getSupplier()));
+        brand.setSupplier(brand.getSupplier().trim());
         if(StringUtil.isEmptyString(brand.getSupplier()))
             addFieldError("supplier","供应商不能为空!");
 
-        brand.setDescription(StringUtil.ignoreSpace(brand.getDescription()));
+        brand.setDescription(brand.getDescription().trim());
         if(StringUtil.isEmptyString(brand.getDescription()))
             addFieldError("description","品牌描述不能为空!");
 

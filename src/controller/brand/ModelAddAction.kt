@@ -36,7 +36,7 @@ open class ModelAddAction: ActionSupport(){
 
 
     override fun validate():Unit{
-        model.model=StringUtil.ignoreSpace(model.model)
+        model.model=model.model.trim()
         if(StringUtil.isEmptyString(model.model))
             addFieldError("model","请输入瓷砖型号!")
 
