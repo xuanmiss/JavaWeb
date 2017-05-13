@@ -5,6 +5,7 @@ import entity.Brand
 import entity.Model
 import org.apache.struts2.components.File
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Controller
 import service.brand.BrandHandleSvc
 
@@ -13,6 +14,7 @@ import service.brand.BrandHandleSvc
  */
 
 @Controller("addModel")
+@Scope("prototype")
 open class ModelAddAction: ActionSupport(){
     open lateinit var model: Model
     open lateinit var image:File
@@ -20,6 +22,7 @@ open class ModelAddAction: ActionSupport(){
     open lateinit var imageFileName:String
     open lateinit var savePath:String
     open lateinit var brand:Brand
+    open var brandId=0
     @Autowired
     private lateinit var brandSvc: BrandHandleSvc
     open fun request():String{
@@ -35,6 +38,7 @@ open class ModelAddAction: ActionSupport(){
 
 
     override fun validate():Unit{
+
         /**
         model.model=model.model.trim()
         if(StringUtil.isEmptyString(model.model))

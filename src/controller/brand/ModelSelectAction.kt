@@ -3,6 +3,7 @@ package controller.brand
 import com.opensymphony.xwork2.ActionSupport
 import entity.Model
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Controller
 import service.brand.IBrandHandleSvc
 import service.brand.IModelHandleSvc
@@ -12,6 +13,7 @@ import util.PageBean
  * Created by ymcvalu on 2017/5/13.
  */
 @Controller("selectModel")
+@Scope("prototype")
 open class ModelSelectAction:ActionSupport(){
 
     open var brandId=0
@@ -28,5 +30,4 @@ open class ModelSelectAction:ActionSupport(){
         brand=brandSvc.getBrandName(brandId)
         return SUCCESS
     }
-
 }

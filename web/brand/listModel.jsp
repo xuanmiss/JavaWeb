@@ -42,10 +42,12 @@
         </tr>
     </s:iterator>
 </table>
-<a href="/brand/requestAdd.action"><img src="resources/images/add.jpg" width="100" height="100" style="position: fixed;z-index:100;right:50px;bottom:50px;"/></a>
+<%--添加页面链接，需要传递品牌Id作为参数--%>
+<a href="/brand/requestAdd.action?brandId=<s:property value="brandId"/>"><img src="resources/images/add.jpg" width="100" height="100" style="position: fixed;z-index:100;right:50px;bottom:50px;"/></a>
 
 <jsp:include page="/common/page.jsp">
-    <jsp:param name="url" value="/brand/selectBrand.action"/>
+    <%--设置分页时的url，必须传递品牌id作为参数--%>
+    <jsp:param name="url" value="/brand/selectModel.action?brandId=${requestScope.brandId}"/>
 </jsp:include>
 </body>
 </html>

@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-<h1></h1>
+<h1>新增品牌型号</h1>
 <s:form action="brandAdd.action" method="POST"  namespace="/brand" theme="simple" enctype="multipart/form-data">
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="型号:"/>
