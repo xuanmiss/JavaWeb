@@ -4,7 +4,7 @@ import com.opensymphony.xwork2.ActionSupport
 import entity.Brand
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import service.brand.IHandleBrandSvc
+import service.brand.IBrandHandleSvc
 import util.PageBean
 
 /**
@@ -13,7 +13,7 @@ import util.PageBean
 @Controller("selectBrand")
 class BrandSelectAction:ActionSupport(){
     @Autowired
-    lateinit private var brandSvc:IHandleBrandSvc
+    lateinit private var brandSvc: IBrandHandleSvc
     var pageBean:PageBean<Brand>?=null
     var pageNo:Int=1
     override fun execute(): String {

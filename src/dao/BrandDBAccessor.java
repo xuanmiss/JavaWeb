@@ -15,4 +15,11 @@ public class BrandDBAccessor extends BaseDBAccessor<Brand> implements IBrandDBAc
                 .setString("1",name)
                 .uniqueResult()>0;
     }
+
+    @Override
+    public String getBrandName(int id) {
+        return (String)getSession().createQuery("select b.name from entity.Brand as b where b.id = ?1")
+                .setInteger("1",id)
+                .uniqueResult();
+    }
 }

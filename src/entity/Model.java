@@ -23,18 +23,26 @@ public class Model {
     @JoinColumn(name = "brand",nullable = false)
     private Brand brand;         //对应的品牌
     private double in_price;    //进价
-    private double out_price;   //售价
+    private double sale_price;   //售价
     private Date date;            //推出日期
     private int status;          //状态码，1-在市，0-下市
     @OneToMany(targetEntity = Batch.class)
-    private Set<Batch> batchs = new HashSet<Batch>();
+    private Set<Batch> batches;
 
-    public Set<Batch> getBatchs() {
-        return batchs;
+    public double getSale_price() {
+        return sale_price;
     }
 
-    public void setBatchs(Set<Batch> batchs) {
-        this.batchs = batchs;
+    public void setSale_price(double sale_price) {
+        this.sale_price = sale_price;
+    }
+
+    public Set<Batch> getBatches() {
+        return batches;
+    }
+
+    public void setBatches(Set<Batch> batches) {
+        this.batches = batches;
     }
 
     public Integer getId() {
@@ -93,13 +101,7 @@ public class Model {
         this.in_price = in_price;
     }
 
-    public double getOut_price() {
-        return out_price;
-    }
 
-    public void setOut_price(double out_price) {
-        this.out_price = out_price;
-    }
 
     public Date getDate() {
         return date;

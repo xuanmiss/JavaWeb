@@ -7,7 +7,7 @@
 %>
 <html>
 <head>
-    <title>品牌查看</title>
+    <title>型号查看</title>
     <base href="<%=basePath%>">
     <style type="text/css">
         td {text-align:center;padding:5px;margin:5px;}
@@ -16,22 +16,27 @@
     </style>
 </head>
 <body>
-<h1 align="center">品牌列表</h1>
+<h1 align="center"><s:property value="brand"/> </h1>
 <table align="center">
     <tr>
-        <th>品牌编号</th>
-        <th>品牌logo</th>
-        <th>品牌名</th>
-        <th>品牌创建时间</th>
+        <th>样图</th>
+        <th>型号</th>
+        <th>规格<sub>(cm)</sub></th>
+        <th>花色</th>
+        <th>上市时间</th>
+        <th>状态</th>
         <th>操作</th>
     </tr>
     <s:iterator value="pageBean.data" var="it">
         <tr>
-            <td><s:property value="#it.id"/> </td>
-            <td><img src="<s:property value="logo"/>" width="75" height="75"></td>
-            <td><s:property value="#it.name"/></td>
+            <td><img src="<s:property value="image"/>"  width="105" height="105"/></td>
+            <td><s:property value="model"/></td>
+            <td><s:property value="format"/></td>
+            <td><s:property value="color"/></td>
+            <td><s:property value="sale_price"/> </td>
             <td><s:date name="date" format="yyyy-MM-dd"/></td>
-            <td><a href="">管理</a> <a href="/brand/selectModel.action?id=<s:property value="#it.id"/>">查看</a></td>
+            <td><s:if test="status==0">在市</s:if><s:else>下市</s:else></td>
+            <td><a href=" ">修改</a> <a href=" ">删除</a></td>
         </tr>
     </s:iterator>
 </table>

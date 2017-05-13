@@ -2,11 +2,10 @@ package controller.brand;
 
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Brand;
-import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import service.brand.IHandleBrandSvc;
+import service.brand.IBrandHandleSvc;
 import util.DiskUtil;
 import util.StringUtil;
 import java.io.File;
@@ -24,9 +23,10 @@ public class BrandAddAction extends ActionSupport{
     private Brand brand;
     private String savePath;
 
-
     @Autowired
-    private IHandleBrandSvc brandSvc;
+    private IBrandHandleSvc brandSvc;
+
+
     @Override
     public String execute()throws Exception{
         brand.setDate(new Date());
@@ -109,11 +109,11 @@ public class BrandAddAction extends ActionSupport{
         this.savePath = savePath;
     }
 
-    public IHandleBrandSvc getBrandSvc() {
+    public IBrandHandleSvc getBrandSvc() {
         return brandSvc;
     }
 
-    public void setBrandSvc(IHandleBrandSvc brandSvc) {
+    public void setBrandSvc(IBrandHandleSvc brandSvc) {
         this.brandSvc = brandSvc;
     }
 
