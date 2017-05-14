@@ -5,7 +5,7 @@ import entity.Clerk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import service.IHandleClerkSvc;
+import service.clerk.IHandleClerkSvc;
 import util.IdentityUtil;
 import util.StringUtil;
 
@@ -77,7 +77,7 @@ public class ClerkAddAction extends ActionSupport{
         clerk.setBirthday(IdentityUtil.getBirthdayByIdentiy(clerk.getIdentity()));
 
         //设置薪资
-        clerk.setSalary(1);
+        //clerk.setSalary(1);
 
         //设置性别
         clerk.setSex('0');

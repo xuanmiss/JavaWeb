@@ -12,15 +12,21 @@
         <interceptors>
             <!--登陆权限验证拦截器-->
             <interceptor name="loginCheck" class="loginCheck"/>
+            <interceptor name="managerCheck" class="managerCheck"/>
             <interceptor-stack name="my-stack">
                 <interceptor-ref name="defaultStack"/>
                 <interceptor-ref name="loginCheck"/>
+            </interceptor-stack>
+            <interceptor-stack name="manager-only-def">
+                <interceptor-ref name="my-stack"/>
+                <interceptor-ref name="managerCheck"/>
             </interceptor-stack>
         </interceptors>
         <!--配置默认栈-->
         <default-interceptor-ref name="my-stack"/>
         <global-results>
             <result name="login" type="redirect">/index.jsp</result>
+            <result name="noAuthority" type="redirect">/noAuthority.jsp</result>
         </global-results>
     </package>
 

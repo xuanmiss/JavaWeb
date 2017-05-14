@@ -8,6 +8,7 @@
 
     <package name="brand" namespace="/brand" extends="my-default">
         <action name="brandAdd" class="addBrand">
+            <interceptor-ref name="manager-only-def"/>
             <param name="savePath">resources\logo</param>
             <result>/test.jsp</result>
             <result name="input">/brand/addBrand.jsp</result>
