@@ -9,6 +9,8 @@ import util.PageBean;
 public interface IBrandHandleSvc {
     boolean isExist(String name);
     void saveBrand(Brand brand);
+    void updateBrand(Brand brand);
+    boolean deleteBrand(int id);
     PageBean<Brand> getListByPage(int pageNo);
     Brand findById(int id);
     String getBrandName(int id);

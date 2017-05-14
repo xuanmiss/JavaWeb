@@ -2,9 +2,13 @@ package service.brand;
 
 import dao.IBrandDBAccessor;
 import entity.Brand;
+import entity.Model;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;
+
+import java.util.List;
 
 /**
  * Created by ymcvalu on 2017/5/9.
@@ -22,6 +26,27 @@ public class BrandHandleSvc implements IBrandHandleSvc {
     public void saveBrand(Brand brand) {
         brandAcc.insert(brand);
     }
+
+    @Override
+    public void updateBrand(Brand brand) {
+        brandAcc.update(brand);
+    }
+
+    @Override
+    public boolean deleteBrand(int brandId) {;
+        Brand brand = findById(brandId);
+        String hql = "from Model as m where m.brand.id=?1";
+        Session sess = brandAcc.getSession();
+        List<Model> models = sess.createQuery(hql).setParameter("1",brandId).list();
+        if(models.isEmpty()) {
+            brandAcc.delete(brand);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     @Override
     public PageBean<Brand> getListByPage(int pageNo){
         PageBean<Brand> pb=new PageBean<>();
