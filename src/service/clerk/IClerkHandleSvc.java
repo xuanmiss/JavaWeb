@@ -6,7 +6,7 @@ import util.PageBean;
 /**
  * Created by Administrator on 2017/5/11.
  */
-public interface IClerkHandlerSvc {
+public interface IClerkHandleSvc {
 
     boolean isExist(String value, String property);
     PageBean<Clerk> getListByPage(int pageNo);

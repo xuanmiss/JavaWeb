@@ -5,7 +5,7 @@ import entity.Clerk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import service.clerk.IClerkHandlerSvc;
+import service.clerk.IClerkHandleSvc;
 import util.PageBean;
 
 /**
@@ -16,7 +16,7 @@ import util.PageBean;
 public class ClerkSelectAction extends ActionSupport {
 
     @Autowired
-    private IClerkHandlerSvc clerkSvc;
+    private IClerkHandleSvc clerkSvc;
 
     int pageNo = 1;
     PageBean<Clerk> pageBean = null;

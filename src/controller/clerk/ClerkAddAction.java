@@ -6,7 +6,7 @@ import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import service.clerk.IClerkHandlerSvc;
+import service.clerk.IClerkHandleSvc;
 import util.IdentityUtil;
 import util.StringUtil;
 
@@ -22,7 +22,7 @@ public class ClerkAddAction extends ActionSupport{
     private Clerk clerk;
 
     @Autowired
-    private IClerkHandlerSvc clerkSvc;
+    private IClerkHandleSvc clerkSvc;
 
     public Clerk getClerk() {
         return clerk;

@@ -10,7 +10,7 @@ import util.PageBean;
  * Created by Administrator on 2017/5/11.
  */
 @Service("clerkHandler")
-public class ClerkHandleSvc implements IClerkHandlerSvc {
+public class ClerkHandleSvc implements IClerkHandleSvc {
     @Autowired
     private ClerkDBAccessor clerkDBAccessor;
 
