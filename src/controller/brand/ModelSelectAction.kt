@@ -13,7 +13,7 @@ import util.PageBean
  * Created by ymcvalu on 2017/5/13.
  */
 @Controller("selectModel")
-@Scope("prototype")
+@Scope("request")
 open class ModelSelectAction:ActionSupport(){
     open var flag:Int=0
     open var brandId=0

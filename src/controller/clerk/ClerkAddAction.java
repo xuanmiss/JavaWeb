@@ -40,7 +40,7 @@ public class ClerkAddAction extends ActionSupport{
         //保存
         clerkSvc.saveClerk(clerk);
 
-        return "input";
+        return "show";
     }
 
     @Override

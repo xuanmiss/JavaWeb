@@ -11,7 +11,7 @@ import service.brand.IModelHandleSvc;
  */
 
 @Controller("deleteModel")
-@Scope("prototype")
+@Scope("request")
 public class ModelDeleteAction extends ActionSupport {
     private int modelId;
     private int brandId;

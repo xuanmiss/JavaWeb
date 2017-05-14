@@ -11,7 +11,7 @@ import service.brand.IBrandHandleSvc;
  * Created by chenshihong on 2017/5/11.
  */
 @Controller("manageBrand")
-@Scope("prototype")
+@Scope("request")
 public class BrandManageAction extends ActionSupport{
     private Brand brand;
     private int brandId;
