@@ -26,4 +26,28 @@ public class ClerkSelectAction extends ActionSupport {
         pageBean = clerkSvc.getListByPage(pageNo);
         return SUCCESS;
     }
+
+    public IClerkHandleSvc getClerkSvc() {
+        return clerkSvc;
+    }
+
+    public void setClerkSvc(IClerkHandleSvc clerkSvc) {
+        this.clerkSvc = clerkSvc;
+    }
+
+    public int getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public PageBean<Clerk> getPageBean() {
+        return pageBean;
+    }
+
+    public void setPageBean(PageBean<Clerk> pageBean) {
+        this.pageBean = pageBean;
+    }
 }
