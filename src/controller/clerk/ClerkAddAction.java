@@ -2,10 +2,11 @@ package controller.clerk;
 
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Clerk;
+import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import service.IHandleClerkSvc;
+import service.clerk.IClerkHandlerSvc;
 import util.IdentityUtil;
 import util.StringUtil;
 
@@ -21,7 +22,7 @@ public class ClerkAddAction extends ActionSupport{
     private Clerk clerk;
 
     @Autowired
-    private IHandleClerkSvc clerkSvc;
+    private IClerkHandlerSvc clerkSvc;
 
     public Clerk getClerk() {
         return clerk;
@@ -77,7 +78,9 @@ public class ClerkAddAction extends ActionSupport{
         clerk.setBirthday(IdentityUtil.getBirthdayByIdentiy(clerk.getIdentity()));
 
         //设置薪资
-        clerk.setSalary(1);
+        SalaryStandard ss = new SalaryStandard();
+        ss.setId(1);
+        clerk.setSalaryStandard(ss);
 
         //设置性别
         clerk.setSex('0');
