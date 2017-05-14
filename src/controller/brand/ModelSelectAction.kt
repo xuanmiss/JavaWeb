@@ -15,7 +15,7 @@ import util.PageBean
 @Controller("selectModel")
 @Scope("prototype")
 open class ModelSelectAction:ActionSupport(){
-
+    open var flag:Int=0
     open var brandId=0
 
     open lateinit var pageBean:PageBean<Model>

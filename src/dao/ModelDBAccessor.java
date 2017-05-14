@@ -36,4 +36,5 @@ public class ModelDBAccessor extends BaseDBAccessor<Model> implements IModelDBAc
                 .setInteger("2",brandId)
                 .uniqueResult()>0;
     }
+
 }

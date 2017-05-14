@@ -12,12 +12,12 @@ public class Batch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private int bitch_no; //  批号
+    private int batch_no; //  批号
     private Date date; //生产日期
     @ManyToOne(targetEntity = Model.class)
     @JoinColumn(name = "model",nullable = false)
     private Model model; //外键品牌型号
-    @OneToOne(targetEntity = Stock.class)
+    @OneToOne(targetEntity = Stock.class,mappedBy ="batch" )
     private Stock stock; //对应库存
 
     public Stock getStock() {
@@ -47,11 +47,11 @@ public class Batch {
 
     public int getBitch_no() {
 
-        return bitch_no;
+        return batch_no;
     }
 
     public void setBitch_no(int bitch_no) {
-        this.bitch_no = bitch_no;
+        this.batch_no = bitch_no;
     }
 
     public Integer getId() {

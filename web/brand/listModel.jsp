@@ -14,6 +14,11 @@
         tr {line-height: 175%;}
         table {width:1000px;font-size: x-large }
     </style>
+    <s:if test="flag==1">
+        <script language="javascript">
+            alert("该型号不能被删除!");
+        </script>
+    </s:if>
 </head>
 <body>
 <h1 align="center"><s:property value="brand"/> </h1>
@@ -38,7 +43,10 @@
             <td><s:property value="sale_price"/> </td>
             <td><s:date name="date" format="yyyy-MM-dd"/></td>
             <td><s:if test="status==0">在市</s:if><s:else>下市</s:else></td>
-            <td><a href=" ">修改</a> <a href=" ">删除</a></td>
+            <td>
+                <a href=" ">修改</a>
+                <a href="/brand/deleteModel.action?brandId=<s:property value="brandId"/>&modelId=<s:property value="id"/>">删除</a>
+            </td>
         </tr>
     </s:iterator>
 </table>

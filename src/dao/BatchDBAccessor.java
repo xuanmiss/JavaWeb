@@ -10,8 +10,14 @@ import org.springframework.stereotype.Repository;
 @Repository("batchDBAcc")
 @Lazy
 public class BatchDBAccessor extends BaseDBAccessor<Batch> implements IBatchDBAccessor{
-    /**
+    @Override
+    public int countOfModel(int modelId) {
+        Long l=(long)getSession().createQuery("select count(*) from entity.Batch as b where b.model.id = ?1")
+                .setInteger("1",modelId)
+                .uniqueResult();
+        return l.intValue();
+    }
 
-     */
+
 
 }

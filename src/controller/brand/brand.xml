@@ -52,6 +52,14 @@
             <result name="input">/brand/updateBrand.jsp</result>
             <result  name="updatesuccess" type="redirectAction">selectBrand</result>
         </action>
+        <action name="deleteModel" class="deleteModel">
+            <result type="redirectAction">
+                <param name="namespace">/brand</param>
+                <param name="actionName">selectModel</param>
+                <param name="brandId">${brandId}</param>
+                <param name="flag">${flag}</param>
+            </result>
+        </action>
 
 
         <action name="*">

@@ -1,5 +1,6 @@
 package service.brand;
 
+import dao.IBatchDBAccessor;
 import dao.IModelDBAccessor;
 import entity.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import java.util.List;
 public class ModelHandleSvc implements IModelHandleSvc{
     @Autowired
     private IModelDBAccessor modelAcc;
+    @Autowired
+    private IBatchDBAccessor batchAcc;
 
     @Override
     public PageBean<Model> getListByPage(int brand, int pageNo) {
@@ -33,6 +36,14 @@ public class ModelHandleSvc implements IModelHandleSvc{
     @Override
     public boolean isExist(String model,int brandId) {
         return modelAcc.isExist(model,brandId);
+    }
+
+    @Override
+    public boolean delect(int modelId) {
+        if(batchAcc.countOfModel(modelId)>0)
+            return false;
+        modelAcc.delete(modelId,Model.class);
+        return true;
     }
 
     @Override
