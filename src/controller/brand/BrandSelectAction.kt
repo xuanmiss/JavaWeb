@@ -12,7 +12,7 @@ import util.PageBean
  * Created by ymcvalu on 2017/5/11.
  */
 @Controller("selectBrand")
-@Scope("prototype")
+@Scope("request")
 open class BrandSelectAction:ActionSupport(){
     @Autowired
     private lateinit var brandSvc: IBrandHandleSvc

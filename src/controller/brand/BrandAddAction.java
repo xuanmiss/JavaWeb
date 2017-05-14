@@ -15,7 +15,7 @@ import java.util.Date;
  * Created by ymcvalu on 2017/5/9.
  */
 @Controller("addBrand")
-@Scope("prototype")
+@Scope("request")
 public class BrandAddAction extends ActionSupport{
     private File logo;
     private String logoContentType;

@@ -18,7 +18,7 @@ import java.util.Date;
  */
 
 @Controller("addModel")
-@Scope("prototype")
+@Scope("request")
 public class ModelAddAction extends ActionSupport{
     private Model model;
     private File image;
