@@ -30,6 +30,16 @@ public class ModelHandleSvc implements IModelHandleSvc{
         return modelAcc.getModelById(brand,id);
     }
 
+    @Override
+    public boolean isExist(String model,int brandId) {
+        return modelAcc.isExist(model,brandId);
+    }
+
+    @Override
+    public void saveModel(Model model) {
+        modelAcc.insert(model);
+    }
+
     public IModelDBAccessor getModelAcc() {
         return modelAcc;
     }

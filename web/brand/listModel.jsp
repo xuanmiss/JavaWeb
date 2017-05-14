@@ -43,7 +43,7 @@
     </s:iterator>
 </table>
 <%--添加页面链接，需要传递品牌Id作为参数--%>
-<a href="/brand/requestAdd.action?brandId=<s:property value="brandId"/>"><img src="resources/images/add.jpg" width="100" height="100" style="position: fixed;z-index:100;right:50px;bottom:50px;"/></a>
+<a href="/brand/requestAddModel.action?brandId=<s:property value="brandId"/>"><img src="resources/images/add.jpg" width="100" height="100" style="position: fixed;z-index:100;right:50px;bottom:50px;"/></a>
 
 <jsp:include page="/common/page.jsp">
     <jsp:param name="url" value="/brand/selectModel.action?brandId=${requestScope.brandId}"/>

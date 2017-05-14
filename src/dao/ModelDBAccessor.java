@@ -28,4 +28,12 @@ public class ModelDBAccessor extends BaseDBAccessor<Model> implements IModelDBAc
                 .setInteger("2",id)
                 .uniqueResult();
     }
+
+    @Override
+    public boolean isExist(String model,int brandId) {
+        return (long)getSession().createQuery("select count(*) from entity.Model as m where m.model = ?1 and m.brand= ?2")
+                .setString("1",model)
+                .setInteger("2",brandId)
+                .uniqueResult()>0;
+    }
 }
