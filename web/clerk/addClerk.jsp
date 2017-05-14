@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-<s:form action="addBrand.action" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
+<s:form action="clerkAdd.action" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="业务员姓名:"/>
     <s:textfield name="clerk.name" />
