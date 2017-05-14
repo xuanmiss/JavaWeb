@@ -17,6 +17,7 @@ import util.PageBean
 open class ModelSelectAction:ActionSupport(){
 
     open var brandId=0
+
     open lateinit var pageBean:PageBean<Model>
     @Autowired
     private lateinit var modelSvc:IModelHandleSvc

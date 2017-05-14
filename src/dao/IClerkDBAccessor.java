@@ -18,4 +18,12 @@ public interface IClerkDBAccessor extends IBaseDBAccessor<Clerk> {
      */
     void deleteById(int id);
 
+    /**
+     * 判断是否存在
+     * @param value 值
+     * @param property 属性
+     */
+    boolean isExist(String value, String property);
+
 }
+

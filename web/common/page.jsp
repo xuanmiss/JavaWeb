@@ -16,7 +16,7 @@ function gotoPage(pagenum){
     共<s:property value="pageBean.maxPage"/>页
     <BR />
     <s:if test="pageBean.curPage==1">
-        "首页 上一页"
+        首页 上一页
     </s:if>
     <s:else>
         <a href="javascript:gotoPage(1)">首页</A>

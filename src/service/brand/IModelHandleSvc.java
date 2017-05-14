@@ -11,4 +11,6 @@ import java.util.List;
 public interface IModelHandleSvc {
     PageBean<Model> getListByPage(int brand, int pageNo);
     Model getModelById(int brand,int id);
+    boolean isExist(String model,int brandId);
+    void saveModel(Model model);
 }

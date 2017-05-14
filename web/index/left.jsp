@@ -80,7 +80,7 @@
 					</a>
 						<ul>
 							<li><a href="/brand/selectBrand.action" target="dmMain">品牌查询</a></li>
-							<li><a href="/brand/addBrand.action" target="dmMain">新增品牌</a></li>
+							<li><a href="/brand/requestAddBrand.action" target="dmMain">新增品牌</a></li>
 						</ul>
 					</li>
 

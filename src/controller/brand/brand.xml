@@ -15,22 +15,9 @@
         <action name="selectBrand" class="selectBrand">
             <result>/brand/listBrand.jsp</result>
         </action>
-        <action name="manageBrand" class="manageBrand" method="manage">
-            <result>/brand/manageBrand.jsp</result>
-        </action>
-        <action name="deleteBrand" class="manageBrand" method="delete">
-            <result name="deletesuccess" type="redirectAction">selectBrand</result>
-            <result name="deletefalse">/brand/manageBrand.jsp</result>
-        </action>
-        <action name="*UpdateBrand" class="updateBrand" method="{1}">
-            <param name="savePath">resources\logo</param>
-            <result name="goupdate">/brand/updateBrand.jsp</result>
-            <result name="input">/brand/updateBrand.jsp</result>
-            <result name="updatesuccess" type="redirectAction">selectBrand</result>
-        </action>
         <action name="*Add" class="addModel" method="{1}">
-            <result></result>
-            <result name=" "></result>
+            <result name="request">/brand/addModel.jsp</result>
+            <result name="handle"></result>
         </action>
         <action name="selectModel" class="selectModel">
             <result>/brand/listModel.jsp</result>
