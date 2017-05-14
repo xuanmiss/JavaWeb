@@ -3,23 +3,31 @@
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
-
 <struts>
 
     <package name="brand" namespace="/brand" extends="my-default">
-        <action name="brandAdd" class="addBrand">
+
+        <action name="requestAddBrand">
+            <interceptor-ref name="manager-only-def"/>
+            <result>/brand/addBrand.jsp</result>
+        </action>
+
+        <action name="addBrand" class="addBrand">
             <interceptor-ref name="manager-only-def"/>
             <param name="savePath">resources\logo</param>
             <result>/test.jsp</result>
             <result name="input">/brand/addBrand.jsp</result>
         </action>
+
         <action name="selectBrand" class="selectBrand">
             <result>/brand/listBrand.jsp</result>
         </action>
-        <action name="*Add" class="addModel" method="{1}">
+
+        <action name="*AddModel" class="addModel" method="{1}">
             <result name="request">/brand/addModel.jsp</result>
             <result name="handle"></result>
         </action>
+
         <action name="selectModel" class="selectModel">
             <result>/brand/listModel.jsp</result>
         </action>
@@ -27,5 +35,6 @@
         <action name="*">
             <result>/brand/{1}.jsp</result>
         </action>
+
     </package>
 </struts>
