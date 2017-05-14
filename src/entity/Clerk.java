@@ -24,7 +24,6 @@ public class Clerk {
     private String salary_card;
     private int status;
     private String duties;
-    private int salary;
     private char sex;
 
     public char getSex() {
@@ -35,19 +34,11 @@ public class Clerk {
         this.sex = sex;
     }
 
-    public int getSalary() {
-        return salary;
-    }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    /*
     @ManyToOne(targetEntity = SalaryStandard.class,fetch = FetchType.EAGER)
     @JoinColumn(name="salary",referencedColumnName = "id",unique = true)
     private SalaryStandard salaryStandard;
-    */
+
     @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY,mappedBy = "clerk")
      private Set<Client> clients;
 
@@ -152,13 +143,13 @@ public class Clerk {
         this.duties = duties;
     }
 
-    /*public SalaryStandard getSalaryStandard() {
+    public SalaryStandard getSalaryStandard() {
         return salaryStandard;
-    }*/
+    }
 
-    /*public void setSalaryStandard(SalaryStandard salaryStandard) {
+    public void setSalaryStandard(SalaryStandard salaryStandard) {
         this.salaryStandard = salaryStandard;
-    }*/
+    }
 
     public Set<Client> getClients() {
         return clients;
