@@ -35,7 +35,7 @@ public class BrandHandleSvc implements IBrandHandleSvc {
     @Override
     public boolean deleteBrand(int brandId) {;
         Brand brand = findById(brandId);
-        String hql = "from Model as m where m.brand.id=?1";
+        String hql = "from entity.Model as m where m.brand.id=?1";
         Session sess = brandAcc.getSession();
         List<Model> models = sess.createQuery(hql).setParameter("1",brandId).list();
         if(models.isEmpty()) {

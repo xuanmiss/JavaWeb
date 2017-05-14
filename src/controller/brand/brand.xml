@@ -5,23 +5,54 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
     <package name="brand" namespace="/brand" extends="my-default">
-        <action name="brandAdd" class="addBrand">
+        <action name="requestAddBrand">
+            <interceptor-ref name="manager-only-def"/>
+            <result>/brand/addBrand.jsp</result>
+        </action>
+        <action name="addBrand" class="addBrand">
             <param name="savePath">resources\logo</param>
-            <result>/test.jsp</result>
+            <result type="redirectAction">
+                <param name="namespace">/brand</param>
+                <param name="actionName">selectBrand</param>
+            </result>
             <result name="input">/brand/addBrand.jsp</result>
         </action>
         <action name="selectBrand" class="selectBrand">
             <result>/brand/listBrand.jsp</result>
         </action>
-        <action name="*Add" class="addModel" method="{1}">
+        <action name="*AddModel" class="addModel" method="{1}">
+            <interceptor-ref name="manager-only-def"/>
             <result name="request">/brand/addModel.jsp</result>
-            <result name="handle"></result>
+            <result name="handle" type="redirectAction">
+                <param name="namespace">/brand</param>
+                <param name="actionName">selectModel</param>
+                <param name="brandId">${brandId}</param>
+            </result>
+            <result name="input">/brand/addModel.jsp</result>
         </action>
         <action name="selectModel" class="selectModel">
             <result>/brand/listModel.jsp</result>
         </action>
+
+        <action name="manageBrand" class="manageBrand" method="manage">
+            <interceptor-ref name="manager-only-def"/>
+            <result>/brand/manageBrand.jsp</result>
+        </action>
+        <action name="deleteBrand" class="manageBrand" method="delete">
+            <interceptor-ref name="manager-only-def"/>
+            <result name="deletesuccess" type="redirectAction">selectBrand</result>
+            <result name="deletefalse">/brand/manageBrand.jsp</result>
+        </action>
+        <action name="goUpdateBrand" class="updateBrand" method="go">
+            <result name="goupdate">/brand/updateBrand.jsp</result>
+        </action>
+        <action name="carryUpdateBrand" class="updateBrand" method="carry">
+            <interceptor-ref name="manager-only-def"/>
+            <result name="input">/brand/updateBrand.jsp</result>
+            <result  name="updatesuccess" type="redirectAction">selectBrand</result>
+        </action>
+
 
         <action name="*">
             <result>/brand/{1}.jsp</result>
