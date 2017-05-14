@@ -51,6 +51,11 @@ public class ModelHandleSvc implements IModelHandleSvc{
         modelAcc.insert(model);
     }
 
+    @Override
+    public void updateModel(Model model) {
+        modelAcc.update(model);
+    }
+
     public IModelDBAccessor getModelAcc() {
         return modelAcc;
     }

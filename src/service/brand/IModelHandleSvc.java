@@ -13,5 +13,6 @@ public interface IModelHandleSvc {
     Model getModelById(int brand,int id);
     boolean isExist(String model,int brandId);
     void saveModel(Model model);
+    void updateModel(Model model);
     boolean delect(int modelId);
 }

@@ -29,7 +29,7 @@ public class BrandUpdateAction extends ActionSupport{
     @Autowired
     private IBrandHandleSvc brandSvc;
 
-    public String carry()throws Exception{;
+    public String handle()throws Exception{;
         //保存相对路径
         if(logo!=null) {
             brand.setLogo(savePath + "\\" + brand.getName() + ".png");
@@ -40,11 +40,11 @@ public class BrandUpdateAction extends ActionSupport{
 
         brandSvc.updateBrand(brand);
 
-        return "updatesuccess";
+        return "handle";
     }
-    public String go (){
+    public String request (){
         brand = brandSvc.findById(brandId);
-        return  "goupdate";
+        return  "request";
     }
     @Override
     public void validate(){

@@ -44,13 +44,24 @@
             <result name="deletesuccess" type="redirectAction">selectBrand</result>
             <result name="deletefalse">/brand/manageBrand.jsp</result>
         </action>
-        <action name="goUpdateBrand" class="updateBrand" method="go">
-            <result name="goupdate">/brand/updateBrand.jsp</result>
+        <action name="requestUpdateBrand" class="updateBrand" method="request">
+            <result name="request">/brand/updateBrand.jsp</result>
         </action>
-        <action name="carryUpdateBrand" class="updateBrand" method="carry">
+        <action name="handleUpdateBrand" class="updateBrand" method="handle">
             <interceptor-ref name="manager-only-def"/>
             <result name="input">/brand/updateBrand.jsp</result>
-            <result  name="updatesuccess" type="redirectAction">selectBrand</result>
+            <result  name="handle" type="redirectAction">selectBrand</result>
+        </action>
+        <action name="requestUpdateModel" class="updateModel" method="request">
+            <result name="request">/brand/updateModel.jsp</result>
+        </action>
+        <action name="handleUpdateModel" class="updateModel" method="handle">
+            <interceptor-ref name="manager-only-def"/>
+            <result name="input">/brand/updateModel.jsp</result>
+            <result  name="handle" type="redirectAction">
+                <param name="brandId">${brandId}</param>
+                <param name="actionName">selectModel</param>
+            </result>
         </action>
         <action name="deleteModel" class="deleteModel">
             <result type="redirectAction">

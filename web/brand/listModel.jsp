@@ -44,7 +44,7 @@
             <td><s:date name="date" format="yyyy-MM-dd"/></td>
             <td><s:if test="status==0">在市</s:if><s:else>下市</s:else></td>
             <td>
-                <a href=" ">修改</a>
+                <a href="/brand/requestUpdateModel.action?brandId=<s:property value="brand.id"/>&modelId=<s:property value="id"/>">修改</a>
                 <a href="/brand/deleteModel.action?brandId=<s:property value="brandId"/>&modelId=<s:property value="id"/>">删除</a>
             </td>
         </tr>

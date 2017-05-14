@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-<s:form action="carryUpdateBrand.action" method="POST"  namespace="/brand" theme="simple" enctype="multipart/form-data">
+<s:form action="handleUpdateBrand.action" method="POST"  namespace="/brand" theme="simple" enctype="multipart/form-data">
     <input type="hidden" name="brand.id" value="<s:property value="brand.id"/>"/>
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="品牌名:"/>

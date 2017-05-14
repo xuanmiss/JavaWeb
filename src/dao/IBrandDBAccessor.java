@@ -8,4 +8,5 @@ import entity.Brand;
 public interface IBrandDBAccessor  extends IBaseDBAccessor<Brand> {
     boolean isExist(String name);
     String getBrandName(int id);
+    Boolean isExitModel(int brandId);
 }
