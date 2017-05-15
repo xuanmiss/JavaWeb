@@ -89,8 +89,8 @@
                     </a>
 
                         <ul>
-                            <li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
-                            <li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+                            <li><a href="" target="dmMain">品牌查询</a></li>
+                            <li><a href="" target="dmMain">新增品牌</a></li>
                         </ul>
                     </li>
 
@@ -99,8 +99,8 @@
                     </a>
 
                         <ul>
-                            <li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
-                            <li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+                            <li><a href="" target="dmMain">品牌查询</a></li>
+                            <li><a href="" target="dmMain">新增品牌</a></li>
                         </ul>
                     </li>
 
@@ -108,8 +108,8 @@
                         财务管理
                     </a>
                         <ul>
-                            <li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
-                            <li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+                            <li><a href="" target="dmMain">品牌查询</a></li>
+                            <li><a href="" target="dmMain">新增品牌</a></li>
                         </ul>
                     </li>
 
@@ -117,8 +117,8 @@
                         客户信息管理
                     </a>
                         <ul>
-                            <li><a href="/test/test.action" target="dmMain">新增客户</a></li>
-                            <li><a href="/test/test.action" target="dmMain">客户信息列表</a></li>
+                            <li><a href="" target="dmMain">新增客户</a></li>
+                            <li><a href="" target="dmMain">客户信息列表</a></li>
                         </ul>
                     </li>
 
@@ -127,8 +127,10 @@
                     </a>
 
                         <ul>
-                            <li><a href="/test/test.action" target="dmMain">品牌查询</a></li>
-                            <li><a href="/test/test.action" target="dmMain">新增品牌</a></li>
+                            <li><a href="/clerk/clerk_select.action" target="dmMain">品牌查询</a></li>
+                            <li><a href="/clerk/addClerk.jsp" target="dmMain">新增品牌</a></li>
+                            <li><a href="/clerkBrand/formAction.action" target="dmMain">新增业务</a></li>
+                            <li><a href="/clerkBrand/selectAction.action" target="dmMain">业务查询</a></li>
                         </ul>
                     </li>
 

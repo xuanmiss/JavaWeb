@@ -103,4 +103,8 @@ public class Brand {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

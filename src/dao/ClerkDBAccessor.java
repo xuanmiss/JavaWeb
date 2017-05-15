@@ -4,7 +4,6 @@ import entity.Clerk;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 /**
  * Created by ymcvalu on 2017/5/4.

@@ -6,7 +6,8 @@ import java.util.Date;
 /**
  * Created by ymcvalu on 2017/5/6.
  */
-@Entity(name="clerk_brand")
+@Entity
+@Table(name="clerk_brand")
 public class Clerk_Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,4 +87,14 @@ public class Clerk_Brand {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Clerk_Brand{" +
+                "id=" + id +
+                ", date=" + date +
+                ", status=" + status +
+                ", clerk=" + clerk +
+                ", brand=" + brand +
+                '}';
+    }
 }

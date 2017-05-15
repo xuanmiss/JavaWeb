@@ -6,7 +6,7 @@
 
 <struts>
 
-    <package name="clerk" namespace="/clerk" extends="my-default">
+    <package name="clerk" namespace="/clerk" extends="struts-default">
 
         <action name="clerk_*" class="{1}Clerk">
             <result name="input">/clerk/addClerk.jsp</result>
@@ -14,10 +14,34 @@
             <result name="update">/clerk/updateClerk.jsp</result>
             <result name="list">/clerk/listClerk.jsp</result>
         </action>
-
-
         <action name="*">
             <result>/clerk/{1}.jsp</result>
         </action>
     </package>
+
+
+    <!--业务员业务action配置-->
+    <package name="clerkBrand" namespace="/clerkBrand" extends="struts-default">
+        <action name="selectAction" class="ClerkBrand" method="select">
+            <result name="success">/clerk/listClerkBrand.jsp</result>
+        </action>
+        <!--表单下拉栏数据action尚未完善-->
+        <action name="formAction" class="ClerkBrand" method="formOpition">
+            <result name="success">/clerk/addClerkBrand.jsp</result>
+        </action>
+        <action name="saveAction" class="ClerkBrand" method="save">
+            <result name="success" type="chain">selectAction</result>
+        </action>
+        <action name="beginAction" class="ClerkBrand" method="begin">
+            <result name="success" type="chain">selectAction</result>
+        </action>
+        <action name="stopAction" class="ClerkBrand" method="stop">
+            <result name="success" type="chain">selectAction</result>
+        </action>
+        <action name="removeAction" class="ClerkBrand" method="remove">
+            <result name="success" type="chain">selectAction</result>
+        </action>
+
+    </package>
+
 </struts>

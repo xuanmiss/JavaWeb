@@ -9,7 +9,8 @@ import java.util.Set;
  */
 
 
-@Entity(name="clerk")
+@Entity
+@Table(name="clerk")
 public class Clerk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -184,5 +185,10 @@ public class Clerk {
         result=result*31+id*id;
         result=result*31+id*id*id;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
