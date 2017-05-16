@@ -1,6 +1,6 @@
 package service.clerk;
 
-import dao.ClerkDBAccessor;
+import dao.IClerkDBAccessor;
 import entity.Clerk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import util.PageBean;
 @Service("clerkHandler")
 public class ClerkHandleSvc implements IClerkHandleSvc {
     @Autowired
-    private ClerkDBAccessor clerkDBAccessor;
+    private IClerkDBAccessor clerkDBAccessor;
 
     @Override
     public void deleteById(int id){
@@ -26,11 +26,11 @@ public class ClerkHandleSvc implements IClerkHandleSvc {
 
     @Override
     public PageBean<Clerk> getListByPage(int pageNo){
-        PageBean<Clerk> pageBean= new PageBean<>();
-        pageBean.setCurPage(pageNo);
-        pageBean.setMaxRowCount(clerkDBAccessor.getCount(Clerk.class));
-        pageBean.setData(clerkDBAccessor.getListByPage(Clerk.class,pageNo,pageBean.getRowsPerPage()));
-        return pageBean;
+        PageBean<Clerk> pb=new PageBean<>();
+        pb.setCurPage(pageNo);
+        pb.setMaxRowCount(clerkDBAccessor.getCount(Clerk.class));
+        pb.setData(clerkDBAccessor.getListByPage(Clerk.class,pageNo,pb.getRowsPerPage()));
+        return pb;
     }
 
     @Override
@@ -38,4 +38,8 @@ public class ClerkHandleSvc implements IClerkHandleSvc {
         return clerkDBAccessor.isExist(value, property);
     }
 
+    @Override
+    public Clerk findById(int id) {
+        return clerkDBAccessor.getObj(Clerk.class,id);
+    }
 }

@@ -12,4 +12,5 @@ public interface IClerkHandleSvc {
     PageBean<Clerk> getListByPage(int pageNo);
     void saveClerk(Clerk clerk);
     void deleteById(int id);
+    Clerk findById(int id);
 }
