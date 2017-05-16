@@ -23,13 +23,7 @@
         <th>姓名</th>
         <th>性别</th>
         <th>身份证号</th>
-        <th>住址</th>
-        <th>生日</th>
-        <th>手机号码</th>
-        <th>状态</th>
-        <th>职位</th>
-        <th>入职时间</th>
-        <th>工资卡卡号</th>
+        <th>操作</th>
     </tr>
     <s:iterator value="pageBean.data" var="it">
         <tr>
@@ -37,20 +31,11 @@
             <td><s:property value="#it.name"/></td>
             <td><s:property value="#it.sex"/></td>
             <td><s:property value="#it.identity"/></td>
-            <td><s:property value="#it.address"/></td>
-            <td><s:if test="#it.sex==0">女</s:if>
-                <s:else>男</s:else></td>
-            <td><s:property value="#it.identity"/></td>
-            <td><s:property value="#it.address"/></td>
-            <td><s:date name="birthday" format="yyyy-MM-dd"/></td>
-            <td><s:property value="#it.phone"/></td>
-            <td><s:if test="#it.status==0">退休</s:if>
-                <s:elseif test="#it.status==1">在职</s:elseif>
-                <s:else>离职</s:else></td>
-            <td><s:property value="#it.duties"/></td>
-            <td><s:property value="#it.entry_time"/></td>
-            <td><s:property value="#it.salary_card"/></td>
-            </tr>
+            <td>
+                <a href="/clerk/clerk_update.action?clerkId=<s:property value="#it.id"/>">修改</a>
+                <a href="/clerk/clerk_delete.action?clerkId=<s:property value="#it.id"/>">删除</a>
+            </td>
+        </tr>
     </s:iterator>
 </table>
 <jsp:include page="/common/page.jsp">

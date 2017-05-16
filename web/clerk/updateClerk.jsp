@@ -7,29 +7,21 @@
 %>
 <html>
 <head>
-    <title>添加业务员</title>
+    <title>更新业务员</title>
     <base href="<%=basePath%>">
     <style type="text/css">
         .textarea {width:300px;height:200px;resize:none;}
     </style>
 </head>
 <body>
-<s:form action="clerk_add.action" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
+<s:form action="clerk_update.action?update=1" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="业务员姓名:"/>
     <s:textfield name="clerk.name" />
     <br />
-    <s:fielderror fieldName="identity" style="color:red"/>
-    <s:label value="身份证:"/>
-    <s:textfield name="clerk.identity"/>
-    <br />
     <s:fielderror fieldName="address" style="color:red" />
     <s:label value="地址:" />
     <s:textfield name="clerk.address" />
-    <br/>
-    <s:fielderror fieldName="phone" style="color:red" />
-    <s:label value="手机号码:" />
-    <s:textfield name="clerk.phone" />
     <br/>
     <s:fielderror fieldName="weichat" style="color:red" />
     <s:label value="微信号码:" />
