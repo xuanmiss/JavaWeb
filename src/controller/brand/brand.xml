@@ -53,6 +53,7 @@
             <result  name="handle" type="redirectAction">selectBrand</result>
         </action>
         <action name="requestUpdateModel" class="updateModel" method="request">
+            <interceptor-ref name="manager-only-def"/>
             <result name="request">/brand/updateModel.jsp</result>
         </action>
         <action name="handleUpdateModel" class="updateModel" method="handle">
@@ -64,6 +65,7 @@
             </result>
         </action>
         <action name="deleteModel" class="deleteModel">
+            <interceptor-ref name="manager-only-def"/>
             <result type="redirectAction">
                 <param name="namespace">/brand</param>
                 <param name="actionName">selectModel</param>

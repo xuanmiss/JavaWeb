@@ -49,6 +49,7 @@ public class ClerkUpdateAction extends ActionSupport{
     @Override
     public String execute(){
         if(update == 0){
+
             clerk = clerkHandleSvc.findById(clerkId);
             return "update";
         }

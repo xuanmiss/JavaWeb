@@ -13,7 +13,7 @@ interface IBaseDBAccessor<T>{
     var sessionFac:SessionFactory?
     fun getSession():Session
     infix fun insert(t:T)
-    fun delete(id:Int,clazz:Class<T>)
+    fun delete(id:Int,clazz:Class<T>):Boolean
     infix fun delete(t:T)
     fun getCount(clazz:Class<T>):Int
     fun update(t:T)
