@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="client" namespace="/client" extends="my-default">
+        <action name="selectClient" class="selectClient">
+            <result>/client/listClient.jsp</result>
+        </action>
+        <action name="client*" class="{1}Client">
+            <result name="input">/client/addClient.jsp</result>
+            <result name="show" type="redirect">selectClient</result>
+            <result name="update">/client/updateClient.jsp</result>
+            <result name="list">/client/listClient.jsp</result>
+        </action>
+        <action name="*">
+            <result>/client/{1}.jsp</result>
+        </action>
+
+    </package>
+</struts>

@@ -117,8 +117,8 @@
                     客户信息管理
                 </a>
                     <ul>
-                        <li><a href="" target="dmMain">新增客户</a></li>
-                        <li><a href="" target="dmMain">客户信息列表</a></li>
+                        <li><a href="/client/addClient" target="dmMain">新增客户</a></li>
+                        <li><a href="/client/selectClient.action" target="dmMain">客户信息列表</a></li>
                     </ul>
                 </li>
 
@@ -128,7 +128,7 @@
 
                     <ul>
                         <li><a href="/clerk/clerk_select.action" target="dmMain">业务员查询</a></li>
-                        <li><a href="/clerk/addClerk" target="dmMain">新增业务员</a></li>
+                        <li><a href="/clerk/addClerk.jsp" target="dmMain">新增业务员</a></li>
                         <li><a href="/clerkBrand/formAction.action" target="dmMain">新增业务</a></li>
                         <li><a href="/clerkBrand/selectAction.action" target="dmMain">业务查询</a></li>
                     </ul>

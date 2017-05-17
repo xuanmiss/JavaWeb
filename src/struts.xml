@@ -33,6 +33,7 @@
     <include file="controller/authority/authority.xml"/>
     <include file="controller/brand/brand.xml" />
     <include file="controller/clerk/clerk.xml" />
+    <include file="controller/client/client.xml"/>
 
 
     <!--测试包-->
