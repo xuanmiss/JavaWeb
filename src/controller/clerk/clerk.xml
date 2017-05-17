@@ -22,22 +22,27 @@
 
     <!--业务员业务action配置-->
     <package name="clerkBrand" namespace="/clerkBrand" extends="struts-default">
+        <!--获取业务表的Action配置-->
         <action name="selectAction" class="ClerkBrand" method="select">
             <result name="success">/clerk/listClerkBrand.jsp</result>
         </action>
-        <!--表单下拉栏数据action尚未完善-->
+        <!--获取新增业务表单的数据库数据支持的Action配置-->
         <action name="formAction" class="ClerkBrand" method="formOpition">
             <result name="success">/clerk/addClerkBrand.jsp</result>
         </action>
+        <!--插入新增业务的Action配置-->
         <action name="saveAction" class="ClerkBrand" method="save">
             <result name="success" type="chain">selectAction</result>
         </action>
+        <!--修改业务状态的Action配置-->
         <action name="beginAction" class="ClerkBrand" method="begin">
             <result name="success" type="chain">selectAction</result>
         </action>
+        <!--修改业务状态的Action配置-->
         <action name="stopAction" class="ClerkBrand" method="stop">
             <result name="success" type="chain">selectAction</result>
         </action>
+        <!--移除业务的Action配置-->
         <action name="removeAction" class="ClerkBrand" method="remove">
             <result name="success" type="chain">selectAction</result>
         </action>
