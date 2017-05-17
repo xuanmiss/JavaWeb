@@ -36,6 +36,8 @@
         </tr>
     </s:iterator>
 </table>
+
+
 <jsp:include page="/common/page.jsp">
     <jsp:param name="url" value="/brand/selectBrand.action"/>
 </jsp:include>

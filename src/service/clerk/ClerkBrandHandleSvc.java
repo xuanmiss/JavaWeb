@@ -1,8 +1,6 @@
 package service.clerk;
 
 
-import dao.BrandDBAccessor;
-import dao.ClerkDBAccessor;
 import dao.Clerk_BrandDBAccessor;
 import entity.Brand;
 import entity.Clerk;
@@ -10,6 +8,7 @@ import entity.Clerk_Brand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;
+import java.util.List;
 
 
 /**
@@ -18,30 +17,47 @@ import util.PageBean;
 @Service
 public class ClerkBrandHandleSvc implements IClerkBrandHandleSvc {
     @Autowired
+    /**
+     * spring DAO对象的自动注入
+     */
     private Clerk_BrandDBAccessor clerkBrandDBAccessor;
-    @Autowired
-    private ClerkDBAccessor clerkDBAccessor;
-    @Autowired
-    private BrandDBAccessor brandDBAccessor;
 
     @Override
+    /**
+     * 添加业务的服务层支持，调用dao层的数据库操作支持
+     **/
     public void saveClerkBrand(Clerk_Brand clerkBrand){
-        clerkBrandDBAccessor.insert(clerkBrand);
+        clerkBrandDBAccessor.getSession().save(clerkBrand);
     }
-
+    /**
+     * 添加业务的服务层支持，调用dao层的数据库操作支持
+     **/
+    @Override
+    /**
+     * 修改业务状态的服务层支持，调用dao层的数据库支持
+     **/
     public void setClerkStatus(int id){
         clerkBrandDBAccessor.setClerkStatus(id);
     }
-
+    @Override
+    /**
+     * 修改业务状态的服务层支持，调用dao层的数据库支持
+     **/
     public void setClerkStatus_2(int id){
         clerkBrandDBAccessor.setClerkStatus_2(id);
     }
-
+    @Override
+    /**
+     * 删除业务的服务层支持，调用dao层的数据库支持
+     */
     public void remove(int id){
         clerkBrandDBAccessor.remove(id);
     }
 
     @Override
+    /**
+     * 获取全部业务的服务层支持，调用dao层的数据库支持
+     **/
     public PageBean<Clerk_Brand> getListByPage(int pageNo){
         PageBean<Clerk_Brand> pageBean = new PageBean<>();
         pageBean.setCurPage(pageNo);
@@ -49,28 +65,23 @@ public class ClerkBrandHandleSvc implements IClerkBrandHandleSvc {
         pageBean.setData(clerkBrandDBAccessor.getListByPage(Clerk_Brand.class,pageNo,pageBean.getRowsPerPage()));
         return pageBean;
     }
-    /**
-     * 实现表单下拉菜单栏的数据称支持（尚未实现）
-     **/
     @Override
-    public PageBean<Clerk> formClerkOpition(int pageNo){
-        PageBean<Clerk> pageBean = new PageBean<>();
-        pageBean.setCurPage(pageNo);
-        pageBean.setMaxRowCount(clerkDBAccessor.getCount(Clerk.class));
-        pageBean.setData(clerkDBAccessor.getListByPage(Clerk.class,pageNo,pageBean.getRowsPerPage()));
-        return pageBean;
-    }
     /**
-     * 实现表单下拉菜单栏的数据称支持（尚未实现）
-     **/
-    @Override
-    public PageBean<Brand> formBrandOpition(int pageNo){
-        PageBean<Brand> pageBean = new PageBean<>();
-        pageBean.setCurPage(pageNo);
-        pageBean.setMaxRowCount(brandDBAccessor.getCount(Brand.class));
-        pageBean.setData(brandDBAccessor.getListByPage(Brand.class,pageNo,pageBean.getRowsPerPage()));
-        return pageBean;
-    }
+     * 表单业务员下拉栏的服务层支持，调用dao层的数据库支持
+     */
+    public List<Clerk> formClerkOpition(){
+        List<Clerk> clerkList = clerkBrandDBAccessor.getAllClerk();
+        return clerkList;
 
+    }
+    @Override
+    /**
+     * 表单品牌下拉栏的服务层支持，调用dao层的数据库支持
+     */
+    public List<Brand> formBrandOpition(){
+        List<Brand> brandList = clerkBrandDBAccessor.getAllBrand();
+        return brandList;
+
+    }
 
 }

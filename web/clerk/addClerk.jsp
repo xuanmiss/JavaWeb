@@ -1,3 +1,5 @@
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
@@ -14,6 +16,7 @@
     </style>
 </head>
 <body>
+
 <s:form action="clerk_add.action" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="业务员姓名:"/>
@@ -23,9 +26,13 @@
     <s:label value="身份证:"/>
     <s:textfield name="clerk.identity"/>
     <br />
-    <s:fielderror fieldName="address" style="color:red" />
-    <s:label value="地址:" />
-    <s:textfield name="clerk.address" />
+    <s:fielderror fieldName="status" style="color:red" />
+    <s:label value="状态:" />
+    <s:select list="# {'0':'退休','1':'在职','2':'离职'}" listKey="key" listValue="value" name="clerk.status" headerKey="-1" headerValue="--请选择--"></s:select>
+    <br/>
+    <s:fielderror fieldName="duties" style="color:red" />
+    <s:label value="职位:" />
+    <s:select list="# {'1':'业务员','3':'经理'}" listKey="value" listValue="value" name="clerk.duties" headerKey="-1" headerValue="--请选择--"></s:select>
     <br/>
     <s:fielderror fieldName="phone" style="color:red" />
     <s:label value="手机号码:" />

@@ -34,8 +34,6 @@ public class ClerkAddAction extends ActionSupport{
 
     @Override
     public String execute()throws Exception{
-        clerk.setEntry_time(new Date());
-        clerk.setStatus(1);
 
         //保存
         clerkSvc.saveClerk(clerk);
@@ -47,14 +45,11 @@ public class ClerkAddAction extends ActionSupport{
     public void validate(){
 
         //忽略开始空字符
-        clerk.setAddress(clerk.getAddress().trim());
         //clerk.setIdentity(clerk.getIdentity().trim());
         clerk.setPhone(clerk.getPhone().trim());
         //clerk.setSalary_card(clerk.getSalary_card().trim());
         clerk.setWeichat(clerk.getWeichat().trim());
         clerk.setName(clerk.getName().trim());
-        clerk.setStatus(1);
-        clerk.setDuties("业务员");
         clerk.setEntry_time(new Date());
 
         //业务员姓名
@@ -65,13 +60,22 @@ public class ClerkAddAction extends ActionSupport{
         //业务员身份证
         if(clerkSvc.isExist(clerk.getIdentity(), "identity"))
             addFieldError("identity", "该身份证已被注册！");
-        if(!clerk.getIdentity().matches("^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)"))
+        else if(!IdentityUtil.isValidatedAllIdcard(clerk.getIdentity()))
             addFieldError("identity", "身份证格式出错！");
 
 
         //业务员手机号
         if(clerkSvc.isExist(clerk.getPhone(), "phone"))
             addFieldError("phone", "该手机号已被注册！");
+        else if(!clerk.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")))
+            addFieldError("phone", "手机号码格式错误！");
+        //业务员状态
+        if(clerk.getStatus() < 0)
+            addFieldError("status", "请选择业务员状态！");
+
+        //业务员职位
+        if(clerk.getDuties().equals("-1"))
+            addFieldError("status", "请选择业务员职位！");
 
 
         //设置生日
@@ -83,7 +87,14 @@ public class ClerkAddAction extends ActionSupport{
         clerk.setSalaryStandard(ss);
 
         //设置性别
-        clerk.setSex('0');
+        clerk.setSex(IdentityUtil.getSexByIdentity(clerk.getIdentity()));
+
+        //设置地址
+        try{
+            clerk.setAddress(IdentityUtil.getHomelandByIdentity(clerk.getIdentity()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         //设置工资卡
         clerk.setSalary_card("a123");
