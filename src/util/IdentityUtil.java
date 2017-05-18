@@ -354,13 +354,13 @@ public class IdentityUtil {
     public static char getSexByIdentity(String id){
         String id17 = id.substring(16, 17);
         if (Integer.parseInt(id17) % 2 != 0) {
-            return '1';
+            return 'm';
         } else {
-            return '0';
+            return 'f';
         }
     }
 
-    public static String getHomelandByIdentity(String id) throws Exception{
+    public static String getHomelandByIdentity(String id){
         String provinceId = id.substring(0, 2);
         Set<String> key = cityCodeMap.keySet();
         for (String idcard : key) {
@@ -368,7 +368,7 @@ public class IdentityUtil {
                 return cityCodeMap.get(idcard);
             }
         }
-        throw new Exception("Not found！");
+        return "Error!";
     }
 
 }
