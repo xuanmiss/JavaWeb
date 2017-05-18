@@ -72,7 +72,7 @@ public class ClientUpdateAction extends ActionSupport{
         //业务员姓名
         //判断是否为空
         if(StringUtil.isEmptyString(client.getName()))
-            addFieldError("name", "业务员姓名不能为空！");
+            addFieldError("name", "客户姓名不能为空！");
 
     }
 
