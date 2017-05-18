@@ -335,17 +335,6 @@ public class IdentityUtil {
         return a;
     }
 
-    public static void main(String[] args) throws Exception {
-
-        String idcard = "500111198608017695";
-        IdentityUtil iv = new IdentityUtil();
-        boolean flag = false;
-        flag = iv.isValidatedAllIdcard(idcard);
-        System.out.println(flag);
-        System.out.println(iv.getBirthdayByIdentiy(idcard));
-        System.out.println(iv.getSexByIdentity(idcard));
-        System.out.println(iv.getHomelandByIdentity(idcard));
-    }
 
     public static Date getBirthdayByIdentiy(String id){
 
