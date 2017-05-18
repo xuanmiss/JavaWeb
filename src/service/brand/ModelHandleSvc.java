@@ -40,10 +40,7 @@ public class ModelHandleSvc implements IModelHandleSvc{
 
     @Override
     public boolean delect(int modelId) {
-        if(batchAcc.countOfModel(modelId)>0)
-            return false;
-        modelAcc.delete(modelId,Model.class);
-        return true;
+        return modelAcc.delete(modelId,Model.class);
     }
 
     @Override

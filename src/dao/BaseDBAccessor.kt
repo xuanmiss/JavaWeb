@@ -35,10 +35,11 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
      * @param clazz 记录对应的entity.class
      * @return void
      */
+
     override fun delete(id: Int, clazz: Class<T>):Boolean {
-        val session=getSession()
-        return session.createQuery("delete t from ${clazz.name} as t where t.id = ${id}")
-                .executeUpdate() !=0
+        delete(getObj(clazz,id))
+        getSession().clear()
+        return getObj(clazz,id)==null
     }
 
     /**
