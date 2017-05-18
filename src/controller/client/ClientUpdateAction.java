@@ -10,9 +10,9 @@ import util.StringUtil;
 /**
  * Created by miss on 2017/5/18.
  */
+
 @Controller("updateClient")
 @Scope("prototype")
-
 public class ClientUpdateAction extends ActionSupport{
     @Autowired
     private IClientHandleSvc clientSvc;
@@ -29,7 +29,7 @@ public class ClientUpdateAction extends ActionSupport{
         this.update = update;
     }
 
-    private Client client;
+    private Client client = new Client();
 
     public int getClientId() {
         return clientId;
@@ -55,7 +55,7 @@ public class ClientUpdateAction extends ActionSupport{
         }
         else{
             check();
-            clientSvc.updateClient(client);
+            clientSvc.saveClient(client);
             return "show";
         }
     }
@@ -69,7 +69,7 @@ public class ClientUpdateAction extends ActionSupport{
         client.setWeichat(client.getWeichat().trim());
         client.setCard(client.getCard().trim());
 
-        //业务员姓名
+        //客户姓名
         //判断是否为空
         if(StringUtil.isEmptyString(client.getName()))
             addFieldError("name", "客户姓名不能为空！");
