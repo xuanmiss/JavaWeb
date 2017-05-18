@@ -2,6 +2,7 @@ package controller.clerk;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.clerk.IClerkHandleSvc;
 
@@ -9,6 +10,7 @@ import service.clerk.IClerkHandleSvc;
  * Created by Administrator on 2017/5/15.
  */
 @Controller("deleteClerk")
+@Scope("prototype")
 public class ClerkDeleteAction extends ActionSupport{
 
     @Autowired

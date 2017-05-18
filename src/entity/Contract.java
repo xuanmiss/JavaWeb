@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by ymcvalu on 2017/5/6.
  */
-@Entity
+
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

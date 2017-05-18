@@ -26,7 +26,15 @@ public class Order {
 
     private int status;
 
+    private int clerk;
 
+    public int getClerk() {
+        return clerk;
+    }
+
+    public void setClerk(int clerk) {
+        this.clerk = clerk;
+    }
 
     @ManyToOne(targetEntity = Client.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver", referencedColumnName = "id",unique = true)

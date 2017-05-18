@@ -10,7 +10,9 @@
 
         <action name="clerk_*" class="{1}Clerk">
             <result name="input">/clerk/addClerk.jsp</result>
-            <result name="show" type="redirect">clerk_select</result>
+            <result name="show" type="redirectAction">
+                <param name="actionName">clerk_select</param>
+            </result>
             <result name="update">/clerk/updateClerk.jsp</result>
             <result name="list">/clerk/listClerk.jsp</result>
         </action>

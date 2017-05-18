@@ -13,12 +13,16 @@ import javax.annotation.Resource
  * 所有dao都应继承该类
  */
 open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
+
+
     //自动注入session工厂
     @Autowired
     override var sessionFac: SessionFactory? =null
 
+
     //获取session
     override fun getSession(): Session=sessionFac!!.currentSession
+
 
     /**
      * 插入对象
@@ -29,6 +33,7 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
         getSession()!!.saveOrUpdate(t)
     }
 
+
     /**
      * 删除指定类的指定id的记录
      * @param id 要删除的记录主键
@@ -36,11 +41,13 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
      * @return void
      */
 
+
     override fun delete(id: Int, clazz: Class<T>):Boolean {
         delete(getObj(clazz,id))
         getSession().clear()
         return getObj(clazz,id)==null
     }
+
 
     /**
      * 删除指定对象记录

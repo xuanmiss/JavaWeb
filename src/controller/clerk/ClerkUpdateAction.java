@@ -3,6 +3,7 @@ package controller.clerk;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Clerk;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.clerk.IClerkHandleSvc;
 import util.StringUtil;
@@ -11,6 +12,7 @@ import util.StringUtil;
  * Created by Administrator on 2017/5/14.
  */
 @Controller("updateClerk")
+@Scope("prototype")
 public class ClerkUpdateAction extends ActionSupport{
 
     @Autowired

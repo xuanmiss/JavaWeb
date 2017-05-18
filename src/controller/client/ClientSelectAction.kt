@@ -12,7 +12,7 @@ import util.PageBean
  */
 
 @Controller("selectClient")
-@Scope("request")
+@Scope("prototype")
 open class ClientSelectAction:ActionSupport(){
     @Autowired
     private lateinit var clientSvc: IClientHandleSvc
@@ -20,6 +20,7 @@ open class ClientSelectAction:ActionSupport(){
     open var pageNo:Int=1
     override fun execute(): String {
         pageBean=clientSvc.getListByPage(pageNo)
+        println("select ${pageBean!!.data!!.size}")
         return SUCCESS
     }
 }

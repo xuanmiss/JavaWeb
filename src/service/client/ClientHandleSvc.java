@@ -34,7 +34,6 @@ public class ClientHandleSvc implements IClientHandleSvc{
         @Override
         public boolean deleteClient(int clientId) {
             Client client = findById(clientId);
-
                 clientAcc.delete(client);
                 return true;
 

@@ -5,6 +5,7 @@ import entity.Brand;
 import entity.Clerk;
 import entity.Clerk_Brand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.clerk.ClerkBrandHandleSvc;
 import util.PageBean;
@@ -16,6 +17,7 @@ import java.util.List;
  * Created by LCQ on 2017/5/14.
  */
 @Controller("ClerkBrand")
+@Scope("prototype")
 public class ClerkBrandAction extends ActionSupport{
     @Autowired
     private ClerkBrandHandleSvc clerkBrandHandleSvc;

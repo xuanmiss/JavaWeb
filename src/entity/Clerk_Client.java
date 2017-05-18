@@ -13,7 +13,7 @@ public class Clerk_Client {
     Integer id;
     private int clerk; //clerk外键
     private int client; //client外键
-    private int contract; //外键合同
+
 
     public Integer getId() {
         return id;
@@ -39,13 +39,7 @@ public class Clerk_Client {
         this.client = client;
     }
 
-    public int getContract() {
-        return contract;
-    }
 
-    public void setContract(int contract) {
-        this.contract = contract;
-    }
 
 
     @Override

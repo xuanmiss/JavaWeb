@@ -1,6 +1,7 @@
 package controller.client;
 
 import entity.Client;
+import org.springframework.context.annotation.Scope;
 import service.client.IClientHandleSvc;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import util.StringUtil;
  * Created by miss on 2017/5/18.
  */
 @Controller("updateClient")
+@Scope("prototype")
+
 public class ClientUpdateAction extends ActionSupport{
     @Autowired
     private IClientHandleSvc clientSvc;

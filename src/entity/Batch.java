@@ -17,16 +17,7 @@ public class Batch {
     @ManyToOne(targetEntity = Model.class)
     @JoinColumn(name = "model",nullable = false)
     private Model model; //外键品牌型号
-    @OneToOne(targetEntity = Stock.class,mappedBy ="batch" )
-    private Stock stock; //对应库存
 
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
 
     public Model getModel() {
         return model;
