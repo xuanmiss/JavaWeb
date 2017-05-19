@@ -35,7 +35,6 @@
                 <value>entity.Client</value>
                 <value>entity.Clerk_Client</value>
                 <value>entity.Clerk_Brand</value>
-
                 <value>entity.Model</value>
                 <value>entity.Order</value>
                 <value>entity.Purchase_Order</value>

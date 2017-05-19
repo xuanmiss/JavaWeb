@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * 公司基本薪金实现类
  * ...
  */
-@Repository("salaryStandardAcc")
+@Repository
 public class SalaryStandardDBAccessor extends BaseDBAccessor<SalaryStandard> implements ISalaryStandardDBAccessor {
     /**
      * 声明新方法

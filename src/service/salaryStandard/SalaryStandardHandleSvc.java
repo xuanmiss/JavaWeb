@@ -9,7 +9,7 @@ import util.PageBean;
 /**
  * Created by Administrator on 2017/5/13/013.
  */
-@Service("salaryStandardHandler")
+@Service
 public class SalaryStandardHandleSvc implements ISalaryStandardHandleSvc  {
     @Autowired
     private ISalaryStandardDBAccessor salaryStandardAcc;
