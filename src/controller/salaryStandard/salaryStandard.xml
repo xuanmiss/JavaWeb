@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="salaryStandard" namespace="/salaryStandard" extends="my-default">
+        <action name="salaryStandardAdd" class="salaryStandardAdd">
+            <!--<param name="savePath">resources\logo</param>-->
+            <result type="redirect">selectSalaryStandard</result>
+            <result name="input">/salaryStandard/addSalaryStandard.jsp</result>
+        </action>
+        <action name="selectSalaryStandard" class="selectSalaryStandard">
+            <result>/salaryStandard/listSalaryStandard.jsp</result>
+        </action>
+
+        <action name="findByIdSalaryStandard" class="findByIdSalaryStandard">
+            <result>/salaryStandard/showSalaryStandard.jsp</result>
+        </action>
+
+        <action name="updateSalaryStandard" class="updateSalaryStandard">
+            <result type="redirect">selectSalaryStandard</result>
+            <result name="input">/salaryStandard/showSalaryStandard.jsp</result>
+        </action>
+
+        <action name="deleteSalaryStandard" class="deleteSalaryStandard">
+            <result type="redirect">selectSalaryStandard</result>
+            <result name="error">/selectSalaryStandard/deleteError.jsp</result>
+        </action>
+
+        <action name="*">
+            <result>/salaryStandard/{1}.jsp</result>
+        </action>
+    </package>
+</struts>
