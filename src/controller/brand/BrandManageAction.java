@@ -15,7 +15,7 @@ import service.brand.IBrandHandleSvc;
 public class BrandManageAction extends ActionSupport{
     private Brand brand;
     private int brandId;
-    //用于删除品牌时作为标记，默认为0，不可删除时置为1
+    //用于删除品牌时作为标记，默认为0，不可删除时置为 1
     private int isExit=0;
     @Autowired
     private IBrandHandleSvc brandSvc;

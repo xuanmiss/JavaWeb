@@ -21,7 +21,8 @@
     </style>
 </head>
 <body>
-<s:form action="clientupdate.action?update=1" method="POST"  namespace="/client" theme="simple" enctype="multipart/form-data">
+<s:form action="clientupdate.action?update=1" method="POST"  namespace="/client" theme="simple" >
+    <input type="hidden" name="client.id" value="<s:property value="client.id"/>"/>
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="客户姓名:"/>
     <s:textfield name="client.name" />

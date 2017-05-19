@@ -26,4 +26,5 @@ public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAc
                 .setString("1", value)
                 .uniqueResult()>0;
     }
+
 }
