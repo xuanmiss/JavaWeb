@@ -1,9 +1,8 @@
 package service.brand;
 
+
 import dao.IBrandDBAccessor;
 import entity.Brand;
-import entity.Model;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;

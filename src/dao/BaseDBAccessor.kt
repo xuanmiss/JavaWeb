@@ -44,7 +44,11 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
 
     override fun delete(id: Int, clazz: Class<T>):Boolean {
         delete(getObj(clazz,id))
-        getSession().clear()
+        try{
+            getSession().flush()
+        }catch (e:Exception){
+            return false
+        }
         return getObj(clazz,id)==null
     }
 
