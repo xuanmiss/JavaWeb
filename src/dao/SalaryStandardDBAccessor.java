@@ -23,7 +23,7 @@ public class SalaryStandardDBAccessor extends BaseDBAccessor<SalaryStandard> imp
      * @return SalaryStandard
      */
     @Override
-    public SalaryStandard findByID(Object object){
-        return null;
-    };
+    public SalaryStandard findByID(Integer id){
+        return (SalaryStandard) getObj(SalaryStandard.class, id);
+    }
 }
