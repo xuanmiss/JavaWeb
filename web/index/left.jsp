@@ -108,8 +108,10 @@
                     财务管理
                 </a>
                     <ul>
-                        <li><a href="" target="dmMain">品牌查询</a></li>
-                        <li><a href="" target="dmMain">新增品牌</a></li>
+                        <li><a href="/test/test.action" target="dmMain">基础数据</a></li>
+                        <li><a href="/test/test.action" target="dmMain">预算管理</a></li>
+                        <li><a href="/test/test.action" target="dmMain">资金收支</a></li>
+                        <li><a href="/finance/selectOrder.action" target="dmMain">业绩统计</a></li>
                     </ul>
                 </li>
 
