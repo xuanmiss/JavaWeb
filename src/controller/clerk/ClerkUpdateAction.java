@@ -2,11 +2,15 @@ package controller.clerk;
 
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Clerk;
+import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.clerk.IClerkHandleSvc;
+import service.salaryStandard.ISalaryStandardHandleSvc;
 import util.StringUtil;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/5/14.
@@ -16,11 +20,16 @@ import util.StringUtil;
 public class ClerkUpdateAction extends ActionSupport{
 
     @Autowired
+    private ISalaryStandardHandleSvc salarySvc;
+
+    @Autowired
     private IClerkHandleSvc clerkHandleSvc;
 
     private int clerkId;
 
     private int update = 0;
+
+    private List<SalaryStandard> listOfSalaryStandard;
 
     public int getUpdate() {
         return update;
@@ -48,10 +57,19 @@ public class ClerkUpdateAction extends ActionSupport{
         this.clerk = clerk;
     }
 
+    public List<SalaryStandard> getListOfSalaryStandard() {
+        return listOfSalaryStandard;
+    }
+
+    public void setListOfSalaryStandard(List<SalaryStandard> listOfSalaryStandard) {
+        this.listOfSalaryStandard = listOfSalaryStandard;
+    }
+
     @Override
     public String execute(){
         if(update == 0){
             clerk = clerkHandleSvc.findById(clerkId);
+            listOfSalaryStandard = salarySvc.getAll();
             return "update";
         }
         else{
@@ -63,8 +81,10 @@ public class ClerkUpdateAction extends ActionSupport{
             preClerk.setName(clerk.getName());
             preClerk.setStatus(clerk.getStatus());
             preClerk.setSex(clerk.getSex());
+            preClerk.setSalaryStandard(clerk.getSalaryStandard());
             clerkHandleSvc.saveClerk(preClerk);
             return "show";
+
         }
     }
 

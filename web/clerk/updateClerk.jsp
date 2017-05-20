@@ -32,6 +32,10 @@
     <s:label value="状态:" />
     <s:select list="# {'0':'退休','1':'在职','2':'离职'}" listKey="key" listValue="value" name="clerk.status" headerKey="clerk.status"></s:select>
     <br/>
+    <s:fielderror fieldName="salaryStandard" style="color:red"/>
+    <s:label value="薪资标准:"/>
+    <s:select list="listOfSalaryStandard" listKey="id" name="clerk.salaryStandard.id" listValue="toString()" headerKey="toString()"/>
+    <br />
     <s:fielderror fieldName="phone" style="color:red" />
     <s:label value="手机号码:" />
     <s:textfield name="clerk.phone" />
