@@ -7,7 +7,7 @@
 %>
 <html>
 <head>
-    <title>业务员查看</title>
+    <title>薪资标准查看</title>
     <base href="<%=basePath%>">
     <style type="text/css">
         td {text-align:center;padding:5px;margin:5px;}
@@ -16,30 +16,27 @@
     </style>
 </head>
 <body>
-<h1 align="center">业务员列表</h1>
+<h1 align="center">薪资标准列表</h1>
 <table align="center">
     <tr>
-        <th>业务员编号</th>
-        <th>姓名</th>
-        <th>性别</th>
-        <th>身份证号</th>
+        <th>编号</th>
+        <th>基础工资</th>
+        <th>提成</th>
+        <th>描述</th>
         <th>操作</th>
     </tr>
     <s:iterator value="pageBean.data" var="it">
         <tr>
             <td><s:property value="#it.id"/> </td>
-            <td><s:property value="#it.name"/></td>
-            <td><s:if test="#it.sex=='m'">男</s:if><s:else>女</s:else></td>
-            <td><s:property value="#it.identity"/></td>
-            <td>
-                <a href="/clerk/clerk_update.action?clerkId=<s:property value="#it.id"/>">修改</a>
-                <a href="/clerk/clerk_delete.action?clerkId=<s:property value="#it.id"/>">删除</a>
-            </td>
+            <td><s:property value="#it.basicSalary"/></td>
+            <td><s:property value="#it.commission"/></td>
+            <td><s:property value="#it.description"/></td>
+            <td><a href="/salaryStandard/findByIdSalaryStandard.action?id=<s:property value="#it.id"/>">修改</a> <a href="/salaryStandard/deleteSalaryStandard.action?id=<s:property value="#it.id"/>">删除</a></td>
         </tr>
     </s:iterator>
 </table>
 <jsp:include page="/common/page.jsp">
-    <jsp:param name="url" value="/clerk/clerkSelect.action"/>
+    <jsp:param name="url" value="/salaryStandard/selectSalaryStandard.action"/>
 </jsp:include>
 </body>
 </html>

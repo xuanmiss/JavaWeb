@@ -51,13 +51,19 @@ public class ClerkUpdateAction extends ActionSupport{
     @Override
     public String execute(){
         if(update == 0){
-
             clerk = clerkHandleSvc.findById(clerkId);
             return "update";
         }
         else{
             check();
-            clerkHandleSvc.saveClerk(clerk);
+            Clerk preClerk = clerkHandleSvc.findById(clerk.getId());
+            preClerk.setAddress(clerk.getAddress());
+            preClerk.setWeichat(clerk.getWeichat());
+            preClerk.setPhone(clerk.getPhone());
+            preClerk.setName(clerk.getName());
+            preClerk.setStatus(clerk.getStatus());
+            preClerk.setSex(clerk.getSex());
+            clerkHandleSvc.saveClerk(preClerk);
             return "show";
         }
     }
@@ -67,12 +73,16 @@ public class ClerkUpdateAction extends ActionSupport{
         //忽略开始空字符
         clerk.setAddress(clerk.getAddress().trim());
         clerk.setWeichat(clerk.getWeichat().trim());
+        clerk.setPhone(clerk.getPhone().trim());
         clerk.setName(clerk.getName().trim());
 
-        //业务员姓名
         //判断是否为空
+        //业务员姓名
         if(StringUtil.isEmptyString(clerk.getName()))
             addFieldError("name", "业务员姓名不能为空！");
+        //判断手机号码
+        if(!clerk.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")))
+            addFieldError("phone", "手机号码格式错误！");
 
     }
 

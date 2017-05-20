@@ -21,6 +21,6 @@ public interface ISalaryStandardDBAccessor extends IBaseDBAccessor<SalaryStandar
      * 根据ID查找SalaryStandard
      * @return SalaryStandard
      */
-    SalaryStandard findByID(Object object);
+    SalaryStandard findByID(Integer id);
 
 }

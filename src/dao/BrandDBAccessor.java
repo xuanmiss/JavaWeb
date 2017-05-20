@@ -3,6 +3,7 @@ package dao;
 import entity.Brand;
 import entity.Model;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

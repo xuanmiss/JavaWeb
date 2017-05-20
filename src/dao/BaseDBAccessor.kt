@@ -44,7 +44,11 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
 
     override fun delete(id: Int, clazz: Class<T>):Boolean {
         delete(getObj(clazz,id))
-        getSession().clear()
+        try{
+            getSession().flush()
+        }catch (e:Exception){
+            return false
+        }
         return getObj(clazz,id)==null
     }
 
@@ -64,7 +68,7 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
      * @return 记录数
      */
     override fun getCount(clazz: Class<T>): Int {
-        return (getSession().createQuery("select count(*) from ${clazz.simpleName}")
+        return (getSession().createQuery("select count(*) from ${clazz.name}")
                 .uniqueResult() as Long).toInt()
 
     }
@@ -86,7 +90,7 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
      * @return 返回list
      */
     override fun getListByPage(clazz: Class<T>, pageNo: Int, rows: Int): List<T>
-            = getSession().createQuery("from ${clazz.simpleName}")
+            = getSession().createQuery("from ${clazz.name}")
             .setFirstResult((pageNo-1)*rows)
             .setMaxResults(rows)
             .list() as List<T>

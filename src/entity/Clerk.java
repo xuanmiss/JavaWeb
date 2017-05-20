@@ -1,5 +1,8 @@
 package entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -41,6 +44,7 @@ public class Clerk {
     private SalaryStandard salaryStandard;
 
     @OneToMany(targetEntity = Client.class,fetch = FetchType.LAZY,mappedBy = "clerk")
+    @Fetch(FetchMode.SUBSELECT)
      private Set<Client> clients;
 
 

@@ -11,6 +11,7 @@ import util.IdentityUtil;
 import util.StringUtil;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by Administrator on 2017/5/13.
@@ -69,18 +70,17 @@ public class ClerkAddAction extends ActionSupport{
             addFieldError("phone", "该手机号已被注册！");
         else if(!clerk.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")))
             addFieldError("phone", "手机号码格式错误！");
-        //业务员状态
-        if(clerk.getStatus() < 0)
-            addFieldError("status", "请选择业务员状态！");
 
         //业务员职位
-        if(clerk.getDuties().equals("-1"))
-            addFieldError("status", "请选择业务员职位！");
+        clerk.setDuties("业务员");
 
+        //设置业务员状态
+        clerk.setStatus(1);
 
         //设置生日
         clerk.setBirthday(IdentityUtil.getBirthdayByIdentiy(clerk.getIdentity()));
 
+        //TODO:增加ListOfSalary
         //设置薪资
         SalaryStandard ss = new SalaryStandard();
         ss.setId(1);
@@ -90,14 +90,13 @@ public class ClerkAddAction extends ActionSupport{
         clerk.setSex(IdentityUtil.getSexByIdentity(clerk.getIdentity()));
 
         //设置地址
-        try{
-            clerk.setAddress(IdentityUtil.getHomelandByIdentity(clerk.getIdentity()));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        clerk.setAddress(IdentityUtil.getHomelandByIdentity(clerk.getIdentity()));
 
         //设置工资卡
-        clerk.setSalary_card("a123");
+        long random = new Random().nextInt(999999999);
+        while(clerkSvc.isExist((Long.toString(random)), "salary_card"))
+            random = new Random().nextInt(999999999);
+        clerk.setSalary_card(Long.toString(random));
     }
 
 }
