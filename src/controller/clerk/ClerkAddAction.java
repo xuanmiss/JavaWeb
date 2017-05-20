@@ -121,4 +121,5 @@ public class ClerkAddAction extends ActionSupport{
         clerk.setSalary_card(Long.toString(random));
     }
 
+
 }

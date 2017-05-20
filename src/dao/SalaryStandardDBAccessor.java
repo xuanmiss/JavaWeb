@@ -31,7 +31,7 @@ public class SalaryStandardDBAccessor extends BaseDBAccessor<SalaryStandard> imp
 
     @Override
     public List<SalaryStandard> getAll(){
-        return getSession().createQuery("from SalaryStandard").list();
+        return getSession().createQuery("from entity.SalaryStandard").list();
     }
 
 }

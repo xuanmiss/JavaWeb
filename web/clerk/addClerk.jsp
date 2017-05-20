@@ -28,7 +28,7 @@
     <br />
     <s:fielderror fieldName="salaryStandard" style="color:red"/>
     <s:label value="薪资标准:"/>
-    <s:select list="listOfSalaryStandard" listKey="id" name="clerk.salaryStandard.id" listValue="toString()" headerKey="toString()"/>
+    <s:select list="listOfSalaryStandard" listKey="id" name="clerk.salaryStandard.id" listValue="toString()" />
     <br />
     <s:fielderror fieldName="phone" style="color:red" />
     <s:label value="手机号码:" />
