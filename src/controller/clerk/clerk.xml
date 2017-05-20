@@ -15,6 +15,7 @@
             </result>
             <result name="update">/clerk/updateClerk.jsp</result>
             <result name="list">/clerk/listClerk.jsp</result>
+            <result name="add">/clerk/addClerk.jsp</result>
         </action>
         <action name="*">
             <result>/clerk/{1}.jsp</result>

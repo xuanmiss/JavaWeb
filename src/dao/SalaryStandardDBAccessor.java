@@ -3,6 +3,8 @@ package dao;
 import entity.SalaryStandard;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/5/7.
  */
@@ -26,4 +28,10 @@ public class SalaryStandardDBAccessor extends BaseDBAccessor<SalaryStandard> imp
     public SalaryStandard findByID(Integer id){
         return (SalaryStandard) getObj(SalaryStandard.class, id);
     }
+
+    @Override
+    public List<SalaryStandard> getAll(){
+        return getSession().createQuery("from SalaryStandard").list();
+    }
+
 }

@@ -5,7 +5,8 @@ import javax.persistence.*;
 /**
  * Created by ymcvalu on 2017/5/6.
  */
-@Entity(name="salary_standard")
+@Entity
+@Table(name = "salary_standard")
 public class SalaryStandard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,5 +69,10 @@ public class SalaryStandard {
         result=result*31+id*id;
         result=result*31+id*id*id;
         return result;
+    }
+
+    @Override
+    public String toString(){
+        return "基础工资:" + this.getBasicSalary() + " 提成:" + this.getCommission() + "%";
     }
 }
