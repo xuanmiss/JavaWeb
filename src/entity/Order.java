@@ -26,13 +26,14 @@ public class Order {
 
     private int status;
 
-    private int clerk;
+    @ManyToOne(targetEntity = Clerk.class,fetch = FetchType.LAZY)
+    @JoinColumn(name = "Clerk",referencedColumnName = "id",unique = true)
+    private Clerk clerk;
 
-    public int getClerk() {
+    public Clerk getClerk() {
         return clerk;
     }
-
-    public void setClerk(int clerk) {
+    public void setClerk(Clerk clerk) {
         this.clerk = clerk;
     }
 
