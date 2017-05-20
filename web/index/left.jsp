@@ -128,7 +128,7 @@
 
                     <ul>
                         <li><a href="/clerk/clerk_select.action" target="dmMain">业务员查询</a></li>
-                        <li><a href="/clerk/addClerk.jsp" target="dmMain">新增业务员</a></li>
+                        <li><a href="/clerk/clerk_add.action" target="dmMain">新增业务员</a></li>
                         <li><a href="/clerkBrand/formAction.action" target="dmMain">新增业务</a></li>
                         <li><a href="/clerkBrand/selectAction.action" target="dmMain">业务查询</a></li>
                         <li><a href="/salaryStandard/selectSalaryStandard.action" target="dmMain">薪资标准查询</a></li>

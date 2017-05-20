@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.clerk.IClerkHandleSvc;
+import service.salaryStandard.ISalaryStandardHandleSvc;
 import util.IdentityUtil;
 import util.StringUtil;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -21,6 +23,27 @@ import java.util.Random;
 public class ClerkAddAction extends ActionSupport{
 
     private Clerk clerk;
+    private int add = 0;
+    private List<SalaryStandard> listOfSalaryStandard;
+
+    public int getAdd() {
+        return add;
+    }
+
+    public void setAdd(int add) {
+        this.add = add;
+    }
+
+    public List<SalaryStandard> getListOfSalaryStandard() {
+        return listOfSalaryStandard;
+    }
+
+    public void setListOfSalaryStandard(List<SalaryStandard> listOfSalaryStandard) {
+        this.listOfSalaryStandard = listOfSalaryStandard;
+    }
+
+    @Autowired
+    private ISalaryStandardHandleSvc salarySvc;
 
     @Autowired
     private IClerkHandleSvc clerkSvc;
@@ -36,15 +59,20 @@ public class ClerkAddAction extends ActionSupport{
     @Override
     public String execute()throws Exception{
 
-        //保存
-        clerkSvc.saveClerk(clerk);
-
-        return "show";
+        if(add == 1){
+            check();
+            //保存
+            clerkSvc.saveClerk(clerk);
+            return "show";
+        }
+        else{
+            listOfSalaryStandard = salarySvc.getAll();
+            return "add";//返回添加页面
+        }
     }
 
-    @Override
-    public void validate(){
-
+    public void check(){
+        add = 0;
         //忽略开始空字符
         //clerk.setIdentity(clerk.getIdentity().trim());
         clerk.setPhone(clerk.getPhone().trim());
@@ -79,12 +107,6 @@ public class ClerkAddAction extends ActionSupport{
 
         //设置生日
         clerk.setBirthday(IdentityUtil.getBirthdayByIdentiy(clerk.getIdentity()));
-
-        //TODO:增加ListOfSalary
-        //设置薪资
-        SalaryStandard ss = new SalaryStandard();
-        ss.setId(1);
-        clerk.setSalaryStandard(ss);
 
         //设置性别
         clerk.setSex(IdentityUtil.getSexByIdentity(clerk.getIdentity()));
