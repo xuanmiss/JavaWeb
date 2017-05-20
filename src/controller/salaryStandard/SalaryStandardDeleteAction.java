@@ -34,4 +34,6 @@ public class SalaryStandardDeleteAction extends ActionSupport {
     public void setId(Integer id) {
         this.id = id;
     }
+
+
 }
