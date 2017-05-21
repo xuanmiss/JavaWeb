@@ -6,6 +6,9 @@
 
 <struts>
     <package name="brand" namespace="/brand" extends="my-default">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
+        </result-types>
         <action name="requestAddBrand">
             <interceptor-ref name="manager-only-def"/>
             <result>/brand/addBrand.jsp</result>
@@ -71,6 +74,11 @@
                 <param name="actionName">selectModel</param>
                 <param name="brandId">${brandId}</param>
                 <param name="flag">${flag}</param>
+            </result>
+        </action>
+        <action name="getModel" class="selectModel" method="loadModel">
+            <result type="json">
+                <param name="root">model</param>
             </result>
         </action>
 

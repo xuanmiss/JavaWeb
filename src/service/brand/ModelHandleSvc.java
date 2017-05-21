@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;
 
+import javax.jws.WebParam;
 import java.util.List;
 
 /**
@@ -59,5 +60,10 @@ public class ModelHandleSvc implements IModelHandleSvc{
 
     public void setModelAcc(IModelDBAccessor modelAcc) {
         this.modelAcc = modelAcc;
+    }
+
+    @Override
+    public Model getModel(int id) {
+        return modelAcc.getObj(Model.class,id);
     }
 }

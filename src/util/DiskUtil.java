@@ -13,6 +13,7 @@ import java.io.IOException;
 public class DiskUtil {
     public static void write(String desUrl,String srcUrl)throws IOException{
         write(new File(desUrl),new File(srcUrl));
+        
     }
 
     public static void write(String desUrl, File src)throws IOException{

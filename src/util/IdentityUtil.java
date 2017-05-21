@@ -154,7 +154,7 @@ public class IdentityUtil {
             }
             if (birthdate == null || new Date().before(birthdate)) {
                 return false;
-            }
+        }
 
             // 判断是否为合法的年份
             GregorianCalendar curDay = new GregorianCalendar();

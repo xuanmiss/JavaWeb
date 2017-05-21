@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/5/13/013.
  */
@@ -43,5 +45,8 @@ public class SalaryStandardHandleSvc implements ISalaryStandardHandleSvc  {
         return salaryStandardAcc.delete(id, salaryStandardClass);
     }
 
+    public List<SalaryStandard> getAll(){
+        return salaryStandardAcc.getAll();
+    }
 
 }

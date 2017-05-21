@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<h1>业务员业务更改</h1>
 <s:form action="saveAction" method="POST"  namespace="/clerkBrand" theme="simple" enctype="multipart/form-data">
 
     <s:label value="业务员姓名:"/>

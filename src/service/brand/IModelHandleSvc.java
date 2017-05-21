@@ -15,4 +15,5 @@ public interface IModelHandleSvc {
     void saveModel(Model model);
     void updateModel(Model model);
     boolean delect(int modelId);
+    Model getModel(int id);
 }
