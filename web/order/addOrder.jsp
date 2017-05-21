@@ -71,13 +71,12 @@
                     }
                 })
             }
-
         }
     </script>
 </head>
 <body>
 <h1>新增订单</h1>
-<s:form action="handleAdd" namespace="/order" method="POST" theme="simple">
+<s:form action="handleAdd" namespace="/order" theme="simple" >
     <s:label value="选择客户："/>
     <s:select id="selectClient" name="order.receiver.id" list="clients" listKey="id" listValue="name"/>
     <br/>
@@ -91,12 +90,10 @@
     <s:label value="数量："/>
     <input type="number" name="order.quantity" required="true" min="1" max="10000" value="1"/>
     <br/>
-    <s:submit value="提交" class="btn btn-default"/>
+    <s:submit value="提交" class="btn btn-default" id="submitOrder"/>
     <s:reset value="重置" class="btn btn-default"/>
 
 </s:form>
-
-
 
 
 
