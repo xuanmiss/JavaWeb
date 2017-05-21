@@ -2,9 +2,12 @@ package service.clerk;
 
 import dao.IClerkDBAccessor;
 import entity.Clerk;
+import entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/5/11.
@@ -42,4 +45,6 @@ public class ClerkHandleSvc implements IClerkHandleSvc {
     public Clerk findById(int id) {
         return clerkDBAccessor.getObj(Clerk.class,id);
     }
+
+
 }

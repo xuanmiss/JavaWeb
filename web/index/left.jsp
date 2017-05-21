@@ -89,7 +89,7 @@
                 </a>
 
                     <ul>
-                        <li><a href="" target="dmMain">品牌查询</a></li>
+                        <li><a href="/order/requesAdd.action" target="dmMain">新增订单</a></li>
                         <li><a href="" target="dmMain">新增品牌</a></li>
                     </ul>
                 </li>

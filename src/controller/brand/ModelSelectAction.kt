@@ -1,5 +1,6 @@
 package controller.brand
 
+import com.opensymphony.xwork2.Action
 import com.opensymphony.xwork2.ActionSupport
 import entity.Model
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +18,8 @@ import util.PageBean
 open class ModelSelectAction:ActionSupport(){
     open var flag:Int=0
     open var brandId=0
-
+    open lateinit var model:Model
+    open var modelId:Int=0
     open lateinit var pageBean:PageBean<Model>
     @Autowired
     private lateinit var modelSvc:IModelHandleSvc
@@ -30,5 +32,11 @@ open class ModelSelectAction:ActionSupport(){
         pageBean=modelSvc.getListByPage(brandId,pageNo)
         brand=brandSvc.getBrandName(brandId)
         return SUCCESS
+    }
+
+    open fun loadModel():String{
+        model=modelSvc.getModel(modelId)
+        model.batches=null
+        return Action.SUCCESS
     }
 }
