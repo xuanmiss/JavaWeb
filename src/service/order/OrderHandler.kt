@@ -47,4 +47,12 @@ class OrderHandler:IOrderHandler{
         pb.data=orderAcc.getClerkOrders(clerk,pageNo,pb.maxRowCount)
         return pb
     }
+
+    override fun hasOrderByClerk(clerk: Int): Boolean {
+        return orderAcc.hasOrderByClerk(clerk)
+    }
+
+    override fun hasOrderByClient(client: Int): Boolean {
+        return orderAcc.hasOrderByClient(client)
+    }
 }

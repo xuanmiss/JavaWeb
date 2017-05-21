@@ -61,4 +61,18 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .setInteger("1",clerk)
                 .uniqueResult()).intValue();
     }
+
+    @Override
+    public boolean hasOrderByClerk(int id) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.clerk.id =?1")
+                .setInteger("1",id)
+                .uniqueResult()).intValue()>0;
+    }
+
+    @Override
+    public boolean hasOrderByClient(int id) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.receiver.id =?1")
+                .setInteger("1",id)
+                .uniqueResult()).intValue()>0;
+    }
 }

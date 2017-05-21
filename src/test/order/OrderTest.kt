@@ -22,6 +22,8 @@ open class OrderTest{
     @Autowired
     lateinit var orderSvc:IOrderHandler
     open fun test(){
+        orderSvc.hasOrderByClerk(1)
+        orderSvc.hasOrderByClient(1)
         orderSvc.getOrdersByPage(1,1,1).data?.forEach {
             println(it?.clerk.name)
         }
