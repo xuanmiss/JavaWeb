@@ -10,8 +10,10 @@ import java.util.List;
 public interface IOrderDBAccessor extends IBaseDBAccessor<Order>{
     /**
      *
-     *查询所有订单
+     *按日期排序获取分页
      */
+    List<Order> getListByPageOrderByDate(int pageNo,int rows);
+
     List<Order> findAll();
     /**
      *根据日期查找订单

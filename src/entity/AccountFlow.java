@@ -1,9 +1,7 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by miss on 2017/5/6.
@@ -15,10 +13,13 @@ public class AccountFlow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private double amount;
-    private int clerk;
+    @ManyToOne(targetEntity = Clerk.class,fetch = FetchType.LAZY)
+    @JoinColumn(name = "clerk",referencedColumnName = "id",unique = true)
+    private Clerk clerk;
     private String description;
     private int type;
     private int order_no;
+    private Date date;
 
     public Integer getId() {
         return id;
@@ -36,11 +37,11 @@ public class AccountFlow {
         this.amount = amount;
     }
 
-    public int getClerk() {
+    public Clerk getClerk() {
         return clerk;
     }
 
-    public void setClerk(int clerk) {
+    public void setClerk(Clerk clerk) {
         this.clerk = clerk;
     }
 
@@ -66,6 +67,14 @@ public class AccountFlow {
 
     public void setOrder_no(int order_no) {
         this.order_no = order_no;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override

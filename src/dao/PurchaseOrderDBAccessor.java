@@ -12,6 +12,14 @@ import java.util.List;
 public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order>
         implements IPurchaseOrderDBAccessor{
     @Override
+    public List<Purchase_Order> getListByPageOrderByDate(int pageNo, int rows) {
+        return getSession().createQuery("from Purchase_Order order by date")
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
+    @Override
     public List<Purchase_Order> findByOrderNo(Object object) {
         return null;
     }
