@@ -1,7 +1,6 @@
 package dao;
 
 import entity.Order;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,70 +8,43 @@ import java.util.List;
 /**
  * Created by LCQ on 2017/5/7.
  */
-@Repository
-@Lazy
+@Repository("orderDbAcc")
 public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAccessor {
     @Override
-    public List<Order> getListByPage(int state, int pageNo,int rows) {
-        return (List<Order>)getSession().createQuery("from entity.Order as o where o.status = ?1")
-                .setInteger("1",state)
+    public List<Order> getListByPageOrderByDate(int pageNo,int rows){
+        return getSession().createQuery("from Order order by date")
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
     }
-
     @Override
-    public List<Order> getListByPage(int clerk, int state, int pageNo,int rows) {
-        return (List<Order>) getSession().createQuery("from entity.Order as o where o.clerk.id = ?1 and o.status = ?2")
-                .setInteger("1",clerk)
-                .setInteger("2",state)
-                .setFirstResult((pageNo-1)*rows)
-                .setMaxResults(rows)
-                .list();
+    public List<Order> findAll() {
+        return null;
     }
 
     @Override
-    public int getCountOfOrder(int state) {
-        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.status = ?1")
-        .setInteger("1",state)
-        .uniqueResult()).intValue();
+    public List<Order> findByDate(Object object) {
+        return null;
+    }
+
+
+    @Override
+    public List<Order> findByName(Object object) {
+        return null;
     }
 
     @Override
-    public int getCountOfOrder(int clerk, int state) {
-        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.clerk.id =?1 and o.status = ?2")
-                .setInteger("1",clerk)
-                .setInteger("2",state)
-                .uniqueResult()).intValue();
+    public Class<Order> findByOrderNo(Object object) {
+        return null;
     }
 
     @Override
-    public List<Order> getClerkOrders(int clerk, int pageNo, int rows) {
-        return (List<Order>) getSession().createQuery("from entity.Order as o where o.clerk.id = ?1")
-                .setInteger("1",clerk)
-                .setFirstResult((pageNo-1)*rows)
-                .setMaxResults(rows)
-                .list();
+    public List<Order> findByStatus(Object object) {
+        return null;
     }
 
     @Override
-    public int getCountOfClerkOrder(int clerk) {
-        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.clerk.id =?1")
-                .setInteger("1",clerk)
-                .uniqueResult()).intValue();
-    }
-
-    @Override
-    public boolean hasOrderByClerk(int id) {
-        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.clerk.id =?1")
-                .setInteger("1",id)
-                .uniqueResult()).intValue()>0;
-    }
-
-    @Override
-    public boolean hasOrderByClient(int id) {
-        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.receiver.id =?1")
-                .setInteger("1",id)
-                .uniqueResult()).intValue()>0;
+    public List<Order> findByModel(Object object) {
+        return null;
     }
 }

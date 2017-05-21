@@ -7,6 +7,7 @@ import java.util.Date;
  * Created by ymcvalu on 2017/5/6.
  */
 @Entity
+@Table(name = "purchase_order")
 public class Purchase_Order {
 //    消息类的标识
     @Id
