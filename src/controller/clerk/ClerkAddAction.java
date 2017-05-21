@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.clerk.IClerkHandleSvc;
+import service.salaryStandard.ISalaryStandardHandleSvc;
 import util.IdentityUtil;
 import util.StringUtil;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Administrator on 2017/5/13.
@@ -20,6 +23,27 @@ import java.util.Date;
 public class ClerkAddAction extends ActionSupport{
 
     private Clerk clerk;
+    private int add = 0;
+    private List<SalaryStandard> listOfSalaryStandard;
+
+    public int getAdd() {
+        return add;
+    }
+
+    public void setAdd(int add) {
+        this.add = add;
+    }
+
+    public List<SalaryStandard> getListOfSalaryStandard() {
+        return listOfSalaryStandard;
+    }
+
+    public void setListOfSalaryStandard(List<SalaryStandard> listOfSalaryStandard) {
+        this.listOfSalaryStandard = listOfSalaryStandard;
+    }
+
+    @Autowired
+    private ISalaryStandardHandleSvc salarySvc;
 
     @Autowired
     private IClerkHandleSvc clerkSvc;
@@ -35,15 +59,20 @@ public class ClerkAddAction extends ActionSupport{
     @Override
     public String execute()throws Exception{
 
-        //保存
-        clerkSvc.saveClerk(clerk);
-
-        return "show";
+        if(add == 1){
+            check();
+            //保存
+            clerkSvc.saveClerk(clerk);
+            return "show";
+        }
+        else{
+            listOfSalaryStandard = salarySvc.getAll();
+            return "add";//返回添加页面
+        }
     }
 
-    @Override
-    public void validate(){
-
+    public void check(){
+        add = 0;
         //忽略开始空字符
         //clerk.setIdentity(clerk.getIdentity().trim());
         clerk.setPhone(clerk.getPhone().trim());
@@ -69,35 +98,28 @@ public class ClerkAddAction extends ActionSupport{
             addFieldError("phone", "该手机号已被注册！");
         else if(!clerk.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")))
             addFieldError("phone", "手机号码格式错误！");
-        //业务员状态
-        if(clerk.getStatus() < 0)
-            addFieldError("status", "请选择业务员状态！");
 
         //业务员职位
-        if(clerk.getDuties().equals("-1"))
-            addFieldError("status", "请选择业务员职位！");
+        clerk.setDuties("业务员");
 
+        //设置业务员状态
+        clerk.setStatus(1);
 
         //设置生日
         clerk.setBirthday(IdentityUtil.getBirthdayByIdentiy(clerk.getIdentity()));
-
-        //设置薪资
-        SalaryStandard ss = new SalaryStandard();
-        ss.setId(1);
-        clerk.setSalaryStandard(ss);
 
         //设置性别
         clerk.setSex(IdentityUtil.getSexByIdentity(clerk.getIdentity()));
 
         //设置地址
-        try{
-            clerk.setAddress(IdentityUtil.getHomelandByIdentity(clerk.getIdentity()));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        clerk.setAddress(IdentityUtil.getHomelandByIdentity(clerk.getIdentity()));
 
         //设置工资卡
-        clerk.setSalary_card("a123");
+        long random = new Random().nextInt(999999999);
+        while(clerkSvc.isExist((Long.toString(random)), "salary_card"))
+            random = new Random().nextInt(999999999);
+        clerk.setSalary_card(Long.toString(random));
     }
+
 
 }

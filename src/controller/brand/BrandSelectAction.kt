@@ -23,3 +23,4 @@ open class BrandSelectAction:ActionSupport(){
         return SUCCESS
     }
 }
+

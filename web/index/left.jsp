@@ -89,7 +89,7 @@
                 </a>
 
                     <ul>
-                        <li><a href="" target="dmMain">品牌查询</a></li>
+                        <li><a href="/order/requesAdd.action" target="dmMain">新增订单</a></li>
                         <li><a href="" target="dmMain">新增品牌</a></li>
                     </ul>
                 </li>
@@ -108,8 +108,10 @@
                     财务管理
                 </a>
                     <ul>
-                        <li><a href="" target="dmMain">品牌查询</a></li>
-                        <li><a href="" target="dmMain">新增品牌</a></li>
+                        <li><a href="/test/test.action" target="dmMain">预算管理</a></li>
+                        <li><a href="/finance/account.action" target="dmMain">资金收支</a></li>
+                        <li><a href="/finance/selectOrder.action" target="dmMain">业绩统计</a></li>
+                        <li><a href="/finance/purchase.action" target="dmMain">进货统计</a></li>
                     </ul>
                 </li>
 
@@ -128,9 +130,11 @@
 
                     <ul>
                         <li><a href="/clerk/clerk_select.action" target="dmMain">业务员查询</a></li>
-                        <li><a href="/clerk/addClerk.jsp" target="dmMain">新增业务员</a></li>
+                        <li><a href="/clerk/clerk_add.action" target="dmMain">新增业务员</a></li>
                         <li><a href="/clerkBrand/formAction.action" target="dmMain">新增业务</a></li>
                         <li><a href="/clerkBrand/selectAction.action" target="dmMain">业务查询</a></li>
+                        <li><a href="/salaryStandard/selectSalaryStandard.action" target="dmMain">薪资标准查询</a></li>
+                        <li><a href="/salaryStandard/addSalaryStandard.jsp" target="dmMain">添加薪资标准</a></li>
                     </ul>
                 </li>
 

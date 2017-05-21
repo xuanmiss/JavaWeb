@@ -59,5 +59,8 @@
 </table>
 <h2><a href="/brand/deleteBrand.action?brandId=<s:property value="brand.id"/>">删除</a></h2>
 <h2><a href="/brand/requestUpdateBrand.action?brandId=<s:property value="brand.id"/>">修改</a></h2>
+
+
+
 </body>
 </html>

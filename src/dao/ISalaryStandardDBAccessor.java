@@ -2,6 +2,8 @@ package dao;
 
 import entity.SalaryStandard;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/5/7.
  */
@@ -21,6 +23,8 @@ public interface ISalaryStandardDBAccessor extends IBaseDBAccessor<SalaryStandar
      * 根据ID查找SalaryStandard
      * @return SalaryStandard
      */
-    SalaryStandard findByID(Object object);
+    SalaryStandard findByID(Integer Id);
+
+    List<SalaryStandard> getAll();
 
 }

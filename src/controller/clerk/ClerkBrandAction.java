@@ -37,13 +37,27 @@ public class ClerkBrandAction extends ActionSupport{
         return SUCCESS;
     }
     /**
-     * 新增业务的Action
+     * 功能描述：
+     * 新增或修改业务员推广品牌信息
+     * modify by ymcvalu
+     * bug fix: a clerk only can bind with a brand
      * */
     public String save(){
-        clerkBrand.setClerk(clerk);
-        clerkBrand.setBrand(brand);
-        clerkBrand.setDate(new Date());
-        clerkBrandHandleSvc.saveClerkBrand(clerkBrand);
+        //get the record
+        Clerk_Brand cb=clerkBrandHandleSvc.getClerk_Brand(clerk.getId());
+        // if null,add
+        if(cb==null){
+            clerkBrand.setClerk(clerk);
+            clerkBrand.setBrand(brand);
+            clerkBrand.setDate(new Date());
+            clerkBrandHandleSvc.saveClerkBrand(clerkBrand);
+        }else{  //not null,update
+            //auto update when transaction commit
+            cb.setStatus(clerkBrand.getStatus());
+            cb.setBrand(brand);
+            cb.setDate(new Date());
+
+        }
         return SUCCESS;
     }
     /**
