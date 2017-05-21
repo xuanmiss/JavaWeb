@@ -30,11 +30,21 @@ class OrderHandler:IOrderHandler{
         return pb
     }
 
+
+
     override fun getOrdersByPage(clerk: Int, state: Int, pageNo: Int):PageBean<Order> {
         var pb=PageBean<Order>()
         pb.curPage=pageNo
         pb.maxRowCount=orderAcc.getCountOfOrder(clerk,state)
         pb.data=orderAcc.getListByPage(clerk,state,pageNo,pb.maxRowCount)
+        return pb
+    }
+
+    override fun getOrderByPage(clerk: Int, pageNo: Int): PageBean<Order> {
+        var pb=PageBean<Order>()
+        pb.curPage=pageNo
+        pb.maxRowCount=orderAcc.getCountOfClerkOrder(clerk)
+        pb.data=orderAcc.getClerkOrders(clerk,pageNo,pb.maxRowCount)
         return pb
     }
 }

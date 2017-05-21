@@ -10,4 +10,5 @@ interface IOrderHandler{
     fun getOrdersByPage(pageNo:Int):PageBean<Order>
     fun getOrdersByPage(state:Int,pageNo:Int):PageBean<Order>
     fun getOrdersByPage(clerk:Int,state:Int,pageNo:Int):PageBean<Order>
+    fun getOrderByPage(clerk:Int,pageNo:Int):PageBean<Order>
 }

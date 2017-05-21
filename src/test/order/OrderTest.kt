@@ -22,9 +22,8 @@ open class OrderTest{
     @Autowired
     lateinit var orderSvc:IOrderHandler
     open fun test(){
-        var pb=orderSvc.getOrdersByPage(1)
-        pb.data!!.forEach {
-            println(it.clerk.name)
+        orderSvc.getOrdersByPage(1,1,1).data?.forEach {
+            println(it?.clerk.name)
         }
     }
 }

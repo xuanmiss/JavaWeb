@@ -35,6 +35,7 @@
     <include file="controller/clerk/clerk.xml" />
     <include file="controller/client/client.xml"/>
     <include file="controller/salaryStandard/salaryStandard.xml"/>
+    <include file="order/order.xml"/>
 
     <!--测试包-->
     <package name="test" namespace="/test" extends="my-default">
