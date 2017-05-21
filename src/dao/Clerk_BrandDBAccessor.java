@@ -56,4 +56,11 @@ public class Clerk_BrandDBAccessor extends BaseDBAccessor<Clerk_Brand> implement
         String hql = "delete entity.Clerk_Brand as c where id=?1";
         getSession().createQuery(hql).setInteger("1",id).executeUpdate();
     }
+
+    @Override
+    public Clerk_Brand getClerkBrand(int clerk) {
+        return (Clerk_Brand) getSession().createQuery("from entity.Clerk_Brand as cc where cc.clerk.id=?1")
+                .setInteger("1",clerk)
+                .uniqueResult();
+    }
 }

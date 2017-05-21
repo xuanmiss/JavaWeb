@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by LCQ on 2017/5/14.
  */
-@Service
+@Service("clerkBrand")
 public class ClerkBrandHandleSvc implements IClerkBrandHandleSvc {
     @Autowired
     /**
@@ -84,4 +84,8 @@ public class ClerkBrandHandleSvc implements IClerkBrandHandleSvc {
 
     }
 
+    @Override
+    public Clerk_Brand getClerk_Brand(int clerk) {
+        return clerkBrandDBAccessor.getClerkBrand(clerk);
+    }
 }

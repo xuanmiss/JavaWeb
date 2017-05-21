@@ -16,4 +16,5 @@ public interface IClerk_BrandDBAccessor extends  IBaseDBAccessor<Clerk_Brand> {
     void remove(int id);
     List<Clerk> getAllClerk();
     List<Brand> getAllBrand();
+    Clerk_Brand getClerkBrand(int clerk);
 }
