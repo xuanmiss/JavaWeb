@@ -27,7 +27,7 @@ public class Order {
     private int status;
 
     @ManyToOne(targetEntity = Clerk.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "Clerk",referencedColumnName = "id",unique = true)
+    @JoinColumn(name = "clerk",referencedColumnName = "id",unique = true)
     private Clerk clerk;
 
     public Clerk getClerk() {
