@@ -66,7 +66,7 @@
                                 "<label>型号："+model.id+"</label><br/>"+
                                 "<label>规格："+model.format+"</label><br/>"+
                                 "<label>花色："+model.color+"</label><br/>"+
-                                "<label>单价："+model.sale_price+"</label><br/>"
+                                "<label>单价："+model.sale_price+"</label><br/>" 
                         $("#modalBody").html(str)
                     }
                 })
