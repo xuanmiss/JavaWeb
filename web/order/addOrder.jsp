@@ -62,9 +62,11 @@
                     contentType:false,
                     success:function (model) {
                         $("#modalTitle").text(model["brand"].name)
-                        str="<label>型号："+model.id+"</label></br>"+
-                                "<img src='"+model.image+"' width='75' height='75'/>"+
-                                "<label>规格："
+                        str= "<img src='"+model.image+"' width='100' height='100'/><br/>"+
+                                "<label>型号："+model.id+"</label><br/>"+
+                                "<label>规格："+model.format+"</label><br/>"+
+                                "<label>花色："+model.color+"</label><br/>"+
+                                "<label>单价："+model.sale_price+"</label><br/>"
                         $("#modalBody").html(str)
                     }
                 })
