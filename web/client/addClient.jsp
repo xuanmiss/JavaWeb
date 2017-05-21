@@ -40,11 +40,11 @@
     <br/>
     <s:fielderror fieldName="reposal" style="color:red" />
     <s:label value="信用值:" />
-    <s:textfield name="client.reposal" />
+    <s:textfield name="client.reposal" value="50" />
     <br/>
     <s:fielderror fieldName="status" style="color:red" />
     <s:label value="状态:" />
-    <s:textfield name="client.status" />
+    <s:textfield name="client.status"  value="1"/>
     <br/>
     <s:fielderror fieldName="card" style="color:red" />
     <s:label value="银行卡号:" />
@@ -52,7 +52,7 @@
     <br/>
     <s:fielderror fieldName="sex" style="color:red" />
     <s:label value="性别:" />
-    <s:textfield name="client.sex" />
+    <s:select name="client.sex"  headerKey="" headerValue="请选择性别"  list="{'m','w'}"/>
     <br/>
     <s:submit value="提交"/>
     <s:reset value="重置"/>

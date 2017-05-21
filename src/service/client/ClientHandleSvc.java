@@ -1,7 +1,10 @@
 package service.client;
 
 import dao.ClientDBAccessor;
+import dao.IClerk_ClientDBAccessor;
 import dao.IClientDBAccessor;
+import entity.Clerk;
+import entity.Clerk_Client;
 import entity.Client;
 import util.PageBean;
 import org.hibernate.Session;
@@ -16,6 +19,10 @@ public class ClientHandleSvc implements IClientHandleSvc{
 
         @Autowired
         private IClientDBAccessor clientAcc;
+
+        @Autowired
+        private IClerk_ClientDBAccessor clerk_clientAcc;
+
         @Override
         public boolean isExist(String value, String property){
             return clientAcc.isExist(value,property);
@@ -23,6 +30,8 @@ public class ClientHandleSvc implements IClientHandleSvc{
 
         @Override
         public void saveClient(Client client) {
+
+
             clientAcc.insert(client);
         }
 
