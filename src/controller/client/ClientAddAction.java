@@ -1,6 +1,12 @@
 package controller.client;
 
+import com.opensymphony.xwork2.ActionContext;
+import entity.Clerk;
+import entity.Clerk_Client;
 import entity.Client;
+import org.hibernate.Session;
+
+import service.client.IClerkClientHandleSvc;
 import service.client.IClientHandleSvc;
 import util.StringUtil;
 import com.opensymphony.xwork2.ActionSupport;
@@ -9,6 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import util.StringUtil;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import java.util.Map;
+
+
+
 
 /**
  * Created by miss on 2017/5/17.
@@ -18,9 +31,13 @@ import util.StringUtil;
 public class ClientAddAction extends ActionSupport{
 
     private Client client;
-
+    private Clerk clerk;
+    private Clerk_Client clerkclient;// = new Clerk_Client();
     @Autowired
     private IClientHandleSvc clientSvc;
+    @Autowired
+    private IClerkClientHandleSvc clerkclientSvc;
+
 
     public Client getClient() {
         return client;
@@ -29,13 +46,22 @@ public class ClientAddAction extends ActionSupport{
     public void setClient(Client client) {
         this.client = client;
     }
+    public Clerk_Client getClerkclient(){return clerkclient;}
+    public void setClerkclient(Clerk_Client clerkclient){this.clerkclient = clerkclient;}
+
+    Map<String,Object> session=ActionContext.getContext().getSession();
 
     @Override
     public String execute()throws Exception{
 
         //保存
-        clientSvc.saveClient(client);
 
+
+        clientSvc.saveClient(client);
+        clerkclient.setClerk((int)session.get("clerk"));
+        clerkclient.setClient(client.getId());
+
+        clerkclientSvc.saveClerkClient(clerkclient);
         return "show";
     }
 
@@ -50,6 +76,7 @@ public class ClientAddAction extends ActionSupport{
         client.setReposal(client.getReposal());
         client.setStatus(client.getStatus());
         client.setCard(client.getCard().trim());
+       // client.setSex(request.getParameter (client.getSex()));
         client.setSex(client.getSex());
 
 
