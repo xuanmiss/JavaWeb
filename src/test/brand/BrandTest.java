@@ -1,11 +1,16 @@
 package test.brand;
 
+import dao.IOrderDBAccessor;
+import entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import service.brand.BrandHandleSvc;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ymcvalu on 2017/5/20.
@@ -23,8 +28,16 @@ public class BrandTest {
 
     //注入依赖
     @Autowired
-    private BrandHandleSvc brandSvc;
+    private IOrderDBAccessor orderDBAccessor;
     public void test(){
-        brandSvc.getListByPage(1).getData().forEach((it)-> System.out.println(it.getName()));
+
+        List list=orderDBAccessor.undoneOrders(1,2);
+        System.out.println(list.size());
+        list.forEach((it)->{
+            Object[] obj=(Object[])it;
+            System.out.println(((Object[]) it).length);
+            System.out.println(obj[obj.length-1]);
+
+        });
     }
 }

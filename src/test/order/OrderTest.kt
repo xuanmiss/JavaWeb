@@ -1,9 +1,11 @@
 package test.order
 
+import controller.brand.BrandManageAction
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Scope
 import org.springframework.context.support.ClassPathXmlApplicationContext
 import org.springframework.stereotype.Component
+import service.brand.BrandHandleSvc
 import service.order.IOrderHandler
 
 /**
@@ -14,6 +16,7 @@ fun main(args:Array<String>){
     val context= ClassPathXmlApplicationContext("/test/test.xml")
     val test=context.getBean("orderTest",OrderTest::class.java )
     test.test()
+
 }
 
 @Component("orderTest")
@@ -22,10 +25,6 @@ open class OrderTest{
     @Autowired
     lateinit var orderSvc:IOrderHandler
     open fun test(){
-        orderSvc.hasOrderByClerk(1)
-        orderSvc.hasOrderByClient(1)
-        orderSvc.getOrdersByPage(1,1,1).data?.forEach {
-            println(it?.clerk.name)
-        }
+
     }
 }

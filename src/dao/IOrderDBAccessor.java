@@ -3,6 +3,7 @@ package dao;
 import entity.Order;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LCQ on 2017/5/7.
@@ -22,4 +23,5 @@ public interface IOrderDBAccessor extends IBaseDBAccessor<Order>{
     int getCountOfClerkOrder(int clerk);
     boolean hasOrderByClerk(int id);
     boolean hasOrderByClient(int id);
+    List undoneOrders(int pageNo,int rows);
 }
