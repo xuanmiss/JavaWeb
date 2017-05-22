@@ -12,7 +12,7 @@ import java.util.List;
 public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAccessor {
     @Override
     public List<Order> getListByPageOrderByDate(int pageNo,int rows){
-        return getSession().createQuery("from Order order by date")
+        return getSession().createQuery("from entity.Order order by date")
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();

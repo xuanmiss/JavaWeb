@@ -1,10 +1,8 @@
 package entity;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -26,7 +24,7 @@ public class Model {
     private double sale_price;   //售价
     private Date date;            //推出日期
     private int status;          //状态码，1-在市，0-下市
-    @OneToMany(targetEntity = Batch.class)
+    @OneToMany(targetEntity = Batch.class,mappedBy = "model")
     private Set<Batch> batches;
 
     public double getSale_price() {
