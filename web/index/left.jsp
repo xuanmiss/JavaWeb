@@ -99,8 +99,7 @@
                 </a>
 
                     <ul>
-                        <li><a href="" target="dmMain">品牌查询</a></li>
-                        <li><a href="" target="dmMain">新增品牌</a></li>
+                        <li><a href="/purchase/selectAction.action" target="dmMain">入库记录</a></li>
                     </ul>
                 </li>
 

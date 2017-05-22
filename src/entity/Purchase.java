@@ -1,8 +1,6 @@
 package entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by ymcvalu on 2017/5/6.
@@ -14,22 +12,22 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    Integer id;
     //    默认构造方法
     public Purchase() {
     }
 
     @OneToOne(targetEntity = Batch.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "batch")
+    @JoinColumn(name = "batch",referencedColumnName = "id",unique = true)
     private Batch batch;
 
     @ManyToOne(targetEntity = Clerk.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "clerk")
+    @JoinColumn(name = "clerk",referencedColumnName = "id",unique =true)
     private Clerk clerk;
 
     @OneToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_form")
-    private Purchase_Order order;
+    @JoinColumn(name = "order_form",referencedColumnName = "id",unique = true)
+    private Order order;
 
     public Batch getBatch() {
         return batch;
@@ -47,19 +45,21 @@ public class Purchase {
         this.clerk = clerk;
     }
 
-    public Purchase_Order getOrder() {
+    public Order getOrder() {
         return order;
     }
 
-    public void setOrder(Purchase_Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
-    public int getId() {return id;}
+    public Integer getId() {
+        return id;
+    }
 
-    public void setId(int id) {this.id = id;}
-
-
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -74,7 +74,7 @@ public class Purchase {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode(){
         int result=17;
         result=result*31+id;
         result=result*31+id*id;
