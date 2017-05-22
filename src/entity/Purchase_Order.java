@@ -13,7 +13,7 @@ public class Purchase_Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    Integer id;
 
     private String order_no;
 
@@ -34,18 +34,13 @@ public class Purchase_Order {
 
     private int type;
 
-
-
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-
-
 
     public Model getModel() {
         return model;
