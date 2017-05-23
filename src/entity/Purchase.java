@@ -13,9 +13,7 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     Integer id;
-    //    默认构造方法
-    public Purchase() {
-    }
+
 
     @OneToOne(targetEntity = Batch.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "batch",referencedColumnName = "id",unique = true)

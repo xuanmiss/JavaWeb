@@ -37,6 +37,7 @@
     <include file="controller/salaryStandard/salaryStandard.xml"/>
     <include file="controller/finance/finance.xml"/>
     <include file="controller/order/order.xml"/>
+    <include file="controller/stock/stock.xml"/>
     <!--测试包-->
     <package name="test" namespace="/test" extends="my-default">
         <action name="test" class="test">

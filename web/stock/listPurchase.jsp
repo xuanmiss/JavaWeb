@@ -43,20 +43,25 @@
 </head>
 <body>
 <h1 align="center">入库记录表</h1>
-<table align="center" width="100%">
+<table align="center">
     <tr>
-        <td>编号</td>
-        <td>批次</td>
-        <td>业务员</td>
-        <td>订单号</td>
-        <td>操作</td>
+        <th>业务员编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>身份证号</th>
+        <th>操作</th>
     </tr>
-    <s:iterator value="pageBean.data" var="it" status="st">
-        <td><s:property value="it.id"/></td>
-        <td><s:property value="it.batch"/></td>
-        <td><s:property value="it.clerk"/></td>
-        <td><s:property value="it.order_form"/></td>
-        <td><a href="/purchase/formAction.action">新增入库</a></td>
+    <s:iterator value="pageBean.data" var="it">
+        <tr>
+            <td><s:property value="#it.id"/> </td>
+            <td><s:property value="#it.batch"/></td>
+            <td><s:property value="#it.clerk"/></td>
+            <td><s:property value="#it.order_form"/></td>
+            <td>
+                <a href="/clerk/clerk_update.action?clerkId=<s:property value="#it.id"/>">修改</a>
+                <a href="/clerk/clerk_delete.action?clerkId=<s:property value="#it.id"/>">删除</a>
+            </td>
+        </tr>
     </s:iterator>
 </table>
 <jsp:include page="/common/page.jsp">
