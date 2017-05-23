@@ -33,6 +33,16 @@
             border-color: #999999;
         }
     </style>
+    <script type="text/javascript">
+        function link(url){
+            if(confirm("该操作无法撤销,确认删除吗?")){
+                window.location.href = url;
+            }
+            else{
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
     <h1 align="center" >业务列表</h1>
@@ -56,7 +66,7 @@
                 </td>
                 <td><a href="/clerkBrand/beginAction.action?id=<s:property value="#it.id"/>">开始</a>
                     <a href="/clerkBrand/stopAction.action?id=<s:property value="#it.id"/>">暂停</a>
-                    <a href="/clerkBrand/removeAction.action?id=<s:property value="#it.id"/>">删除</a>
+                    <a href="javascript:link('/clerkBrand/removeAction.action?id=<s:property value="#it.id"/>')">删除</a>
                 </td>
 
             </tr>

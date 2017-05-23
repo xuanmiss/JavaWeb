@@ -13,4 +13,5 @@ public interface IPurchaseDBAccessor {
     List<Batch> getBatchList();
     List<Clerk> getClerkList();
     List<Order> getOrderList();
+    void remove(int id);
 }
