@@ -40,16 +40,16 @@ public class PurchaseAction extends ActionSupport {
         for(int i=0 ; i<pageBean.getData().size(); i++){
             System.out.println(pageBean.getData().get(i));
         }
-        return SUCCESS;
+        return "list";
     }
     /**
      * 表单数据支持
      * */
-    public String formOption(){
+    public String form(){
         batchList = purchaseSvc.getAllBatch();
         clerkList = purchaseSvc.getAllClerk();
         orderList = purchaseSvc.getAllOrder();
-        return SUCCESS;
+        return "option";
     }
     /**
      * 新增记录
@@ -63,14 +63,14 @@ public class PurchaseAction extends ActionSupport {
         p.setClerk(clerk);
         p.setOrder(order);
         purchaseSvc.savePurchase(p);
-        return SUCCESS;
+        return "add";
     }
     /**
      * 移除记录
      * */
     public String remove(){
         purchaseSvc.remove(deleteId);
-        return SUCCESS;
+        return "del";
     }
 
 
