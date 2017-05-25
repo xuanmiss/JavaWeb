@@ -4,19 +4,15 @@ import com.opensymphony.xwork2.ActionContext;
 import entity.Clerk;
 import entity.Clerk_Client;
 import entity.Client;
-import org.hibernate.Session;
 
 import service.client.IClerkClientHandleSvc;
 import service.client.IClientHandleSvc;
 import util.StringUtil;
 import com.opensymphony.xwork2.ActionSupport;
-import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import util.StringUtil;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
+
 
 import java.util.Map;
 
