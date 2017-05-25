@@ -3,17 +3,15 @@
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
-
 <struts>
+
     <package name="purchase" namespace="/purchase" extends="struts-default">
-        <action name="selectAction" class="Purchase" method="select">
-            <result>/stock/listPurchase.jsp</result>
-        </action>
-        <action name="formAction" class="Purchase" method="form">
-            <result name="option" >/stock/addPurchase.jsp</result>
-        </action>
-        <action name="saveAction" class="Purchase" method="save">
-            <result name="show" type="chain">selectAction</result>
+        <action name="*Action" class="Purchase" method="{1}">
+            <result name="list">/stock/listPurchase.jsp</result>
+            <result name="option">/stock/addPurchase.jsp</result>
+            <result name="add" type="chain">selectAction</result>
+            <result name="del" type="chain">selectAction</result>
         </action>
     </package>
+
 </struts>

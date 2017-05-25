@@ -13,8 +13,7 @@ public class Order {
     //    消息类的标识属性
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Integer id;
+    Integer id;
 
     private String order_no;
 
@@ -122,5 +121,10 @@ public class Order {
         result=result*31+id*id;
         result=result*31+id*id*id;
         return result;
+    }
+
+    @Override
+    public String toString(){
+        return order_no;
     }
 }

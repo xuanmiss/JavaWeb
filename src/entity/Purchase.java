@@ -14,18 +14,17 @@ public class Purchase {
     @Column(name="id")
     Integer id;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     @OneToOne(targetEntity = Batch.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "batch",referencedColumnName = "id",unique = true)
+    @JoinColumn(name = "batch",referencedColumnName = "id")
     private Batch batch;
-
-    @ManyToOne(targetEntity = Clerk.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "clerk",referencedColumnName = "id",unique =true)
-    private Clerk clerk;
-
-    @OneToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_form",referencedColumnName = "id",unique = true)
-    private Order order;
 
     public Batch getBatch() {
         return batch;
@@ -35,6 +34,10 @@ public class Purchase {
         this.batch = batch;
     }
 
+    @ManyToOne(targetEntity = Clerk.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "clerk",referencedColumnName = "id")
+    private Clerk clerk;
+
     public Clerk getClerk() {
         return clerk;
     }
@@ -43,20 +46,16 @@ public class Purchase {
         this.clerk = clerk;
     }
 
+    @OneToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_form",referencedColumnName = "id")
+    private Order order;
+
     public Order getOrder() {
         return order;
     }
 
     public void setOrder(Order order) {
         this.order = order;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     @Override
@@ -78,5 +77,15 @@ public class Purchase {
         result=result*31+id*id;
         result=result*31+id*id*id;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "id=" + id +
+                ", batch=" + batch +
+                ", clerk=" + clerk +
+                ", order=" + order +
+                '}';
     }
 }

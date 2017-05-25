@@ -191,8 +191,8 @@ public class Clerk {
         return result;
     }
 
-    @Override
-    public String toString() {
+   @Override
+   public String toString(){
         return name;
-    }
+   }
 }

@@ -8,6 +8,7 @@
     <!--启动开发者模式-->
     <constant name="struts.devMode" value="true"/>
     <!--抽象包，需要登陆权限验证需要继承此包-->
+    <include file="controller/stock/stock.xml"/>
     <package name="my-default" extends="struts-default" abstract="true">
         <interceptors>
             <!--登陆权限验证拦截器-->

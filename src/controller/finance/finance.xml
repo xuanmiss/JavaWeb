@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="finance" namespace="/finance" extends="my-default">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
+        </result-types>
+        <action name="account" class="account">
+            <result>/finance/listAccountFlow.jsp</result>
+        </action>
+        <action name="selectOrder" class="selectOrder">
+            <result>/finance/listOrder.jsp</result>
+        </action>
+        <action name="purchase" class="purchase">
+            <result>/finance/listPurchaseOrder.jsp</result>
+        </action>
+        <action name="purchaseOrder" class="purchase" method="purchaseOrder">
+            <result type="json"></result>
+            <result name="false" type="redirectAction">purchase</result>
+        </action>
+        <action name="*">
+            <result>/finance/{1}.jsp</result>
+        </action>
+</package>
+</struts>
