@@ -23,7 +23,7 @@ public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAc
     @Override
     public boolean isExist(String value, String property){
         return (long)getSession().createQuery("select count(*) from entity.Clerk as c where c." + property + "= ?1")
-                .setString("1", value)
+                .setParameter("1", value)
                 .uniqueResult()>0;
     }
 

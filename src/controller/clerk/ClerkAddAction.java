@@ -23,28 +23,19 @@ import java.util.Random;
 public class ClerkAddAction extends ActionSupport{
 
     private Clerk clerk;
-    private int add = 0;
-    private List<SalaryStandard> listOfSalaryStandard;
 
-    public int getAdd() {
-        return add;
+    private List<SalaryStandard> salaryStandardList;
+
+    public List<SalaryStandard> getSalaryStandardList() {
+        return salaryStandardList;
     }
 
-    public void setAdd(int add) {
-        this.add = add;
-    }
-
-    public List<SalaryStandard> getListOfSalaryStandard() {
-        return listOfSalaryStandard;
-    }
-
-    public void setListOfSalaryStandard(List<SalaryStandard> listOfSalaryStandard) {
-        this.listOfSalaryStandard = listOfSalaryStandard;
+    public void setSalaryStandardList(List<SalaryStandard> salaryStandardList) {
+        salaryStandardList = salaryStandardList;
     }
 
     @Autowired
     private ISalaryStandardHandleSvc salarySvc;
-
     @Autowired
     private IClerkHandleSvc clerkSvc;
 
@@ -59,20 +50,16 @@ public class ClerkAddAction extends ActionSupport{
     @Override
     public String execute()throws Exception{
 
-        if(add == 1){
-            check();
             //保存
             clerkSvc.saveClerk(clerk);
             return "show";
-        }
-        else{
-            listOfSalaryStandard = salarySvc.getAll();
-            return "add";//返回添加页面
-        }
+
     }
 
-    public void check(){
-        add = 0;
+
+    @Override
+    public void validate(){
+        salaryStandardList = salarySvc.getAll();
         //忽略开始空字符
         //clerk.setIdentity(clerk.getIdentity().trim());
         clerk.setPhone(clerk.getPhone().trim());

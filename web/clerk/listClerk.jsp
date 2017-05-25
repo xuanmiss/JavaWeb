@@ -32,7 +32,7 @@
             <td><s:if test="#it.sex=='m'">男</s:if><s:else>女</s:else></td>
             <td><s:property value="#it.identity"/></td>
             <td>
-                <a href="/clerk/clerk_update.action?clerkId=<s:property value="#it.id"/>">修改</a>
+                <a href="/clerk/beforeUpdate.action?clerkId=<s:property value="#it.id"/>">修改</a>
                 <a href="/clerk/clerk_delete.action?clerkId=<s:property value="#it.id"/>">删除</a>
             </td>
         </tr>

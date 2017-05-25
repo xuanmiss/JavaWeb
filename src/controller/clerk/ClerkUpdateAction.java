@@ -1,6 +1,7 @@
 package controller.clerk;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 import entity.Clerk;
 import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Controller("updateClerk")
 @Scope("prototype")
-public class ClerkUpdateAction extends ActionSupport{
+public class ClerkUpdateAction extends ActionSupport implements Preparable {
 
     @Autowired
     private ISalaryStandardHandleSvc salarySvc;
@@ -27,17 +28,16 @@ public class ClerkUpdateAction extends ActionSupport{
 
     private int clerkId;
 
-    private int update = 0;
-
-    private List<SalaryStandard> listOfSalaryStandard;
-
-    public int getUpdate() {
-        return update;
+    public List<SalaryStandard> getSalaryStandardList() {
+        return salaryStandardList;
     }
 
-    public void setUpdate(int update) {
-        this.update = update;
+    public void setSalaryStandardList(List<SalaryStandard> salaryStandardList) {
+        this.salaryStandardList = salaryStandardList;
     }
+
+    private List<SalaryStandard> salaryStandardList;
+
 
     private Clerk clerk;
 
@@ -57,23 +57,10 @@ public class ClerkUpdateAction extends ActionSupport{
         this.clerk = clerk;
     }
 
-    public List<SalaryStandard> getListOfSalaryStandard() {
-        return listOfSalaryStandard;
-    }
-
-    public void setListOfSalaryStandard(List<SalaryStandard> listOfSalaryStandard) {
-        this.listOfSalaryStandard = listOfSalaryStandard;
-    }
 
     @Override
     public String execute(){
-        if(update == 0){
-            clerk = clerkHandleSvc.findById(clerkId);
-            listOfSalaryStandard = salarySvc.getAll();
-            return "update";
-        }
-        else{
-            check();
+
             Clerk preClerk = clerkHandleSvc.findById(clerk.getId());
             preClerk.setAddress(clerk.getAddress());
             preClerk.setWeichat(clerk.getWeichat());
@@ -85,11 +72,11 @@ public class ClerkUpdateAction extends ActionSupport{
             clerkHandleSvc.saveClerk(preClerk);
             return "show";
 
-        }
     }
 
-    public void check(){
-        update = 0;
+    @Override
+    public void validate(){
+
         //忽略开始空字符
         clerk.setAddress(clerk.getAddress().trim());
         clerk.setWeichat(clerk.getWeichat().trim());
@@ -106,4 +93,8 @@ public class ClerkUpdateAction extends ActionSupport{
 
     }
 
+
+    public void prepare(){
+        salaryStandardList = salarySvc.getAll();
+    }
 }
