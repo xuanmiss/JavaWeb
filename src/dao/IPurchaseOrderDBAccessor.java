@@ -9,10 +9,12 @@ import java.util.List;
  */
 public interface IPurchaseOrderDBAccessor  extends IBaseDBAccessor<Purchase_Order> {
 
-    List<Purchase_Order> getListByPageOrderByDate(int pageNo,int rows);
+    List<Purchase_Order> getListByPageOrderByDate(int pageNo, int rows);
     /**
      * 根据订单号查询预购表
      */
+
+    void setPurchaseOrderType(Purchase_Order order);
     List<Purchase_Order> findByOrderNo(Object object);
     /**
      *
