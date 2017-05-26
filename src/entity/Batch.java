@@ -10,9 +10,9 @@ import java.util.Date;
 public class Batch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    Integer id;
 
-    private int batch_no; //  批号
+    private String batch_no; //  批号
     private Date date; //生产日期
     @ManyToOne(targetEntity = Model.class)
     @JoinColumn(name = "model",nullable = false)
@@ -36,13 +36,12 @@ public class Batch {
         this.date = date;
     }
 
-    public int getBitch_no() {
-
+    public String getBatch_no() {
         return batch_no;
     }
 
-    public void setBitch_no(int bitch_no) {
-        this.batch_no = bitch_no;
+    public void setBatch_no(String batch_no) {
+        this.batch_no = batch_no;
     }
 
     public Integer getId() {
@@ -73,4 +72,8 @@ public class Batch {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return  batch_no;
+    }
 }

@@ -7,15 +7,10 @@
 --%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-            + path + "/";
-%>
+
 <html>
 <head>
     <title align="center" font-size="20px">入库记录表</title>
-    <base href="<%=basePath%>">
     <style type="text/css">
         table {
             font-family: verdana,arial,sans-serif;
@@ -40,23 +35,36 @@
             border-color: #999999;
         }
     </style>
+    <script type="text/javascript">
+     function link(url){
+         if(confirm("该操作无法撤销,确认删除吗?")){
+             window.location.href = url;
+         }
+         else{
+             return false;
+         }
+     }
+    </script>
 </head>
 <body>
 <h1 align="center">入库记录表</h1>
+<a href="/purchase/formAction.action">新增入库</a>
 <table align="center" width="100%">
     <tr>
         <td>编号</td>
         <td>批次</td>
         <td>业务员</td>
         <td>订单号</td>
-        <td>操作</td>
+        <td>清除</td>
     </tr>
     <s:iterator value="pageBean.data" var="it" status="st">
-        <td><s:property value="it.id"/></td>
-        <td><s:property value="it.batch"/></td>
-        <td><s:property value="it.clerk"/></td>
-        <td><s:property value="it.order_form"/></td>
-        <td><a href="/purchase/formAction.action">新增入库</a></td>
+        <tr>
+            <td><s:property value="#it.id"/></td>
+            <td><s:property value="#it.batch"/></td>
+            <td><s:property value="#it.clerk"/></td>
+            <td><s:property value="#it.order"/></td>
+            <td><a href="javascript:link('/purchase/removeAction.action?deleteId=<s:property value="#it.id"/>')" >确认</a></td>
+        </tr>
     </s:iterator>
 </table>
 <jsp:include page="/common/page.jsp">

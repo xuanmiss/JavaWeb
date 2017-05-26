@@ -19,6 +19,16 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order>
                 .list();
     }
 
+    /**
+     * 根据订单号查询预购表
+     *
+     * @param order
+     */
+    @Override
+    public void setPurchaseOrderType(Purchase_Order order) {
+        order.setType(order.getType()+2);
+    }
+
     @Override
     public List<Purchase_Order> findByOrderNo(Object object) {
         return null;
