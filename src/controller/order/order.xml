@@ -14,9 +14,7 @@
             <result name="success">/order/addOrder.jsp</result>
         </action>
         <action name="handleAdd" class="addOrder" method="handlerAddReq">
-            <result name="success" type="json">
-                <param name="root"></param>
-            </result>
+            <result name="success">/order/verifyOrder.jsp</result>
         </action>
         <action name="loadModel" class="addOrder" method="loadModel">
             <result type="json">

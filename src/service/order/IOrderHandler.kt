@@ -14,4 +14,5 @@ interface IOrderHandler{
     fun getOrderByPage(clerk:Int,pageNo:Int):PageBean<Order>
     fun hasOrderByClerk(clerk:Int):Boolean
     fun hasOrderByClient(client:Int):Boolean
+    fun fillOrder(order:Order,clerk:Int):Order
 }

@@ -17,6 +17,6 @@ interface IBaseDBAccessor<T>{
     infix fun delete(t:T)
     fun getCount(clazz:Class<T>):Int
     fun update(t:T)
-    fun getListByPage(clazz:Class<T>,pageNo:Int,rows:Int):List<T>
-    fun getObj(clazz:Class<T>,id:Int):T
+    fun getListByPage(clazz:Class<out T>,pageNo:Int,rows:Int):List<T>
+    fun getObj(clazz:Class<out T>,id:Int):T
 }
