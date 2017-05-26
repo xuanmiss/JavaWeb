@@ -27,4 +27,6 @@ public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAc
                 .uniqueResult()>0;
     }
 
+
+
 }

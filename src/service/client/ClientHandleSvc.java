@@ -10,6 +10,9 @@ import util.PageBean;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 /**
  * Created by miss on 2017/5/16.
  */
@@ -66,4 +69,9 @@ public class ClientHandleSvc implements IClientHandleSvc{
         public Client findById(int id) {
             return clientAcc.getObj(Client.class,id);
         }
+
+    @Override
+    public List<Client> getClientsofClerkByPage(int pageNo, int clerk) {
+        return clientAcc.getClientsOfClerkByPage(pageNo,12,clerk);
+    }
 }

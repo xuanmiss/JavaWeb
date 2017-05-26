@@ -42,7 +42,7 @@ class PageBean<T>{
             field=count
         }
 
-    val rowsPerPage=12
+    var rowsPerPage=12
 
     var data:List<T>?=null
 }

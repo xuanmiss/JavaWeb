@@ -28,4 +28,13 @@ public class ClientDBAccessor extends BaseDBAccessor<Client> implements IClientD
                 .uniqueResult();
     }
 
+    @Override
+    public List<Client> getClientsOfClerkByPage(int pageNo, int rows, int clerk) {
+        return (List<Client>)getSession().createQuery("from entity.Client as c where c.clerk.id = ?1")
+                .setInteger("1",clerk)
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+
+    }
 }

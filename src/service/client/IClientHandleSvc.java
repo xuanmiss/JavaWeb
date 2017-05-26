@@ -5,6 +5,8 @@ package service.client;
 import entity.Client;
 import util.PageBean;
 
+import java.util.List;
+
 /**
  * Created by miss on 2017/5/16.
  */
@@ -16,4 +18,5 @@ public interface IClientHandleSvc{
     PageBean<Client> getListByPage(int pageNo);
     Client findById(int id);
     String getClientName(int id);
+    List<Client> getClientsofClerkByPage(int pageNo,int clerk);
 }

@@ -2,13 +2,13 @@ package controller.order;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import dao.ClientDBAccessor;
 import entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.brand.ModelHandleSvc;
 import service.clerk.ClerkBrandHandleSvc;
+import service.client.IClientHandleSvc;
 import service.order.OrderHandler;
 
 import java.util.List;
@@ -30,11 +30,8 @@ public class OrderAddAction extends ActionSupport{
     private OrderHandler orderSvc;
     @Autowired
     private ClerkBrandHandleSvc cbSvc;
-
-    /****************************************************/
     @Autowired
-    private ClientDBAccessor clientDBAccessor;
-    /****************************************************/
+    private IClientHandleSvc clientSvc;
 
 
     @Autowired
@@ -48,12 +45,13 @@ public class OrderAddAction extends ActionSupport{
             msg="未推广任何品牌！";
             return "fail";
         }
+
         models=modelSvc.getListByPage(cb.getBrand().getId(),1).getData();
         if(models==null || models.size()==0){
             msg="品牌下无任何瓷砖型号信息!";
             return "fail";
         }
-        clients=clientDBAccessor.getListByPage(Client.class,1,12);
+        clients=clientSvc.getClientsofClerkByPage(pageNo,clerk);
         if(clients==null || clients.size()==0){
             msg="没有客户信息!";
             return "fail";
@@ -61,10 +59,13 @@ public class OrderAddAction extends ActionSupport{
         return SUCCESS;
     }
 
-    public String handlerAddReq(){
 
+    public String handlerAddReq(){
+        int clerk=(int)ActionContext.getContext().getSession().get("clerk");
+        orderSvc.fillOrder(order,clerk);
         return SUCCESS;
     }
+
 
     public String loadModel(){
         System.out.println(brand.getId()+" "+pageNo);
@@ -78,7 +79,8 @@ public class OrderAddAction extends ActionSupport{
     }
 
     public String loadClient(){
-        clients=clientDBAccessor.getListByPage(Client.class,pageNo,12);
+        int clerk= (int)ActionContext.getContext().getSession().get("clerk");
+        clients=clientSvc.getClientsofClerkByPage(pageNo,clerk);
         clients.forEach((it)->{
             //将关联实体设置为null
             it.setClerk(null);
@@ -87,10 +89,7 @@ public class OrderAddAction extends ActionSupport{
         return SUCCESS;
     }
 
-    @Override
-    public void validate(){
 
-    }
 
 
     public List<Client> getClients() {
@@ -157,13 +156,7 @@ public class OrderAddAction extends ActionSupport{
         this.cbSvc = cbSvc;
     }
 
-    public ClientDBAccessor getClientDBAccessor() {
-        return clientDBAccessor;
-    }
 
-    public void setClientDBAccessor(ClientDBAccessor clientDBAccessor) {
-        this.clientDBAccessor = clientDBAccessor;
-    }
 
     public ModelHandleSvc getModelSvc() {
         return modelSvc;

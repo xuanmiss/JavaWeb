@@ -19,8 +19,6 @@
     <base href="<%=basePath%>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link  href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/util.js"></script>
     <script src="bootstrap/js/selectEnhance.js"></script>
@@ -84,15 +82,15 @@
     <br/>
     <s:label value="选择型号：" />
     <s:select id="selectModel" name="order.model.id" list="models" listKey="id" listValue="model"/>
-    <input id="watchModel" class="btn btn-default" data-toggle="modal" data-target="#modal" type="button" value="查看"/>
+    <input id="watchModel" class="btn btn-default" data-toggle="modal" data-target="#modal" type="button" value="查看" />
+
     <br/>
 
     <s:label value="数量："/>
     <input type="number" name="order.quantity" required="true" min="1" max="10000" value="1"/>
     <br/>
-    <s:submit value="提交" class="btn btn-default" id="submitOrder"/>
+    <s:submit value="提交" class="btn btn-default"/>
     <s:reset value="重置" class="btn btn-default"/>
-
 </s:form>
 
 
