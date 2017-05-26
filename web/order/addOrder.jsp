@@ -81,7 +81,7 @@
     <label>品牌：${requestScope.brand.name}</label>
     <br/>
     <s:label value="选择型号：" />
-    <s:select id="selectModel" name="order.model.id" list="models" listKey="id" listValue="model"/>
+    <s:select id="selectModel" name="order.model.id" list="models" listKey="id" listValue="model" />
     <input id="watchModel" class="btn btn-default" data-toggle="modal" data-target="#modal" type="button" value="查看" />
 
     <br/>

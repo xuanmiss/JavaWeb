@@ -8,7 +8,6 @@
     <!--启动开发者模式-->
     <constant name="struts.devMode" value="true"/>
     <!--抽象包，需要登陆权限验证需要继承此包-->
-    <include file="controller/stock/stock.xml"/>
     <package name="my-default" extends="struts-default" abstract="true">
         <interceptors>
             <!--登陆权限验证拦截器-->
@@ -37,6 +36,8 @@
     <include file="controller/client/client.xml"/>
     <include file="controller/salaryStandard/salaryStandard.xml"/>
     <include file="controller/finance/finance.xml"/>
+    <include file="controller/stock/stock.xml"/>
+    <include file="controller/pay/pay.xml"/>
     <include file="controller/order/order.xml"/>
     <include file="controller/stock/stock.xml"/>
     <!--测试包-->

@@ -86,6 +86,13 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .uniqueResult()).intValue()>0;
     }
 
+    @Override
+    public boolean hasOrder(String orderNo){
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.order_no = ?1")
+            .setString("1",orderNo)
+            .uniqueResult())>0;
+    }
+
 
     @Autowired
     private IModelDBAccessor mdb;

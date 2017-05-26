@@ -3,6 +3,7 @@ package controller.finance;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.finance.IOrderHandleSvc;
 import util.PageBean;
@@ -11,6 +12,7 @@ import util.PageBean;
  * Created by chenshihong on 2017/5/19.
  */
 @Controller("selectOrder")
+@Scope("prototype")
 public class OrderSelectAction extends ActionSupport{
     @Autowired
     private IOrderHandleSvc orderSvc;

@@ -33,6 +33,7 @@
 
     <s:fielderror fieldName="in_price" style="color:red"/>
     <s:label value="进价:"/>
+
     <s:textfield name="model.in_price" value=""/>
     <br /><br />
 
