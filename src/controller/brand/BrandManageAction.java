@@ -5,6 +5,8 @@ import entity.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import service.brand.IBrandHandleSvc;
 
 /**
@@ -24,6 +26,7 @@ public class BrandManageAction extends ActionSupport{
         return SUCCESS;
     }
     public  String delete(){
+
         if (brandSvc.deleteBrand(brandId)){
             isExit = 0;
             return "deletesuccess";

@@ -1,6 +1,8 @@
 package test.brand;
 
+import dao.IClientDBAccessor;
 import dao.IOrderDBAccessor;
+import entity.Client;
 import entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -29,15 +31,14 @@ public class BrandTest {
     //注入依赖
     @Autowired
     private IOrderDBAccessor orderDBAccessor;
+    @Autowired
+    private IClientDBAccessor clientDBAccessor;
     public void test(){
-
-        List list=orderDBAccessor.undoneOrders(1,2);
-        System.out.println(list.size());
+        List<Client> list=clientDBAccessor.getClientsOfClerkByPage(1,12,2);
         list.forEach((it)->{
-            Object[] obj=(Object[])it;
-            System.out.println(((Object[]) it).length);
-            System.out.println(obj[obj.length-1]);
-
+            System.out.println(it.getName());
         });
+
+
     }
 }

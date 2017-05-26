@@ -3,6 +3,7 @@ package dao
 import org.hibernate.Session
 import org.hibernate.SessionFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Repository
 import javax.annotation.Resource
 
 /**
@@ -12,6 +13,8 @@ import javax.annotation.Resource
 /**
  * 所有dao都应继承该类
  */
+
+@Repository
 open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
 
 
@@ -89,7 +92,7 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
      * @param rows 每页行数
      * @return 返回list
      */
-    override fun getListByPage(clazz: Class<T>, pageNo: Int, rows: Int): List<T>
+    override fun getListByPage(clazz: Class<out T>, pageNo: Int, rows: Int): List<T>
             = getSession().createQuery("from ${clazz.name}")
             .setFirstResult((pageNo-1)*rows)
             .setMaxResults(rows)
@@ -101,6 +104,6 @@ open class BaseDBAccessor<T> : IBaseDBAccessor<T>{
      * @param id 指定id
      * @return 返回记录对象
      */
-    override fun getObj(clazz: Class<T>, id: Int): T = getSession().get(clazz,id) as T
+    override fun getObj(clazz: Class<out T>, id: Int): T = getSession().get(clazz,id) as T
 
 }
