@@ -22,6 +22,16 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .setMaxResults(rows)
                 .list();
     }
+
+    @Override
+    public List<Order> getListByPageClerkOrder(int clerkId, int pageNo, int rows) {
+        return getSession().createQuery("from entity.Order as o where o.clerk.id = ?1 order by date")
+                .setParameter("1",clerkId)
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
     @Override
     public List<Order> getListByPage(int state, int pageNo,int rows) {
         return (List<Order>)getSession().createQuery("from entity.Order as o where o.status = ?1")

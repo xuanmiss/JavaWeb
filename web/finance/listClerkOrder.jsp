@@ -21,13 +21,29 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
     </script>
     <script type="text/javascript">
+        window.onload=function () {
+            ms = $$("selectClerk");
+            ms.selectedIndex=<s:property value="clerkId-1"/>;
+        }
         function loadClerk() {
-        //    var parm = new FormData();
+            //var parm = new FormData();
             ms = $$("selectClerk");
             si = ms.selectedIndex;
             cid = ms.options[si].value;
-       //     $("#clerkId").val(cid);
             window.location.href="/finance/getClerkOrder.action?clerkId="+cid;
+         /*
+            parm.append("clerkId",cid);
+            $.ajax({
+                type:"POST",
+                url:"/finance/getClerkOrder",
+                data:parm,
+                processData:false,
+                contentType:false,
+                success:function (result) {
+                    location.reload()
+                }
+            })
+            */
         }
     </script>
     <style type="text/css">
@@ -38,10 +54,10 @@
     </style>
 </head>
 <body>
-<h1 align="center">销售业绩</h1>
+<h1 align="center">个人销售业绩</h1>
 <div id="sel" style="text-align: right;right:10px">
     <s:label value="选择业务员：" />
-    <s:select id="selectClerk" name="clerk.id" list="clerks" listKey="id" listValue="name"/>
+    <s:select id="selectClerk" list="clerks" listKey="id" listValue="name"/>
     <button type="button" class="btn btn-default" onclick="loadClerk()">查看</button>
     <!--<input id="clerkId" type="hidden" name="clerkId" />-->
     <br/>
@@ -78,7 +94,7 @@
 
 
 <jsp:include page="/common/page.jsp">
-    <jsp:param name="url" value="/finance/selectOrder.action"/>
+    <jsp:param name="url" value="/finance/getClerkOrder.action"/>
 </jsp:include>
 </body>
 </html>
