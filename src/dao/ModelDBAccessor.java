@@ -43,4 +43,10 @@ public class ModelDBAccessor extends BaseDBAccessor<Model> implements IModelDBAc
                 .list();
     }
 
+    @Override
+    public int getModelCountByBrand(int brandId) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Model as m where m.brand.id=?1")
+                .setInteger("1",brandId)
+                .uniqueResult()).intValue();
+    }
 }

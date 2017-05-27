@@ -140,7 +140,7 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
-        List ret=new LinkedList();
+        List<Object[]> ret=new LinkedList();
         list.forEach((it)->{
             Object[]arr=(Object[])it;
             Order o=new Order();

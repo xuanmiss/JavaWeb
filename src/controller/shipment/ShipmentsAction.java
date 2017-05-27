@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.stock.IShipmentsSvc;
+import util.PageBean;
 
-import java.util.List;
 
 /**
  * Created by ymcvalu on 2017/5/27.
@@ -15,12 +15,12 @@ import java.util.List;
 @Scope("prototype")
 public class ShipmentsAction extends ActionSupport{
     private int pageNo=1;
-    private List<Object[]> list;
+    private PageBean<Object[]> pageBean;
+
     @Autowired
     private IShipmentsSvc shipmentsSvc;
     public String showOrder(){
-        list=shipmentsSvc.getUndoOrder(1);
-
+        pageBean=shipmentsSvc.getUndoOrder(pageNo);
         return SUCCESS;
     }
 
@@ -32,12 +32,12 @@ public class ShipmentsAction extends ActionSupport{
         this.pageNo = pageNo;
     }
 
-    public List<Object[]> getList() {
-        return list;
+    public PageBean<Object[]> getPageBean() {
+        return pageBean;
     }
 
-    public void setList(List<Object[]> list) {
-        this.list = list;
+    public void setPageBean(PageBean<Object[]> pageBean) {
+        this.pageBean = pageBean;
     }
 
 }

@@ -5,13 +5,6 @@
 <head>
     <title>瓷砖管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style type="text/css">
-        td {text-align:center;padding:5px;margin:5px;}
-        tr {line-height: 175%;}
-        table th,td{width:1000px;font-size: large;border:1px solid #CCCCCC; }
-        table td{text-align:center;vertical-align:center;}
-    </style>
     <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/util.js"></script>
@@ -23,13 +16,19 @@
         window.onload=function (){
         }
     </script>
+    <style type="text/css">
+        td {text-align:center;padding:5px;margin:5px;}
+        th {text-align:center;}
+        tr {line-height: 175%;}
+        table th,td{width:1000px;font-size: large;border:1px solid #CCCCCC; }
+        table td{text-align:center;vertical-align:center;}
+    </style>
 </head>
 <body>
+    <h1 align="center">出库管理</h1>
+
     <table>
 
-        <%
-            System.out.println("hello...");
-        %>
         <tr>
             <th>订单号</th>
             <th>品牌</th>
@@ -38,9 +37,11 @@
             <th>收货人</th>
             <th>收货人电话</th>
             <th>收货人地址</th>
+            <th>操作</th>
         </tr>
-        <s:iterator value="list" var="it">
+        <s:iterator value="pageBean.data" var="it">
             <tr>
+
                 <td><s:property value="#it[0].order_no"/> </td>
                 <td><s:property value="#it[0].model.brand.name"/></td>
                 <td><s:property value="#it[0].model.model"/></td>
@@ -48,13 +49,23 @@
                 <td><s:property value="#it[0].receiver.name"/></td>
                 <td><s:property value="#it[0].receiver.phone"/></td>
                 <td><s:property value="#it[0].receiver.address"/></td>
+                <td>
+                    <s:if test="#it[1]">
+                        <input type="button" value="出库" class="btn btn-default" />
+                    </s:if>
+                    <s:else>
+                        <input type="button" value="进货" class="btn btn-default" />
+                    </s:else>
+                </td>
 
             </tr>
         </s:iterator>
     </table>
 
 
-
+    <jsp:include page="/common/page.jsp">
+        <jsp:param name="url" value="/shipment/getUndoOrder.action" />
+    </jsp:include>
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -12,4 +12,6 @@ public interface IModelDBAccessor extends IBaseDBAccessor<Model> {
     Model getModelById(int brand,int id);
     boolean isExist(String model,int brandId);
     List<Model> getListofAll();
+    int getModelCountByBrand(int brandId);
+
 }

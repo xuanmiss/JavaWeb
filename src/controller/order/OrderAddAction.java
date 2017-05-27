@@ -139,12 +139,6 @@ public class OrderAddAction extends ActionSupport{
         return SUCCESS;
     }
 
-
-
-
-
-
-
     public List<Client> getClients() {
         return clients;
     }
