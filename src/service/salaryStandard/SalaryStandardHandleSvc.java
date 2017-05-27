@@ -1,5 +1,5 @@
 package service.salaryStandard;
-
+ 
 import dao.ISalaryStandardDBAccessor;
 import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
