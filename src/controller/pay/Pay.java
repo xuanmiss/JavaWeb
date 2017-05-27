@@ -15,13 +15,17 @@ import service.pay.IPayServer;
 public class Pay extends ActionSupport {
     private String orderNo;
     private double amount;
+
     @Autowired
     private IPayServer iPayServer;
+
+
     public String requestPay(){
         return "requestsuccess";
     }
 
     public String handlePay(){
+        System.out.println("handlePay :"+amount);
         iPayServer.pay(amount);
         return "handlesuccess";
     }

@@ -19,7 +19,7 @@
     <script>
         window.onload=function () {
             setTimeout(function () {
-                window.location.href="/alipay/handlePay?orderNo=<s:property value="orderNo"/>"
+                window.location.href="/alipay/handlePay?orderNo=<s:property value="orderNo"/>&amount=<s:property value="amount"/>"
             },3000)
         }
     </script>
