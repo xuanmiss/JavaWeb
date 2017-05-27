@@ -16,6 +16,7 @@ import util.PageBean;
 public class ShipmentsAction extends ActionSupport{
     private int pageNo=1;
     private PageBean<Object[]> pageBean;
+    private String orderNo;
 
     @Autowired
     private IShipmentsSvc shipmentsSvc;

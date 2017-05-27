@@ -12,10 +12,14 @@
     <![endif]-->
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
     </script>
-    <script type="text/javascript">
-        window.onload=function (){
+
+    <script>
+
+        function handleClick (target) {
+            alert(target.title)
         }
     </script>
+
     <style type="text/css">
         td {text-align:center;padding:5px;margin:5px;}
         th {text-align:center;}
@@ -51,10 +55,10 @@
                 <td><s:property value="#it[0].receiver.address"/></td>
                 <td>
                     <s:if test="#it[1]">
-                        <input type="button" value="出库" class="btn btn-default" />
+                        <input type="submit" value="出库" class="btn btn-default"  onclick="handleClick(this);" title="<s:property value="#it[0].order_no" />" />
                     </s:if>
                     <s:else>
-                        <input type="button" value="进货" class="btn btn-default" />
+                        <input type="submit" value="进货" class="btn btn-default"  onclick="handleClick(this);" title="<s:property value="#it[0].order_no" />"  />
                     </s:else>
                 </td>
 
