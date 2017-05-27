@@ -24,6 +24,7 @@ import java.util.List;
 public class OrderSelectAction extends ActionSupport{
     @Autowired
     private IOrderHandleSvc orderSvc;
+    
     @Autowired
     private IClerkHandleSvc clerkSvc;
     @Autowired
