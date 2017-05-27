@@ -40,7 +40,7 @@ public class Order {
     @JoinColumn(name = "receiver", referencedColumnName = "id",unique = true)
     private Client receiver;
 
-    @OneToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Model.class,fetch = FetchType.LAZY)
     @JoinColumn(name="model",referencedColumnName = "id",unique = true)
     private Model model;
 

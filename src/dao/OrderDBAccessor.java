@@ -33,6 +33,15 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
     }
 
     @Override
+    public List<Order> getListByPageModelOrder(int modelId, int pageNo, int rows) {
+        return getSession().createQuery("from entity.Order as o where o.model.id = ?1 order by date")
+                .setParameter("1",modelId)
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
+    @Override
     public List<Order> getListByPage(int state, int pageNo,int rows) {
         return (List<Order>)getSession().createQuery("from entity.Order as o where o.status = ?1")
                 .setInteger("1",state)
@@ -79,6 +88,13 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
     public int getCountOfClerkOrder(int clerk) {
         return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.clerk.id =?1")
                 .setInteger("1",clerk)
+                .uniqueResult()).intValue();
+    }
+
+    @Override
+    public int getCountOfOrderModel(int model) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.model.id =?1")
+                .setInteger("1",model)
                 .uniqueResult()).intValue();
     }
 

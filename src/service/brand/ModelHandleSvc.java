@@ -66,4 +66,9 @@ public class ModelHandleSvc implements IModelHandleSvc{
     public Model getModel(int id) {
         return modelAcc.getObj(Model.class,id);
     }
+
+    @Override
+    public List<Model> getListModelofAll() {
+        return modelAcc.getListofAll();
+    }
 }

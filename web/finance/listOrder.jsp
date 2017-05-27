@@ -29,6 +29,12 @@
        //     $("#clerkId").val(cid);
             window.location.href="/finance/getClerkOrder.action?clerkId="+cid;
         }
+        function loadModel() {
+            ms = $$("selectClerk");
+            si = ms.selectedIndex;
+            mid = ms.options[si].value;
+            window.location.href="/finance/getModelOrder.action?modelId="+mid;
+        }
     </script>
     <style type="text/css">
         td {text-align:center;padding:5px;margin:5px;}
@@ -39,11 +45,16 @@
 </head>
 <body>
 <h1 align="center">销售业绩</h1>
-<div id="sel" style="text-align: right;right:10px">
+<div id="selClerk" style="text-align: right;right:10px">
     <s:label value="选择业务员：" />
     <s:select id="selectClerk" name="clerk.id" list="clerks" listKey="id" listValue="name"/>
     <button type="button" class="btn btn-default" onclick="loadClerk()">查看</button>
-    <!--<input id="clerkId" type="hidden" name="clerkId" />-->
+    <br/>
+</div>
+<div id="selModel" style="text-align: right;right:10px">
+    <s:label value="选择瓷砖型号：" />
+    <s:select id="selectModel" name="model.id" list="models" listKey="id" listValue="model"/>
+    <button type="button" class="btn btn-default" onclick="loadModel()">查看</button>
     <br/>
 </div>
 <table align="center">

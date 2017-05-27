@@ -18,6 +18,9 @@
         <action name="getClerkOrder" class="selectOrder" method="getClerkOrder">
             <result>/finance/listClerkOrder.jsp</result>
         </action>
+        <action name="getModelOrder" class="selectOrder" method="getModelOrder">
+            <result>/finance/listModelOrder.jsp</result>
+        </action>
         <action name="purchase" class="purchase">
             <result>/finance/listPurchaseOrder.jsp</result>
         </action>

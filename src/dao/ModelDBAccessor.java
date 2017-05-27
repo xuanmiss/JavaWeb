@@ -37,4 +37,10 @@ public class ModelDBAccessor extends BaseDBAccessor<Model> implements IModelDBAc
                 .uniqueResult()>0;
     }
 
+    @Override
+    public List<Model> getListofAll() {
+        return (List<Model>)getSession().createQuery("from entity.Model")
+                .list();
+    }
+
 }
