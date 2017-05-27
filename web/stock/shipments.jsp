@@ -61,7 +61,7 @@
                         <input type="submit" value="进货" class="btn btn-default"  onclick="handleClick(this);" title="<s:property value="#it[0].order_no" />"  />
                     </s:else>
                 </td>
-
+ 
             </tr>
         </s:iterator>
     </table>
