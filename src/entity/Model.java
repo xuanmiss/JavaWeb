@@ -17,7 +17,7 @@ public class Model {
     private String format;       //规格 如600*1200
     private String color;        //颜色
     private String image;        //图片，以路径形式保存
-    @ManyToOne(targetEntity = Brand.class)
+    @ManyToOne(targetEntity = Brand.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "brand",nullable = false)
     private Brand brand;         //对应的品牌
     private double in_price;    //进价

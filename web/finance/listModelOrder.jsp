@@ -21,16 +21,12 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
     </script>
     <script type="text/javascript">
-        function loadClerk() {
-        //    var parm = new FormData();
-            ms = $$("selectClerk");
-            si = ms.selectedIndex;
-            cid = ms.options[si].value;
-       //     $("#clerkId").val(cid);
-            window.location.href="/finance/getClerkOrder.action?clerkId="+cid;
+        window.onload=function () {
+            ms = $$("selectModel");
+            ms.selectedIndex=<s:property value="modelId-1"/>;
         }
         function loadModel() {
-            ms = $$("selectClerk");
+            ms = $$("selectModel");
             si = ms.selectedIndex;
             mid = ms.options[si].value;
             window.location.href="/finance/getModelOrder.action?modelId="+mid;
@@ -44,17 +40,12 @@
     </style>
 </head>
 <body>
-<h1 align="center">销售业绩</h1>
-<div id="selClerk" style="text-align: right;right:10px">
-    <s:label value="选择业务员：" />
-    <s:select id="selectClerk" name="clerk.id" list="clerks" listKey="id" listValue="name"/>
-    <button type="button" class="btn btn-default" onclick="loadClerk()">查看</button>
-    <br/>
-</div>
+<h1 align="center">瓷砖型号销售业绩</h1>
 <div id="selModel" style="text-align: right;right:10px">
     <s:label value="选择瓷砖型号：" />
     <s:select id="selectModel" name="model.id" list="models" listKey="id" listValue="model"/>
     <button type="button" class="btn btn-default" onclick="loadModel()">查看</button>
+    <% //<input id="modelId" name="modelId" value="<s:property value="modelId"/>"/> %>
     <br/>
 </div>
 <table align="center">
@@ -89,7 +80,7 @@
 
 
 <jsp:include page="/common/page.jsp">
-    <jsp:param name="url" value="/finance/selectOrder.action"/>
+    <jsp:param name="url" value="/finance/getModelOrder.action"/>
 </jsp:include>
 </body>
 </html>

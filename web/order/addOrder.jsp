@@ -75,24 +75,21 @@
 <body>
 <h1>新增订单</h1>
 <s:form action="handleAdd" namespace="/order" theme="simple" >
-    <s:label value="选择客户："/>
-    <s:select id="selectClient" name="order.receiver.id" list="clients" listKey="id" listValue="name"/>
-    <br/>
     <label>品牌：${requestScope.brand.name}</label>
     <br/>
     <s:label value="选择型号：" />
-    <s:select id="selectModel" name="order.model.id" list="models" listKey="id" listValue="model"/>
+    <s:select id="selectModel" name="order.model.id" list="models" listKey="id" listValue="model" />
     <input id="watchModel" class="btn btn-default" data-toggle="modal" data-target="#modal" type="button" value="查看" />
-
     <br/>
-
+    <s:label value="选择客户："/>
+    <s:select id="selectClient" name="order.receiver.id" list="clients" listKey="id" listValue="name"/>
+    <br/>
     <s:label value="数量："/>
     <input type="number" name="order.quantity" required="true" min="1" max="10000" value="1"/>
     <br/>
     <s:submit value="提交" class="btn btn-default"/>
     <s:reset value="重置" class="btn btn-default"/>
 </s:form>
-
 
 
 <!-- 模态框（Modal） -->
@@ -109,6 +106,5 @@
         </div>
     </div>
 </div>
-<p id="debug"></p>
-</body>
+ </body>
 </html>

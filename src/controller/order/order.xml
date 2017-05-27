@@ -5,26 +5,54 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+
     <package name="order" namespace="/order" extends="my-default">
+
         <result-types>
             <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
         </result-types>
-        <action name="requestAdd" class="addOrder" method="requestForAdd">
+
+        <action name="requesAdd" class="addOrder" method="requestForAdd">
             <result name="fail">/order/requestAddFail.jsp</result>
             <result name="success">/order/addOrder.jsp</result>
         </action>
+
         <action name="handleAdd" class="addOrder" method="handlerAddReq">
             <result name="success">/order/verifyOrder.jsp</result>
         </action>
+
         <action name="loadModel" class="addOrder" method="loadModel">
             <result type="json">
                 <param name="root">models</param>
             </result>
         </action>
+
         <action name="loadClient" class="addOrder" method="loadClient">
             <result type="json">
                 <param name="root">clients</param>
             </result>
         </action>
+
+        <action name="commitByArrear" class="addOrder" method="commitOrderByArrear">
+            <result name="success" type="json">
+                <param name="root">msg</param>
+            </result>
+            <result name="error" type="json">
+                <param name="root">msg</param>
+            </result>
+        </action>
+
+        <action name="commit" class="addOrder" method="commitOrder">
+            <result name="commitSuccess">/order/commitResult.jsp</result>
+        </action>
+
+        <action name="*Order" class="addOrder" method="{1}Order">
+            <result name="cancel" type="redirectAction">requesAdd</result>
+            <result name="commit" type="redirectAction">
+                <param name="namespace"></param>
+                <param name="actionName"></param>
+            </result>
+        </action>
+
     </package>
 </struts>

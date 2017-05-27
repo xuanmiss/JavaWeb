@@ -8,4 +8,6 @@ import util.PageBean;
  */
 public interface IOrderHandleSvc {
     PageBean<Order> getPageListOrder(int pageNo);
+    PageBean<Order> getPageListClerkOrder(int clerkId,int pageNo);
+    PageBean<Order> getPageListModelOrder(int modelId,int pageNo);
 }

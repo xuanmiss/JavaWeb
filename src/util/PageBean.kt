@@ -37,6 +37,8 @@ class PageBean<T>{
             var pages=count/rowsPerPage
             if(count%rowsPerPage>0)
                 pages++
+            if(pages==0)
+                pages=1
             //设置总页数
             maxPage=pages
             field=count

@@ -6,6 +6,7 @@ import dao.IAccountFlowDBAccessor;
 import entity.Account;
 import entity.AccountFlow;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.finance.IAccountHandleSvc;
 import util.PageBean;
@@ -14,6 +15,7 @@ import util.PageBean;
  * Created by chenshihong on 2017/5/20.
  */
 @Controller("account")
+@Scope("prototype")
 public class AccountAction extends ActionSupport{
     @Autowired
     private IAccountHandleSvc accountSvc;

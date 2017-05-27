@@ -22,6 +22,25 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .setMaxResults(rows)
                 .list();
     }
+
+    @Override
+    public List<Order> getListByPageClerkOrder(int clerkId, int pageNo, int rows) {
+        return getSession().createQuery("from entity.Order as o where o.clerk.id = ?1 order by date")
+                .setParameter("1",clerkId)
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
+    @Override
+    public List<Order> getListByPageModelOrder(int modelId, int pageNo, int rows) {
+        return getSession().createQuery("from entity.Order as o where o.model.id = ?1 order by date")
+                .setParameter("1",modelId)
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
     @Override
     public List<Order> getListByPage(int state, int pageNo,int rows) {
         return (List<Order>)getSession().createQuery("from entity.Order as o where o.status = ?1")
@@ -73,6 +92,13 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
     }
 
     @Override
+    public int getCountOfOrderModel(int model) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.model.id =?1")
+                .setInteger("1",model)
+                .uniqueResult()).intValue();
+    }
+
+    @Override
     public boolean hasOrderByClerk(int id) {
         return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.clerk.id =?1")
                 .setInteger("1",id)
@@ -86,6 +112,13 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .uniqueResult()).intValue()>0;
     }
 
+    @Override
+    public boolean hasOrder(String orderNo){
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.order_no = ?1")
+            .setString("1",orderNo)
+            .uniqueResult())>0;
+    }
+
 
     @Autowired
     private IModelDBAccessor mdb;
@@ -94,8 +127,9 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
     private IClientDBAccessor cdb;
 
     @Override
-    public List undoneOrders(int pageNo, int rows) {
-        List list=getSession().createSQLQuery("select o.id,o.order_no,o.model,o.quantity,o.date,o.receiver,max(s.count) count from order_form o left OUTER JOIN batch b on o.model=b.model AND o.status=1 LEFT OUTER JOIN stock s on b.id=s.batch GROUP by o.model")
+    public List<Object[]> undoneOrders(int pageNo, int rows) {
+        List list=getSession().createSQLQuery("select o.id,o.order_no,o.model,o.quantity,o.date,o.receiver,b.count " +
+                "from order_form o left outer join b_s b on o.model = b.model")
                 .addScalar("id",StandardBasicTypes.INTEGER)
                 .addScalar("order_no", StandardBasicTypes.STRING)
                 .addScalar("model", StandardBasicTypes.INTEGER)
@@ -106,8 +140,7 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
-        List ret=new LinkedList();
-
+        List<Object[]> ret=new LinkedList();
         list.forEach((it)->{
             Object[]arr=(Object[])it;
             Order o=new Order();

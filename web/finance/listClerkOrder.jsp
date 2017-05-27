@@ -21,19 +21,29 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
     </script>
     <script type="text/javascript">
+        window.onload=function () {
+            ms = $$("selectClerk");
+            ms.selectedIndex=<s:property value="clerkId-1"/>;
+        }
         function loadClerk() {
-        //    var parm = new FormData();
+            //var parm = new FormData();
             ms = $$("selectClerk");
             si = ms.selectedIndex;
             cid = ms.options[si].value;
-       //     $("#clerkId").val(cid);
             window.location.href="/finance/getClerkOrder.action?clerkId="+cid;
-        }
-        function loadModel() {
-            ms = $$("selectClerk");
-            si = ms.selectedIndex;
-            mid = ms.options[si].value;
-            window.location.href="/finance/getModelOrder.action?modelId="+mid;
+         /*
+            parm.append("clerkId",cid);
+            $.ajax({
+                type:"POST",
+                url:"/finance/getClerkOrder",
+                data:parm,
+                processData:false,
+                contentType:false,
+                success:function (result) {
+                    location.reload()
+                }
+            })
+            */
         }
     </script>
     <style type="text/css">
@@ -44,17 +54,12 @@
     </style>
 </head>
 <body>
-<h1 align="center">销售业绩</h1>
-<div id="selClerk" style="text-align: right;right:10px">
+<h1 align="center">个人销售业绩</h1>
+<div id="sel" style="text-align: right;right:10px">
     <s:label value="选择业务员：" />
-    <s:select id="selectClerk" name="clerk.id" list="clerks" listKey="id" listValue="name"/>
+    <s:select id="selectClerk" list="clerks" listKey="id" listValue="name"/>
     <button type="button" class="btn btn-default" onclick="loadClerk()">查看</button>
-    <br/>
-</div>
-<div id="selModel" style="text-align: right;right:10px">
-    <s:label value="选择瓷砖型号：" />
-    <s:select id="selectModel" name="model.id" list="models" listKey="id" listValue="model"/>
-    <button type="button" class="btn btn-default" onclick="loadModel()">查看</button>
+    <% //<input id="clerkId" name="clerkId" value="<s:property value="clerkId"/>"/> %>
     <br/>
 </div>
 <table align="center">
@@ -89,7 +94,7 @@
 
 
 <jsp:include page="/common/page.jsp">
-    <jsp:param name="url" value="/finance/selectOrder.action"/>
+    <jsp:param name="url" value="/finance/getClerkOrder.action"/>
 </jsp:include>
 </body>
 </html>

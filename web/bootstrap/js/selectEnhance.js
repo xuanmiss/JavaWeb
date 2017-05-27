@@ -28,7 +28,8 @@ function enhanceSelect(selectId,baseParam,key,value,url,fill) {
             url:url,
             data:param,
             type:"post",
-            success:function (list) {
+            success:function (obj) {
+                var list=eval("("+obj+")")
                 //no items to load already
                 if(list.length==0){
                     //remove the listener
@@ -46,6 +47,7 @@ function enhanceSelect(selectId,baseParam,key,value,url,fill) {
                     //add new items
                     selectObj.add(item,null)
                 }
+
                 //add the more
                 selectObj.add(more,null)
                 selectObj.selectedIndex=cnt

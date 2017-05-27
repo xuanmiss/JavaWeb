@@ -24,7 +24,7 @@ public class ModelHandleSvc implements IModelHandleSvc{
     public PageBean<Model> getListByPage(int brand, int pageNo) {
         PageBean<Model> pb=new PageBean<>();
         pb.setCurPage(pageNo);
-        pb.setMaxRowCount(modelAcc.getCount(Model.class));
+        pb.setMaxRowCount(modelAcc.getModelCountByBrand(brand));
         pb.setData(modelAcc.getListByPage(brand,pageNo,pb.getRowsPerPage()));
         return pb;
     }
@@ -65,5 +65,10 @@ public class ModelHandleSvc implements IModelHandleSvc{
     @Override
     public Model getModel(int id) {
         return modelAcc.getObj(Model.class,id);
+    }
+
+    @Override
+    public List<Model> getListModelofAll() {
+        return modelAcc.getListofAll();
     }
 }
