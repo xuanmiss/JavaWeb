@@ -7,6 +7,9 @@ import service.order.OrderHandler;
 import service.stock.IShipmentsSvc;
 import sun.misc.Contended;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by ymcvalu on 2017/5/27.
  */
@@ -20,6 +23,5 @@ public class ShipmentsAction extends ActionSupport{
 
         return SUCCESS;
     }
-
-
 }
+
