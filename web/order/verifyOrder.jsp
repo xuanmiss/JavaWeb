@@ -71,6 +71,7 @@
         <tr><td>数量：</td><td><s:property value="order.quantity"/> </td></tr>
         <tr><td>总价：</td><td><s:property value="order.price"/> </td></tr>
         <tr><td>收货人：</td><td><s:property value="order.receiver.name"/> </td></tr>
+        <tr><td>收货号码：</td><td><s:property value="order.receiver.phone"/> </td></tr>
         <tr><td>收货地址：</td><td><s:property value="order.receiver.address"/> </td></tr>
         <tr>
             <td colspan="2">

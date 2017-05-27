@@ -5,5 +5,12 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
+    <package name="shipment" namespace="/shipment" extends="my-default">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
+        </result-types>
+        <action name="getUndoOrder" class="shipments" method="showOrder">
+            <result>/stock/shipments.jsp</result>
+        </action>
+    </package>
 </struts>

@@ -102,7 +102,8 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
 
     @Override
     public List<Object[]> undoneOrders(int pageNo, int rows) {
-        List list=getSession().createSQLQuery("select o.id,o.order_no,o.model,o.quantity,o.date,o.receiver,max(s.count) count from order_form o left OUTER JOIN batch b on o.model=b.model AND o.status=1 LEFT OUTER JOIN stock s on b.id=s.batch GROUP by o.model")
+        List list=getSession().createSQLQuery("select o.id,o.order_no,o.model,o.quantity,o.date,o.receiver,b.count " +
+                "from order_form o left outer join b_s b on o.model = b.model")
                 .addScalar("id",StandardBasicTypes.INTEGER)
                 .addScalar("order_no", StandardBasicTypes.STRING)
                 .addScalar("model", StandardBasicTypes.INTEGER)
@@ -114,7 +115,6 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .setMaxResults(rows)
                 .list();
         List ret=new LinkedList();
-
         list.forEach((it)->{
             Object[]arr=(Object[])it;
             Order o=new Order();

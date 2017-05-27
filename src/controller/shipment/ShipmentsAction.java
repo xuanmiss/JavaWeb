@@ -3,25 +3,42 @@ package controller.shipment;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import service.order.OrderHandler;
+import org.springframework.stereotype.Controller;
 import service.stock.IShipmentsSvc;
-import sun.misc.Contended;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by ymcvalu on 2017/5/27.
  */
-@Contended("shipments")
+@Controller("shipments")
 @Scope("prototype")
 public class ShipmentsAction extends ActionSupport{
-
+    private int pageNo=1;
+    private List<Object[]> list;
     @Autowired
     private IShipmentsSvc shipmentsSvc;
     public String showOrder(){
+        list=shipmentsSvc.getUndoOrder(1);
 
         return SUCCESS;
     }
+
+    public int getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public List<Object[]> getList() {
+        return list;
+    }
+
+    public void setList(List<Object[]> list) {
+        this.list = list;
+    }
+
 }
 
