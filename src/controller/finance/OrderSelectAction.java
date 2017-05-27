@@ -1,6 +1,5 @@
 package controller.finance;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Clerk;
 import entity.Model;
@@ -24,7 +23,7 @@ import java.util.List;
 public class OrderSelectAction extends ActionSupport{
     @Autowired
     private IOrderHandleSvc orderSvc;
-    
+
     @Autowired
     private IClerkHandleSvc clerkSvc;
     @Autowired
