@@ -11,6 +11,8 @@ import service.clerk.ClerkBrandHandleSvc;
 import service.client.IClientHandleSvc;
 import service.order.OrderHandler;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +27,7 @@ public class OrderAddAction extends ActionSupport{
     private Brand brand;
     private int pageNo=0;
     private String msg;
+    private String orderNo;
 
     @Autowired
     private OrderHandler orderSvc;
@@ -63,6 +66,53 @@ public class OrderAddAction extends ActionSupport{
     public String handlerAddReq(){
         int clerk=(int)ActionContext.getContext().getSession().get("clerk");
         orderSvc.fillOrder(order,clerk);
+        ActionContext.getContext().getSession().put(order.getOrder_no(),order);
+        return SUCCESS;
+    }
+
+    public String cancelOrder(){
+        ActionContext.getContext().getSession().remove(order.getOrder_no());
+        return "cancel";
+    }
+
+    public String commitOrder(){
+        order=(Order) ActionContext.getContext().getSession().get(orderNo);
+        if(order==null||orderSvc.hasOrder(orderNo)){
+            msg="该订单已经提交，请勿重复提交";
+        }
+        else{
+            orderSvc.commitOrder(order);
+            msg="订单支付成功!";
+        }
+
+        ActionContext.getContext().getSession().remove(orderNo);
+
+        return "commitSuccess";
+    }
+
+    public String commitOrderByArrear(){
+        order=(Order) ActionContext.getContext().getSession().get(order.getOrder_no());
+        if(order==null||orderSvc.hasOrder(order.getOrder_no())){
+            msg="订单已经提交，请勿重复提交";
+            return ERROR;
+        }
+
+        if(order.getReceiver().getReposal()<50){
+            msg="信用值不够，暂时无法使用白条支付!";
+            return ERROR;
+        }
+
+        ActionContext.getContext().getSession().remove(order.getOrder_no());
+        Arrear arrear=new Arrear();
+        arrear.setAmount(order.getPrice());
+        arrear.setClerk(order.getClerk().getId());
+        arrear.setClient(order.getReceiver().getId());
+        arrear.setDate(new Date());
+        Calendar c=Calendar.getInstance();
+        c.add(Calendar.MONTH,1);
+        arrear.setTerm(new Date(c.getTimeInMillis()));
+        orderSvc.commitOrder(order,arrear);
+        msg="白条支付成功!";
         return SUCCESS;
     }
 
@@ -88,6 +138,9 @@ public class OrderAddAction extends ActionSupport{
         });
         return SUCCESS;
     }
+
+
+
 
 
 
@@ -140,29 +193,13 @@ public class OrderAddAction extends ActionSupport{
         this.msg = msg;
     }
 
-    public OrderHandler getOrderSvc() {
-        return orderSvc;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setOrderSvc(OrderHandler orderSvc) {
-        this.orderSvc = orderSvc;
-    }
-
-    public ClerkBrandHandleSvc getCbSvc() {
-        return cbSvc;
-    }
-
-    public void setCbSvc(ClerkBrandHandleSvc cbSvc) {
-        this.cbSvc = cbSvc;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
 
-
-    public ModelHandleSvc getModelSvc() {
-        return modelSvc;
-    }
-
-    public void setModelSvc(ModelHandleSvc modelSvc) {
-        this.modelSvc = modelSvc;
-    }
 }

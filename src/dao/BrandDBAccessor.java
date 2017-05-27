@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/5/7/007.
  */
-@Repository("brandDbAcc")
+@Repository
 public class BrandDBAccessor extends BaseDBAccessor<Brand> implements IBrandDBAccessor {
     @Override
     public boolean isExist(String name) {

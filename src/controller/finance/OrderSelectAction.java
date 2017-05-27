@@ -18,6 +18,7 @@ import java.util.List;
  * Created by chenshihong on 2017/5/19.
  */
 @Controller("selectOrder")
+@Scope("prototype")
 public class OrderSelectAction extends ActionSupport{
     @Autowired
     private IOrderHandleSvc orderSvc;

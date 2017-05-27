@@ -2,16 +2,11 @@ package service.order
 
 import dao.IBaseDBAccessor
 import dao.OrderDBAccessor
-import entity.Clerk
-import entity.Client
-import entity.Model
-import entity.Order
+import entity.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import service.brand.ModelHandleSvc
-import service.clerk.ClerkHandleSvc
+
 import util.PageBean
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,6 +44,7 @@ class OrderHandler:IOrderHandler{
         return pb
     }
 
+
     override fun getOrderByPage(clerk: Int, pageNo: Int): PageBean<Order> {
         var pb=PageBean<Order>()
         pb.curPage=pageNo
@@ -64,6 +60,11 @@ class OrderHandler:IOrderHandler{
     override fun hasOrderByClient(client: Int): Boolean {
         return orderAcc.hasOrderByClient(client)
     }
+
+    override fun hasOrder(orderNo: String):Boolean {
+        return orderAcc.hasOrder(orderNo)
+    }
+
     @Autowired
     lateinit var baseDAO: IBaseDBAccessor<Any>
 
@@ -78,5 +79,46 @@ class OrderHandler:IOrderHandler{
         order_no+=str
         order.order_no=order_no
         return order
+    }
+
+    override fun commitOrder(order: Order) {
+        order.status=1
+        baseDAO.insert(order)
+        with(AccountFlow()){
+            date=Date()
+            clerk=order.clerk
+            order_no=order.id
+            amount=order.price
+            type=2
+            description="卖出收入"
+            baseDAO.insert(this)
+        }
+    }
+
+
+    override fun commitOrder(order: Order, arrear: Arrear) {
+        order.status=1
+        baseDAO.insert(order)
+        baseDAO.insert(arrear)
+
+        with(AccountFlow()){
+            date=Date()
+            clerk=order.clerk
+            order_no=order.id
+            amount=order.price
+            type=2
+            description="卖出收入"
+            baseDAO.insert(this)
+        }
+
+        with(AccountFlow()){
+            date=Date()
+            clerk=order.clerk
+            order_no=arrear.id
+            amount=-order.price
+            type=4
+            description="白条借出"
+            baseDAO.insert(this)
+        }
     }
 }

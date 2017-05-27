@@ -46,6 +46,7 @@ function enhanceSelect(selectId,baseParam,key,value,url,fill) {
                     //add new items
                     selectObj.add(item,null)
                 }
+
                 //add the more
                 selectObj.add(more,null)
                 selectObj.selectedIndex=cnt

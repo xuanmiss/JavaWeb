@@ -1,6 +1,7 @@
 package service.order
 
 import com.sun.org.apache.xpath.internal.operations.Bool
+import entity.Arrear
 import entity.Order
 import util.PageBean
 
@@ -15,4 +16,7 @@ interface IOrderHandler{
     fun hasOrderByClerk(clerk:Int):Boolean
     fun hasOrderByClient(client:Int):Boolean
     fun fillOrder(order:Order,clerk:Int):Order
+    fun commitOrder(order:Order)
+    fun commitOrder(order:Order,arrear:Arrear)
+    fun hasOrder(orderNo:String):Boolean
 }

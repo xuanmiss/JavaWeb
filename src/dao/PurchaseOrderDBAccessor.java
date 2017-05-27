@@ -13,7 +13,7 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order>
         implements IPurchaseOrderDBAccessor{
     @Override
     public List<Purchase_Order> getListByPageOrderByDate(int pageNo, int rows) {
-        return getSession().createQuery("from Purchase_Order order by date")
+        return getSession().createQuery("from entity.Purchase_Order o by o.date")
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
