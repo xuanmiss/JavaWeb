@@ -6,12 +6,18 @@
 <struts>
 
     <package name="purchase" namespace="/purchase" extends="my-default">
-        <action name="*Action" class="Purchase" method="{1}">
-            <result name="list">/stock/listPurchase.jsp</result>
-            <result name="option">/stock/addPurchase.jsp</result>
-            <result name="add" type="chain">selectAction</result>
-            <result name="del" type="chain">selectAction</result>
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
+        </result-types>
+        <action name="requestAdd" class="purchaseAction" method="requestAdd">
+            <result name="success">/stock/requestPurchase.jsp</result>
         </action>
+        <action name="handleAdd" class="purchaseAction" method="handleAdd">
+            <result name="success" type="json">
+                <param name="root">msg</param>
+            </result>
+        </action>
+
     </package>
 
 
