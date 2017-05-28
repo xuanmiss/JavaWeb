@@ -93,6 +93,8 @@ public class StockViewAction extends ActionSupport{
     public String loadStock(){
         Stock stock = stockSvc.findByBatch(batchId);
         Stock s = new Stock();
+        if(stock == null)
+            s.setCount(0);
         s.setCount(stock.getCount());
         stockList =new LinkedList<>();
         stockList.add(s);
