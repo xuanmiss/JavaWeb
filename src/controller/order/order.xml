@@ -12,7 +12,7 @@
             <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
         </result-types>
 
-        <action name="requesAdd" class="addOrder" method="requestForAdd">
+        <action name="requestAdd" class="addOrder" method="requestForAdd">
             <result name="fail">/order/requestAddFail.jsp</result>
             <result name="success">/order/addOrder.jsp</result>
         </action>
@@ -47,10 +47,10 @@
         </action>
 
         <action name="*Order" class="addOrder" method="{1}Order">
-            <result name="cancel" type="redirectAction">requesAdd</result>
+            <result name="cancel" type="redirectAction">requestAdd</result>
             <result name="commit" type="redirectAction">
-                <param name="namespace"></param>
-                <param name="actionName"></param>
+                <param name="namespace">/order</param>
+                <param name="actionName">requestAdd</param>
             </result>
         </action>
 

@@ -5,17 +5,35 @@
 <head>
     <title>瓷砖管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link  href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="bootstrap/js/util.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <![endif]-->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <![endif]-->
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
     </script>
-    <script type="text/javascript">
-        window.onload=function (){
+
+    <script>
+
+        function handleOut (target) {
+            var param=new FormData()
+            param.append("orderNo",target.title)
+            $.ajax({url:"/shipment/requestOut",
+                data:param,
+                type:"post",
+                processData:false,
+                contentType:false,
+                success:function (stocks) {
+
+                }
+            })
+        }
+
+        function handleIn(target) {
+
         }
     </script>
+
     <style type="text/css">
         td {text-align:center;padding:5px;margin:5px;}
         th {text-align:center;}
@@ -51,13 +69,15 @@
                 <td><s:property value="#it[0].receiver.address"/></td>
                 <td>
                     <s:if test="#it[1]">
-                        <input type="button" value="出库" class="btn btn-default" />
+                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default" onclick="handleOut(this);" title="<s:property value="#it[0].order_no" />">出库</button>
                     </s:if>
                     <s:else>
-                        <input type="button" value="进货" class="btn btn-default" />
+                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default" onclick="handleIn(this);" title="<s:property value="#it[0].order_no" />">进货</button>
+
+
                     </s:else>
                 </td>
-
+ 
             </tr>
         </s:iterator>
     </table>
@@ -67,18 +87,22 @@
         <jsp:param name="url" value="/shipment/getUndoOrder.action" />
     </jsp:include>
 
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modalTitle"></h4>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-            <div class="modal-footer" id="modalFooter">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 </body>
 </html>

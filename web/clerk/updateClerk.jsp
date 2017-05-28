@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-<s:form action="clerk_update.action?update=1" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
+<s:form action="clerk_update.action?status=1" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
     <input type="hidden" name="clerk.id" value="${requestScope.clerkId}"/>
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="业务员姓名:"/>
@@ -34,7 +34,7 @@
     <br/>
     <s:fielderror fieldName="salaryStandard" style="color:red"/>
     <s:label value="薪资标准:"/>
-    <s:select list="listOfSalaryStandard" listKey="id" name="clerk.salaryStandard.id" listValue="toString()" headerKey="toString()"/>
+    <s:select list="salaryStandardList" listKey="id" name="clerk.salaryStandard.id" listValue="toString()" headerKey="toString()"/>
     <br />
     <s:fielderror fieldName="phone" style="color:red" />
     <s:label value="手机号码:" />

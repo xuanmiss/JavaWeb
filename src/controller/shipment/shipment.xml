@@ -12,5 +12,11 @@
         <action name="getUndoOrder" class="shipments" method="showOrder">
             <result>/stock/shipments.jsp</result>
         </action>
+
+        <action name="*Out" class="shipments" method="{1}Out">
+            <result name="{1}Success" type="json">
+                <param name="root">stocks</param>
+            </result>
+        </action>
     </package>
 </struts>

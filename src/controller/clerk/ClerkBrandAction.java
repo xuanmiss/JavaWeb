@@ -22,8 +22,8 @@ public class ClerkBrandAction extends ActionSupport{
     @Autowired
     private ClerkBrandHandleSvc clerkBrandHandleSvc;
     private Clerk_Brand clerkBrand;
-    private Clerk clerk;
     private Brand brand;
+    private Clerk clerk;
     private int id;
     int pageNo = 1;
     PageBean<Clerk_Brand> pageBean = null;

@@ -28,8 +28,9 @@ function enhanceSelect(selectId,baseParam,key,value,url,fill) {
             url:url,
             data:param,
             type:"post",
-            success:function (obj) {
-                var list=eval("("+obj+")")
+            success:function (list) {
+                //turn json to object
+                // var list=eval("("+data+")")
                 //no items to load already
                 if(list.length==0){
                     //remove the listener

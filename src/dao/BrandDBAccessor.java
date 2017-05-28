@@ -38,4 +38,11 @@ public class BrandDBAccessor extends BaseDBAccessor<Brand> implements IBrandDBAc
         else
             return true;
     }
+
+    @Override
+    public List<Brand> getAll(){
+        String hql = "from entity.Brand";
+        return getSession().createQuery(hql)
+                .list();
+    }
 }

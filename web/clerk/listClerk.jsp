@@ -39,7 +39,7 @@
     </s:iterator>
 </table>
 <jsp:include page="/common/page.jsp">
-    <jsp:param name="url" value="/clerk/clerkSelect.action"/>
+    <jsp:param name="url" value="/clerk/clerk_select.action"/>
 </jsp:include>
 </body>
 </html>

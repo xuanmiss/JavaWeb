@@ -14,4 +14,29 @@
         </action>
     </package>
 
+
+    <package name="stockView" namespace="/stock" extends="struts-default">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
+        </result-types>
+        <action name="stockViewAction" class="stockView">
+            <result name="input">/stock/stockSearch.jsp</result>
+            <result>/stock/stockView.jsp</result>
+        </action>
+        <action name="loadBrand" class="stockView" method="loadBrand">
+            <result type="json">
+                <param name="root">list</param>
+            </result>
+        </action>
+        <action name="loadModel" class="stockView" method="loadModel">
+            <result type="json">
+                <param name="root">modelList</param>
+            </result>
+        </action>
+        <action name="loadBatch" class="stockView" method="loadBatch">
+            <result type="json">
+                <param name="root">batchList</param>
+            </result>
+        </action>
+    </package>
 </struts>

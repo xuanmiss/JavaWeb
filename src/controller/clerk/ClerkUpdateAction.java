@@ -1,6 +1,7 @@
 package controller.clerk;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 import entity.Clerk;
 import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +18,33 @@ import java.util.List;
  */
 @Controller("updateClerk")
 @Scope("prototype")
-public class ClerkUpdateAction extends ActionSupport{
+public class ClerkUpdateAction extends ActionSupport implements Preparable {
 
     @Autowired
     private ISalaryStandardHandleSvc salarySvc;
-
     @Autowired
     private IClerkHandleSvc clerkHandleSvc;
 
     private int clerkId;
-
-    private int update = 0;
-
-    private List<SalaryStandard> listOfSalaryStandard;
-
-    public int getUpdate() {
-        return update;
-    }
-
-    public void setUpdate(int update) {
-        this.update = update;
-    }
-
+    private List<SalaryStandard> salaryStandardList;
     private Clerk clerk;
+    private int status = 0;
+
+    public List<SalaryStandard> getSalaryStandardList() {
+        return salaryStandardList;
+    }
+
+    public void setSalaryStandardList(List<SalaryStandard> salaryStandardList) {
+        this.salaryStandardList = salaryStandardList;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public int getClerkId() {
         return clerkId;
@@ -57,39 +62,36 @@ public class ClerkUpdateAction extends ActionSupport{
         this.clerk = clerk;
     }
 
-    public List<SalaryStandard> getListOfSalaryStandard() {
-        return listOfSalaryStandard;
-    }
-
-    public void setListOfSalaryStandard(List<SalaryStandard> listOfSalaryStandard) {
-        this.listOfSalaryStandard = listOfSalaryStandard;
-    }
 
     @Override
     public String execute(){
-        if(update == 0){
-            clerk = clerkHandleSvc.findById(clerkId);
-            listOfSalaryStandard = salarySvc.getAll();
-            return "update";
-        }
-        else{
-            check();
-            Clerk preClerk = clerkHandleSvc.findById(clerk.getId());
-            preClerk.setAddress(clerk.getAddress());
-            preClerk.setWeichat(clerk.getWeichat());
-            preClerk.setPhone(clerk.getPhone());
-            preClerk.setName(clerk.getName());
-            preClerk.setStatus(clerk.getStatus());
-            preClerk.setSex(clerk.getSex());
-            preClerk.setSalaryStandard(clerk.getSalaryStandard());
-            clerkHandleSvc.saveClerk(preClerk);
-            return "show";
 
-        }
+            if(status == 0){
+                clerk = clerkHandleSvc.findById(clerkId);
+                return "input";
+            }
+            if(check()){
+                Clerk preClerk = clerkHandleSvc.findById(clerk.getId());
+                preClerk.setAddress(clerk.getAddress());
+                preClerk.setWeichat(clerk.getWeichat());
+                preClerk.setPhone(clerk.getPhone());
+                preClerk.setName(clerk.getName());
+                preClerk.setStatus(clerk.getStatus());
+                preClerk.setSex(clerk.getSex());
+                preClerk.setSalaryStandard(clerk.getSalaryStandard());
+                clerkHandleSvc.saveClerk(preClerk);
+                return "show";
+            }else{
+                clerkId = clerk.getId();
+                return "input";
+            }
+
+
+
     }
 
-    public void check(){
-        update = 0;
+    public Boolean check(){
+
         //忽略开始空字符
         clerk.setAddress(clerk.getAddress().trim());
         clerk.setWeichat(clerk.getWeichat().trim());
@@ -98,12 +100,19 @@ public class ClerkUpdateAction extends ActionSupport{
 
         //判断是否为空
         //业务员姓名
-        if(StringUtil.isEmptyString(clerk.getName()))
+        if(StringUtil.isEmptyString(clerk.getName())){
             addFieldError("name", "业务员姓名不能为空！");
+            return false;
+        }
         //判断手机号码
-        if(!clerk.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")))
+        if(!clerk.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"))){
             addFieldError("phone", "手机号码格式错误！");
-
+            return false;
+        }
+        return true;
     }
 
+    public void prepare(){
+        salaryStandardList = salarySvc.getAll();
+    }
 }

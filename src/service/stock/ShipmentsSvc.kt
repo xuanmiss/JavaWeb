@@ -1,7 +1,10 @@
 package service.stock
 
+import dao.IBatchDBAccessor
 import dao.IOrderDBAccessor
+import dao.IStockDBAccessor
 import entity.Order
+import entity.Stock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import util.PageBean
@@ -31,5 +34,14 @@ class ShipmentsSvc:IShipmentsSvc{
         }
         pb.data=ret
         return pb
+    }
+
+    @Autowired
+    private lateinit var stockAcc: IStockDBAccessor
+    override fun getBatchesByModelWithQuantityLimit(orderNo:String):List<Stock> {
+        var order=orderAcc.getOrder(orderNo)
+        var model:Int=order.model.id
+        var quantity=order.quantity
+        return stockAcc.findBatchByModelWithQuantityLimit(quantity,model)
     }
 }

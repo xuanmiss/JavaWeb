@@ -49,7 +49,7 @@
                             $("#modalTitle").text("付款结果")
                             $("#modalBody").text(msg)
                             setTimeout(function () {
-                                window.location.href="<%=basePath%>/order/requesAdd"
+                                window.location.href="<%=basePath%>/order/requestAdd"
                             },500)
                         }
                     })
