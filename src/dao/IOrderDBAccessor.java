@@ -27,4 +27,5 @@ public interface IOrderDBAccessor extends IBaseDBAccessor<Order>{
     boolean hasOrderByClient(int id);
     List<Object[]> undoneOrders(int pageNo, int rows);
     boolean hasOrder(String orderNO);
+    Order getOrder(String orderNo);
 }

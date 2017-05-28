@@ -1,6 +1,5 @@
 package dao;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import entity.Client;
 import entity.Model;
 import entity.Order;
@@ -156,5 +155,12 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
         });
         return ret;
 
+    }
+
+    @Override
+    public Order getOrder(String orderNo) {
+        return (Order)getSession().createQuery("select o from entity.Order as o where o.order_no = ?1")
+                .setString("1",orderNo)
+                .uniqueResult();
     }
 }

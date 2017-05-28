@@ -2,14 +2,12 @@ package dao;
 
 import entity.Stock;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/5/6 0006.
  */
 public interface IStockDBAccessor extends IBaseDBAccessor<Stock>{
-    /**
-     * 获取库存数量
-     * @param count
-
-     */
+    List<Stock> findBatchByModelWithQuantityLimit(int quantity, int model);
 
 }

@@ -17,4 +17,5 @@ public interface IBatchDBAccessor extends IBaseDBAccessor<Batch> {
     Batch findById(int id);
     //通过型号查找批次
     List<Batch> getBatchByModel(int ModelId);
+
 }

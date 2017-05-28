@@ -2,9 +2,7 @@ package dao;
 
 import entity.Batch;
 import entity.Stock;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
-import util.PageBean;
 
 import java.util.List;
 
@@ -12,7 +10,7 @@ import java.util.List;
  * Created by Administrator on 2017/5/6 0006.
  */
 @Repository("batchDBAcc")
-@Lazy
+
 public class BatchDBAccessor extends BaseDBAccessor<Batch> implements IBatchDBAccessor{
     @Override
     public int countOfModel(int modelId) {
@@ -51,5 +49,6 @@ public class BatchDBAccessor extends BaseDBAccessor<Batch> implements IBatchDBAc
                 .setParameter("1", ModelId)
                 .list();
     }
+
 
 }

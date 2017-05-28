@@ -19,7 +19,7 @@
 
         window.onload=function () {
             setTimeout(function () {
-                window.location.href="<%=basePath%>/order/requesAdd"
+                window.location.href="<%=basePath%>/order/requestAdd"
             },3000)
         }
 

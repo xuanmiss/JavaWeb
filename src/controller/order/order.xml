@@ -47,10 +47,10 @@
         </action>
 
         <action name="*Order" class="addOrder" method="{1}Order">
-            <result name="cancel" type="redirectAction">requesAdd</result>
+            <result name="cancel" type="redirectAction">requestAdd</result>
             <result name="commit" type="redirectAction">
-                <param name="namespace"></param>
-                <param name="actionName"></param>
+                <param name="namespace">/order</param>
+                <param name="actionName">requestAdd</param>
             </result>
         </action>
 

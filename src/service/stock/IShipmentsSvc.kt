@@ -1,5 +1,6 @@
 package service.stock
 
+import entity.Stock
 import util.PageBean
 
 
@@ -8,5 +9,5 @@ import util.PageBean
  */
 interface IShipmentsSvc{
     fun getUndoOrder(pageNo:Int): PageBean<Array<Any>>
-
+    fun getBatchesByModelWithQuantityLimit(order_no:String):List<Stock>
 }
