@@ -8,7 +8,7 @@
             + path + "/";
 %>
 <head>
-    <title>查询订单</title>
+    <title align="center" font-size="20px">查询订单</title>
     <base href="<%=basePath%>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link  href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -33,9 +33,13 @@
     <%--</script>--%>
 
     <style type="text/css">
+        h1 {
+            margin-bottom: 50px;
+        }
+
         div {
             display: inline;
-            margin-left: 450px;
+            margin-left: 350px;
         }
 
         p {
@@ -45,7 +49,7 @@
     </style>
 </head>
 <body>
-<h1>订单查询</h1>
+<h1 align="center">订单查询</h1>
 <s:form action="clerkSelectOrder" namespace="/order" theme="simple" >
 
     <div>
