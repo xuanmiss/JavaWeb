@@ -71,14 +71,14 @@ public class StockViewAction extends ActionSupport{
 
     public String loadBatch(){
         List<Batch> list = batchSvc.getBatchByModel(modelId);
-        modelList=new LinkedList<>();
+        batchList=new LinkedList<>();
         list.forEach((it)->{
-            Model m = new Model();
-            m.setId(it.getId());
-            m.setModel(it.getBatch_no());
-            modelList.add(m);
+            Batch b = new Batch();
+            b.setId(it.getId());
+            b.setBatch_no(it.getBatch_no());
+            batchList.add(b);
         });
-        System.out.println("fetch size:"+modelList.size());
+        System.out.println("fetch size:"+batchList.size());
         return SUCCESS;
     }
 
