@@ -20,6 +20,8 @@ public class ShipmentsAction extends ActionSupport{
     private PageBean<Object[]> pageBean;
     private String orderNo;
     private List<Stock> stocks;
+    private int stockId;
+    private String msg;
 
     @Autowired
     private IShipmentsSvc shipmentsSvc;
@@ -30,9 +32,18 @@ public class ShipmentsAction extends ActionSupport{
 
     public String requestOut(){
         stocks=shipmentsSvc.getBatchesByModelWithQuantityLimit(orderNo);
-        return "requestSuccess";
+        return "request";
     }
 
+    public String handleOut(){
+        System.out.println(orderNo+":"+stockId);
+        boolean flag=shipmentsSvc.handleOut(orderNo,stockId);
+        if(flag)
+            msg="出库成功!";
+        else
+            msg="库存不足!";
+        return "handle";
+    }
 
 
     public int getPageNo() {
@@ -65,6 +76,22 @@ public class ShipmentsAction extends ActionSupport{
 
     public void setStocks(List<Stock> stocks) {
         this.stocks = stocks;
+    }
+
+    public int getStockId() {
+        return stockId;
+    }
+
+    public void setStockId(int stockId) {
+        this.stockId = stockId;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }
 

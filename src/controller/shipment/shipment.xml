@@ -14,9 +14,13 @@
         </action>
 
         <action name="*Out" class="shipments" method="{1}Out">
-            <result name="{1}Success" type="json">
+            <result name="request" type="json">
                 <param name="root">stocks</param>
             </result>
+            <result name="handle" type="json">
+                <param name="root">msg</param>
+            </result>
+
         </action>
     </package>
 </struts>

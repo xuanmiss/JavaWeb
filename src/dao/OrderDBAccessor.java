@@ -128,7 +128,7 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
     @Override
     public List<Object[]> undoneOrders(int pageNo, int rows) {
         List list=getSession().createSQLQuery("select o.id,o.order_no,o.model,o.quantity,o.date,o.receiver,b.count " +
-                "from order_form o left outer join b_s b on o.model = b.model")
+                "from order_form o left outer join b_s b on o.model = b.model where o.status = 1")
                 .addScalar("id",StandardBasicTypes.INTEGER)
                 .addScalar("order_no", StandardBasicTypes.STRING)
                 .addScalar("model", StandardBasicTypes.INTEGER)
