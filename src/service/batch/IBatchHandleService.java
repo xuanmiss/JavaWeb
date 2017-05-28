@@ -16,5 +16,5 @@ public interface IBatchHandleService {
     Batch findById(int id);
     PageBean<Batch> getListByPage(int pageNo);
     //通过型号查找批次
-    List<Batch> getBatchByModel(int ModelId);
+    List<Batch> getBatchByModel(int modelId);
 }

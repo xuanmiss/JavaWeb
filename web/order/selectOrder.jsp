@@ -33,9 +33,12 @@
     <%--</script>--%>
 
     <style type="text/css">
+        h1 {
+            margin-bottom: 50px;
+        }
         div {
             display: inline;
-            margin-left: 300px;
+            margin-left: 200px;
         }
 
         p {
@@ -45,7 +48,7 @@
     </style>
 </head>
 <body>
-<h1>订单查询</h1>
+<h1 align="center">订单查询</h1>
 <s:form action="selectOrder" namespace="/order" theme="simple" >
     <div class="inline">
         <s:label value="选择业务员："/>
