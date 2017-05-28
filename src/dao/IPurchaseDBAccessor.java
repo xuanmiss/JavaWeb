@@ -1,8 +1,6 @@
 package dao;
 
-import entity.Batch;
-import entity.Clerk;
-import entity.Order;
+import entity.*;
 
 import java.util.List;
 
@@ -14,4 +12,5 @@ public interface IPurchaseDBAccessor {
     List<Clerk> getClerkList();
     List<Order> getOrderList();
     void remove(int id);
+
 }

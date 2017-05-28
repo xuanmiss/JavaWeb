@@ -11,6 +11,7 @@ import service.brand.IBrandHandleSvc;
 import service.brand.IModelHandleSvc;
 import service.clerk.IClerkBrandHandleSvc;
 import service.stock.IPurchaseSvc;
+import util.PageBean;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -82,6 +83,18 @@ public class PurchaseAction extends ActionSupport {
         return SUCCESS;
     }
 
+    private PageBean<Purchase_Order> pageBean;
+    private int pageNo=1;
+
+    public String requestIn(){
+        pageBean=purchaseSvc.getUndoPurchaseOrders(pageNo);
+        pageBean.getData().forEach(it->{
+            it.getModel().getModel();
+            it.getClerk().getName();
+        });
+        return SUCCESS;
+    }
+
 
     public List<Model> getModels() {
         return models;
@@ -113,5 +126,21 @@ public class PurchaseAction extends ActionSupport {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public PageBean<Purchase_Order> getPageBean() {
+        return pageBean;
+    }
+
+    public void setPageBean(PageBean<Purchase_Order> pageBean) {
+        this.pageBean = pageBean;
+    }
+
+    public int getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
     }
 }

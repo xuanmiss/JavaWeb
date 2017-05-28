@@ -16,4 +16,5 @@ public interface IPurchaseSvc {
     void savePurchase(Purchase purchase);
     void remove(int id);
     boolean addPurchaseOrder(Purchase_Order po);
+    PageBean<Purchase_Order> getUndoPurchaseOrders(int pageNo);
 }

@@ -2,6 +2,7 @@ package service.stock;
 
 import com.opensymphony.xwork2.ActionContext;
 import dao.IBaseDBAccessor;
+import dao.IPurchaseOrderDBAccessor;
 import dao.PurchaseDBAccessor;
 import entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,4 +91,15 @@ public class PurchaseSvc implements IPurchaseSvc {
         return true;
     }
 
+    @Autowired
+    private IPurchaseOrderDBAccessor ipoAcc;
+    @Override
+    public PageBean<Purchase_Order> getUndoPurchaseOrders(int pageNo) {
+        PageBean<Purchase_Order> pageBean=new PageBean<>();
+        pageBean.setCurPage(pageNo);
+        pageBean.setMaxRowCount(ipoAcc.countOfUndoPurchase());
+        List<Purchase_Order> list=ipoAcc.getUndoPurchaseByPage(pageNo,pageBean.getRowsPerPage());
+        pageBean.setData(list);
+        return pageBean;
+    }
 }

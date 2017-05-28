@@ -1,11 +1,11 @@
 package service.stock
 
+import com.opensymphony.xwork2.ActionContext
+import dao.IBaseDBAccessor
 import dao.IBatchDBAccessor
 import dao.IOrderDBAccessor
 import dao.IStockDBAccessor
-import entity.Batch
-import entity.Order
-import entity.Stock
+import entity.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import util.PageBean
@@ -45,16 +45,22 @@ class ShipmentsSvc:IShipmentsSvc{
         var quantity=order.quantity
         return stockAcc.findBatchByModelWithQuantityLimit(quantity,model)
     }
-
-
+    @Autowired
+    private lateinit var baseDao:IBaseDBAccessor<Any>
     override fun handleOut(orderNo: String, stockId: Int): Boolean {
         var order=orderAcc.getOrder(orderNo)
         var stock=stockAcc.getObj(Stock::class.java,stockId)
+        var clerk=baseDao.getObj(Clerk::class.java,ActionContext.getContext().session["clerk"] as Int) as Clerk
         if(stock.count>=order.quantity){
             stock.count-=order.quantity
             order.status=2
             if(stock.count==0)
                 stockAcc.delete(stock)
+            var shipment =Shipment()
+            shipment.batch=stock.batch
+            shipment.clerk=clerk
+            shipment.order_form=order
+            baseDao.insert(shipment)
             return true
         }
         return false

@@ -11,7 +11,8 @@ public interface IPurchaseOrderDBAccessor  extends IBaseDBAccessor<Purchase_Orde
 
     List<Purchase_Order> getListByPageOrderByDate(int pageNo, int rows);
 
+    List<Purchase_Order> getUndoPurchaseByPage(int pageNo,int rows);
+    int countOfUndoPurchase();
     void setPurchaseOrderType(Purchase_Order order);
-
 
 }

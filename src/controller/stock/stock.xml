@@ -17,6 +17,9 @@
                 <param name="root">msg</param>
             </result>
         </action>
+        <action name="requestIn" class="purchaseAction" method="requestIn">
+            <result>/stock/warehouse.jsp</result>
+        </action>
 
     </package>
 
