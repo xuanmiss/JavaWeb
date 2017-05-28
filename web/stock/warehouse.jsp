@@ -48,6 +48,7 @@
                     alert("请输入批次号")
                     return
                 }
+
                 var param=new FormData()
                 param.append("purchase.batch.batch_no",batchNo)
                 param.append("purchase.order.order_no",orderNo)
@@ -64,6 +65,31 @@
                         setTimeout(function () {
                             window.location.href="/purchase/requestIn"
                          },1000)
+                    }
+                })
+            }
+        }
+
+        function cancleBtn(target) {
+            $("#myModalLabel").text("取消入库申请")
+            $("#myModalBody").html("说明:<br />该操作将取消入库申请，如果该申请已经向厂家预付款项，将无法取消!")
+            $("#inBtn").text("取消申请")
+            $$("inBtn").onclick = function () {
+                var param = new FormData()
+                param.append("purchaseOrder.order_no", target.title)
+                $.ajax({
+                    url: "/purchase/cancleIn.action",
+                    type: "post",
+                    processData: false,
+                    contentType: false,
+                    data: param,
+                    success: function (msg) {
+                        $("#myModalLabel").text("取消结果")
+                        $("#myModalBody").text(msg)
+                        $$("inBtn").onclick = null
+                        setTimeout(function () {
+                            window.location.href = "/purchase/requestIn"
+                        }, 1000)
                     }
                 })
             }
@@ -90,6 +116,7 @@
                 <td><s:date format="yyyy-MM-dd" name="#it.date"/> </td>
                 <td>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="btnClick(this);" title="<s:property value="#it.order_no"/>">入库</button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="cancleBtn(this);" title="<s:property value="#it.order_no"/>">取消</button>
                 </td>
             </tr>
         </s:iterator>

@@ -15,9 +15,8 @@ import util.PageBean;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by LCQ on 2017/5/23.
- */
+
+
 @Controller("purchaseAction")
 @Scope("prototype")
 public class PurchaseAction extends ActionSupport {
@@ -100,6 +99,15 @@ public class PurchaseAction extends ActionSupport {
     public String handleIn(){
         purchaseSvc.inWarehouse(purchase);
         msg="入库成功";
+        return SUCCESS;
+    }
+
+    public String candleIn(){
+        boolean flag=purchaseSvc.cancelIn(purchaseOrder);
+        if(flag)
+            msg="取消成功!";
+        else
+            msg="已经预付款项，取消失败!";
         return SUCCESS;
     }
 

@@ -13,10 +13,16 @@ import java.util.List;
 @Lazy
 public class StockDBAccessor extends BaseDBAccessor<Stock> implements IStockDBAccessor{
     @Override
-    public List<Stock> findBatchByModelWithQuantityLimit(int quantity, int model) {
+    public List<Stock> findStockByModelWithQuantityLimit(int quantity, int model) {
         return getSession().createQuery("select s from entity.Stock as s where s.batch.model.id = ?1 and s.count >= ?2")
                 .setInteger("1",model)
                 .setInteger("2",quantity)
                 .list();
+    }
+    @Override
+    public Stock findByBatch(int batchId){
+        return (Stock)getSession().createQuery("from entity.Stock as s where s.batch=?1")
+                .setInteger("1", batchId)
+                .uniqueResult();
     }
 }
