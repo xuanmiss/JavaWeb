@@ -129,6 +129,10 @@ public class PurchaseSvc implements IPurchaseSvc {
         purchase.setClerk(c);
         //保存入库单
         baseDBAccessor.insert(purchase);
+        Stock stock=new Stock();
+        stock.setBatch(batch);
+        stock.setCount(order.getQuantity());
+        baseDBAccessor.insert(stock);
 
     }
 }
