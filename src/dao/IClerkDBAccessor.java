@@ -2,6 +2,8 @@ package dao;
 
 import entity.Clerk;
 
+import java.util.List;
+
 
 /**
  * Created by ymcvalu on 2017/5/4.
@@ -24,6 +26,7 @@ public interface IClerkDBAccessor extends IBaseDBAccessor<Clerk> {
      * @param property 属性
      */
     boolean isExist(String value, String property);
+    List<Clerk> getListClerkofAll();
 
 }
 

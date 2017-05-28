@@ -19,4 +19,5 @@ public interface IAccountFlowDBAccessor extends IBaseDBAccessor<AccountFlow>{
      */
     //按时间顺序获取分页
     List<AccountFlow> getListByPageOrderByDate(int pageNo, int rows);
+    AccountFlow getAccountFlowById(int id);
 }

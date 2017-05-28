@@ -4,6 +4,8 @@ import entity.Clerk;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by ymcvalu on 2017/5/4.
  */
@@ -27,6 +29,11 @@ public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAc
                 .uniqueResult()>0;
     }
 
+    @Override
+    public List<Clerk> getListClerkofAll() {
+        return (List<Clerk>) getSession().createQuery("from entity.Clerk")
+                .list();
+    }
 
 
 }

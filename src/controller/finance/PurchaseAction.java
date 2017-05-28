@@ -27,6 +27,7 @@ public class PurchaseAction extends ActionSupport{
     private Account account;
     private int purchaseOrderId;
     private int pageNo = 1;
+    private Purchase_Order order;
 
     @Override
     public String execute(){
@@ -44,6 +45,10 @@ public class PurchaseAction extends ActionSupport{
        }
         else
             return "false";
+    }
+    public String loadPurchaseOrder(){
+        order = purchaseOrderSvc.findById(purchaseOrderId);
+        return SUCCESS;
     }
     public PageBean<Purchase_Order> getPageBean() {
         return pageBean;
@@ -67,5 +72,21 @@ public class PurchaseAction extends ActionSupport{
 
     public void setPurchaseOrderId(int purchaseOrderId) {
         this.purchaseOrderId = purchaseOrderId;
+    }
+
+    public Purchase_Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Purchase_Order order) {
+        this.order = order;
+    }
+
+    public int getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
     }
 }

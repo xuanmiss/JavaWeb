@@ -1,5 +1,6 @@
 package dao;
 
+import entity.AccountFlow;
 import entity.Arrear;
 
 /**
@@ -14,4 +15,5 @@ public interface IArrearDBAccessor extends IBaseDBAccessor<Arrear> {
      * 声明新方法
      * ...
      */
+    void deleteArrear(AccountFlow accountFlow);
 }

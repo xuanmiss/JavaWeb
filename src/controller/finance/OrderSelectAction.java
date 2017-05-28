@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Clerk;
 import entity.Model;
 import entity.Order;
+import entity.Purchase_Order;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -34,16 +35,17 @@ public class OrderSelectAction extends ActionSupport{
     private List<Model> models;
     private int clerkId;
     private int modelId;
-
+    private int orderId;
     @Override
     public String execute(){
         pageBean = orderSvc.getPageListOrder(pageNo);
-        clerks = clerkSvc.getListByPage(pageNo).getData();
+        clerks = clerkSvc.getListClerkofAll();
         models = modelSvc.getListModelofAll();
        // clerkId = 50;
         return SUCCESS;
     }
 
+    //通过业务员ID获取订单
     public String getClerkOrder(){
         //pageBean = orderSvc.getPageListOrder(2);
         clerkId = Integer.parseInt(ServletActionContext.getRequest().getParameter("clerkId"));
@@ -54,6 +56,7 @@ public class OrderSelectAction extends ActionSupport{
         return SUCCESS;
     }
 
+    //通过瓷砖ID获取订单
     public String getModelOrder(){
         modelId = Integer.parseInt(ServletActionContext.getRequest().getParameter("modelId"));
         pageBean = orderSvc.getPageListModelOrder(modelId,pageNo);
@@ -99,5 +102,21 @@ public class OrderSelectAction extends ActionSupport{
 
     public void setModelId(int modelId) {
         this.modelId = modelId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public int getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
     }
 }

@@ -24,9 +24,22 @@
     <script>
         function endiInfo(obj) {
             var orderId = $(obj).attr("id");
-            //var parm = new FormData();
-            //parm.append("purchaseOrderId", orderId);
+            var param = new FormData();
+            param.append("purchaseOrderId", orderId);
             $("#purchaseOrderId").val(orderId);
+            $.ajax({url:"/finance/loadPurchaseOrder",
+                data:param,
+                type:"post",
+                processData:false,
+                contentType:false,
+                success:function (order) {
+                    str=  "<h4 align='center'>流动资金：" + <s:property value="account.flow"/> + "RMB </h4>"+
+                    "<h4 align='center'>固有资产：" + <s:property value="account.fixed"/> + "RMB </h4>"+
+                    "<h4 align='center'>付款金额：" + order.amount + "RMB </h4>" +
+                    "<h4 align='center'>剩余资产：" + (<s:property value="account.fixed"/>-order.amount) +"RMB </h4>";
+                    $("#modalBody").html(str)
+                }
+            })
         }
         function confirm() {
             var purchaseOrderId = $("#purchaseOrderId").val();
@@ -99,10 +112,6 @@
                 <h4 class="modal-title" id="modalTitle">确认付款</h4>
             </div>
             <div class="modal-body" id="modalBody">
-                <h4 align="center">流动资金：<s:property value="account.flow"/> RMB </h4>
-                <h4 align="center">固有资产：<s:property value="account.fixed"/> RMB </h4>
-                <h4 align="center">付款金额：<s:property value="#it.amount"/> RMB </h4>
-                <h4 align="center">剩余资产：<s:property value="account.fixed-#it.amount"/> RMB </h4>
             </div>
             <div class="modal-footer" id="modalFooter">
                 <input type="hidden" name="purchaseOrderId" id="purchaseOrderId"/>

@@ -12,6 +12,14 @@
         <action name="account" class="account">
             <result>/finance/listAccountFlow.jsp</result>
         </action>
+        <action name="loadAccountFlow" class="account" method="loadAccountFlow">
+            <result type="json">
+                <param name="root">amount</param>
+            </result>
+        </action>
+        <action name="accountPayArrears" class="account" method="accountPayArrears">
+            <result type="json"></result>
+        </action>
         <action name="selectOrder" class="selectOrder">
             <result>/finance/listOrder.jsp</result>
         </action>
@@ -27,6 +35,11 @@
         <action name="purchaseOrder" class="purchase" method="purchaseOrder">
             <result type="json"></result>
             <result name="false" type="redirectAction">purchase</result>
+        </action>
+        <action name="loadPurchaseOrder" class="purchase" method="loadPurchaseOrder">
+            <result type="json">
+                <param name="root">order</param>
+            </result>
         </action>
         <action name="*">
             <result>/finance/{1}.jsp</result>

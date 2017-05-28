@@ -36,6 +36,13 @@ public class AccountDBAccessor extends BaseDBAccessor<Account> implements IAccou
             return false;
         }
     }
+    //账户收款
+    @Override
+    public void increaseAccount(double amount) {
+        Account account = getObj(Account.class,1);
+        double newFlow = account.getFlow()+amount;
+        account.setFlow(newFlow);
+    }
 
     /**
      * 在这里实现新方法...
