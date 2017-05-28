@@ -2,10 +2,13 @@ package service.stock
 
 import com.opensymphony.xwork2.ActionContext
 import dao.IBaseDBAccessor
-import dao.IBatchDBAccessor
 import dao.IOrderDBAccessor
+import dao.IShipmentDBAccessor
 import dao.IStockDBAccessor
-import entity.*
+import entity.Clerk
+import entity.Order
+import entity.Shipment
+import entity.Stock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import util.PageBean
@@ -65,4 +68,14 @@ class ShipmentsSvc:IShipmentsSvc{
         }
         return false
      }
+
+    @Autowired
+    private lateinit var shipmentsDBAcc:IShipmentDBAccessor
+    override fun getListByPage(pageNo: Int): PageBean<Shipment> {
+        val pb = PageBean<Shipment>()
+        pb.curPage = pageNo
+        pb.maxRowCount = shipmentsDBAcc.getCount(Shipment::class.java)
+        pb.data = shipmentsDBAcc.getListByPage(Shipment::class.java, pageNo, pb.rowsPerPage)
+        return pb
+    }
 }

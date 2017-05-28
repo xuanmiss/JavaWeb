@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Shipment;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,7 +14,8 @@ import java.util.List;
  * 公司出货单实现类
  * ...
  */
-
+@Repository("shipmentsDBA")
+@Lazy
 public class ShipmentDBAccessor extends BaseDBAccessor<Shipment> implements IShipmentDBAccessor{
 
     @Override

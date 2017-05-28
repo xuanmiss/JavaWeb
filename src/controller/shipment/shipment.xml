@@ -12,7 +12,9 @@
         <action name="getUndoOrder" class="shipments" method="showOrder">
             <result>/stock/shipments.jsp</result>
         </action>
-
+        <action name="selectShipments" class="shipments" method="selectShipments">
+            <result>/stock/shipmentsView.jsp</result>
+        </action>
         <action name="*Out" class="shipments" method="{1}Out">
             <result name="request" type="json">
                 <param name="root">stocks</param>
