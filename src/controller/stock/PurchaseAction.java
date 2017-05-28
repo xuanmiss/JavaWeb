@@ -2,7 +2,6 @@ package controller.stock;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import dao.IBaseDBAccessor;
 import entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -11,6 +10,7 @@ import service.brand.IBrandHandleSvc;
 import service.brand.IModelHandleSvc;
 import service.clerk.IClerkBrandHandleSvc;
 import service.stock.IPurchaseSvc;
+import util.PageBean;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -82,6 +82,27 @@ public class PurchaseAction extends ActionSupport {
         return SUCCESS;
     }
 
+    private PageBean<Purchase_Order> pageBean;
+    private int pageNo=1;
+
+    public String requestIn(){
+        pageBean=purchaseSvc.getUndoPurchaseOrders(pageNo);
+        pageBean.getData().forEach(it->{
+            it.getModel().getModel();
+            it.getClerk().getName();
+        });
+        return SUCCESS;
+    }
+
+
+    private Purchase purchase;
+
+    public String handleIn(){
+        purchaseSvc.inWarehouse(purchase);
+        msg="入库成功";
+        return SUCCESS;
+    }
+
 
     public List<Model> getModels() {
         return models;
@@ -113,5 +134,37 @@ public class PurchaseAction extends ActionSupport {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public PageBean<Purchase_Order> getPageBean() {
+        return pageBean;
+    }
+
+    public void setPageBean(PageBean<Purchase_Order> pageBean) {
+        this.pageBean = pageBean;
+    }
+
+    public int getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public IModelHandleSvc getModelSvc() {
+        return modelSvc;
+    }
+
+    public void setModelSvc(IModelHandleSvc modelSvc) {
+        this.modelSvc = modelSvc;
+    }
+
+    public Purchase getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
     }
 }

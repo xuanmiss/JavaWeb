@@ -2,6 +2,8 @@ package service.stock;
 
 import com.opensymphony.xwork2.ActionContext;
 import dao.IBaseDBAccessor;
+import dao.IPurchaseOrderDBAccessor;
+import dao.OrderDBAccessor;
 import dao.PurchaseDBAccessor;
 import entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,4 +92,47 @@ public class PurchaseSvc implements IPurchaseSvc {
         return true;
     }
 
+    @Autowired
+    private IPurchaseOrderDBAccessor ipoAcc;
+    @Override
+    public PageBean<Purchase_Order> getUndoPurchaseOrders(int pageNo) {
+        PageBean<Purchase_Order> pageBean=new PageBean<>();
+        pageBean.setCurPage(pageNo);
+        pageBean.setMaxRowCount(ipoAcc.countOfUndoPurchase());
+        List<Purchase_Order> list=ipoAcc.getUndoPurchaseByPage(pageNo,pageBean.getRowsPerPage());
+        pageBean.setData(list);
+        return pageBean;
+    }
+
+
+    @Override
+    public void inWarehouse(Purchase purchase) {
+        //新建批次
+        Batch batch=new Batch();
+        //获取对应的进货申请单
+        Purchase_Order order=ipoAcc.getOrderByOrderNo(purchase.getOrder().getOrder_no());
+        //设置已经入库
+        order.setType(order.getType()+1);
+        //设置批次号
+        batch.setBatch_no(purchase.getBatch().getBatch_no());
+        //设置入库日期
+        batch.setDate(new Date());
+        //设置入库型号
+        batch.setModel(order.getModel());
+        //保存批次信息
+        baseDBAccessor.insert(batch);
+        //设置入库单
+        purchase.setOrder(order);
+        purchase.setBatch(batch);
+        Clerk c=new Clerk();
+        c.setId((Integer) ActionContext.getContext().getSession().get("clerk"));
+        purchase.setClerk(c);
+        //保存入库单
+        baseDBAccessor.insert(purchase);
+        Stock stock=new Stock();
+        stock.setBatch(batch);
+        stock.setCount(order.getQuantity());
+        baseDBAccessor.insert(stock);
+
+    }
 }
