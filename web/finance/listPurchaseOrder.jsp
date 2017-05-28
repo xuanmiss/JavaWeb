@@ -21,6 +21,7 @@
     <![endif]-->
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
     </script>
+    <link rel="stylesheet" href="resources/css/fontsite.css">
     <script>
         function endiInfo(obj) {
             var orderId = $(obj).attr("id");

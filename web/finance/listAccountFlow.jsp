@@ -20,6 +20,7 @@
     <![endif]-->
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
     </script>
+    <link rel="stylesheet" href="resources/css/fontsite.css">
     <script>
         function payInfo(obj) {
             var orderId = $(obj).attr("id");
@@ -60,7 +61,7 @@
             )
         }
     </script>
-    <style type="text/css">
+   < <style type="text/css">
         td {text-align:center;padding:5px;margin:5px;}
         tr {line-height: 175%;}
         table th,td{width:1000px;font-size: large;border:1px solid #CCCCCC; }
@@ -68,12 +69,12 @@
     </style>
 </head>
 <body>
-<div id="acc" style="text-align: left">
+<div>
     <h2 align="center">流动资金：<s:property value="account.flow"/> RMB </h2>
     <h2 align="center">固有资产：<s:property value="account.fixed"/> RMB </h2>
 </div>
 <div>
-<table align="center">
+<table>
     <tr>
         <th>流水单号</th>
         <th>金额</th>
@@ -99,7 +100,8 @@
                 <s:else>白条已还款</s:else>
             </td>
             <td><s:date name="date" format="yyyy-MM-dd"/></td>
-            <td><s:if test="#it.type==4">
+            <td>
+                <s:if test="#it.type==4">
                 <input id="${it.id}" class="btn btn-default" data-toggle="modal" data-target="#payment" type="button" value="付款" onclick="payInfo(this)"/>
                 </s:if>
             </td>
