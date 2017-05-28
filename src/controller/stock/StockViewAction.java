@@ -29,7 +29,7 @@ public class StockViewAction extends ActionSupport{
     private IBatchHandleService batchSvc;
 
     private List<Brand> brandList;
-    private List<Integer> modelList;
+    private List<Model> modelList;
     private List<Batch> batchList;
 
     private int pageNo = 1;
@@ -60,14 +60,25 @@ public class StockViewAction extends ActionSupport{
         List<Model> list=modelSvc.getModelByBrand(brandId);
         modelList=new LinkedList<>();
         list.forEach((it)->{
-            modelList.add(it.getId());
+            Model m = new Model();
+            m.setId(it.getId());
+            m.setModel(it.getModel());
+            modelList.add(m);
         });
         System.out.println("fetch size:"+modelList.size());
         return SUCCESS;
     }
 
     public String loadBatch(){
-        batchList = batchSvc.getBatchByModel(modelId);
+        List<Batch> list = batchSvc.getBatchByModel(modelId);
+        modelList=new LinkedList<>();
+        list.forEach((it)->{
+            Model m = new Model();
+            m.setId(it.getId());
+            m.setModel(it.getBatch_no());
+            modelList.add(m);
+        });
+        System.out.println("fetch size:"+modelList.size());
         return SUCCESS;
     }
 
@@ -95,11 +106,12 @@ public class StockViewAction extends ActionSupport{
         this.status = status;
     }
 
-    public List<Integer> getModelList() {
+
+    public List<Model> getModelList() {
         return modelList;
     }
 
-    public void setModelList(List<Integer> modelList) {
+    public void setModelList(List<Model> modelList) {
         this.modelList = modelList;
     }
 

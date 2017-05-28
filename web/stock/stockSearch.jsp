@@ -34,7 +34,10 @@
                     contentType:false,
                     data:param,
                     success:function (data) {
-                        alert(data.length)
+                        for(i in data){
+                            for(j in data[i])
+                                $("#debug").append(data[i][j])
+                        }
                     }
 
                 })
