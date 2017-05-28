@@ -21,8 +21,9 @@ public class OrderHandleSvc implements IOrderHandleSvc {
     private IModelDBAccessor modelDbAcc;
     @Override
     public PageBean<Order> getPageListOrder(int pageNo) {
-        PageBean<Order> pb=new PageBean<>();
+        PageBean<Order> pb = new PageBean<>();
         pb.setCurPage(pageNo);
+        pb.setRowsPerPage(10);
         pb.setMaxRowCount(orderDbAcc.getCount(Order.class));
         //pb.setData(orderDbAcc.getListByPage(Order.class,pageNo,pb.getRowsPerPage()));
         pb.setData(orderDbAcc.getListByPageOrderByDate(pageNo,pb.getRowsPerPage()));

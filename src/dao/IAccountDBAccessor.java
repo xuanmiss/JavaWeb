@@ -15,4 +15,5 @@ public interface IAccountDBAccessor extends IBaseDBAccessor<Account>{
      * ...
      */
     boolean purchaseOrder(double purchase_orderAmount);
+    void increaseAccount(double amount);
 }

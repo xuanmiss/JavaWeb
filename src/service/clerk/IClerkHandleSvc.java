@@ -16,4 +16,5 @@ public interface IClerkHandleSvc {
     void saveClerk(Clerk clerk);
     void deleteById(int id);
     Clerk findById(int id);
+    List<Clerk> getListClerkofAll();
 }
