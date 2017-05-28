@@ -95,7 +95,8 @@ public class StockViewAction extends ActionSupport{
         Stock s = new Stock();
         if(stock == null)
             s.setCount(0);
-        s.setCount(stock.getCount());
+        else
+            s.setCount(stock.getCount());
         stockList =new LinkedList<>();
         stockList.add(s);
         System.out.println("所剩库存数：:"+s.getCount());
