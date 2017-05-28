@@ -19,7 +19,7 @@
         <result-types>
             <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
         </result-types>
-        <action name="*Action" class="stockView">
+        <action name="stockViewAction" class="stockView">
             <result name="input">/stock/stockSearch.jsp</result>
             <result>/stock/stockView.jsp</result>
         </action>
