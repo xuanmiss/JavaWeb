@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import service.brand.IBrandHandleSvc;
 import service.brand.IModelHandleSvc;
 import service.clerk.IClerkBrandHandleSvc;
+import service.stock.IPurchaseSvc;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -70,8 +71,10 @@ public class PurchaseAction extends ActionSupport {
 
     }
 
+    @Autowired
+    private IPurchaseSvc purchaseSvc;
     public String handleAdd(){
-        System.out.println(purchaseOrder.getModel().getId()+":"+purchaseOrder.getQuantity());
+
         msg="进货申请成功!";
         return SUCCESS;
     }
