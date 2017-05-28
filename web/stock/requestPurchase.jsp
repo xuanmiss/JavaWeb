@@ -72,7 +72,11 @@
                     contentType: false,
                     data: param,
                     success: function (msg) {
-                        alert(msg)
+                        $("#myModalLabel").text("申请结果")
+                        $("#myModalBody").text(msg)
+                        setTimeout(function () {
+                            window.location.href="/purchase/requestAdd"
+                        },1000)
                     }
 
                 })
@@ -92,9 +96,23 @@
         <label>数量：</label>
         <input type="number" value="1000" min="1000" max="100000000" name="count">
         <br />
-        <s:submit id="submit" value="提交" class="btn btn-default" />
+        <button type="button" id="submit" class="btn btn-default" data-toggle="modal" data-target="#myModal">提交</button>
         <s:reset value="重置" class="btn btn-default" />
     </s:form>
-
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body" id="myModalBody">
+                </div>
+                <div class="modal-footer" id="myModalFooter"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

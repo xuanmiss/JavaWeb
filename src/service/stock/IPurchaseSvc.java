@@ -5,9 +5,7 @@ import util.PageBean;
 
 import java.util.List;
 
-/**
- * Created by LCQ on 2017/5/23.
- */
+
 public interface IPurchaseSvc {
     PageBean<Purchase> getAll(int pageNo);
     List<Batch> getAllBatch();
@@ -18,4 +16,5 @@ public interface IPurchaseSvc {
     boolean addPurchaseOrder(Purchase_Order po);
     PageBean<Purchase_Order> getUndoPurchaseOrders(int pageNo);
     void inWarehouse(Purchase purchase);
+    boolean cancelIn(Purchase_Order po);
 }
