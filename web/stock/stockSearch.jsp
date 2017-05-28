@@ -25,10 +25,8 @@
             $("#selectBrand").change(function () {
                 si = this.selectedIndex
                 brandId = this.options[si].value
-                alert(brandId)
-                var  param = new FormData()
+                var param = new FormData()
                 param.append("brandId", brandId)
-                //selectAll(param, "stock/loadModel", $("#selectModel"))
                 $.ajax({
                     url:"/stock/loadModel",
                     type:"post",
@@ -36,7 +34,7 @@
                     contentType:false,
                     data:param,
                     success:function (data) {
-                        $("#debug").html(data)
+                        alert(data.length)
                     }
 
                 })

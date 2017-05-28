@@ -23,7 +23,7 @@ public class PurchaseAction extends ActionSupport {
     private Purchase purchase;
     private Batch batch;
     private Clerk clerk;
-    private Order order;
+
     private List<Batch> batchList = null;
     private List<Clerk> clerkList = null;
     private List<Order> orderList = null;
@@ -61,7 +61,7 @@ public class PurchaseAction extends ActionSupport {
         order = purchaseSvc.getOrderById(order.getId());*/
         p.setBatch(batch);
         p.setClerk(clerk);
-        p.setOrder(order);
+
         purchaseSvc.savePurchase(p);
         return "add";
     }
@@ -101,13 +101,7 @@ public class PurchaseAction extends ActionSupport {
         this.clerk = clerk;
     }
 
-    public Order getOrder() {
-        return order;
-    }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 
     public List<Batch> getBatchList() {
         return batchList;

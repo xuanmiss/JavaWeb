@@ -5,7 +5,7 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-    <package name="purchase" namespace="/purchase" extends="struts-default">
+    <package name="purchase" namespace="/purchase" extends="my-default">
         <action name="*Action" class="Purchase" method="{1}">
             <result name="list">/stock/listPurchase.jsp</result>
             <result name="option">/stock/addPurchase.jsp</result>
@@ -25,7 +25,7 @@
         </action>
         <action name="loadBrand" class="stockView" method="loadBrand">
             <result type="json">
-                <param name="root">list</param>
+                <param name="root">brandList</param>
             </result>
         </action>
         <action name="loadModel" class="stockView" method="loadModel">

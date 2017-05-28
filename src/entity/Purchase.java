@@ -48,13 +48,13 @@ public class Purchase {
 
     @OneToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_form",referencedColumnName = "id")
-    private Order order;
+    private Purchase_Order order;
 
-    public Order getOrder() {
+    public Purchase_Order getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(Purchase_Order order) {
         this.order = order;
     }
 
@@ -79,13 +79,5 @@ public class Purchase {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Purchase{" +
-                "id=" + id +
-                ", batch=" + batch +
-                ", clerk=" + clerk +
-                ", order=" + order +
-                '}';
-    }
+
 }
