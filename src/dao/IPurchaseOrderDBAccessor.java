@@ -10,23 +10,8 @@ import java.util.List;
 public interface IPurchaseOrderDBAccessor  extends IBaseDBAccessor<Purchase_Order> {
 
     List<Purchase_Order> getListByPageOrderByDate(int pageNo, int rows);
-    /**
-     * 根据订单号查询预购表
-     */
 
     void setPurchaseOrderType(Purchase_Order order);
-    List<Purchase_Order> findByOrderNo(Object object);
-    /**
-     *
-     *根据业务员查看预购表
-     */
-    List<Purchase_Order> findByClerk(Object object);
-    /**
-     * 按日期查找订单
-     */
-    List<Purchase_Order> findByDate(Object object);
-    /**
-     *根据瓷砖型号查询预购表
-     **/
-    List<Purchase_Order> findByModel(Object object);
+
+
 }
