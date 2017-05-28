@@ -11,6 +11,24 @@
         <result-types>
             <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
         </result-types>
+        <action name="requestSelect" class="selectByOrder" method="requestForSelect">
+            <result name="selectOrder">/order/selectOrder.jsp</result>
+            <result name="clerkSelectOrder">/order/clerkSelectOrder.jsp</result>
+            <result name="error">/order/error.jsp</result>
+        </action>
+        <action name="selectOrder" class="selectByOrder" method="selectBOrder">
+            <result name="showOrder">/order/showOrder.jsp</result>
+            <result name="error">/order/error.jsp</result>
+        </action>
+        <action name="clerkSelectOrder" class="selectByOrder" method="clerkSelectBOrder">
+            <result name="clerkShowOrder">/order/clerkShowOrder.jsp</result>
+            <result name="error">/order/error.jsp</result>
+        </action>
+        <action name="loadClerk" class="selectByOrder" method="loadClerk">
+            <result type="json">
+                <param name="root">clerks</param>
+            </result>
+        </action>
 
         <action name="requestAdd" class="addOrder" method="requestForAdd">
             <result name="fail">/order/requestAddFail.jsp</result>

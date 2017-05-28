@@ -90,7 +90,7 @@
 
                     <ul>
                         <li><a href="/order/requestAdd.action" target="dmMain">新增订单</a></li>
-                        <li><a href="" target="dmMain">新增品牌</a></li>
+                        <li><a href="/order/requestSelect.action" target="dmMain">订单查询</a></li>
                     </ul>
                 </li>
 
