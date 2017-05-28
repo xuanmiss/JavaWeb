@@ -46,5 +46,10 @@ public class ClerkHandleSvc implements IClerkHandleSvc {
         return clerkDBAccessor.getObj(Clerk.class,id);
     }
 
+    @Override
+    public List<Clerk> getListClerkofAll() {
+        return clerkDBAccessor.getListClerkofAll();
+    }
+
 
 }

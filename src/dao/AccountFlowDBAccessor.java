@@ -4,6 +4,7 @@ package dao;
 import entity.AccountFlow;
 import org.springframework.stereotype.Controller;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,4 +26,10 @@ public class AccountFlowDBAccessor extends BaseDBAccessor<AccountFlow> implement
                 .setMaxResults(rows)
                 .list();
     }
+
+    @Override
+    public AccountFlow getAccountFlowById(int id) {
+        return getObj(AccountFlow.class,id);
+    }
+
 }
