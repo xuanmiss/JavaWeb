@@ -2,7 +2,6 @@ package controller.stock;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import dao.IBaseDBAccessor;
 import entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -96,6 +95,15 @@ public class PurchaseAction extends ActionSupport {
     }
 
 
+    private Purchase purchase;
+
+    public String handleIn(){
+        purchaseSvc.inWarehouse(purchase);
+        msg="入库成功";
+        return SUCCESS;
+    }
+
+
     public List<Model> getModels() {
         return models;
     }
@@ -142,5 +150,21 @@ public class PurchaseAction extends ActionSupport {
 
     public void setPageNo(int pageNo) {
         this.pageNo = pageNo;
+    }
+
+    public IModelHandleSvc getModelSvc() {
+        return modelSvc;
+    }
+
+    public void setModelSvc(IModelHandleSvc modelSvc) {
+        this.modelSvc = modelSvc;
+    }
+
+    public Purchase getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
     }
 }

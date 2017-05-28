@@ -46,7 +46,7 @@ public class Purchase {
         this.clerk = clerk;
     }
 
-    @OneToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Purchase_Order.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_form",referencedColumnName = "id")
     private Purchase_Order order;
 

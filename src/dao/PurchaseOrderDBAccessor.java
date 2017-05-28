@@ -5,9 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by LCQ on 2017/5/7.
- */
+
 @Repository("purchaseOrderDBAcc")
 public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> implements IPurchaseOrderDBAccessor{
     @Override
@@ -35,5 +33,12 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
     @Override
     public void setPurchaseOrderType(Purchase_Order order) {
         order.setType(order.getType()+2);
+    }
+
+    @Override
+    public Purchase_Order getOrderByOrderNo(String orderNo) {
+        return (Purchase_Order) getSession().createQuery("select o from entity.Purchase_Order as o where o.order_no = ?1")
+                .setString("1",orderNo)
+                .uniqueResult();
     }
 }
