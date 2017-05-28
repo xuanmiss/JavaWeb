@@ -58,8 +58,8 @@ public class StockViewAction extends ActionSupport{
     public String loadModel(){
         modelList=modelSvc.getModelByBrand(brandId);
         modelList.forEach((it)->{
-            it.setBrand(null);
             it.setBatches(null);
+            it.setBrand(null);
         });
         System.out.println("fetch size:"+modelList.size());
         return SUCCESS;

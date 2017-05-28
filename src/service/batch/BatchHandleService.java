@@ -4,6 +4,7 @@ import dao.IBatchDBAccessor;
 import entity.Batch;
 import entity.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import util.PageBean;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/5/23.
  */
+@Service("batchHandler")
 public class BatchHandleService implements IBatchHandleService{
     @Autowired
     IBatchDBAccessor batchDBAccessor;

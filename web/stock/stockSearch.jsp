@@ -17,8 +17,7 @@
     <script src="bootstrap/js/selectAll.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <![endif]-->
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
-    </script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <script>
         window.onload=function () {
@@ -26,9 +25,21 @@
             $("#selectBrand").change(function () {
                 si = this.selectedIndex
                 brandId = this.options[si].value
-                param = new FormData()
+                alert(brandId)
+                var  param = new FormData()
                 param.append("brandId", brandId)
-                selectAll(param, "stock/loadModel", $("#selectModel"))
+                //selectAll(param, "stock/loadModel", $("#selectModel"))
+                $.ajax({
+                    url:"/stock/loadModel",
+                    type:"post",
+                    processData:false,
+                    contentType:false,
+                    data:param,
+                    success:function (data) {
+                        $("#debug").html(data)
+                    }
+
+                })
             })
 
         }
@@ -51,7 +62,7 @@
     <div id="batchError"/>
     <s:submit value="提交" class="btn btn-default"/>
     <s:reset value="重置" class="btn btn-default"/>
-    <div class="stockView"></div>
+    <div id="debug"></div>
 </s:form>
 
 </body>

@@ -6,16 +6,10 @@ function selectAll(loadBy, url, selectObj){
         type:"post",
         processData:false,
         contentType:false,
-        success:function (obj) {
-            var list = eval('(' +obj+ ')')
+        success:function (data) {
 
-           for(var i=0; i<list.length; i++){
+            $("#stockView").text(data)
 
-                var item = document.createElement("option")
-                item.value=list[i].id
-                item.text=list[i].name
-                selectObj.add(item, null)
-            }
         }
     })
 }
