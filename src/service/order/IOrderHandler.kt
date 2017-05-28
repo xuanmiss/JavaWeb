@@ -19,4 +19,8 @@ interface IOrderHandler{
     fun commitOrder(order:Order)
     fun commitOrder(order:Order,arrear:Arrear)
     fun hasOrder(orderNo:String):Boolean
+    fun getOrdersByClerkAndClientAndStatus(clerk:Int,client:Int,status:Int,pageNo:Int):PageBean<Order>
+    fun getOrdersByClerkAndClient(clerk:Int,client:Int,pageNo:Int):PageBean<Order>
+    fun getOrdersByClientAndStatus(client:Int,status:Int,pageNo:Int):PageBean<Order>
+    fun getOrdersByClient(client:Int,pageNo:Int):PageBean<Order>
 }

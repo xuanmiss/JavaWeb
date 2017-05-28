@@ -163,4 +163,83 @@ public class OrderDBAccessor extends BaseDBAccessor<Order> implements IOrderDBAc
                 .setString("1",orderNo)
                 .uniqueResult();
     }
+
+
+
+    @Override
+    public List<Order> getListByPage(int clerk, int client, int state, int pageNo, int rows) {
+        return getSession().createQuery("select o from entity.Order as o where o.clerk.id = ?1 and o.receiver.id = ?2 and o.status = ?3")
+                .setInteger("1",clerk)
+                .setInteger("2",client)
+                .setInteger("3",state)
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
+    @Override
+    public List<Order> getLIstByClerkAndClient(int clerk, int client, int pageNo, int rows) {
+        return getSession().createQuery("select o from entity.Order as o where o.clerk.id = ?1 and o.receiver.id = ?2 ")
+                .setInteger("1",clerk)
+                .setInteger("2",client)
+
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
+
+
+    @Override
+    public List<Order> getListByClient(int client, int state, int pageNo, int rows) {
+        return getSession().createQuery("select o from entity.Order as o where o.receiver.id = ?1 and o.status = ?2")
+                .setInteger("1",client)
+                .setInteger("2",state)
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
+    @Override
+    public List<Order> getListByClient(int client, int pageNo, int rows) {
+        return getSession().createQuery("select o from entity.Order as o where o.receiver.id = ?1")
+                .setInteger("1",client)
+                .setFirstResult((pageNo-1)*rows)
+                .setMaxResults(rows)
+                .list();
+    }
+
+    @Override
+    public int getCountByClerkAndClientAndState(int clerk, int client, int state) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.clerk.id=?1 and o.receiver.id=?2 and o.status=?3")
+                .setInteger("1",clerk)
+                .setInteger("2",client)
+                .setInteger("3",state)
+                .uniqueResult()).intValue();
+    }
+
+    @Override
+    public int getCountByClerkAndClient(int clerk, int client) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.clerk.id=?1 and o.receiver.id=?2")
+                .setInteger("1",clerk)
+                .setInteger("2",client)
+
+                .uniqueResult()).intValue();
+    }
+
+    @Override
+    public int getCountByClinetANdState(int client, int state) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.receiver.id=?1 and o.status=?2")
+                .setInteger("1",client)
+                .setInteger("2",state)
+                .uniqueResult()).intValue();
+    }
+
+    @Override
+    public int getCountByClient(int client) {
+        return ((Long)getSession().createQuery("select count(*) from entity.Order as o where o.receiver.id=?1 ")
+                .setInteger("1",client)
+                .uniqueResult()).intValue();
+    }
 }
+

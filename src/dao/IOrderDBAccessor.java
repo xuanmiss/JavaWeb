@@ -21,6 +21,17 @@ public interface IOrderDBAccessor extends IBaseDBAccessor<Order>{
     int getCountOfOrder(int clerk, int state);
     List<Order> getListByPage(int clerk, int state, int pageNo, int rows);
     List<Order> getClerkOrders(int clerk, int pageNo, int rows);
+
+    List<Order> getListByPage(int clerk,int client,int state,int pageNo,int rows);
+    List<Order> getLIstByClerkAndClient(int clerk,int client,int pageNo,int rows);
+    List<Order> getListByClient(int client,int state,int pageNo,int rows);
+    List<Order> getListByClient(int client,int pageNo,int rows);
+    int getCountByClerkAndClientAndState(int clerk,int client,int state);
+    int getCountByClerkAndClient(int clerk,int client);
+    int getCountByClinetANdState(int client,int state);
+    int getCountByClient(int client);
+
+
     int getCountOfClerkOrder(int clerk);
     int getCountOfOrderModel(int model);
     boolean hasOrderByClerk(int id);

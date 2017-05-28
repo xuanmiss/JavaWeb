@@ -121,4 +121,36 @@ class OrderHandler:IOrderHandler{
             baseDAO.insert(this)
         }
     }
+
+    override fun getOrdersByClerkAndClientAndStatus(clerk: Int, client: Int, status: Int, pageNo: Int): PageBean<Order> {
+        var pb=PageBean<Order>()
+        pb.curPage=pageNo
+        pb.maxRowCount=orderAcc.getCountByClerkAndClientAndState(clerk,client,status);
+        pb.data=orderAcc.getListByPage(clerk,client,status,pageNo,pb.rowsPerPage)
+        return pb
+    }
+
+    override fun getOrdersByClerkAndClient(clerk: Int, client: Int, pageNo: Int): PageBean<Order> {
+        var pb=PageBean<Order>()
+        pb.curPage=pageNo
+        pb.maxRowCount=orderAcc.getCountByClerkAndClient(clerk,client)
+        pb.data=orderAcc.getLIstByClerkAndClient(clerk,client,pageNo,pb.rowsPerPage)
+        return pb
+    }
+
+    override fun getOrdersByClientAndStatus(client: Int, status: Int, pageNo: Int): PageBean<Order> {
+        var pb=PageBean<Order>()
+        pb.curPage=pageNo
+        pb.maxRowCount=orderAcc.getCountByClinetANdState(client,status)
+        pb.data=orderAcc.getListByClient(client,status,pageNo,pb.rowsPerPage)
+        return pb
+    }
+
+    override fun getOrdersByClient(client: Int, pageNo: Int): PageBean<Order> {
+        var pb=PageBean<Order>()
+        pb.curPage=pageNo
+        pb.maxRowCount=orderAcc.getCountByClient(client)
+        pb.data=orderAcc.getListByClient(client,pageNo,pb.rowsPerPage)
+        return pb
+    }
 }
