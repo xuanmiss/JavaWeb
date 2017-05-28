@@ -7,12 +7,6 @@
 <struts>
 
     <package name="clerk" namespace="/clerk" extends="struts-default">
-        <action name="beforeAdd" class="beforeAdd">
-            <result>/clerk/addClerk.jsp</result>
-        </action>
-        <action name="beforeUpdate" class="beforeUpdate">
-            <result>/clerk/updateClerk.jsp</result>
-        </action>
         <action name="clerk_*" class="{1}Clerk">
             <result name="input">/clerk/{1}Clerk.jsp</result>
             <result name="show" type="redirectAction">

@@ -7,7 +7,7 @@ function selectAll(loadBy, url, selectObj){
         processData:false,
         contentType:false,
         success:function (obj) {
-
+            var list = eval('(' +obj+ ')')
 
            for(var i=0; i<list.length; i++){
 

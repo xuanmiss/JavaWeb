@@ -61,4 +61,9 @@ public class BrandHandleSvc implements IBrandHandleSvc {
     public Brand findById(int id) {
         return brandAcc.getObj(Brand.class,id);
     }
+
+    @Override
+    public List<Brand> getAll(){
+        return brandAcc.getAll();
+    }
 }

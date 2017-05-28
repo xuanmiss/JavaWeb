@@ -38,4 +38,9 @@ public class BatchHandleService implements IBatchHandleService{
     public Batch findById(int id){
         return batchDBAccessor.findById(id);
     }
+
+    @Override
+    public List<Batch> getBatchByModel(int ModelId){
+        return batchDBAccessor.getBatchByModel(ModelId);
+    }
 }

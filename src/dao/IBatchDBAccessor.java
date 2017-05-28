@@ -14,6 +14,7 @@ public interface IBatchDBAccessor extends IBaseDBAccessor<Batch> {
     List<Stock> findStockByBatch(int batch_no);
     List<Batch> findByModel(int model_id);
     void saveBatch(Batch batch);
-
     Batch findById(int id);
+    //通过型号查找批次
+    List<Batch> getBatchByModel(int ModelId);
 }

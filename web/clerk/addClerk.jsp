@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<s:form action="clerk_add.action" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
+<s:form action="clerk_add.action?status=1" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="业务员姓名:"/>
     <s:textfield name="clerk.name" />

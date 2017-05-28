@@ -28,7 +28,7 @@
                 brandId = this.options[si].value
                 param = new FormData()
                 param.append("brandId", brandId)
-                selectAll(param, "/stock/loadModel", $("#selectModel"))
+                selectAll(param, "stock/loadModel", $("#selectModel"))
             })
 
         }

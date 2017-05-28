@@ -17,4 +17,6 @@ public interface IModelHandleSvc {
     boolean delect(int modelId);
     Model getModel(int id);
     List<Model> getListModelofAll();
+    //通过品牌ID获取型号
+    List<Model> getModelByBrand(int brandId);
 }

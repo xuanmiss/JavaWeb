@@ -49,4 +49,12 @@ public class ModelDBAccessor extends BaseDBAccessor<Model> implements IModelDBAc
                 .setInteger("1",brandId)
                 .uniqueResult()).intValue();
     }
+
+    @Override
+    public List<Model> getModelByBrand(int brandId){
+        String hql = "select m from entity.Model as m where m.brand=?1";
+        return getSession().createQuery(hql)
+                .setInteger("1", brandId)
+                .list();
+    }
 }

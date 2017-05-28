@@ -101,6 +101,7 @@
                     <ul>
                         <li><a href="/shipment/getUndoOrder.action" target="dmMain">出库管理</a></li>
                         <li><a href="/purchase/selectAction.action" target="dmMain">入库记录</a></li>
+                        <li><a href="/stock/stockViewAction.action" target="dmMain">库存查询</a></li>
                     </ul>
                 </li>
 
@@ -130,7 +131,7 @@
 
                     <ul>
                         <li><a href="/clerk/clerk_select.action" target="dmMain">业务员查询</a></li>
-                        <li><a href="/clerk/beforeAdd.action" target="dmMain">新增业务员</a></li>
+                        <li><a href="/clerk/clerk_add.action" target="dmMain">新增业务员</a></li>
                         <li><a href="/clerkBrand/formAction.action" target="dmMain">新增业务</a></li>
                         <li><a href="/clerkBrand/selectAction.action" target="dmMain">业务查询</a></li>
                         <li><a href="/salaryStandard/selectSalaryStandard.action" target="dmMain">薪资标准查询</a></li>

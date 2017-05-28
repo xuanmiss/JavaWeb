@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;
 
-import javax.jws.WebParam;
 import java.util.List;
 
 /**
@@ -71,4 +70,10 @@ public class ModelHandleSvc implements IModelHandleSvc{
     public List<Model> getListModelofAll() {
         return modelAcc.getListofAll();
     }
+
+    @Override
+    public List<Model> getModelByBrand(int brandId){
+        return modelAcc.getModelByBrand(brandId);
+    }
 }
+

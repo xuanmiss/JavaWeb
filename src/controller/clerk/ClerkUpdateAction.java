@@ -22,11 +22,13 @@ public class ClerkUpdateAction extends ActionSupport implements Preparable {
 
     @Autowired
     private ISalaryStandardHandleSvc salarySvc;
-
     @Autowired
     private IClerkHandleSvc clerkHandleSvc;
 
     private int clerkId;
+    private List<SalaryStandard> salaryStandardList;
+    private Clerk clerk;
+    private int status = 0;
 
     public List<SalaryStandard> getSalaryStandardList() {
         return salaryStandardList;
@@ -36,10 +38,13 @@ public class ClerkUpdateAction extends ActionSupport implements Preparable {
         this.salaryStandardList = salaryStandardList;
     }
 
-    private List<SalaryStandard> salaryStandardList;
+    public int getStatus() {
+        return status;
+    }
 
-
-    private Clerk clerk;
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public int getClerkId() {
         return clerkId;
@@ -61,21 +66,31 @@ public class ClerkUpdateAction extends ActionSupport implements Preparable {
     @Override
     public String execute(){
 
-            Clerk preClerk = clerkHandleSvc.findById(clerk.getId());
-            preClerk.setAddress(clerk.getAddress());
-            preClerk.setWeichat(clerk.getWeichat());
-            preClerk.setPhone(clerk.getPhone());
-            preClerk.setName(clerk.getName());
-            preClerk.setStatus(clerk.getStatus());
-            preClerk.setSex(clerk.getSex());
-            preClerk.setSalaryStandard(clerk.getSalaryStandard());
-            clerkHandleSvc.saveClerk(preClerk);
-            return "show";
+            if(status == 0){
+                clerk = clerkHandleSvc.findById(clerkId);
+                return "input";
+            }
+            if(check()){
+                Clerk preClerk = clerkHandleSvc.findById(clerk.getId());
+                preClerk.setAddress(clerk.getAddress());
+                preClerk.setWeichat(clerk.getWeichat());
+                preClerk.setPhone(clerk.getPhone());
+                preClerk.setName(clerk.getName());
+                preClerk.setStatus(clerk.getStatus());
+                preClerk.setSex(clerk.getSex());
+                preClerk.setSalaryStandard(clerk.getSalaryStandard());
+                clerkHandleSvc.saveClerk(preClerk);
+                return "show";
+            }else{
+                clerkId = clerk.getId();
+                return "input";
+            }
+
+
 
     }
 
-    @Override
-    public void validate(){
+    public Boolean check(){
 
         //忽略开始空字符
         clerk.setAddress(clerk.getAddress().trim());
@@ -85,14 +100,17 @@ public class ClerkUpdateAction extends ActionSupport implements Preparable {
 
         //判断是否为空
         //业务员姓名
-        if(StringUtil.isEmptyString(clerk.getName()))
+        if(StringUtil.isEmptyString(clerk.getName())){
             addFieldError("name", "业务员姓名不能为空！");
+            return false;
+        }
         //判断手机号码
-        if(!clerk.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")))
+        if(!clerk.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"))){
             addFieldError("phone", "手机号码格式错误！");
-
+            return false;
+        }
+        return true;
     }
-
 
     public void prepare(){
         salaryStandardList = salarySvc.getAll();
