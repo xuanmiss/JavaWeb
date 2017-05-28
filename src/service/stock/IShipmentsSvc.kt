@@ -10,4 +10,5 @@ import util.PageBean
 interface IShipmentsSvc{
     fun getUndoOrder(pageNo:Int): PageBean<Array<Any>>
     fun getBatchesByModelWithQuantityLimit(order_no:String):List<Stock>
+    fun handleOut(orderNo:String,stockId:Int):Boolean
 }

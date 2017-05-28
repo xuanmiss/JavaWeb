@@ -3,6 +3,7 @@ package service.stock
 import dao.IBatchDBAccessor
 import dao.IOrderDBAccessor
 import dao.IStockDBAccessor
+import entity.Batch
 import entity.Order
 import entity.Stock
 import org.springframework.beans.factory.annotation.Autowired
@@ -44,4 +45,18 @@ class ShipmentsSvc:IShipmentsSvc{
         var quantity=order.quantity
         return stockAcc.findBatchByModelWithQuantityLimit(quantity,model)
     }
+
+
+    override fun handleOut(orderNo: String, stockId: Int): Boolean {
+        var order=orderAcc.getOrder(orderNo)
+        var stock=stockAcc.getObj(Stock::class.java,stockId)
+        if(stock.count>=order.quantity){
+            stock.count-=order.quantity
+            order.status=2
+            if(stock.count==0)
+                stockAcc.delete(stock)
+            return true
+        }
+        return false
+     }
 }

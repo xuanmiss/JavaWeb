@@ -43,10 +43,10 @@ public class BatchDBAccessor extends BaseDBAccessor<Batch> implements IBatchDBAc
     }
 
     @Override
-    public List<Batch> getBatchByModel(int ModelId){
+    public List<Batch> getBatchByModel(int modelId){
         String hql = "from entity.Batch as b where b.model=?1";
         return getSession().createQuery(hql)
-                .setParameter("1", ModelId)
+                .setInteger("1", modelId)
                 .list();
     }
 

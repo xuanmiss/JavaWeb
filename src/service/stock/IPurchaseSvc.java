@@ -1,9 +1,6 @@
 package service.stock;
 
-import entity.Batch;
-import entity.Clerk;
-import entity.Order;
-import entity.Purchase;
+import entity.*;
 import util.PageBean;
 
 import java.util.List;
@@ -18,4 +15,5 @@ public interface IPurchaseSvc {
     List<Order> getAllOrder();
     void savePurchase(Purchase purchase);
     void remove(int id);
+    boolean addPurchaseOrder(Purchase_Order po);
 }
