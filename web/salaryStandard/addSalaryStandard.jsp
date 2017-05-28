@@ -9,9 +9,16 @@
 <head>
     <title>新增薪资标准</title>
     <base href="<%=basePath%>">
-    <style type="text/css">
-        .textarea {width:300px;height:200px;resize:none;}
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/util.js"></script>
+    <script src="bootstrap/js/selectEnhance.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <![endif]-->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    
 </head>
 <body>
     <s:form action="salaryStandardAdd.action" method="POST" namespace="/salaryStandard" theme="simple">

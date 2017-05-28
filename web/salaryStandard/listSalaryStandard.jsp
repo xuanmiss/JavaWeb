@@ -12,7 +12,8 @@
     <style type="text/css">
         td {text-align:center;padding:5px;margin:5px;}
         tr {line-height: 175%;}
-        table {width:1000px;font-size: x-large }
+        table th,td{width:1000px;font-size: large;border:1px solid #CCCCCC; }
+        table th,td{text-align:center;vertical-align:center;}
     </style>
 </head>
 <body>
