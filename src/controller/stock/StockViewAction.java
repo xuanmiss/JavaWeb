@@ -4,12 +4,14 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Batch;
 import entity.Brand;
 import entity.Model;
+import entity.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.batch.IBatchHandleService;
 import service.brand.IBrandHandleSvc;
 import service.brand.IModelHandleSvc;
+import service.stock.IStockSvc;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -27,10 +29,13 @@ public class StockViewAction extends ActionSupport{
     private IModelHandleSvc modelSvc;
     @Autowired
     private IBatchHandleService batchSvc;
+    @Autowired
+    private IStockSvc stockSvc;
 
     private List<Brand> brandList;
     private List<Model> modelList;
     private List<Batch> batchList;
+    private List<Stock> stockList;
 
     private int pageNo = 1;
     private int brandId;
@@ -41,12 +46,11 @@ public class StockViewAction extends ActionSupport{
     @Override
     public String execute(){
         if(status == 0){
-            brandId = 1;
             brandList = brandSvc.getAll();
+            modelList = modelSvc.getModelByBrand(brandList.get(0).getId());
             return "input";
         }
 
-        check();
         loadStock();
         return SUCCESS;
     }
@@ -87,6 +91,12 @@ public class StockViewAction extends ActionSupport{
     }
 
     public String loadStock(){
+        Stock stock = stockSvc.findByBatch(batchId);
+        Stock s = new Stock();
+        s.setCount(stock.getCount());
+        stockList =new LinkedList<>();
+        stockList.add(s);
+        System.out.println("所剩库存数：:"+s.getCount());
         return SUCCESS;
     }
 
@@ -155,4 +165,11 @@ public class StockViewAction extends ActionSupport{
         this.batchId = batchId;
     }
 
+    public List<Stock> getStockList() {
+        return stockList;
+    }
+
+    public void setStockList(List<Stock> stockList) {
+        this.stockList = stockList;
+    }
 }

@@ -43,7 +43,7 @@ class ShipmentsSvc:IShipmentsSvc{
         var order=orderAcc.getOrder(orderNo)
         var model:Int=order.model.id
         var quantity=order.quantity
-        return stockAcc.findBatchByModelWithQuantityLimit(quantity,model)
+        return stockAcc.findStockByModelWithQuantityLimit(quantity,model)
     }
     @Autowired
     private lateinit var baseDao:IBaseDBAccessor<Any>

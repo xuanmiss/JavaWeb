@@ -35,7 +35,9 @@
         </result-types>
         <action name="stockViewAction" class="stockView">
             <result name="input">/stock/stockSearch.jsp</result>
-            <result>/stock/stockView.jsp</result>
+            <result type="json">
+                <param name="root">stockList</param>
+            </result>
         </action>
         <action name="loadBrand" class="stockView" method="loadBrand">
             <result type="json">

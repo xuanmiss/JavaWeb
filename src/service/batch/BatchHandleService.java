@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/5/23.
  */
-@Service("batchHandler")
+@Service
 public class BatchHandleService implements IBatchHandleService{
     @Autowired
     IBatchDBAccessor batchDBAccessor;
@@ -42,7 +42,7 @@ public class BatchHandleService implements IBatchHandleService{
     }
 
     @Override
-    public List<Batch> getBatchByModel(int ModelId){
-        return batchDBAccessor.getBatchByModel(ModelId);
+    public List<Batch> getBatchByModel(int modelId){
+        return batchDBAccessor.getBatchByModel(modelId);
     }
 }
