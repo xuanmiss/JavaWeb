@@ -90,7 +90,7 @@
 
                     <ul>
                         <li><a href="/order/requestAdd.action" target="dmMain">新增订单</a></li>
-                        <li><a href="" target="dmMain">新增品牌</a></li>
+                        <li><a href="/order/requestSelect.action" target="dmMain">订单查询</a></li>
                     </ul>
                 </li>
 
@@ -100,6 +100,7 @@
 
                     <ul>
                         <li><a href="/shipment/getUndoOrder.action" target="dmMain">出库管理</a></li>
+                        <li><a href="/purchase/requestAdd.action" target="dmMain">进货申请</a></li>
                         <li><a href="/purchase/selectAction.action" target="dmMain">入库记录</a></li>
                         <li><a href="/stock/stockViewAction.action" target="dmMain">库存查询</a></li>
                     </ul>

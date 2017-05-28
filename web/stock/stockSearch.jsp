@@ -17,8 +17,7 @@
     <script src="bootstrap/js/selectAll.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <![endif]-->
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
-    </script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <script>
         window.onload=function () {
@@ -26,11 +25,26 @@
             $("#selectBrand").change(function () {
                 si = this.selectedIndex
                 brandId = this.options[si].value
-                param = new FormData()
+                var param = new FormData()
                 param.append("brandId", brandId)
-                selectAll(param, "stock/loadModel", $("#selectModel"))
+                msg = "当前品牌下没有型号信息！！！"
+                selectAll(param, "stock/loadModel", $("#selectModel"), msg, function(obj){
+                    item = "<option value='" + obj.id + "'>" + obj.model + "</option>"
+                    return item
+                })
             })
 
+            $("#selectModel").change(function () {
+                si = this.selectedIndex
+                modelId = this.options[si].value
+                var param = new FormData()
+                param.append("modelId", modelId)
+                msg = "当前型号下没有批次信息！！！"
+                selectAll(param, "stock/loadBatch", $("#selectBatch"), msg, function(obj){
+                    item = "<option value='" + obj.id + "'>" + obj.batch_no + "</option>"
+                    return item
+                })
+            })
         }
     </script>
 </head>
@@ -51,7 +65,7 @@
     <div id="batchError"/>
     <s:submit value="提交" class="btn btn-default"/>
     <s:reset value="重置" class="btn btn-default"/>
-    <div class="stockView"></div>
+    <div id="debug"></div>
 </s:form>
 
 </body>

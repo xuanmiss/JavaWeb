@@ -83,7 +83,7 @@
     <input id="watchModel" class="btn btn-default" data-toggle="modal" data-target="#modal" type="button" value="查看" />
     <br/>
     <s:label value="数量："/>
-    <input type="number" name="order.quantity" required="true" min="1" max="10000" value="1"/>
+    <input type="number" name="order.quantity" required="true" min="1000" max="1000000" value="1000"/>
     <br/>
     <s:submit value="提交" class="btn btn-default"/>
     <s:reset value="重置" class="btn btn-default"/>

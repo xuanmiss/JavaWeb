@@ -1,14 +1,15 @@
 package service.stock;
 
+import com.opensymphony.xwork2.ActionContext;
+import dao.IBaseDBAccessor;
 import dao.PurchaseDBAccessor;
-import entity.Batch;
-import entity.Clerk;
-import entity.Order;
-import entity.Purchase;
+import entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -65,17 +66,28 @@ public class PurchaseSvc implements IPurchaseSvc {
         purchaseDBAccessor.remove(id);
     }
 
-    /**
-     * 按id查询相应记录
-     * */
-   /* public Batch getBatchById(int batchId){
-        return purchaseDBAccessor.findBatchById(batchId);
+
+    @Autowired
+    private IBaseDBAccessor<Object> baseDBAccessor;
+    @Override
+    public boolean addPurchaseOrder(Purchase_Order po) {
+        try{
+            Model m=(Model) baseDBAccessor.getObj(Model.class,po.getModel().getId());
+            po.setAmount(m.getIn_price()*po.getQuantity());
+            Clerk c=new Clerk();
+            c.setId((Integer) ActionContext.getContext().getSession().get("clerk"));
+            po.setClerk(c);
+            po.setDate(new Date());
+            SimpleDateFormat df=new SimpleDateFormat("yyMMdd");
+            String orderNo="11"+df.format(po.getDate());
+            String str=((Long)System.currentTimeMillis()).toString().substring(8);
+            po.setOrder_no(orderNo+str);
+            po.setType(1);
+            baseDBAccessor.insert(po);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
-    public Clerk getClerkById(int clerkId){
-        return purchaseDBAccessor.findClerkById(clerkId);
-    }
-    public Order getOrderById(int orderId){
-        return purchaseDBAccessor.findOrderById(orderId);
-    }*/
 
 }

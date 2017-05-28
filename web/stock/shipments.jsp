@@ -74,7 +74,7 @@
         }
 
         function handleIn(target) {
-
+            window.location.href="/purchase/requestAdd.action"
         }
     </script>
 

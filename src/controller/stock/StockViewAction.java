@@ -11,6 +11,7 @@ import service.batch.IBatchHandleService;
 import service.brand.IBrandHandleSvc;
 import service.brand.IModelHandleSvc;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -56,17 +57,28 @@ public class StockViewAction extends ActionSupport{
     }
 
     public String loadModel(){
-        modelList=modelSvc.getModelByBrand(brandId);
-        modelList.forEach((it)->{
-            it.setBrand(null);
-            it.setBatches(null);
+        List<Model> list=modelSvc.getModelByBrand(brandId);
+        modelList=new LinkedList<>();
+        list.forEach((it)->{
+            Model m = new Model();
+            m.setId(it.getId());
+            m.setModel(it.getModel());
+            modelList.add(m);
         });
         System.out.println("fetch size:"+modelList.size());
         return SUCCESS;
     }
 
     public String loadBatch(){
-        batchList = batchSvc.getBatchByModel(modelId);
+        List<Batch> list = batchSvc.getBatchByModel(modelId);
+        batchList=new LinkedList<>();
+        list.forEach((it)->{
+            Batch b = new Batch();
+            b.setId(it.getId());
+            b.setBatch_no(it.getBatch_no());
+            batchList.add(b);
+        });
+        System.out.println("fetch size:"+batchList.size());
         return SUCCESS;
     }
 
@@ -93,6 +105,7 @@ public class StockViewAction extends ActionSupport{
     public void setStatus(int status) {
         this.status = status;
     }
+
 
     public List<Model> getModelList() {
         return modelList;
@@ -141,4 +154,5 @@ public class StockViewAction extends ActionSupport{
     public void setBatchId(int batchId) {
         this.batchId = batchId;
     }
+
 }
