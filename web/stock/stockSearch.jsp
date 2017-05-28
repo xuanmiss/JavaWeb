@@ -27,22 +27,24 @@
                 brandId = this.options[si].value
                 var param = new FormData()
                 param.append("brandId", brandId)
-                $.ajax({
-                    url:"/stock/loadModel",
-                    type:"post",
-                    processData:false,
-                    contentType:false,
-                    data:param,
-                    success:function (data) {
-                        for(i in data){
-                            for(j in data[i])
-                                $("#debug").append(data[i][j])
-                        }
-                    }
-
+                msg = "当前品牌下没有型号信息！！！"
+                selectAll(param, "stock/loadModel", $("#selectModel"), msg, function(obj){
+                    item = "<option value='" + obj.id + "'>" + obj.model + "</option>"
+                    return item
                 })
             })
 
+            $("#selectModel").change(function () {
+                si = this.selectedIndex
+                modelId = this.options[si].value
+                var param = new FormData()
+                param.append("modelId", modelId)
+                msg = "当前型号下没有批次信息！！！"
+                selectAll(param, "stock/loadBatch", $("#selectBatch"), msg, function(obj){
+                    item = "<option value='" + obj.id + "'>" + obj.batch_no + "</option>"
+                    return item
+                })
+            })
         }
     </script>
 </head>

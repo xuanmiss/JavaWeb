@@ -78,7 +78,7 @@ public class StockViewAction extends ActionSupport{
             b.setBatch_no(it.getBatch_no());
             batchList.add(b);
         });
-        System.out.println("fetch size:"+batchList.size());
+        System.out.println("**********fetch size:"+batchList.size());
         return SUCCESS;
     }
 
