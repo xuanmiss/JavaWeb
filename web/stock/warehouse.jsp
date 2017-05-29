@@ -63,8 +63,8 @@
                         $("#myModalBody").text(msg)
                         $$("inBtn").onclick=null
                         setTimeout(function () {
-                            window.location.href="/purchase/requestIn"
-                         },1000)
+                            window.location.href = "/purchase/requestIn?pageNo=${requestScope.pageNo}&brandId=${requestScope.brandId}&modelId=${requestScope.modelId}&isDescByDate=${requestScope.isDescByDate}"
+                         },500)
                     }
                 })
             }
@@ -88,16 +88,64 @@
                         $("#myModalBody").text(msg)
                         $$("inBtn").onclick = null
                         setTimeout(function () {
-                            window.location.href = "/purchase/requestIn"
-                        }, 1000)
+                            window.location.href = "/purchase/requestIn?pageNo=${requestScope.pageNo}&brandId=${requestScope.brandId}&modelId=${requestScope.modelId}&isDescByDate=${requestScope.isDescByDate}"
+                        }, 500)
                     }
                 })
             }
         }
+        window.onload=function () {
+            $$("brandSlt").onchange = function () {
+                var brandId = $$("searchForm").brandId.value
+
+                var select = $$("modelSlt")
+                clearChildren(select)
+                var head =document.createElement("option")
+                head.text="-请选择-"
+                head.value=0
+                select.add(head,null)
+
+                if(brandId==0)
+                    return
+
+                var param = new FormData()
+                param.append("brandId", brandId)
+                $.ajax({
+                    url: "/stock/loadModel",
+                    type: "post",
+                    processData: false,
+                    contentType: false,
+                    data: param,
+                    success: function (models) {
+                        for (var i = 0; i < models.length; i++) {
+                            var option = document.createElement("option")
+                                option.value = models[i].id
+                                option.text = models[i].model
+                            select.add(option, null)
+                        }
+                    }
+                })
+            }
+
+        }
+    
     </script>
 </head>
 <body>
     <h1 align="center">入库管理</h1>
+    <s:form theme="simple" action="requestIn" namespace="/purchase" id="searchForm" >
+        品牌：<s:select list="brands" listKey="id" listValue="name"  headerKey="0" headerValue="-请选择-" name="brandId" id="brandSlt" >
+        <s:param name="value" value="brandId"/>
+    </s:select>
+        型号：<s:select list="models" listKey="id" listValue="model" headerKey="0" headerValue="-请选择-"  name="modelId" id="modelSlt" >
+        <s:param name="value" value="modelId"/>
+    </s:select>
+        日期：<s:radio list="#{0:'最晚优先',1:'最早优先'}" name="isDescByDate" >
+        <s:param name="value" value="isDescByDate" />
+    </s:radio>
+        <input type="reset"  class="btn btn-default" value="重置">
+        <input type="submit" class="btn btn-default" value="查询" />
+    </s:form>
     <table>
         <tr>
             <th>订单号</th>
@@ -122,7 +170,7 @@
         </s:iterator>
     </table>
     <jsp:include page="/common/page.jsp">
-        <jsp:param name="url" value="/purchase/requestIn.action"/>
+        <jsp:param name="url" value="/purchase/requestIn.action?brandId=${requestScope.brandId}&modelId=${requestScope.modelId}&isDescByDate=${requestScope.isDescByDate}"/>
     </jsp:include>
 
 

@@ -85,9 +85,43 @@ public class PurchaseAction extends ActionSupport {
     }
 
     private PageBean<Purchase_Order> pageBean;
-    private int pageNo=1;
 
+    private int pageNo=1;
+    private int brandId=0;
+    private int modelId=0;
+    private int isDescByDate=0;
     public String requestIn(){
+        System.out.println("brandId:"+brandId);
+        System.out.println("modelId:"+modelId);
+        System.out.println("isDescByDate:"+isDescByDate);
+        brands=brandSvc.getAll();
+        if(brandId>0){
+            models=modelSvc.getModelByBrand(brandId);
+            if(modelId>0){
+                if(isDescByDate==1){
+                    //search by brand、model、order by desc
+                }else{
+                    //search by brand、model、order by asc
+                }
+            }else{
+                if(isDescByDate==1){
+                    //search by brand、order by desc
+                }else{
+                    //search by brand、order by asc
+                }
+            }
+        }else {
+            modelId=0;
+            modelId=0;
+            models=new LinkedList<>();
+            if(isDescByDate==1){
+                //search by desc
+            }else {
+                //search by asc
+            }
+
+        }
+
         pageBean=purchaseSvc.getUndoPurchaseOrders(pageNo);
         pageBean.getData().forEach(it->{
             it.getModel().getModel();
@@ -197,5 +231,37 @@ public class PurchaseAction extends ActionSupport {
 
     public void setPurchase(Purchase purchase) {
         this.purchase = purchase;
+    }
+
+    public IBrandHandleSvc getBrandSvc() {
+        return brandSvc;
+    }
+
+    public void setBrandSvc(IBrandHandleSvc brandSvc) {
+        this.brandSvc = brandSvc;
+    }
+
+    public int getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(int brandId) {
+        this.brandId = brandId;
+    }
+
+    public int getModelId() {
+        return modelId;
+    }
+
+    public void setModelId(int modelId) {
+        this.modelId = modelId;
+    }
+
+    public int getIsDescByDate() {
+        return isDescByDate;
+    }
+
+    public void setIsDescByDate(int isDescByDate) {
+        this.isDescByDate = isDescByDate;
     }
 }
