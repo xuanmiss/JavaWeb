@@ -1,12 +1,14 @@
 package controller.shipment;
 
 import com.opensymphony.xwork2.ActionSupport;
+import entity.Shipment;
 import entity.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.stock.IShipmentsSvc;
 import util.PageBean;
+
 import java.util.List;
 
 
@@ -18,10 +20,19 @@ import java.util.List;
 public class ShipmentsAction extends ActionSupport{
     private int pageNo=1;
     private PageBean<Object[]> pageBean;
+    private PageBean<Shipment> pageOfShipments;
     private String orderNo;
     private List<Stock> stocks;
     private int stockId;
     private String msg;
+
+    public PageBean<Shipment> getP() {
+        return pageOfShipments;
+    }
+
+    public void setP(PageBean<Shipment> p) {
+        this.pageOfShipments = p;
+    }
 
     @Autowired
     private IShipmentsSvc shipmentsSvc;
@@ -45,6 +56,12 @@ public class ShipmentsAction extends ActionSupport{
         return "handle";
     }
 
+    public String selectShipments(){
+        //PageBean<Shipment> pageBean = new PageBean<Shipment>();
+        pageOfShipments=shipmentsSvc.getListByPage(pageNo);
+        System.out.println("*******"+pageOfShipments.getData().size());
+        return SUCCESS;
+    }
 
     public int getPageNo() {
         return pageNo;

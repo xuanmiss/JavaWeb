@@ -19,7 +19,7 @@ public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAc
 
     @Override
     public void deleteById(int id){
-        getSession().createQuery("delete from Clerk where id=?1").setParameter("1", id).executeUpdate();
+        getSession().createQuery("delete from entity.Clerk as c where c.id=?1").setParameter("1", id).executeUpdate();
     }
 
     @Override
