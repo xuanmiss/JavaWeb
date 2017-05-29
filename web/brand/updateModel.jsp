@@ -9,53 +9,69 @@
 <head>
     <title>新增品牌型号</title>
     <base href="<%=basePath%>">
-    <style type="text/css">
-        .textarea {width:300px;height:200px;resize:none;}
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/util.js"></script>
+    <script src="bootstrap/js/selectEnhance.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <![endif]-->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <link rel="stylesheet" href="resources/css/fontsite.css">
 </head>
 <body>
-<h1><s:property value="brandName"/></h1>
+<div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
+<h2><s:property value="brandName"/></h2>
 <h3>新增型号</h3>
 <s:form action="handleUpdateModel.action" method="POST"  namespace="/brand" theme="simple" enctype="multipart/form-data">
     <input type="hidden" name="model.brand.id" value="${requestScope.brandId}"/>
     <input type="hidden" name="model.id" value="<s:property value="model.id"/>"/>
+    <div class="form-group">
     <s:fielderror fieldName="model" style="color:red"/>
     <s:label value="型号:"/>
-    <s:textfield name="model.model" />
-    <br /><br />
+    <s:textfield class="form-control" name="model.model" />
+    </div>
+    <div class="form-group">
     <s:fielderror fieldName="format" style="color:red"/>
     <s:label value="规格:"/>
-    <s:textfield name="model.format"/>
-    <br /><br />
+    <s:textfield class="form-control" name="model.format"/>
+    </div>
+    <div class="form-group">
     <s:fielderror fieldName="color" style="color:red"/>
     <s:label value="花色:"/>
-    <s:textfield name="model.color" />
-    <br /><br />
-
+    <s:textfield class="form-control" name="model.color" />
+    </div>
+    <div class="form-group">
     <s:fielderror fieldName="in_price" style="color:red"/>
     <s:label value="进价:"/>
-    <s:textfield name="model.in_price"/>
-    <br /><br />
-
+    <s:textfield class="form-control" name="model.in_price"/>
+    </div>
+    <div class="form-group">
     <s:fielderror fieldName="sale_price" style="color:red"/>
     <s:label value="单价:"/>
-    <s:textfield name="model.sale_price"/>
-    <br /><br />
-
+    <s:textfield class="form-control" name="model.sale_price"/>
+    </div>
+    <div class="form-group">
     <s:fielderror fieldName="image" style="color:red"/>
     <s:label value="照片:"/>
-    <img src="<s:property value="model.image"/>" width="80" height="80">
+    <img src="<s:property value="model.image"/>" width="100" height="100">
     <input type="hidden" name="model.image" value="<s:property value="model.image"/>"/>
     <s:file name="image"/>
-    <br/>
+    </div>
+    <div class="form-group">
     <s:label value="推广日期:"/>
     <s:date name="model.date" format="yyyy-MM-dd"/>
     <input type="hidden" name="model.date" value="<s:property value="model.date"/>"/>
-    <br/>
+    </div>
+    <div class="form-group">
     <s:radio list="#{'0':'在市','1':'下市'}" name="model.status" />
-    <br/>
-    <s:submit value="提交"/>
-    <s:reset value="重置"/>
+    </div>
+    <s:submit class="btn-info btn-lg" value="提交"/>
+    <s:reset class="btn-info btn-lg" value="重置"/>
 </s:form>
+</div>
 </body>
 </html>

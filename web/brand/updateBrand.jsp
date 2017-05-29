@@ -32,11 +32,11 @@
 </head>
 <body>
 <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
-<s:form class="form-horizontal" action="handleUpdateBrand.action" method="POST"  namespace="/brand" theme="simple" enctype="multipart/form-data">
+<s:form action="handleUpdateBrand.action" method="POST"  namespace="/brand" theme="simple" enctype="multipart/form-data">
     <input type="hidden" name="brand.id" value="<s:property value="brand.id"/>"/>
     <br/>
     <div class="form-group">
-        <s:fielderror class="form-control" fieldName="name" style="color:red"/>
+        <s:fielderror fieldName="name" style="color:red"/>
     <s:label  value="品牌名:"/>
     <s:textfield class="form-control" name="brand.name" />
     </div>
@@ -46,16 +46,16 @@
     <s:textfield class="form-control" name="brand.supplier" />
     </div>
     <div class="form-group">
-    <s:fielderror class="form-control" fieldName="description" style="color:red"/>
+    <s:fielderror fieldName="description" style="color:red"/>
     </div>
     <div class="form-group">
     <s:label value="品牌描述:"/>
     <s:textarea name="brand.description" style="resize:none;" class="form-control"/>
     </div>
     <div class="form-group">
-    <s:fielderror class="form-control" fieldName="logo" style="color:red"/>
+    <s:fielderror fieldName="logo" style="color:red"/>
     <s:label value="logo:"/>
-    <img src="<s:property value="brand.logo"/>" width="80" height="80">
+    <img src="<s:property value="brand.logo"/>" width="100" height="100">
     <input type="hidden" name="brand.logo" value="<s:property value="brand.logo"/>"/>
     <s:file name="logo" />
     </div>
