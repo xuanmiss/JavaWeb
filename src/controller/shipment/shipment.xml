@@ -15,14 +15,19 @@
         <action name="selectShipments" class="shipments" method="selectShipments">
             <result>/stock/shipmentsView.jsp</result>
         </action>
-        <action name="*Out" class="shipments" method="{1}Out">
-            <result name="request" type="json">
-                <param name="root">stocks</param>
-            </result>
+
+        <action name="handleOut" class="shipments" method="handleOut">
+            <interceptor-ref name="manager-only-def"/>
             <result name="handle" type="json">
                 <param name="root">msg</param>
             </result>
+        </action>
 
+        <action name="requestOut" class="shipments" method="requestOut">
+            <interceptor-ref name="manager-only-def"/>
+            <result name="request" type="json">
+                <param name="root">stocks</param>
+            </result>
         </action>
     </package>
 
