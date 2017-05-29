@@ -10,6 +10,7 @@
             <result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
         </result-types>
         <action name="getUndoOrder" class="shipments" method="showOrder">
+            <interceptor-ref name="manager-only-def"/>
             <result>/stock/shipments.jsp</result>
         </action>
         <action name="selectShipments" class="shipments" method="selectShipments">
