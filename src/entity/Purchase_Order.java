@@ -32,6 +32,8 @@ public class Purchase_Order {
     @JoinColumn(name = "clerk")
     private Clerk clerk;
 
+
+
     private int type;
 
     public Integer getId() {

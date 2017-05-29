@@ -22,7 +22,7 @@ public class PurchaseSvc implements IPurchaseSvc {
     /**
      * 获取所有purchase表信息
      * */
-    public PageBean<Purchase> getAll(int pageNo){
+    public PageBean<Purchase> getListByPage(int pageNo){
         PageBean<Purchase> pageBean = new PageBean<>();
         pageBean.setCurPage(pageNo);
         pageBean.setMaxRowCount(purchaseDBAccessor.getCount(Purchase.class));
@@ -192,4 +192,5 @@ public class PurchaseSvc implements IPurchaseSvc {
         else
             return false;
     }
+
 }

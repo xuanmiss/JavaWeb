@@ -2,7 +2,10 @@ package controller.stock;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import entity.*;
+import entity.Brand;
+import entity.Model;
+import entity.Purchase;
+import entity.Purchase_Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,7 @@ import java.util.List;
 public class PurchaseAction extends ActionSupport {
     private List<Brand> brands;
     private List<Model> models;
+    private PageBean<Purchase> pageOfPurchase;
 
     private Purchase_Order purchaseOrder;
     private String msg;
@@ -30,7 +34,6 @@ public class PurchaseAction extends ActionSupport {
     private IModelHandleSvc modelSvc;
     @Autowired
     private IBrandHandleSvc brandSvc;
-
     @Autowired
     private IClerkBrandHandleSvc cbSvc;
 
@@ -102,12 +105,32 @@ public class PurchaseAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public PageBean<Purchase> getPageOfPurchase() {
+        return pageOfPurchase;
+    }
+
+    public void setPageOfPurchase(PageBean<Purchase> pageOfPurchase) {
+        this.pageOfPurchase = pageOfPurchase;
+    }
+
     public String candleIn(){
         boolean flag=purchaseSvc.cancelIn(purchaseOrder);
         if(flag)
             msg="取消成功!";
+
         else
             msg="已经预付款项，取消失败!";
+        return SUCCESS;
+    }
+
+    public String selectPurchase(){
+        pageOfPurchase= purchaseSvc.getListByPage(pageNo);
+        System.out.println("fetch size:"+pageOfPurchase.getData().size());
+        pageOfPurchase.getData().forEach(it->{
+            System.out.println("订单号:"+it.getOrder().getOrder_no());
+            System.out.println("订单状态:"+it.getOrder().getType());
+        });
+
         return SUCCESS;
     }
 

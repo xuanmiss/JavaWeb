@@ -103,6 +103,7 @@
                         <li><a href="/shipment/selectShipments.action" target="dmMain">出库信息</a></li>
                         <li><a href="/purchase/requestAdd.action" target="dmMain">进货申请</a></li>
                         <li><a href="/purchase/requestIn" target="dmMain">入库管理</a></li>
+                        <li><a href="/purchase/selectPurchase.action" target="dmMain">入库信息</a></li>
                         <li><a href="/stock/stockViewAction.action" target="dmMain">库存查询</a></li>
                     </ul>
                 </li>

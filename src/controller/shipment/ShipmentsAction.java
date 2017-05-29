@@ -26,14 +26,6 @@ public class ShipmentsAction extends ActionSupport{
     private int stockId;
     private String msg;
 
-    public PageBean<Shipment> getP() {
-        return pageOfShipments;
-    }
-
-    public void setP(PageBean<Shipment> p) {
-        this.pageOfShipments = p;
-    }
-
     @Autowired
     private IShipmentsSvc shipmentsSvc;
     public String showOrder(){
@@ -59,8 +51,16 @@ public class ShipmentsAction extends ActionSupport{
     public String selectShipments(){
         //PageBean<Shipment> pageBean = new PageBean<Shipment>();
         pageOfShipments=shipmentsSvc.getListByPage(pageNo);
-        System.out.println("*******"+pageOfShipments.getData().size());
+        System.out.println("fetch size:"+pageOfShipments.getData().size());
         return SUCCESS;
+    }
+
+    public PageBean<Shipment> getPageOfShipments() {
+        return pageOfShipments;
+    }
+
+    public void setPageOfShipments(PageBean<Shipment> pageOfShipments) {
+        this.pageOfShipments = pageOfShipments;
     }
 
     public int getPageNo() {

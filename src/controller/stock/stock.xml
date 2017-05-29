@@ -30,7 +30,9 @@
                 <param name="root">msg</param>
             </result>
         </action>
-
+        <action name="selectPurchase" class="purchaseAction" method="selectPurchase">
+            <result>/stock/purchaseView.jsp</result>
+        </action>
     </package>
 
 

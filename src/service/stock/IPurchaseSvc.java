@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface IPurchaseSvc {
-    PageBean<Purchase> getAll(int pageNo);
+    PageBean<Purchase> getListByPage(int pageNo);
     List<Batch> getAllBatch();
     List<Clerk> getAllClerk();
     List<Order> getAllOrder();
