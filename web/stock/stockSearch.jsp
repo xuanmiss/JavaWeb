@@ -23,6 +23,7 @@
         window.onload=function () {
 
             $("#selectBrand").change(function () {
+                $("#selectBatch").empty()
                 si = this.selectedIndex
                 brandId = this.options[si].value
                 var param = new FormData()
@@ -65,18 +66,23 @@
                 }
             })
 
-            $("#submit").click(function(){
+
+
+            $("#search").click(function () {
                 $("#brandError").empty()
                 $("#modelError").empty()
                 $("#batchError").empty()
+                $("#modalTitle").text("错误！")
                 if($("#selectBrand")[0].selectedIndex < 0)
-                    $("#brandError").text("请选择品牌信息！")
+                    //$("#brandError").text("请选择品牌信息！")
+                    $("#modalBody").text("请选择品牌信息！")
                 else if($("#selectModel")[0].selectedIndex < 0)
-                    $("#modelError").text("请选择型号信息！")
+                    //$("#modelError").text("请选择型号信息！")
+                    $("#modalBody").text("请选择型号信息！")
                 else if($("#selectBatch")[0].selectedIndex < 0)
-                    $("#batchError").text("请选择批次信息！")
+                    //$("#batchError").text("请选择批次信息！")
+                    $("#modalBody").text("请选择批次信息！")
                 else {
-                    $("#stockView").empty()
                     url = "stock/stockViewAction.action?status=1"
                     si = $("#selectBatch")[0].selectedIndex
                     id = $("#selectBatch")[0].options[si].value
@@ -93,17 +99,30 @@
                             var l = data.length
                             if(l == 0)
                                 alert(msg)
-                            else alert("当前批次所剩于库存量："+data[0].count)
+                            else {
+                                brand = $("#selectBrand")[0].options[$("#selectBrand")[0].selectedIndex].text
+                                model = $("#selectModel")[0].options[$("#selectModel")[0].selectedIndex].text
+                                batch = $("#selectBatch")[0].options[$("#selectBatch")[0].selectedIndex].text
+                                $("#modalTitle").text(brand)
+                                str=
+                                    "<label>型号："+model+"</label><br/>"+
+                                    "<label>批次："+batch+"</label><br/>"+
+                                    "<label>数量："+data[0].count+"</label><br/>"
+                                $("#modalBody").html(str)
+                            }
                         }
-                    })
+                    })//ajax
                 }
+
             })
+
+
         }
     </script>
 </head>
 <body>
 <h1>库存信息查询</h1>
-<s:form action="" namespace="/stock" theme="simple" >
+
     <s:label value="选择品牌："/>
     <s:select id="selectBrand" name="brandId" list="brandList" listKey="id" listValue="name"/>
     <br />
@@ -119,9 +138,23 @@
     <br />
     <label id="batchError" style="color: #bb0000"></label>
     <br />
-    <input type="button" value="提交" id="submit"/>
+<input id="search" class="btn btn-default" data-toggle="modal" data-target="#modal" type="button" value="查看" />
     <div id="stockView"></div>
-</s:form>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalTitle"></h4>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer" id="modalFooter">
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
