@@ -85,7 +85,7 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
 
     @Override
     public List<Purchase_Order> getUndoListByDesc(int pageNo, int rows) {
-        return getSession().createQuery("from entity.Purchase_Order where  o.type = 1 or o.type = 3   order by date desc")
+        return getSession().createQuery("from entity.Purchase_Order where   type = 1 or  type = 3   order by date desc")
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
@@ -93,7 +93,7 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
 
     @Override
     public List<Purchase_Order> getUndoListByAsc(int pageNo, int rows) {
-        return getSession().createQuery("from entity.Purchase_Order where o.type = 1 or o.type = 3  order by date asc ")
+        return getSession().createQuery("from entity.Purchase_Order where  type = 1 or  type = 3  order by date asc ")
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
