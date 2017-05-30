@@ -2,7 +2,6 @@ package dao;
 
 import entity.Purchase_Order;
 import org.springframework.stereotype.Repository;
-import util.PageBean;
 
 import java.util.List;
 
@@ -47,8 +46,8 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
     }
 
     @Override
-    public List<Purchase_Order> getListByBrandAndModelDesc(int brandId, int modelId, int pageNo, int rows) {
-        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and o.model.id = ?2 order by o.date desc")
+    public List<Purchase_Order> getUndoListByBrandAndModelDesc(int brandId, int modelId, int pageNo, int rows) {
+        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and o.model.id = ?2 and (o.type = 1 or o.type = 3) order by o.date desc")
                 .setInteger("1", brandId)
                 .setInteger("2", modelId)
                 .setFirstResult((pageNo-1)*rows)
@@ -57,8 +56,8 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
     }
 
     @Override
-    public List<Purchase_Order> getListByBrandAndModelAsc(int brandId, int modelId, int pageNo, int rows) {
-        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and o.model.id = ?2 order by o.date asc")
+    public List<Purchase_Order> getUndoListByBrandAndModelAsc(int brandId, int modelId, int pageNo, int rows) {
+        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and o.model.id = ?2 and (o.type = 1 or o.type = 3) order by o.date asc")
                 .setInteger("1", brandId)
                 .setInteger("2", modelId)
                 .setFirstResult((pageNo-1)*rows)
@@ -67,8 +66,8 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
     }
 
     @Override
-    public List<Purchase_Order> getListByBrandDesc(int brandId, int pageNo, int rows) {
-        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 order by o.date desc")
+    public List<Purchase_Order> getUndoListByBrandDesc(int brandId, int pageNo, int rows) {
+        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and (o.type = 1 or o.type = 3)  order by o.date desc")
                 .setInteger("1", brandId)
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
@@ -76,8 +75,8 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
     }
 
     @Override
-    public List<Purchase_Order> getListByBrandAsc(int brandId, int pageNo, int rows) {
-        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 order by o.date asc")
+    public List<Purchase_Order> getUndoListByBrandAsc(int brandId, int pageNo, int rows) {
+        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and (o.type = 1 or o.type = 3)  order by o.date asc")
                 .setInteger("1", brandId)
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
@@ -85,18 +84,37 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
     }
 
     @Override
-    public List<Purchase_Order> getListByDesc(int pageNo, int rows) {
-        return getSession().createQuery("from entity.Purchase_Order order by date desc")
+    public List<Purchase_Order> getUndoListByDesc(int pageNo, int rows) {
+        return getSession().createQuery("from entity.Purchase_Order where  o.type = 1 or o.type = 3   order by date desc")
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
     }
 
     @Override
-    public List<Purchase_Order> getListByAsc(int pageNo, int rows) {
-        return getSession().createQuery("from entity.Purchase_Order order by date asc ")
+    public List<Purchase_Order> getUndoListByAsc(int pageNo, int rows) {
+        return getSession().createQuery("from entity.Purchase_Order where o.type = 1 or o.type = 3  order by date asc ")
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
+    }
+
+    @Override
+    public int getUndoCountByBrand(int brandId) {
+        return ((Long)getSession().createQuery("select count(*) from  entity.Purchase_Order as o where o.model.brand.id = ?1 and (o.type = 1 or o.type = 3) ")
+                .setInteger("1",brandId)
+                .uniqueResult()).intValue();
+    }
+
+    @Override
+    public int getUndoCountByBrandAndModel(int brandId, int modelId) {
+        return getUndoCountByModel(modelId);
+    }
+
+    @Override
+    public int getUndoCountByModel(int modelId) {
+        return ((Long)getSession().createQuery("select count(*) from  entity.Purchase_Order as o where o.model.id = ?1 and (o.type = 1 or o.type = 3) ")
+                .setInteger("1",modelId)
+                .uniqueResult()).intValue();
     }
 }

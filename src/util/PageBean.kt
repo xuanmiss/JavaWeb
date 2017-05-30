@@ -23,6 +23,7 @@ class PageBean<T>{
                 field=pageNo
         }
 
+
     var maxPage:Int=0
         private set(value){
             field=value

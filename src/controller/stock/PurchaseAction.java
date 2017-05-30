@@ -104,18 +104,18 @@ public class PurchaseAction extends ActionSupport {
             if(modelId>0){
                 if(isDescByDate==1){
                     //search by brand、model、order by desc
-                    pageBean = purchaseOrderHandleSvc.getListByBrandAndModelDesc(brandId, modelId, pageNo);
+                    pageBean = purchaseSvc.getListByBrandAndModelDesc(brandId,modelId,pageNo);
                 }else{
                     //search by brand、model、order by asc
-                    pageBean = purchaseOrderHandleSvc.getListByBrandAndModelAsc(brandId, modelId, pageNo);
+                    pageBean = purchaseSvc.getListByBrandAndModelAsc(brandId, modelId, pageNo);
                 }
             }else{
                 if(isDescByDate==1){
                     //search by brand、order by desc
-                    pageBean = purchaseOrderHandleSvc.getListByBrandDesc(brandId, pageNo);
+                    pageBean = purchaseSvc.getListByBrandDesc(brandId, pageNo);
                 }else{
                     //search by brand、order by asc
-                    pageBean = purchaseOrderHandleSvc.getListByBrandAsc(brandId, pageNo);
+                    pageBean = purchaseSvc.getListByBrandAsc(brandId, pageNo);
                 }
             }
         }else {
@@ -124,19 +124,13 @@ public class PurchaseAction extends ActionSupport {
             models=new LinkedList<>();
             if(isDescByDate==1){
                 //search by desc
-                pageBean = purchaseOrderHandleSvc.getListByDesc(pageNo);
+                pageBean = purchaseSvc.getListByDesc(pageNo);
             }else {
                 //search by asc
-                pageBean = purchaseOrderHandleSvc.getListByAsc(pageNo);
+                pageBean = purchaseSvc.getListByAsc(pageNo);
             }
 
         }
-
-        pageBean=purchaseSvc.getUndoPurchaseOrders(pageNo);
-        pageBean.getData().forEach(it->{
-            it.getModel().getModel();
-            it.getClerk().getName();
-        });
         return SUCCESS;
     }
 

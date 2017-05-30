@@ -39,57 +39,5 @@ public class Purchase_OrderHandleSvc implements IPurchaseOrderHandleSvc{
         purchaseOrderDBAcc.update(order);
     }
 
-    @Override
-    public PageBean<Purchase_Order> getListByBrandAndModelDesc(int brandId, int modelId, int pageNo) {
-        PageBean<Purchase_Order> pb=new PageBean<>();
-        pb.setCurPage(pageNo);
-        pb.setMaxRowCount(purchaseOrderDBAcc.getCount(Purchase_Order.class));
-        pb.setData(purchaseOrderDBAcc.getListByBrandAndModelDesc(brandId, modelId, pageNo, pb.getRowsPerPage()));
-        return pb;
-    }
 
-    @Override
-    public PageBean<Purchase_Order> getListByBrandAndModelAsc(int brandId, int modelId, int pageNo) {
-        PageBean<Purchase_Order> pb=new PageBean<>();
-        pb.setCurPage(pageNo);
-        pb.setMaxRowCount(purchaseOrderDBAcc.getCount(Purchase_Order.class));
-        pb.setData(purchaseOrderDBAcc.getListByBrandAndModelAsc(brandId, modelId, pageNo, pb.getRowsPerPage()));
-        return pb;
-    }
-
-    @Override
-    public PageBean<Purchase_Order> getListByBrandDesc(int brandId, int pageNo) {
-        PageBean<Purchase_Order> pb=new PageBean<>();
-        pb.setCurPage(pageNo);
-        pb.setMaxRowCount(purchaseOrderDBAcc.getCount(Purchase_Order.class));
-        pb.setData(purchaseOrderDBAcc.getListByBrandDesc(brandId, pageNo, pb.getRowsPerPage()));
-        return pb;
-    }
-
-    @Override
-    public PageBean<Purchase_Order> getListByBrandAsc(int brandId, int pageNo) {
-        PageBean<Purchase_Order> pb=new PageBean<>();
-        pb.setCurPage(pageNo);
-        pb.setMaxRowCount(purchaseOrderDBAcc.getCount(Purchase_Order.class));
-        pb.setData(purchaseOrderDBAcc.getListByBrandAsc(brandId, pageNo, pb.getRowsPerPage()));
-        return pb;
-    }
-
-    @Override
-    public PageBean<Purchase_Order> getListByDesc(int pageNo) {
-        PageBean<Purchase_Order> pb=new PageBean<>();
-        pb.setCurPage(pageNo);
-        pb.setMaxRowCount(purchaseOrderDBAcc.getCount(Purchase_Order.class));
-        pb.setData(purchaseOrderDBAcc.getListByDesc(pageNo,pb.getRowsPerPage()));
-        return pb;
-    }
-
-    @Override
-    public PageBean<Purchase_Order> getListByAsc(int pageNo) {
-        PageBean<Purchase_Order> pb=new PageBean<>();
-        pb.setCurPage(pageNo);
-        pb.setMaxRowCount(purchaseOrderDBAcc.getCount(Purchase_Order.class));
-        pb.setData(purchaseOrderDBAcc.getListByAsc(pageNo,pb.getRowsPerPage()));
-        return pb;
-    }
 }

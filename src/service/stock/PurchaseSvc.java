@@ -193,4 +193,58 @@ public class PurchaseSvc implements IPurchaseSvc {
             return false;
     }
 
+    @Override
+    public PageBean<Purchase_Order> getListByBrandAndModelDesc(int brandId, int modelId, int pageNo) {
+        PageBean<Purchase_Order> pb=new PageBean<>();
+        pb.setCurPage(pageNo);
+        pb.setMaxRowCount(ipoAcc.getUndoCountByBrandAndModel(brandId,modelId));
+        pb.setData(ipoAcc.getUndoListByBrandAndModelDesc(brandId, modelId, pageNo, pb.getRowsPerPage()));
+        return pb;
+    }
+
+    @Override
+    public PageBean<Purchase_Order> getListByBrandAndModelAsc(int brandId, int modelId, int pageNo) {
+        PageBean<Purchase_Order> pb=new PageBean<>();
+        pb.setCurPage(pageNo);
+        pb.setMaxRowCount(ipoAcc.getUndoCountByBrandAndModel(brandId,modelId));
+        pb.setData(ipoAcc.getUndoListByBrandAndModelAsc(brandId, modelId, pageNo, pb.getRowsPerPage()));
+        return pb;
+    }
+
+    @Override
+    public PageBean<Purchase_Order> getListByBrandDesc(int brandId, int pageNo) {
+        PageBean<Purchase_Order> pb=new PageBean<>();
+        pb.setCurPage(pageNo);
+        pb.setMaxRowCount(ipoAcc.getUndoCountByBrand(brandId));
+        pb.setData(ipoAcc.getUndoListByBrandDesc(brandId, pageNo, pb.getRowsPerPage()));
+        return pb;
+    }
+
+    @Override
+    public PageBean<Purchase_Order> getListByBrandAsc(int brandId, int pageNo) {
+        PageBean<Purchase_Order> pb=new PageBean<>();
+        pb.setCurPage(pageNo);
+        pb.setMaxRowCount(ipoAcc.getUndoCountByBrand(brandId));
+        pb.setData(ipoAcc.getUndoListByBrandAsc(brandId, pageNo, pb.getRowsPerPage()));
+        return pb;
+    }
+
+    @Override
+    public PageBean<Purchase_Order> getListByDesc(int pageNo) {
+        PageBean<Purchase_Order> pb=new PageBean<>();
+        pb.setCurPage(pageNo);
+        pb.setMaxRowCount(ipoAcc.getCount(Purchase_Order.class));
+        pb.setData(ipoAcc.getUndoListByDesc(pageNo,pb.getRowsPerPage()));
+        return pb;
+    }
+
+    @Override
+    public PageBean<Purchase_Order> getListByAsc(int pageNo) {
+        PageBean<Purchase_Order> pb=new PageBean<>();
+        pb.setCurPage(pageNo);
+        pb.setMaxRowCount(ipoAcc.getCount(Purchase_Order.class));
+        pb.setData(ipoAcc.getUndoListByAsc(pageNo,pb.getRowsPerPage()));
+        return pb;
+    }
+
 }

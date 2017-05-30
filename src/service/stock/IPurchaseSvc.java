@@ -17,4 +17,11 @@ public interface IPurchaseSvc {
     PageBean<Purchase_Order> getUndoPurchaseOrders(int pageNo);
     void inWarehouse(Purchase purchase);
     boolean cancelIn(Purchase_Order po);
+
+    PageBean<Purchase_Order> getListByBrandAndModelDesc(int brandId, int modelId, int pageNo);
+    PageBean<Purchase_Order> getListByBrandAndModelAsc(int brandId, int modelId, int pageNo);
+    PageBean<Purchase_Order> getListByBrandDesc(int brandId, int pageNo);
+    PageBean<Purchase_Order> getListByBrandAsc(int brandId, int pageNo);
+    PageBean<Purchase_Order> getListByDesc(int pageNo);
+    PageBean<Purchase_Order> getListByAsc(int pageNo);
 }
