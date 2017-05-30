@@ -17,7 +17,7 @@
     <script src="bootstrap/js/selectAll.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <![endif]-->
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
 
     <script>
         window.onload=function () {
@@ -74,14 +74,14 @@
                 $("#batchError").empty()
                 $("#modalTitle").text("错误！")
                 if($("#selectBrand")[0].selectedIndex < 0)
-                    //$("#brandError").text("请选择品牌信息！")
-                    $("#modalBody").text("请选择品牌信息！")
+                    $("#brandError").text("请选择品牌信息！")
+                    //$("#modalBody").text("请选择品牌信息！")
                 else if($("#selectModel")[0].selectedIndex < 0)
-                    //$("#modelError").text("请选择型号信息！")
-                    $("#modalBody").text("请选择型号信息！")
+                    $("#modelError").text("请选择型号信息！")
+                    //$("#modalBody").text("请选择型号信息！")
                 else if($("#selectBatch")[0].selectedIndex < 0)
-                    //$("#batchError").text("请选择批次信息！")
-                    $("#modalBody").text("请选择批次信息！")
+                    $("#batchError").text("请选择批次信息！")
+                    //$("#modalBody").text("请选择批次信息！")
                 else {
                     url = "stock/stockViewAction.action?status=1"
                     si = $("#selectBatch")[0].selectedIndex
@@ -109,6 +109,7 @@
                                     "<label>批次："+batch+"</label><br/>"+
                                     "<label>数量："+data[0].count+"</label><br/>"
                                 $("#modalBody").html(str)
+                                $('#modal').modal('show')
                             }
                         }
                     })//ajax
@@ -138,7 +139,7 @@
     <br />
     <label id="batchError" style="color: #bb0000"></label>
     <br />
-<input id="search" class="btn btn-default" data-toggle="modal" data-target="#modal" type="button" value="查看" />
+<input id="search" class="btn btn-default" data-target="#modal" type="button" value="查看" />
     <div id="stockView"></div>
 
 <!-- 模态框（Modal） -->
