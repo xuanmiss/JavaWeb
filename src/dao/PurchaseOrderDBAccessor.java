@@ -57,7 +57,7 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
 
     @Override
     public List<Purchase_Order> getUndoListByBrandAndModelAsc(int brandId, int modelId, int pageNo, int rows) {
-        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and o.model.id = ?2 and (o.type = 1 or o.type = 3) order by o.date asc")
+        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and o.model.id = ?2 and (o.type = 1 or o.type = 3) order by o.date")
                 .setInteger("1", brandId)
                 .setInteger("2", modelId)
                 .setFirstResult((pageNo-1)*rows)
@@ -76,7 +76,7 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
 
     @Override
     public List<Purchase_Order> getUndoListByBrandAsc(int brandId, int pageNo, int rows) {
-        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and (o.type = 1 or o.type = 3)  order by o.date asc")
+        return getSession().createQuery("select o from  entity.Purchase_Order as o where o.model.brand.id = ?1 and (o.type = 1 or o.type = 3)  order by o.date")
                 .setInteger("1", brandId)
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
@@ -93,7 +93,7 @@ public class PurchaseOrderDBAccessor extends BaseDBAccessor<Purchase_Order> impl
 
     @Override
     public List<Purchase_Order> getUndoListByAsc(int pageNo, int rows) {
-        return getSession().createQuery("from entity.Purchase_Order where  type = 1 or  type = 3  order by date asc ")
+        return getSession().createQuery("from entity.Purchase_Order where  type = 1 or  type = 3  order by date ")
                 .setFirstResult((pageNo-1)*rows)
                 .setMaxResults(rows)
                 .list();
