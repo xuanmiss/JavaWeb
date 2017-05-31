@@ -2,7 +2,6 @@ package service.clerk;
 
 import dao.IClerkDBAccessor;
 import entity.Clerk;
-import entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.PageBean;
@@ -51,5 +50,9 @@ public class ClerkHandleSvc implements IClerkHandleSvc {
         return clerkDBAccessor.getListClerkofAll();
     }
 
+    @Override
+    public List<Clerk> getListClerkOfWork(){
+        return clerkDBAccessor.getListClerkOfWork();
+    }
 
 }

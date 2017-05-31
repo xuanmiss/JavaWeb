@@ -1,7 +1,6 @@
 package service.clerk;
 
 import entity.Clerk;
-import entity.Client;
 import util.PageBean;
 
 import java.util.List;
@@ -17,4 +16,5 @@ public interface IClerkHandleSvc {
     void deleteById(int id);
     Clerk findById(int id);
     List<Clerk> getListClerkofAll();
+    List<Clerk> getListClerkOfWork();
 }

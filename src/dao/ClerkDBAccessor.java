@@ -35,5 +35,11 @@ public class ClerkDBAccessor extends BaseDBAccessor<Clerk> implements IClerkDBAc
                 .list();
     }
 
+    @Override
+    public List<Clerk> getListClerkOfWork(){
+        String hql = "from entity.Clerk as c where c.status = 1";
+        return (List<Clerk>) getSession().createQuery(hql)
+                .list();
+    }
 
 }

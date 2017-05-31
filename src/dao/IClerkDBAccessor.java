@@ -28,5 +28,8 @@ public interface IClerkDBAccessor extends IBaseDBAccessor<Clerk> {
     boolean isExist(String value, String property);
     List<Clerk> getListClerkofAll();
 
+    //获取所有在职的业务员
+    List<Clerk> getListClerkOfWork();
+
 }
 

@@ -3,11 +3,13 @@ package controller.clerk;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import entity.Clerk;
+import entity.Role;
 import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.clerk.IClerkHandleSvc;
+import service.role.IRoleHandleSvc;
 import service.salaryStandard.ISalaryStandardHandleSvc;
 import util.IdentityUtil;
 import util.StringUtil;
@@ -27,36 +29,13 @@ public class ClerkAddAction extends ActionSupport implements Preparable{
     private ISalaryStandardHandleSvc salarySvc;
     @Autowired
     private IClerkHandleSvc clerkSvc;
+    @Autowired
+    private IRoleHandleSvc roleSvc;
 
+    private Role role;
     private Clerk clerk;
     private List<SalaryStandard> salaryStandardList;
     private int status = 0;
-
-    public List<SalaryStandard> getSalaryStandardList() {
-        return salaryStandardList;
-    }
-
-    public void setSalaryStandardList(List<SalaryStandard> salaryStandardList) {
-        salaryStandardList = salaryStandardList;
-    }
-
-
-
-    public Clerk getClerk() {
-        return clerk;
-    }
-
-    public void setClerk(Clerk clerk) {
-        this.clerk = clerk;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
     @Override
     public String execute()throws Exception{
@@ -64,8 +43,13 @@ public class ClerkAddAction extends ActionSupport implements Preparable{
             if(status == 0)
                 return "input";
             //保存
-            if(check())
-                clerkSvc.saveClerk(clerk);
+            if(check()){
+                clerkSvc.saveClerk(clerk);//先保存业务员信息
+                System.out.print(clerk.getId());
+                role.setClerk(clerk);
+                roleSvc.save(role);//再保存登陆信息
+            }
+
             else return "input";
             return "show";
 
@@ -80,11 +64,27 @@ public class ClerkAddAction extends ActionSupport implements Preparable{
         //clerk.setSalary_card(clerk.getSalary_card().trim());
         clerk.setWeichat(clerk.getWeichat().trim());
         clerk.setName(clerk.getName().trim());
+        role.setPassword(role.getPassword().trim());
+        role.setUsername(role.getUsername().trim());
         clerk.setEntry_time(new Date());
+        role.setAuthority(1);
 
         //业务员姓名
         //判断是否为空
-        if(StringUtil.isEmptyString(clerk.getName())){
+        //用户名、密码
+        if(!role.getUsername().matches("^([A-Z]|[a-z]|[0-9]){6,20}$")){
+            addFieldError("username", "用户名由6~20位字母、数字组成！");
+            return false;
+        }
+        else if(roleSvc.isExist(role.getUsername(), "username")){
+            addFieldError("username", "该用户名已经存在");
+            return false;
+        }
+        else if(!role.getPassword().matches("^([A-Z]|[a-z]|[0-9]){6,20}$")){
+            addFieldError("password", "密码由6~20位字母、数字组成！");
+            return false;
+        }
+        else if(StringUtil.isEmptyString(clerk.getName())){
             addFieldError("name", "业务员姓名不能为空！");
             return false;
         }
@@ -138,4 +138,36 @@ public class ClerkAddAction extends ActionSupport implements Preparable{
         salaryStandardList = salarySvc.getAll();
     }
 
+
+    public List<SalaryStandard> getSalaryStandardList() {
+        return salaryStandardList;
+    }
+
+    public void setSalaryStandardList(List<SalaryStandard> salaryStandardList) {
+        salaryStandardList = salaryStandardList;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Clerk getClerk() {
+        return clerk;
+    }
+
+    public void setClerk(Clerk clerk) {
+        this.clerk = clerk;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

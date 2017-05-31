@@ -6,8 +6,9 @@
 
 <struts>
 
-    <package name="clerk" namespace="/clerk" extends="struts-default">
+    <package name="clerk" namespace="/clerk" extends="my-default">
         <action name="clerk_*" class="{1}Clerk">
+            <interceptor-ref name="manager-only-def"/>
             <result name="input">/clerk/{1}Clerk.jsp</result>
             <result name="show" type="redirectAction">
                 <param name="actionName">clerk_select</param>
@@ -15,6 +16,7 @@
             <result name="list">/clerk/listClerk.jsp</result>
         </action>
         <action name="*">
+            <interceptor-ref name="manager-only-def"/>
             <result>/clerk/{1}.jsp</result>
         </action>
     </package>

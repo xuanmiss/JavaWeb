@@ -1,6 +1,5 @@
 package dao;
 
-import entity.Clerk;
 import entity.Role;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public interface IRoleDBAccessor extends IBaseDBAccessor<Role> {
      * 根据业务员ID精确查找Role
      * @return Role
      */
-    Role findByClerk(Object object);
+    Role findByClerk(int id);
 
     /**
      * 登陆校验
@@ -39,5 +38,5 @@ public interface IRoleDBAccessor extends IBaseDBAccessor<Role> {
      */
     Role loggingCheck(String username, String password);
 
-
+    boolean isExist(String value, String property);
 }

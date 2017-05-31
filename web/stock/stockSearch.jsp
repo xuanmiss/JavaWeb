@@ -52,17 +52,19 @@
             //点击时如果只有一个元素则自动加载batch
             $("#selectModel").click(function(){
                 //获取modelId
-                if(this.options.length == 1){
+                if(this.options.length > 0){
                     //获取modelId
-                    modelId = this.options.item(0).value
-                    var param = new FormData()
-                    param.append("modelId", modelId)
-                    msg = "当前型号下没有批次信息！！！"
+                    if(this.selectedIndex == 0){
+                        modelId = this.options.item(0).value
+                        var param = new FormData()
+                        param.append("modelId", modelId)
+                        msg = "当前型号下没有批次信息！！！"
 
-                    selectAll(param, "stock/loadBatch", $("#selectBatch"), msg, function(obj){
-                        item = "<option value='" + obj.id + "'>" + obj.batch_no + "</option>"
-                        return item
-                    })
+                        selectAll(param, "stock/loadBatch", $("#selectBatch"), msg, function(obj){
+                            item = "<option value='" + obj.id + "'>" + obj.batch_no + "</option>"
+                            return item
+                        })
+                    }
                 }
             })
 
@@ -97,8 +99,11 @@
                         contentType:false,
                         success:function (data) {
                             var l = data.length
-                            if(l == 0)
-                                alert(msg)
+                            if(l == 0){
+                                $("#modalTitle").text("ERROR!")
+                                $("#modalBody").text(msg)
+                                $("#modal").modal("show")
+                            }
                             else {
                                 brand = $("#selectBrand")[0].options[$("#selectBrand")[0].selectedIndex].text
                                 model = $("#selectModel")[0].options[$("#selectModel")[0].selectedIndex].text

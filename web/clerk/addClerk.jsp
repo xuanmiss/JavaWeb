@@ -18,6 +18,14 @@
 <body>
 
 <s:form action="clerk_add.action?status=1" method="POST"  namespace="/clerk" theme="simple" enctype="multipart/form-data">
+    <s:fielderror fieldName="username" style="color:red"/>
+    <s:label value="用户名:"/>
+    <s:textfield name="role.username" />
+    <br />
+    <s:fielderror fieldName="password" style="color:red"/>
+    <s:label value="密码:"/>
+    <s:textfield name="role.password" type="password" />
+    <br />
     <s:fielderror fieldName="name" style="color:red"/>
     <s:label value="业务员姓名:"/>
     <s:textfield name="clerk.name" />

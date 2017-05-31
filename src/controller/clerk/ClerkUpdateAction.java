@@ -3,11 +3,13 @@ package controller.clerk;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import entity.Clerk;
+import entity.Role;
 import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import service.clerk.IClerkHandleSvc;
+import service.role.IRoleHandleSvc;
 import service.salaryStandard.ISalaryStandardHandleSvc;
 import util.StringUtil;
 
@@ -24,6 +26,8 @@ public class ClerkUpdateAction extends ActionSupport implements Preparable {
     private ISalaryStandardHandleSvc salarySvc;
     @Autowired
     private IClerkHandleSvc clerkHandleSvc;
+    @Autowired
+    private IRoleHandleSvc roleSvc;
 
     private int clerkId;
     private List<SalaryStandard> salaryStandardList;
@@ -80,6 +84,11 @@ public class ClerkUpdateAction extends ActionSupport implements Preparable {
                 preClerk.setSex(clerk.getSex());
                 preClerk.setSalaryStandard(clerk.getSalaryStandard());
                 clerkHandleSvc.saveClerk(preClerk);
+                //如果业务员状态不为在职则删除其登陆信息
+                if(preClerk.getStatus() != 1){
+                    Role role = roleSvc.findByClerk(preClerk.getId());
+                    roleSvc.deleteById(role.getId());
+                }
                 return "show";
             }else{
                 clerkId = clerk.getId();
