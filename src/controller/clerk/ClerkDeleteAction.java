@@ -2,7 +2,6 @@ package controller.clerk;
 
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Clerk;
-import entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -25,10 +24,10 @@ public class ClerkDeleteAction extends ActionSupport{
 
     @Override
     public String execute(){
-        Role role = roleSvc.findByClerk(clerkId);//获取登陆信息
+        //Role role = roleSvc.findByClerk(clerkId);//获取登陆信息
         Clerk clerk = clerkSvc.findById(clerkId);//获取业务员信息
         clerk.setStatus(2);//设置状态为离职
-        roleSvc.deleteById(role.getId());//删除登陆信息
+        //roleSvc.deleteById(role.getId());//删除登陆信息
         return "show";
     }
 

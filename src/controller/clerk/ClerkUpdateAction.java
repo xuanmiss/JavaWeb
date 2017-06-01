@@ -3,7 +3,6 @@ package controller.clerk;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import entity.Clerk;
-import entity.Role;
 import entity.SalaryStandard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -80,15 +79,15 @@ public class ClerkUpdateAction extends ActionSupport implements Preparable {
                 preClerk.setWeichat(clerk.getWeichat());
                 preClerk.setPhone(clerk.getPhone());
                 preClerk.setName(clerk.getName());
-                preClerk.setStatus(clerk.getStatus());
+                //preClerk.setStatus(clerk.getStatus());
                 preClerk.setSex(clerk.getSex());
                 preClerk.setSalaryStandard(clerk.getSalaryStandard());
                 clerkHandleSvc.saveClerk(preClerk);
                 //如果业务员状态不为在职则删除其登陆信息
-                if(preClerk.getStatus() != 1){
+                /*if(preClerk.getStatus() != 1){
                     Role role = roleSvc.findByClerk(preClerk.getId());
                     roleSvc.deleteById(role.getId());
-                }
+                }*/
                 return "show";
             }else{
                 clerkId = clerk.getId();

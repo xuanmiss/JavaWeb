@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Controller
 import service.clerk.IClerkHandleSvc
+import util.PageBean
 
 /**
  * Created by ymcvalu on 2017/5/11.
@@ -15,11 +16,10 @@ import service.clerk.IClerkHandleSvc
 open class ClerkSelectAction:ActionSupport(){
     @Autowired
     private lateinit var clerkSvc: IClerkHandleSvc
-    //open var pageBean:PageBean<Clerk>?=null
-    //open var pageNo:Int=1
-    open var listOfClerk:List<Clerk>?=null
+    open var pageBean:PageBean<Clerk>?=null
+    open var pageNo:Int=1
     override fun execute(): String {
-        listOfClerk=clerkSvc.getListClerkOfWork()
+        pageBean =clerkSvc.getListByPage(pageNo)
         return "list"
     }
 }

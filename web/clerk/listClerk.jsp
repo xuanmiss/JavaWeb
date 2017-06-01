@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-<h1 align="center">业务员在职表</h1>
+<h1 align="center">业务员列表</h1>
 <table align="center">
     <tr>
         <th>业务员编号</th>
@@ -25,7 +25,7 @@
         <th>身份证号</th>
         <th>操作</th>
     </tr>
-    <s:iterator value="listOfClerk" var="it">
+    <s:iterator value="pageBean.data" var="it">
         <tr>
             <td><s:property value="#it.id"/> </td>
             <td><s:property value="#it.name"/></td>

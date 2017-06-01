@@ -29,9 +29,9 @@
     <s:textfield name="clerk.address" />
     <br/>
     <s:fielderror fieldName="status" style="color:red" />
-    <s:label value="状态:" />
+    <!--<s:label value="状态:" />
     <s:select list="# {'0':'退休','1':'在职','2':'离职'}" listKey="key" listValue="value" name="clerk.status" headerKey="clerk.status"></s:select>
-    <br/>
+    <br/>-->
     <s:fielderror fieldName="salaryStandard" style="color:red"/>
     <s:label value="薪资标准:"/>
     <s:select list="salaryStandardList" listKey="id" name="clerk.salaryStandard.id" listValue="toString()" headerKey="toString()"/>
