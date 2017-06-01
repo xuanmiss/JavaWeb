@@ -63,7 +63,6 @@ public class ModelAddAction extends ActionSupport{
 
         if(model.getIn_price()==0)
             addFieldError("in_price","请输入有效进价!");
-
         if(model.getSale_price()==0)
             addFieldError("sale_price","请输入有效单价!");
 

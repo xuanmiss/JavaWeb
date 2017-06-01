@@ -42,12 +42,15 @@ public class OrderAddAction extends ActionSupport{
     public String requestForAdd(){
         int clerk= (int)ActionContext.getContext().getSession().get("clerk");
         Clerk_Brand cb=cbSvc.getClerk_Brand(clerk);
-        brand=cb.getBrand();
-        brand.getName();
         if(cb==null){
             msg="未推广任何品牌！";
             return "fail";
+        }else{
+            brand=cb.getBrand();
+            brand.getName();
         }
+
+
 
         models=modelSvc.getListByPage(cb.getBrand().getId(),1).getData();
         if(models==null || models.size()==0){

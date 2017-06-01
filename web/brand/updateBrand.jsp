@@ -64,9 +64,7 @@
     <s:date name="brand.date" format="yyyy-MM-dd"/>
     <input type="hidden" name="brand.date" value="<s:property value="brand.date"/>"/>
     </div>
-    <div class="form-group">
-    <s:radio list="#{'0':'在市','1':'下市'}" name="brand.status" />
-    </div>
+    <input type="hidden" name="brand.status" value="0"/>
     <s:submit class="btn-info btn-lg" value="提交"/>
     <s:reset class="btn-info btn-lg" value="重置"/>
 </s:form>

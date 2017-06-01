@@ -45,6 +45,7 @@ public class OrderSelect extends ActionSupport {
 
         duties = clerkSvc.findById(clerk).getDuties();
 
+
         if(duties.equals("经理")) {
             clerks = clerkSvc.getListByPage(pageNo);
             clients = clientSvc.getListByPage(pageNo);
