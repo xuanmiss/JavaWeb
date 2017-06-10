@@ -31,9 +31,9 @@ public class SalaryStandardAddAction extends ActionSupport {
     @Override
     public void validate(){
         salaryStandard.setDescription(salaryStandard.getDescription().trim());
-        if(salaryStandard.getBasicSalary() == null || salaryStandard.getBasicSalary() == 0)
+        if(salaryStandard.getBasicSalary() == null || salaryStandard.getBasicSalary() < 0)
             addFieldError("basicSalary", "基本工资格式出错!");
-        else if(salaryStandard.getCommission() == null || salaryStandard.getCommission() == 0)
+        else if(salaryStandard.getCommission() == null || salaryStandard.getCommission() < 0)
             addFieldError("commission", "工资提成格式出错!");
         else if(StringUtil.isEmptyString(salaryStandard.getDescription()))
             addFieldError("description", "描述信息不能为空!");

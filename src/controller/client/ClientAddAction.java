@@ -85,10 +85,6 @@ public class ClientAddAction extends ActionSupport{
             addFieldError("phone", "手机号码格式错误！");
         else if(clientSvc.isExist(client.getPhone(), "phone"))
             addFieldError("phone", "该手机号已被注册！");
-        //客户性别
-        else if(client.getSex() == ' ')
-            addFieldError("sex", "请选择性别！");
-        client.setSex(client.getSex());
     }
 
 

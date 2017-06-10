@@ -73,6 +73,12 @@ public class ClientUpdateAction extends ActionSupport{
         //判断是否为空
         if(StringUtil.isEmptyString(client.getName()))
             addFieldError("name", "客户姓名不能为空！");
+            //客户手机号
+        else if(!client.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")))
+            addFieldError("phone", "手机号码格式错误！");
+        else if(clientSvc.isExist(client.getPhone(), "phone"))
+            addFieldError("phone", "该手机号已被注册！");
+
 
     }
 
