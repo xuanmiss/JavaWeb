@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Clerk;
+import org.hibernate.Session;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 

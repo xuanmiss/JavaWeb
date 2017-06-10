@@ -88,4 +88,5 @@ public class ClerkBrandHandleSvc implements IClerkBrandHandleSvc {
     public Clerk_Brand getClerk_Brand(int clerk) {
         return clerkBrandDBAccessor.getClerkBrand(clerk);
     }
+
 }

@@ -16,6 +16,7 @@ public class Clerk_Client {
     private int client; //client外键
 
 
+
     public Integer getId() {
         return id;
     }
