@@ -16,7 +16,7 @@ import service.login.ILoginHandler
 open class LoginAction : ActionSupport(){
     open var username:String?=null
     open var password:String?=null
-    open var msg:String?=null
+    open var msg:String=""
     @Autowired
     private lateinit var loginHandler: ILoginHandler
     override fun execute():String{
