@@ -28,7 +28,7 @@ public class ClientAddAction extends ActionSupport{
 
     private Client client;
     private Clerk clerk;
-    private Clerk_Client clerkclient;// = new Clerk_Client();
+    private Clerk_Client clerkclient;
     @Autowired
     private IClientHandleSvc clientSvc;
     @Autowired
@@ -54,9 +54,9 @@ public class ClientAddAction extends ActionSupport{
 
 
         clientSvc.saveClient(client);
+        clerkclient = new Clerk_Client();
         clerkclient.setClerk((int)session.get("clerk"));
         clerkclient.setClient(client.getId());
-
         clerkclientSvc.saveClerkClient(clerkclient);
         return "show";
     }
@@ -73,20 +73,18 @@ public class ClientAddAction extends ActionSupport{
         client.setStatus(client.getStatus());
         client.setCard(client.getCard().trim());
        // client.setSex(request.getParameter (client.getSex()));
-        client.setSex(client.getSex());
+
 
 
         //客户姓名
         //判断是否为空
         if(StringUtil.isEmptyString(client.getName()))
             addFieldError("name", "客户姓名不能为空！");
-
-
-
         //客户手机号
-        if(clientSvc.isExist(client.getPhone(), "phone"))
+        else if(!client.getPhone().matches(("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$")))
+            addFieldError("phone", "手机号码格式错误！");
+        else if(clientSvc.isExist(client.getPhone(), "phone"))
             addFieldError("phone", "该手机号已被注册！");
-
     }
 
 

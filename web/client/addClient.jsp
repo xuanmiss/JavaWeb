@@ -52,7 +52,7 @@
     <br/>
     <s:fielderror fieldName="sex" style="color:red" />
     <s:label value="性别:" />
-    <s:select name="client.sex"  headerKey="" headerValue="请选择性别"  list="{'m','w'}"/>
+    <s:select name="client.sex" list="# {'m':'男','w':'女'}"/>
     <br/>
     <s:submit value="提交"/>
     <s:reset value="重置"/>
