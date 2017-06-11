@@ -112,7 +112,6 @@
                     财务管理
                 </a>
                     <ul>
-                        <li><a href="/test/test.action" target="dmMain">预算管理</a></li>
                         <li><a href="/finance/account.action" target="dmMain">资金收支</a></li>
                         <li><a href="/finance/selectOrder.action" target="dmMain">业绩统计</a></li>
                         <li><a href="/finance/purchase.action" target="dmMain">进货统计</a></li>

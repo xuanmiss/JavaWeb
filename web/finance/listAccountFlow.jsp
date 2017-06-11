@@ -61,7 +61,7 @@
             )
         }
     </script>
-   < <style type="text/css">
+   <style type="text/css">
         td {text-align:center;padding:5px;margin:5px;}
         tr {line-height: 175%;}
         table th,td{width:1000px;font-size: large;border:1px solid #CCCCCC; }
@@ -70,7 +70,7 @@
 </head>
 <body>
 <div>
-    <h2 align="center">流动资金：<s:property value="account.flow"/> RMB </h2>
+    <h2 align="center"> 流动资金：<s:property value="account.flow"/> RMB </h2>
     <h2 align="center">固有资产：<s:property value="account.fixed"/> RMB </h2>
 </div>
 <div>
